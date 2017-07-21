@@ -10,3 +10,6 @@ Manual
 -----
 [ReadMe.pdf](/Assets/OpenCVForUnityPlayMakerActions/ReadMe.pdf)
 
+![Texture2DToMatExample.png](Texture2DToMatExample.png)
+![Texture2DToMatExampleActions.png](Texture2DToMatExampleActions.png)
+![WebCamTextureFaceDetectionExampleActions.png](WebCamTextureFaceDetectionExampleActions.png)
