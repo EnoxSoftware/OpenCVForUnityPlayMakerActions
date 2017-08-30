@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  double get_maxErroneousBitsInBorderRate ()")]
+    [HutongGames.PlayMaker.Tooltip ("public double get_maxErroneousBitsInBorderRate ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "storeResult")]
     public class DetectorParameters_get_maxErroneousBitsInBorderRate_C : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setWeights (MatOfFloat weights)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setWeights (MatOfFloat weights)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat), "weights")]
     public class PCTSignatures_setWeights : HutongGames.PlayMaker.FsmStateAction

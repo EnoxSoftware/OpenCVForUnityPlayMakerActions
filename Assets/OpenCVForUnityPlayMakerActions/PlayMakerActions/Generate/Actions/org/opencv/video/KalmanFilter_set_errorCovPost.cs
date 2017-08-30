@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_errorCovPost (Mat errorCovPost)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_errorCovPost (Mat errorCovPost)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KalmanFilter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "errorCovPost")]
     public class KalmanFilter_set_errorCovPost : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setSigmaColor (double _sigma_color)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setSigmaColor (double _sigma_color)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DisparityWLSFilter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "_sigma_color")]
     public class DisparityWLSFilter_setSigmaColor_C : HutongGames.PlayMaker.FsmStateAction

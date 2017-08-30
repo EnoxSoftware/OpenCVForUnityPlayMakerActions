@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void collectGarbage ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void collectGarbage ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.CLAHE), "owner")]
     public class CLAHE_collectGarbage : HutongGames.PlayMaker.FsmStateAction
     {

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  MatOfPoint2f getSamplingPoints ()")]
+    [HutongGames.PlayMaker.Tooltip ("public MatOfPoint2f getSamplingPoints ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "storeResult")]
     public class PCTSignatures_getSamplingPoints : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  List<MatOfPoint3f> get_objPoints ()")]
+    [HutongGames.PlayMaker.Tooltip ("public List<MatOfPoint3f> get_objPoints ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Board), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "storeResult")]
     public class Board_get_objPoints : HutongGames.PlayMaker.FsmStateAction

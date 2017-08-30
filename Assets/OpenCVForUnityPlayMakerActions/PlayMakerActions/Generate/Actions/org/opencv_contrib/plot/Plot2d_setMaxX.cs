@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setMaxX (double _plotMaxX)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setMaxX (double _plotMaxX)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Plot2d), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "_plotMaxX")]
     public class Plot2d_setMaxX : HutongGames.PlayMaker.FsmStateAction

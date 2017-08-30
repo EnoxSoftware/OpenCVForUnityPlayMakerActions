@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNormFlag (int flag)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNormFlag (int flag)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.EMDHistogramCostExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "flag")]
     public class EMDHistogramCostExtractor_setNormFlag : HutongGames.PlayMaker.FsmStateAction

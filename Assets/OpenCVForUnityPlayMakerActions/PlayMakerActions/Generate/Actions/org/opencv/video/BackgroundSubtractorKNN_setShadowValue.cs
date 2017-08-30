@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setShadowValue (int value)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setShadowValue (int value)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorKNN), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "value")]
     public class BackgroundSubtractorKNN_setShadowValue : HutongGames.PlayMaker.FsmStateAction

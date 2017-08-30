@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setExposureWeight (float exposure_weight)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setExposureWeight (float exposure_weight)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MergeMertens), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "exposure_weight")]
     public class MergeMertens_setExposureWeight : HutongGames.PlayMaker.FsmStateAction

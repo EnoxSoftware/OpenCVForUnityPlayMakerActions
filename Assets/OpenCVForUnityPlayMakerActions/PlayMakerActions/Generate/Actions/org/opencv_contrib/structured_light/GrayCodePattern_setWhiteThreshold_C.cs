@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setWhiteThreshold (long value)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setWhiteThreshold (long value)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.GrayCodePattern), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "value")]
     public class GrayCodePattern_setWhiteThreshold_C : HutongGames.PlayMaker.FsmStateAction

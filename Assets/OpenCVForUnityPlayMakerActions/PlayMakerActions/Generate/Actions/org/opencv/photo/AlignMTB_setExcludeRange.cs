@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setExcludeRange (int exclude_range)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setExcludeRange (int exclude_range)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.AlignMTB), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "exclude_range")]
     public class AlignMTB_setExcludeRange : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_filterByConvexity (bool filterByConvexity)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_filterByConvexity (bool filterByConvexity)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "filterByConvexity")]
     public class Params_set_filterByConvexity : HutongGames.PlayMaker.FsmStateAction

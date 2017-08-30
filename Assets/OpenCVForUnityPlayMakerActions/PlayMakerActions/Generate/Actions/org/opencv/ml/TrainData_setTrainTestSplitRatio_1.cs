@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setTrainTestSplitRatio (double ratio)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setTrainTestSplitRatio (double ratio)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TrainData), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "ratio")]
     public class TrainData_setTrainTestSplitRatio_1 : HutongGames.PlayMaker.FsmStateAction

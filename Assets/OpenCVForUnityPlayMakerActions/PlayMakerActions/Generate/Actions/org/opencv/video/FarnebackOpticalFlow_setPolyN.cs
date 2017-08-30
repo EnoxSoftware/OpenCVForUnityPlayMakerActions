@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setPolyN (int polyN)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setPolyN (int polyN)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.FarnebackOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "polyN")]
     public class FarnebackOpticalFlow_setPolyN : HutongGames.PlayMaker.FsmStateAction

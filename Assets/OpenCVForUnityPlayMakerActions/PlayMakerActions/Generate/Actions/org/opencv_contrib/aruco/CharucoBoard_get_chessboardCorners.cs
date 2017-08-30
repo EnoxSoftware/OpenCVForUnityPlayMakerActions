@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  MatOfPoint3f get_chessboardCorners ()")]
+    [HutongGames.PlayMaker.Tooltip ("public MatOfPoint3f get_chessboardCorners ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.CharucoBoard), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint3f), "storeResult")]
     public class CharucoBoard_get_chessboardCorners : HutongGames.PlayMaker.FsmStateAction

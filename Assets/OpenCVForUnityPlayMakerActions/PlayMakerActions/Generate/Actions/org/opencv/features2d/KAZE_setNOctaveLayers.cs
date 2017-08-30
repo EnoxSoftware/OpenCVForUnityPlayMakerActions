@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNOctaveLayers (int octaveLayers)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNOctaveLayers (int octaveLayers)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KAZE), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "octaveLayers")]
     public class KAZE_setNOctaveLayers : HutongGames.PlayMaker.FsmStateAction

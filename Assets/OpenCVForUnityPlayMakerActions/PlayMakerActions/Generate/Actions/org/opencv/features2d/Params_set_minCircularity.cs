@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_minCircularity (float minCircularity)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_minCircularity (float minCircularity)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minCircularity")]
     public class Params_set_minCircularity : HutongGames.PlayMaker.FsmStateAction

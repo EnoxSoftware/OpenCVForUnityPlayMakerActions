@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setPlotGridColor (Scalar _plotGridColor)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setPlotGridColor (Scalar _plotGridColor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Plot2d), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "_plotGridColor")]
     public class Plot2d_setPlotGridColor : HutongGames.PlayMaker.FsmStateAction

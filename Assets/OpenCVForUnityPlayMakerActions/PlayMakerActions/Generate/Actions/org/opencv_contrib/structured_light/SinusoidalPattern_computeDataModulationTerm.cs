@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void computeDataModulationTerm (List<Mat> patternImages, Mat dataModulationTerm, Mat shadowMask)")]
+    [HutongGames.PlayMaker.Tooltip ("public void computeDataModulationTerm (List<Mat> patternImages, Mat dataModulationTerm, Mat shadowMask)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SinusoidalPattern), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "patternImages")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dataModulationTerm")]

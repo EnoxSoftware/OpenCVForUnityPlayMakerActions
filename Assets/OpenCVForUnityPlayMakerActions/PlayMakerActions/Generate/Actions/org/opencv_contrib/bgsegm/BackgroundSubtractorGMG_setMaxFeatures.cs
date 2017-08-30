@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setMaxFeatures (int maxFeatures)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setMaxFeatures (int maxFeatures)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "maxFeatures")]
     public class BackgroundSubtractorGMG_setMaxFeatures : HutongGames.PlayMaker.FsmStateAction

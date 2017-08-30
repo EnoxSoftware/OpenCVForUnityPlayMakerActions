@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public Rect () : this(0, 0, 0, 0)")]
+    [HutongGames.PlayMaker.Tooltip ("public Rect ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Rect), "storeResult")]
     public class Rect_newRect_1 : HutongGames.PlayMaker.FsmStateAction
     {

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setUsePostProcessing (bool _use_post_proc)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setUsePostProcessing (bool _use_post_proc)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "_use_post_proc")]
     public class EdgeAwareInterpolator_setUsePostProcessing : HutongGames.PlayMaker.FsmStateAction

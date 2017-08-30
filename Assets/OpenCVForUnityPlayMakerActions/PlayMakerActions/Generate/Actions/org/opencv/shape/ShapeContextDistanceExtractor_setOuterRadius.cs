@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setOuterRadius (float outerRadius)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setOuterRadius (float outerRadius)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ShapeContextDistanceExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "outerRadius")]
     public class ShapeContextDistanceExtractor_setOuterRadius : HutongGames.PlayMaker.FsmStateAction

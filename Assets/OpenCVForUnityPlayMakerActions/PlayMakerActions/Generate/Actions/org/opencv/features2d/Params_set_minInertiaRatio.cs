@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_minInertiaRatio (float minInertiaRatio)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_minInertiaRatio (float minInertiaRatio)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minInertiaRatio")]
     public class Params_set_minInertiaRatio : HutongGames.PlayMaker.FsmStateAction

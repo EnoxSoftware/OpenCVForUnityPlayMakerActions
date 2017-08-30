@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setSmoothingRadius (int radius)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setSmoothingRadius (int radius)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "radius")]
     public class BackgroundSubtractorGMG_setSmoothingRadius : HutongGames.PlayMaker.FsmStateAction

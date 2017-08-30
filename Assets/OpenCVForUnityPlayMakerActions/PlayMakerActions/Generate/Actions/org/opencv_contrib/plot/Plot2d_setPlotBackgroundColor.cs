@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setPlotBackgroundColor (Scalar _plotBackgroundColor)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setPlotBackgroundColor (Scalar _plotBackgroundColor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Plot2d), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "_plotBackgroundColor")]
     public class Plot2d_setPlotBackgroundColor : HutongGames.PlayMaker.FsmStateAction

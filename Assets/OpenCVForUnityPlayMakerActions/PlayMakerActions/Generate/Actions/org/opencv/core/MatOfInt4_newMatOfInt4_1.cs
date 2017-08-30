@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public MatOfInt4 (Mat m) : base(m, Range.all())")]
+    [HutongGames.PlayMaker.Tooltip ("public MatOfInt4 (Mat m)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "m")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt4), "storeResult")]
     public class MatOfInt4_newMatOfInt4_1 : HutongGames.PlayMaker.FsmStateAction

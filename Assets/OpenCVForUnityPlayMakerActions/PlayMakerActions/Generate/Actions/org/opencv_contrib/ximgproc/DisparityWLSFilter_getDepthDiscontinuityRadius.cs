@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  int getDepthDiscontinuityRadius ()")]
+    [HutongGames.PlayMaker.Tooltip ("public int getDepthDiscontinuityRadius ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DisparityWLSFilter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "storeResult")]
     public class DisparityWLSFilter_getDepthDiscontinuityRadius : HutongGames.PlayMaker.FsmStateAction

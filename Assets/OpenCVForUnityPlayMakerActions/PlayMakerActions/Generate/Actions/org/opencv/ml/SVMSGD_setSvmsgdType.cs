@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setSvmsgdType (int svmsgdType)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setSvmsgdType (int svmsgdType)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SVMSGD), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "svmsgdType")]
     public class SVMSGD_setSvmsgdType : HutongGames.PlayMaker.FsmStateAction

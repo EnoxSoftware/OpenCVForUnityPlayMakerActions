@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public   TickMeter ()")]
+    [HutongGames.PlayMaker.Tooltip ("public TickMeter ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TickMeter), "storeResult")]
     public class TickMeter_newTickMeter : HutongGames.PlayMaker.FsmStateAction
     {

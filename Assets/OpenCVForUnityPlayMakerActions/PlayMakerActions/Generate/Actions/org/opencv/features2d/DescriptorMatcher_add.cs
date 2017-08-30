@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void add (List<Mat> descriptors)")]
+    [HutongGames.PlayMaker.Tooltip ("public void add (List<Mat> descriptors)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DescriptorMatcher), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "descriptors")]
     public class DescriptorMatcher_add : HutongGames.PlayMaker.FsmStateAction

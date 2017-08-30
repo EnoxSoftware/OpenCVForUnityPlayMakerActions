@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setLRCthresh (int _LRC_thresh)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setLRCthresh (int _LRC_thresh)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DisparityWLSFilter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "_LRC_thresh")]
     public class DisparityWLSFilter_setLRCthresh : HutongGames.PlayMaker.FsmStateAction

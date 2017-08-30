@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setSmallerBlockSize (int blockSize)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setSmallerBlockSize (int blockSize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.StereoBM), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "blockSize")]
     public class StereoBM_setSmallerBlockSize : HutongGames.PlayMaker.FsmStateAction

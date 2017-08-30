@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  Mat getUncompressedSupportVectors ()")]
+    [HutongGames.PlayMaker.Tooltip ("public Mat getUncompressedSupportVectors ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SVM), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class SVM_getUncompressedSupportVectors : HutongGames.PlayMaker.FsmStateAction

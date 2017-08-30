@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setSaturationThreshold (float val)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setSaturationThreshold (float val)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.GrayworldWB), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "val")]
     public class GrayworldWB_setSaturationThreshold : HutongGames.PlayMaker.FsmStateAction

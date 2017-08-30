@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setMaxLevel (int maxLevel)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setMaxLevel (int maxLevel)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SparsePyrLKOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "maxLevel")]
     public class SparsePyrLKOpticalFlow_setMaxLevel : HutongGames.PlayMaker.FsmStateAction

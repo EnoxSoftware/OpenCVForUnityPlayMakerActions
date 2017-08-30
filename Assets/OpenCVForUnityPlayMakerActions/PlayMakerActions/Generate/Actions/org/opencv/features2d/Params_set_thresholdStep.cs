@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_thresholdStep (float thresholdStep)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_thresholdStep (float thresholdStep)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "thresholdStep")]
     public class Params_set_thresholdStep : HutongGames.PlayMaker.FsmStateAction

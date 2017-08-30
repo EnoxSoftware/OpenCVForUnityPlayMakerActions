@@ -8,13 +8,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public static void niBlackThreshold (Mat _src, Mat _dst, double maxValue, int type, int blockSize, double delta)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void niBlackThreshold (Mat _src, Mat _dst, double maxValue, int type, int blockSize, double k, int binarizationMethod)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "_src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "_dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "maxValue")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "type")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "blockSize")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "delta")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "k")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "binarizationMethod")]
     public class Ximgproc_niBlackThreshold_C : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -48,7 +49,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection ("[arg6] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat delta;
+        public HutongGames.PlayMaker.FsmFloat k;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt binarizationMethod;
 
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
@@ -61,7 +67,8 @@ namespace OpenCVForUnityPlayMakerActions
             maxValue = 0.0f;
             type = 0;
             blockSize = 0;
-            delta = 0.0f;
+            k = 0.0f;
+            binarizationMethod = 0;
             everyFrame = false;
         }
 
@@ -97,7 +104,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped__dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_dst);
 
-            OpenCVForUnity.Ximgproc.niBlackThreshold (wrapped__src, wrapped__dst, (float)maxValue.Value, type.Value, blockSize.Value, (float)delta.Value);
+            OpenCVForUnity.Ximgproc.niBlackThreshold (wrapped__src, wrapped__dst, (float)maxValue.Value, type.Value, blockSize.Value, (float)k.Value, binarizationMethod.Value);
 
 
         }

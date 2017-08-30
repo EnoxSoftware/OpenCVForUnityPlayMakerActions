@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_polygonalApproxAccuracyRate (double polygonalApproxAccuracyRate)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_polygonalApproxAccuracyRate (double polygonalApproxAccuracyRate)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "polygonalApproxAccuracyRate")]
     public class DetectorParameters_set_polygonalApproxAccuracyRate_C : HutongGames.PlayMaker.FsmStateAction

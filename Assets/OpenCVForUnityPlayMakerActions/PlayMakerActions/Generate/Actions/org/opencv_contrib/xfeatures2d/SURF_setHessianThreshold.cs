@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setHessianThreshold (double hessianThreshold)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setHessianThreshold (double hessianThreshold)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SURF), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "hessianThreshold")]
     public class SURF_setHessianThreshold : HutongGames.PlayMaker.FsmStateAction

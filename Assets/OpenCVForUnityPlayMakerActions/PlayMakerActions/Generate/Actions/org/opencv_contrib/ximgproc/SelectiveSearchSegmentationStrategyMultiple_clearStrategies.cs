@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void clearStrategies ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void clearStrategies ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyMultiple), "owner")]
     public class SelectiveSearchSegmentationStrategyMultiple_clearStrategies : HutongGames.PlayMaker.FsmStateAction
     {

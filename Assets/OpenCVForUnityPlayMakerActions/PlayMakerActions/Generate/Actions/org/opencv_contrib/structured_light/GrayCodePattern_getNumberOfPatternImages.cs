@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  long getNumberOfPatternImages ()")]
+    [HutongGames.PlayMaker.Tooltip ("public long getNumberOfPatternImages ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.GrayCodePattern), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Long), "storeResult")]
     public class GrayCodePattern_getNumberOfPatternImages : HutongGames.PlayMaker.FsmStateAction

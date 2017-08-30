@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_perspectiveRemoveIgnoredMarginPerCell (double perspectiveRemoveIgnoredMarginPerCell)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_perspectiveRemoveIgnoredMarginPerCell (double perspectiveRemoveIgnoredMarginPerCell)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "perspectiveRemoveIgnoredMarginPerCell")]
     public class DetectorParameters_set_perspectiveRemoveIgnoredMarginPerCell : HutongGames.PlayMaker.FsmStateAction

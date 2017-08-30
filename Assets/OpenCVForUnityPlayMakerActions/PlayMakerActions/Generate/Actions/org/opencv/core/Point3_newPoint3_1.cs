@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public Point3 () : this(0, 0, 0)")]
+    [HutongGames.PlayMaker.Tooltip ("public Point3 ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point3), "storeResult")]
     public class Point3_newPoint3_1 : HutongGames.PlayMaker.FsmStateAction
     {

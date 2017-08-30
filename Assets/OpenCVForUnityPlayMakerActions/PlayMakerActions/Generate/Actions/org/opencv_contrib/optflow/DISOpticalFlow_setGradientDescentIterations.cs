@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setGradientDescentIterations (int val)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setGradientDescentIterations (int val)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DISOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "val")]
     public class DISOpticalFlow_setGradientDescentIterations : HutongGames.PlayMaker.FsmStateAction

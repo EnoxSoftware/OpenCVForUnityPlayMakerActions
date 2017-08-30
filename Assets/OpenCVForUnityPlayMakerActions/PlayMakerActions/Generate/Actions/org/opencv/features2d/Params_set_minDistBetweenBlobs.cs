@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_minDistBetweenBlobs (float minDistBetweenBlobs)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_minDistBetweenBlobs (float minDistBetweenBlobs)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minDistBetweenBlobs")]
     public class Params_set_minDistBetweenBlobs : HutongGames.PlayMaker.FsmStateAction

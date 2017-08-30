@@ -5,7 +5,7 @@ using OpenCVForUnity;
 
 namespace OpenCVForUnityPlayMakerActions
 {
-    public class MultiTracker : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
+    public class MultiTracker : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
         public MultiTracker ()

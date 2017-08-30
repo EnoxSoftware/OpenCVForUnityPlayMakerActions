@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setVocabulary (Mat vocabulary)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setVocabulary (Mat vocabulary)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BOWImgDescriptorExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "vocabulary")]
     public class BOWImgDescriptorExtractor_setVocabulary : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  List<Mat> getTrainDescriptors ()")]
+    [HutongGames.PlayMaker.Tooltip ("public List<Mat> getTrainDescriptors ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DescriptorMatcher), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "storeResult")]
     public class DescriptorMatcher_getTrainDescriptors : HutongGames.PlayMaker.FsmStateAction

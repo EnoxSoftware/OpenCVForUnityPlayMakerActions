@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setClusterMinSize (int clusterMinSize)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setClusterMinSize (int clusterMinSize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "clusterMinSize")]
     public class PCTSignatures_setClusterMinSize : HutongGames.PlayMaker.FsmStateAction

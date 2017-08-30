@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_minRepeatability (long minRepeatability)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_minRepeatability (long minRepeatability)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Long), "minRepeatability")]
     public class Params_set_minRepeatability : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void knnMatch (Mat queryDescriptors, Mat trainDescriptors, List<MatOfDMatch> matches, int k)")]
+    [HutongGames.PlayMaker.Tooltip ("public void knnMatch (Mat queryDescriptors, Mat trainDescriptors, List<MatOfDMatch> matches, int k)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DescriptorMatcher), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "queryDescriptors")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "trainDescriptors")]

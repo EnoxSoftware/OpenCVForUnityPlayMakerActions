@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_cornerRefinementMaxIterations (int cornerRefinementMaxIterations)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_cornerRefinementMaxIterations (int cornerRefinementMaxIterations)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "cornerRefinementMaxIterations")]
     public class DetectorParameters_set_cornerRefinementMaxIterations : HutongGames.PlayMaker.FsmStateAction

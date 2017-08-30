@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setTransformAlgorithm (ShapeTransformer transformer)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setTransformAlgorithm (ShapeTransformer transformer)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ShapeContextDistanceExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ShapeTransformer), "transformer")]
     public class ShapeContextDistanceExtractor_setTransformAlgorithm : HutongGames.PlayMaker.FsmStateAction

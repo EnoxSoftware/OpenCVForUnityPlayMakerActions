@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDescriptorSize (int dsize)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDescriptorSize (int dsize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.AKAZE), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "dsize")]
     public class AKAZE_setDescriptorSize : HutongGames.PlayMaker.FsmStateAction

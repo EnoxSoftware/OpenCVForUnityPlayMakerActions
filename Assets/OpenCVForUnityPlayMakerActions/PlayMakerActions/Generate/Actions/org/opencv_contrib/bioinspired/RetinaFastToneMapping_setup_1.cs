@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setup ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void setup ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.RetinaFastToneMapping), "owner")]
     public class RetinaFastToneMapping_setup_1 : HutongGames.PlayMaker.FsmStateAction
     {

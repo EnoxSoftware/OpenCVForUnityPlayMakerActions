@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setTranslations (MatOfFloat translations)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setTranslations (MatOfFloat translations)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat), "translations")]
     public class PCTSignatures_setTranslations : HutongGames.PlayMaker.FsmStateAction

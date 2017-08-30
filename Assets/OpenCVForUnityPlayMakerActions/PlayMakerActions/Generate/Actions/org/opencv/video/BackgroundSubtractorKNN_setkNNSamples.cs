@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setkNNSamples (int _nkNN)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setkNNSamples (int _nkNN)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorKNN), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "_nkNN")]
     public class BackgroundSubtractorKNN_setkNNSamples : HutongGames.PlayMaker.FsmStateAction

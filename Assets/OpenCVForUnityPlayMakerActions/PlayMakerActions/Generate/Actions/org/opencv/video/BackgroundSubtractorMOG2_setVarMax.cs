@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setVarMax (double varMax)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setVarMax (double varMax)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorMOG2), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "varMax")]
     public class BackgroundSubtractorMOG2_setVarMax : HutongGames.PlayMaker.FsmStateAction

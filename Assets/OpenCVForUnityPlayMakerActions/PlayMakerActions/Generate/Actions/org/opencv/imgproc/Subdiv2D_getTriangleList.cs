@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void getTriangleList (MatOfFloat6 triangleList)")]
+    [HutongGames.PlayMaker.Tooltip ("public void getTriangleList (MatOfFloat6 triangleList)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Subdiv2D), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat6), "triangleList")]
     public class Subdiv2D_getTriangleList : HutongGames.PlayMaker.FsmStateAction

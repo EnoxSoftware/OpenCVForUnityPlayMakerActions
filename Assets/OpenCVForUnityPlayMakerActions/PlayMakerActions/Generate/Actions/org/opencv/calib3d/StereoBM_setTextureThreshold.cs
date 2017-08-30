@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setTextureThreshold (int textureThreshold)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setTextureThreshold (int textureThreshold)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.StereoBM), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "textureThreshold")]
     public class StereoBM_setTextureThreshold : HutongGames.PlayMaker.FsmStateAction

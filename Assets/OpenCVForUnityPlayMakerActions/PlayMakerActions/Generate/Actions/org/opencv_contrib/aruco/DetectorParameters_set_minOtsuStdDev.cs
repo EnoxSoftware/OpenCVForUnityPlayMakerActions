@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_minOtsuStdDev (double minOtsuStdDev)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_minOtsuStdDev (double minOtsuStdDev)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "minOtsuStdDev")]
     public class DetectorParameters_set_minOtsuStdDev : HutongGames.PlayMaker.FsmStateAction

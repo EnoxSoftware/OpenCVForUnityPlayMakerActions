@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setPlotAxisColor (Scalar _plotAxisColor)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setPlotAxisColor (Scalar _plotAxisColor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Plot2d), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "_plotAxisColor")]
     public class Plot2d_setPlotAxisColor : HutongGames.PlayMaker.FsmStateAction

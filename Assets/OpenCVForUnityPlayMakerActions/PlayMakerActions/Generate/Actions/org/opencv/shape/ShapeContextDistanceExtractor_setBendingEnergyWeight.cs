@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setBendingEnergyWeight (float bendingEnergyWeight)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setBendingEnergyWeight (float bendingEnergyWeight)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ShapeContextDistanceExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "bendingEnergyWeight")]
     public class ShapeContextDistanceExtractor_setBendingEnergyWeight : HutongGames.PlayMaker.FsmStateAction

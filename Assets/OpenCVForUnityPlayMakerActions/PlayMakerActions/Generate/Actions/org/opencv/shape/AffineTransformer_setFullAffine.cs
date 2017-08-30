@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setFullAffine (bool fullAffine)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setFullAffine (bool fullAffine)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.AffineTransformer), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "fullAffine")]
     public class AffineTransformer_setFullAffine : HutongGames.PlayMaker.FsmStateAction

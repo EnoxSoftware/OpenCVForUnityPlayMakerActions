@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void clear ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void clear ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BOWTrainer), "owner")]
     public class BOWTrainer_clear : HutongGames.PlayMaker.FsmStateAction
     {

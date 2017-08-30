@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setMinDistance (double minDistance)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setMinDistance (double minDistance)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.GFTTDetector), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minDistance")]
     public class GFTTDetector_setMinDistance_C : HutongGames.PlayMaker.FsmStateAction

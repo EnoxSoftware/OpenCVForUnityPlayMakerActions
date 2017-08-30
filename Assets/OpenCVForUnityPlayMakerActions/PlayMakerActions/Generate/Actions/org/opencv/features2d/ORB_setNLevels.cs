@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNLevels (int nlevels)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNLevels (int nlevels)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ORB), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nlevels")]
     public class ORB_setNLevels : HutongGames.PlayMaker.FsmStateAction

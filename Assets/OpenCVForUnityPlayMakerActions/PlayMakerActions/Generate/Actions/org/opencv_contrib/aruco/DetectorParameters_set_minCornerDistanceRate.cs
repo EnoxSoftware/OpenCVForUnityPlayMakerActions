@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_minCornerDistanceRate (double minCornerDistanceRate)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_minCornerDistanceRate (double minCornerDistanceRate)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "minCornerDistanceRate")]
     public class DetectorParameters_set_minCornerDistanceRate : HutongGames.PlayMaker.FsmStateAction

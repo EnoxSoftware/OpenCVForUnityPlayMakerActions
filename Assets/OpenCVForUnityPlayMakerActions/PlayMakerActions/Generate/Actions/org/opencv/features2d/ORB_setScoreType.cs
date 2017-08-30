@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setScoreType (int scoreType)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setScoreType (int scoreType)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ORB), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "scoreType")]
     public class ORB_setScoreType : HutongGames.PlayMaker.FsmStateAction

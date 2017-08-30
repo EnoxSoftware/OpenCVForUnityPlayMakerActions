@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setMaxIter (int max_iter)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setMaxIter (int max_iter)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.CalibrateRobertson), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "max_iter")]
     public class CalibrateRobertson_setMaxIter : HutongGames.PlayMaker.FsmStateAction

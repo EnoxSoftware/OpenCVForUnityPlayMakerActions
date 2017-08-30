@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDetectShadows (bool detectShadows)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDetectShadows (bool detectShadows)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorKNN), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "detectShadows")]
     public class BackgroundSubtractorKNN_setDetectShadows : HutongGames.PlayMaker.FsmStateAction

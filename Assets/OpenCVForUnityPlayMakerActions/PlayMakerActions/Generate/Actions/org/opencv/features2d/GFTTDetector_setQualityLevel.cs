@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setQualityLevel (double qlevel)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setQualityLevel (double qlevel)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.GFTTDetector), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "qlevel")]
     public class GFTTDetector_setQualityLevel : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setPatchSize (int patchSize)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setPatchSize (int patchSize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ORB), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "patchSize")]
     public class ORB_setPatchSize : HutongGames.PlayMaker.FsmStateAction

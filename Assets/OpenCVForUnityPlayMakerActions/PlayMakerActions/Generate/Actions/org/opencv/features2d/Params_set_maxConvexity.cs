@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_maxConvexity (float maxConvexity)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_maxConvexity (float maxConvexity)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "maxConvexity")]
     public class Params_set_maxConvexity : HutongGames.PlayMaker.FsmStateAction

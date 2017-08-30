@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  int getNumberOfSuperpixels ()")]
+    [HutongGames.PlayMaker.Tooltip ("public int getNumberOfSuperpixels ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SuperpixelLSC), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "storeResult")]
     public class SuperpixelLSC_getNumberOfSuperpixels : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  double get_minMarkerDistanceRate ()")]
+    [HutongGames.PlayMaker.Tooltip ("public double get_minMarkerDistanceRate ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "storeResult")]
     public class DetectorParameters_get_minMarkerDistanceRate_C : HutongGames.PlayMaker.FsmStateAction

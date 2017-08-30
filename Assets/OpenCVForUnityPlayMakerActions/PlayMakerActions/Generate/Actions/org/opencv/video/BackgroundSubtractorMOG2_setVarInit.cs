@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setVarInit (double varInit)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setVarInit (double varInit)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorMOG2), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "varInit")]
     public class BackgroundSubtractorMOG2_setVarInit : HutongGames.PlayMaker.FsmStateAction

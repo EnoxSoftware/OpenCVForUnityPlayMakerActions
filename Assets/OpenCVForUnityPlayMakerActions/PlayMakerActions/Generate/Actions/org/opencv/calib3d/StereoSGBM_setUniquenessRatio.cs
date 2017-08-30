@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setUniquenessRatio (int uniquenessRatio)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setUniquenessRatio (int uniquenessRatio)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.StereoSGBM), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "uniquenessRatio")]
     public class StereoSGBM_setUniquenessRatio : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setWTA_K (int wta_k)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setWTA_K (int wta_k)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ORB), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "wta_k")]
     public class ORB_setWTA_K : HutongGames.PlayMaker.FsmStateAction

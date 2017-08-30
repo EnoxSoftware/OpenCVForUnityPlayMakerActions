@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setColorAdaptation (float color_adapt)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setColorAdaptation (float color_adapt)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TonemapReinhard), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "color_adapt")]
     public class TonemapReinhard_setColorAdaptation : HutongGames.PlayMaker.FsmStateAction

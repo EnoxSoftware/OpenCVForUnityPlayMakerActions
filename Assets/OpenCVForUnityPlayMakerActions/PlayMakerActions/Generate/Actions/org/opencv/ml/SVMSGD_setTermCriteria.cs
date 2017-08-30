@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setTermCriteria (TermCriteria val)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setTermCriteria (TermCriteria val)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SVMSGD), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TermCriteria), "val")]
     public class SVMSGD_setTermCriteria : HutongGames.PlayMaker.FsmStateAction

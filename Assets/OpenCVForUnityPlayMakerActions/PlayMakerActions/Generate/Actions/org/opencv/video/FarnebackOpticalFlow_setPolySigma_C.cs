@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setPolySigma (double polySigma)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setPolySigma (double polySigma)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.FarnebackOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "polySigma")]
     public class FarnebackOpticalFlow_setPolySigma_C : HutongGames.PlayMaker.FsmStateAction

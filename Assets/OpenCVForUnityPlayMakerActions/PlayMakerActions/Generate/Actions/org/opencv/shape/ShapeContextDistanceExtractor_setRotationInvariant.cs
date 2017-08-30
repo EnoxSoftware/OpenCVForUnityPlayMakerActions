@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setRotationInvariant (bool rotationInvariant)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setRotationInvariant (bool rotationInvariant)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ShapeContextDistanceExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "rotationInvariant")]
     public class ShapeContextDistanceExtractor_setRotationInvariant : HutongGames.PlayMaker.FsmStateAction

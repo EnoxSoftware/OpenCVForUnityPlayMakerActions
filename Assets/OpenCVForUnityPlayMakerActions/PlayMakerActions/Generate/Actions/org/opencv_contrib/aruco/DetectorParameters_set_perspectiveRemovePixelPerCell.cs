@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_perspectiveRemovePixelPerCell (int perspectiveRemovePixelPerCell)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_perspectiveRemovePixelPerCell (int perspectiveRemovePixelPerCell)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "perspectiveRemovePixelPerCell")]
     public class DetectorParameters_set_perspectiveRemovePixelPerCell : HutongGames.PlayMaker.FsmStateAction

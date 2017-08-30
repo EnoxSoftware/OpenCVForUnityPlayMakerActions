@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setHarrisDetector (bool val)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setHarrisDetector (bool val)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.GFTTDetector), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "val")]
     public class GFTTDetector_setHarrisDetector : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void addGraphSegmentation (GraphSegmentation g)")]
+    [HutongGames.PlayMaker.Tooltip ("public void addGraphSegmentation (GraphSegmentation g)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentation), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.GraphSegmentation), "g")]
     public class SelectiveSearchSegmentation_addGraphSegmentation : HutongGames.PlayMaker.FsmStateAction

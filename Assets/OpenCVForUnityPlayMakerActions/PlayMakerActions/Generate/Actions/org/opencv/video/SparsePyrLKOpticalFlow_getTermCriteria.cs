@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  TermCriteria getTermCriteria ()")]
+    [HutongGames.PlayMaker.Tooltip ("public TermCriteria getTermCriteria ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SparsePyrLKOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TermCriteria), "storeResult")]
     public class SparsePyrLKOpticalFlow_getTermCriteria : HutongGames.PlayMaker.FsmStateAction

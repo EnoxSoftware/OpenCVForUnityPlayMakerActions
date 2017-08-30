@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public   Subdiv2D ()")]
+    [HutongGames.PlayMaker.Tooltip ("public Subdiv2D ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Subdiv2D), "storeResult")]
     public class Subdiv2D_newSubdiv2D_1 : HutongGames.PlayMaker.FsmStateAction
     {

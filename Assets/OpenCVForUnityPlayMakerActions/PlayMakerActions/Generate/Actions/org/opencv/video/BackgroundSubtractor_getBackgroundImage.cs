@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void getBackgroundImage (Mat backgroundImage)")]
+    [HutongGames.PlayMaker.Tooltip ("public virtual void getBackgroundImage (Mat backgroundImage)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "backgroundImage")]
     public class BackgroundSubtractor_getBackgroundImage : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNeedPlotLine (bool _needPlotLine)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNeedPlotLine (bool _needPlotLine)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Plot2d), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "_needPlotLine")]
     public class Plot2d_setNeedPlotLine : HutongGames.PlayMaker.FsmStateAction

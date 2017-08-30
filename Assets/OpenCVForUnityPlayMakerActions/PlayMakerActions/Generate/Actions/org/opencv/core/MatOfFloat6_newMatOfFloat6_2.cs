@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public MatOfFloat6 (params float[] a) : base()")]
+    [HutongGames.PlayMaker.Tooltip ("public MatOfFloat6 (params float[] a)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "a")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat6), "storeResult")]
     public class MatOfFloat6_newMatOfFloat6_2 : HutongGames.PlayMaker.FsmStateAction

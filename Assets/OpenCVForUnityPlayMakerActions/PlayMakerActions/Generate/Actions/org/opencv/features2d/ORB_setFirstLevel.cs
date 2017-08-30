@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setFirstLevel (int firstLevel)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setFirstLevel (int firstLevel)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ORB), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "firstLevel")]
     public class ORB_setFirstLevel : HutongGames.PlayMaker.FsmStateAction

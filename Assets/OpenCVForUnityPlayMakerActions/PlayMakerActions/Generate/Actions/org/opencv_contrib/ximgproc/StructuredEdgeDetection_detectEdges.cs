@@ -8,10 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void detectEdges (Mat src, Mat dst)")]
+    [HutongGames.PlayMaker.Tooltip ("public void detectEdges (Mat _src, Mat _dst)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.StructuredEdgeDetection), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "_src")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "_dst")]
     public class StructuredEdgeDetection_detectEdges : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -25,13 +25,13 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject src;
+        public HutongGames.PlayMaker.FsmObject _src;
 
         [HutongGames.PlayMaker.ActionSection ("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject dst;
+        public HutongGames.PlayMaker.FsmObject _dst;
 
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
@@ -40,8 +40,8 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             owner = null;
-            src = null;
-            dst = null;
+            _src = null;
+            _dst = null;
             everyFrame = false;
         }
 
@@ -70,21 +70,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.StructuredEdgeDetection wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StructuredEdgeDetection, OpenCVForUnity.StructuredEdgeDetection> (owner);
 
-            if (!(src.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(_src.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("src is not initialized. Add Action \"newMat\".");
+                LogError ("_src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src);
+            OpenCVForUnity.Mat wrapped__src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_src);
 
-            if (!(dst.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(_dst.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("dst is not initialized. Add Action \"newMat\".");
+                LogError ("_dst is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
+            OpenCVForUnity.Mat wrapped__dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_dst);
 
-            wrapped_owner.detectEdges (wrapped_src, wrapped_dst);
+            wrapped_owner.detectEdges (wrapped__src, wrapped__dst);
 
 
         }

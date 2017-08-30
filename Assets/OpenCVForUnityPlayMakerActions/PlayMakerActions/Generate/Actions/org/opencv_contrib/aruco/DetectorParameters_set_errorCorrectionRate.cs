@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_errorCorrectionRate (double errorCorrectionRate)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_errorCorrectionRate (double errorCorrectionRate)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "errorCorrectionRate")]
     public class DetectorParameters_set_errorCorrectionRate : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public MatOfByte (params byte[] a) : base()")]
+    [HutongGames.PlayMaker.Tooltip ("public MatOfByte (params byte[] a)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ByteArray), "a")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfByte), "storeResult")]
     public class MatOfByte_newMatOfByte_2 : HutongGames.PlayMaker.FsmStateAction

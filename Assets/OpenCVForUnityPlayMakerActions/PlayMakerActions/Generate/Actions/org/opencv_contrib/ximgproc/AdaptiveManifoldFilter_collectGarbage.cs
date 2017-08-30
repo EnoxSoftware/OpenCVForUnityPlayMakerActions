@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void collectGarbage ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void collectGarbage ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.AdaptiveManifoldFilter), "owner")]
     public class AdaptiveManifoldFilter_collectGarbage : HutongGames.PlayMaker.FsmStateAction
     {

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNumDisparities (int numDisparities)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNumDisparities (int numDisparities)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.StereoMatcher), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "numDisparities")]
     public class StereoMatcher_setNumDisparities : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNDummies (int nDummies)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNDummies (int nDummies)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HistogramCostExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nDummies")]
     public class HistogramCostExtractor_setNDummies : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setRegularizationParameter (double beta)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setRegularizationParameter (double beta)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ThinPlateSplineShapeTransformer), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "beta")]
     public class ThinPlateSplineShapeTransformer_setRegularizationParameter : HutongGames.PlayMaker.FsmStateAction

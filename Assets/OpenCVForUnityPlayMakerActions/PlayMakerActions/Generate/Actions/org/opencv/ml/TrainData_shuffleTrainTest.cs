@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void shuffleTrainTest ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void shuffleTrainTest ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TrainData), "owner")]
     public class TrainData_shuffleTrainTest : HutongGames.PlayMaker.FsmStateAction
     {

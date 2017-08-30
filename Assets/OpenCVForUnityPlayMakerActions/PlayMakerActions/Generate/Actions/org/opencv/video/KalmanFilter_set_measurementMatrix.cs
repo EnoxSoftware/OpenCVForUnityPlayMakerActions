@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_measurementMatrix (Mat measurementMatrix)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_measurementMatrix (Mat measurementMatrix)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KalmanFilter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "measurementMatrix")]
     public class KalmanFilter_set_measurementMatrix : HutongGames.PlayMaker.FsmStateAction

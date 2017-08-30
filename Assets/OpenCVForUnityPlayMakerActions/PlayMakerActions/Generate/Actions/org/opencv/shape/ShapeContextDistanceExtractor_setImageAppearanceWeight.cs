@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setImageAppearanceWeight (float imageAppearanceWeight)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setImageAppearanceWeight (float imageAppearanceWeight)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ShapeContextDistanceExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "imageAppearanceWeight")]
     public class ShapeContextDistanceExtractor_setImageAppearanceWeight : HutongGames.PlayMaker.FsmStateAction

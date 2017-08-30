@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setTrainingPath (string trainingPath)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setTrainingPath (string trainingPath)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ObjectnessBING), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "trainingPath")]
     public class ObjectnessBING_setTrainingPath : HutongGames.PlayMaker.FsmStateAction

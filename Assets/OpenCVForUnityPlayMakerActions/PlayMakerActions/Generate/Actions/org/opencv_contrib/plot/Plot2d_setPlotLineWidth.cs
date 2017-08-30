@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setPlotLineWidth (int _plotLineWidth)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setPlotLineWidth (int _plotLineWidth)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Plot2d), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "_plotLineWidth")]
     public class Plot2d_setPlotLineWidth : HutongGames.PlayMaker.FsmStateAction

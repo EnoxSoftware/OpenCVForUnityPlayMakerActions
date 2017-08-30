@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setFastPyramids (bool fastPyramids)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setFastPyramids (bool fastPyramids)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.FarnebackOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "fastPyramids")]
     public class FarnebackOpticalFlow_setFastPyramids : HutongGames.PlayMaker.FsmStateAction

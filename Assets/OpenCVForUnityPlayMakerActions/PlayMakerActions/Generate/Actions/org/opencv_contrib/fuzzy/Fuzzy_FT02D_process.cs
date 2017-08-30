@@ -8,10 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public static void FT02D_process (Mat matrix, Mat kernel, Mat output)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void FT02D_process (Mat matrix, Mat kernel, Mat output, Mat mask)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "matrix")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "kernel")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "output")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "mask")]
     public class Fuzzy_FT02D_process : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +34,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject output;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject mask;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +49,7 @@ namespace OpenCVForUnityPlayMakerActions
             matrix = null;
             kernel = null;
             output = null;
+            mask = null;
             everyFrame = false;
         }
 
@@ -84,7 +92,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_output = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (output);
 
-            OpenCVForUnity.Fuzzy.FT02D_process (wrapped_matrix, wrapped_kernel, wrapped_output);
+            if (!(mask.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("mask is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mask);
+
+            OpenCVForUnity.Fuzzy.FT02D_process (wrapped_matrix, wrapped_kernel, wrapped_output, wrapped_mask);
 
 
         }

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void getLabels (Mat labels_out)")]
+    [HutongGames.PlayMaker.Tooltip ("public void getLabels (Mat labels_out)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SuperpixelSLIC), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "labels_out")]
     public class SuperpixelSLIC_getLabels : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setVariationalRefinementDelta (float val)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setVariationalRefinementDelta (float val)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DISOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "val")]
     public class DISOpticalFlow_setVariationalRefinementDelta : HutongGames.PlayMaker.FsmStateAction

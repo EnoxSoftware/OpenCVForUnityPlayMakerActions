@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setJoiningDistance (float joiningDistance)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setJoiningDistance (float joiningDistance)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "joiningDistance")]
     public class PCTSignatures_setJoiningDistance : HutongGames.PlayMaker.FsmStateAction

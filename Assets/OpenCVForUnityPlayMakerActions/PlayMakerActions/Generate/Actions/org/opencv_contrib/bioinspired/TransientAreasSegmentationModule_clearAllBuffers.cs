@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void clearAllBuffers ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void clearAllBuffers ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule), "owner")]
     public class TransientAreasSegmentationModule_clearAllBuffers : HutongGames.PlayMaker.FsmStateAction
     {

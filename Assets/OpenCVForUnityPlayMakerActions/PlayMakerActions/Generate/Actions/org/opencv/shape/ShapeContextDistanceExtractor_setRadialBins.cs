@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setRadialBins (int nRadialBins)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setRadialBins (int nRadialBins)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ShapeContextDistanceExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nRadialBins")]
     public class ShapeContextDistanceExtractor_setRadialBins : HutongGames.PlayMaker.FsmStateAction

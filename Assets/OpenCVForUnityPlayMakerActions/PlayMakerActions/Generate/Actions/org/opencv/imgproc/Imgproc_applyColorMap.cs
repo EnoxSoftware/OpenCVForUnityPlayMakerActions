@@ -8,10 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public static void applyColorMap (Mat src, Mat dst, int colormap)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void applyColorMap (Mat src, Mat dst, Mat userColor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "colormap")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "userColor")]
     public class Imgproc_applyColorMap : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -27,10 +27,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] int")]
+        [HutongGames.PlayMaker.ActionSection ("[arg3] Mat")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt colormap;
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject userColor;
 
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
@@ -40,7 +41,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             src = null;
             dst = null;
-            colormap = 0;
+            userColor = null;
             everyFrame = false;
         }
 
@@ -76,7 +77,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            OpenCVForUnity.Imgproc.applyColorMap (wrapped_src, wrapped_dst, colormap.Value);
+            if (!(userColor.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("userColor is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_userColor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (userColor);
+
+            OpenCVForUnity.Imgproc.applyColorMap (wrapped_src, wrapped_dst, wrapped_userColor);
 
 
         }

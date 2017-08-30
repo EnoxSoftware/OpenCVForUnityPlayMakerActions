@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void calc (Mat prevImg, Mat nextImg, Mat prevPts, Mat nextPts, Mat status, Mat err)")]
+    [HutongGames.PlayMaker.Tooltip ("public void calc (Mat prevImg, Mat nextImg, Mat prevPts, Mat nextPts, Mat status, Mat err)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SparseOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "prevImg")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "nextImg")]

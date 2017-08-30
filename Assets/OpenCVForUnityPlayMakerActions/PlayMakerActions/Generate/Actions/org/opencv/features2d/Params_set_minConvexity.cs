@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_minConvexity (float minConvexity)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_minConvexity (float minConvexity)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minConvexity")]
     public class Params_set_minConvexity : HutongGames.PlayMaker.FsmStateAction

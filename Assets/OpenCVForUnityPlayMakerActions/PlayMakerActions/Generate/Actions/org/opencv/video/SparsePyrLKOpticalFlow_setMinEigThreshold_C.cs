@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setMinEigThreshold (double minEigThreshold)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setMinEigThreshold (double minEigThreshold)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SparsePyrLKOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minEigThreshold")]
     public class SparsePyrLKOpticalFlow_setMinEigThreshold_C : HutongGames.PlayMaker.FsmStateAction

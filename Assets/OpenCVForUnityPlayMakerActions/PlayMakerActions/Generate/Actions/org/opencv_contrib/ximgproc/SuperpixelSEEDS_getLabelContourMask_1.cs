@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void getLabelContourMask (Mat image)")]
+    [HutongGames.PlayMaker.Tooltip ("public void getLabelContourMask (Mat image)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SuperpixelSEEDS), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     public class SuperpixelSEEDS_getLabelContourMask_1 : HutongGames.PlayMaker.FsmStateAction

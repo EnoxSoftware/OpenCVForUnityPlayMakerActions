@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setSigmaColor (float sigma_color)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setSigmaColor (float sigma_color)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TonemapDurand), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "sigma_color")]
     public class TonemapDurand_setSigmaColor : HutongGames.PlayMaker.FsmStateAction

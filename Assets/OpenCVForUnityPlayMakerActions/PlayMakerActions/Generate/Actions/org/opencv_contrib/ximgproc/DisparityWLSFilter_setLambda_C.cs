@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setLambda (double _lambda)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setLambda (double _lambda)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DisparityWLSFilter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "_lambda")]
     public class DisparityWLSFilter_setLambda_C : HutongGames.PlayMaker.FsmStateAction

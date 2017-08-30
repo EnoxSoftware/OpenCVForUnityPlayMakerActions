@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public   KalmanFilter ()")]
+    [HutongGames.PlayMaker.Tooltip ("public KalmanFilter ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KalmanFilter), "storeResult")]
     public class KalmanFilter_newKalmanFilter_2 : HutongGames.PlayMaker.FsmStateAction
     {

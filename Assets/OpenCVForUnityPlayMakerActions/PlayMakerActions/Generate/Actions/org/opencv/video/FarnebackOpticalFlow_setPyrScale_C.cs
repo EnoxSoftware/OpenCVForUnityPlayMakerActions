@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setPyrScale (double pyrScale)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setPyrScale (double pyrScale)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.FarnebackOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "pyrScale")]
     public class FarnebackOpticalFlow_setPyrScale_C : HutongGames.PlayMaker.FsmStateAction

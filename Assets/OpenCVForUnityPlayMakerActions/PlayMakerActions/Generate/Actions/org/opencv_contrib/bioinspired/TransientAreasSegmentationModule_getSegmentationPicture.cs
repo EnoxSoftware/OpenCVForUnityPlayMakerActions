@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void getSegmentationPicture (Mat transientAreas)")]
+    [HutongGames.PlayMaker.Tooltip ("public void getSegmentationPicture (Mat transientAreas)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "transientAreas")]
     public class TransientAreasSegmentationModule_getSegmentationPicture : HutongGames.PlayMaker.FsmStateAction

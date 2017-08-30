@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_maxMarkerPerimeterRate (double maxMarkerPerimeterRate)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_maxMarkerPerimeterRate (double maxMarkerPerimeterRate)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "maxMarkerPerimeterRate")]
     public class DetectorParameters_set_maxMarkerPerimeterRate_C : HutongGames.PlayMaker.FsmStateAction

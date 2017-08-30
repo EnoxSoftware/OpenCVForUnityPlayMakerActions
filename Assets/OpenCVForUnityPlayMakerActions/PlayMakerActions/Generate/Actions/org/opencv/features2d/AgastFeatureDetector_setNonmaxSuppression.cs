@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNonmaxSuppression (bool f)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNonmaxSuppression (bool f)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.AgastFeatureDetector), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "f")]
     public class AgastFeatureDetector_setNonmaxSuppression : HutongGames.PlayMaker.FsmStateAction

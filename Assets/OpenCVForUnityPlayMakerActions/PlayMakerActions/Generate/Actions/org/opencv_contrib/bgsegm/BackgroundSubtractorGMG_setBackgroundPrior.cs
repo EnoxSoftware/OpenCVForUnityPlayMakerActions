@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setBackgroundPrior (double bgprior)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setBackgroundPrior (double bgprior)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "bgprior")]
     public class BackgroundSubtractorGMG_setBackgroundPrior : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_filterByInertia (bool filterByInertia)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_filterByInertia (bool filterByInertia)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "filterByInertia")]
     public class Params_set_filterByInertia : HutongGames.PlayMaker.FsmStateAction

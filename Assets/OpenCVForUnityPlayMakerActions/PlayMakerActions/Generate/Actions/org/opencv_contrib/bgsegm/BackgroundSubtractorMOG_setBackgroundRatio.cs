@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setBackgroundRatio (double backgroundRatio)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setBackgroundRatio (double backgroundRatio)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorMOG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "backgroundRatio")]
     public class BackgroundSubtractorMOG_setBackgroundRatio : HutongGames.PlayMaker.FsmStateAction

@@ -8,13 +8,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public static void detectMarkers (Mat image, Dictionary dictionary, List<Mat> corners, Mat ids, DetectorParameters parameters, List<Mat> rejectedImgPoints)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void detectMarkers (Mat image, Dictionary dictionary, List<Mat> corners, Mat ids, DetectorParameters parameters, List<Mat> rejectedImgPoints, Mat cameraMatrix, Mat distCoeff)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Dictionary), "dictionary")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "corners")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "ids")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "parameters")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "rejectedImgPoints")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "distCoeff")]
     public class Aruco_detectMarkers : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -54,6 +56,18 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ArrayEditor (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmArray rejectedImgPoints;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg7] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject cameraMatrix;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg8] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject distCoeff;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -66,6 +80,8 @@ namespace OpenCVForUnityPlayMakerActions
             ids = null;
             parameters = null;
             rejectedImgPoints = null;
+            cameraMatrix = null;
+            distCoeff = null;
             everyFrame = false;
         }
 
@@ -121,7 +137,21 @@ namespace OpenCVForUnityPlayMakerActions
             List<OpenCVForUnity.Mat> wrapped_rejectedImgPoints = new List<OpenCVForUnity.Mat> ();
             OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (rejectedImgPoints, wrapped_rejectedImgPoints);
 
-            OpenCVForUnity.Aruco.detectMarkers (wrapped_image, wrapped_dictionary, wrapped_corners, wrapped_ids, wrapped_parameters, wrapped_rejectedImgPoints);
+            if (!(cameraMatrix.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("cameraMatrix is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (cameraMatrix);
+
+            if (!(distCoeff.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("distCoeff is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_distCoeff = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (distCoeff);
+
+            OpenCVForUnity.Aruco.detectMarkers (wrapped_image, wrapped_dictionary, wrapped_corners, wrapped_ids, wrapped_parameters, wrapped_rejectedImgPoints, wrapped_cameraMatrix, wrapped_distCoeff);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_corners, corners);
 

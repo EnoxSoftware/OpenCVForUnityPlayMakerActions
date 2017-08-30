@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  HistogramCostExtractor getCostExtractor ()")]
+    [HutongGames.PlayMaker.Tooltip ("public HistogramCostExtractor getCostExtractor ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ShapeContextDistanceExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HistogramCostExtractor), "storeResult")]
     public class ShapeContextDistanceExtractor_getCostExtractor : HutongGames.PlayMaker.FsmStateAction

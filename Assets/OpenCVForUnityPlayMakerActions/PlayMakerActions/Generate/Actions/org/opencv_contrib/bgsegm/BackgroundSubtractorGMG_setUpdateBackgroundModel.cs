@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setUpdateBackgroundModel (bool update)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setUpdateBackgroundModel (bool update)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "update")]
     public class BackgroundSubtractorGMG_setUpdateBackgroundModel : HutongGames.PlayMaker.FsmStateAction

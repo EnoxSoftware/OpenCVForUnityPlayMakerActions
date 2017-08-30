@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setShadowThreshold (double threshold)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setShadowThreshold (double threshold)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorMOG2), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "threshold")]
     public class BackgroundSubtractorMOG2_setShadowThreshold_C : HutongGames.PlayMaker.FsmStateAction

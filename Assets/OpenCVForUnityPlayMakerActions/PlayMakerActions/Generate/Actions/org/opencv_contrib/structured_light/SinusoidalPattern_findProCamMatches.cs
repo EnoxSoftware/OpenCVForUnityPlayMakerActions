@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void findProCamMatches (Mat projUnwrappedPhaseMap, Mat camUnwrappedPhaseMap, List<Mat> matches)")]
+    [HutongGames.PlayMaker.Tooltip ("public void findProCamMatches (Mat projUnwrappedPhaseMap, Mat camUnwrappedPhaseMap, List<Mat> matches)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SinusoidalPattern), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "projUnwrappedPhaseMap")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "camUnwrappedPhaseMap")]

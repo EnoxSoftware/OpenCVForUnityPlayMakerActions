@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_minMarkerPerimeterRate (double minMarkerPerimeterRate)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_minMarkerPerimeterRate (double minMarkerPerimeterRate)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minMarkerPerimeterRate")]
     public class DetectorParameters_set_minMarkerPerimeterRate_C : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDescriptorChannels (int dch)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDescriptorChannels (int dch)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.AKAZE), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "dch")]
     public class AKAZE_setDescriptorChannels : HutongGames.PlayMaker.FsmStateAction

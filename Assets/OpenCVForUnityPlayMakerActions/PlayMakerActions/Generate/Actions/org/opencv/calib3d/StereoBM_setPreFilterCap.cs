@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setPreFilterCap (int preFilterCap)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setPreFilterCap (int preFilterCap)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.StereoBM), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "preFilterCap")]
     public class StereoBM_setPreFilterCap : HutongGames.PlayMaker.FsmStateAction

@@ -8,8 +8,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  bool add (Mat image, Rect2d boundingBox)")]
+    [HutongGames.PlayMaker.Tooltip ("public bool add (Tracker newTracker, Mat image, Rect2d boundingBox)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MultiTracker), "owner")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Tracker), "newTracker")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "boundingBox_x")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "boundingBox_y")]
@@ -27,13 +28,19 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MultiTracker))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] Mat")]
+        [HutongGames.PlayMaker.ActionSection ("[arg1] Tracker")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Tracker))]
+        public HutongGames.PlayMaker.FsmObject newTracker;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject image;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] Rect2d")]
+        [HutongGames.PlayMaker.ActionSection ("[arg3] Rect2d")]
 
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
@@ -69,6 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             owner = null;
+            newTracker = null;
             image = null;
             boundingBox_x = 0.0f;
             boundingBox_y = 0.0f;
@@ -105,6 +113,13 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MultiTracker wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MultiTracker, OpenCVForUnity.MultiTracker> (owner);
 
+            if (!(newTracker.Value is OpenCVForUnityPlayMakerActions.Tracker))
+            {
+                LogError ("newTracker is not initialized. Add Action \"newTracker\".");
+                return;
+            }
+            OpenCVForUnity.Tracker wrapped_newTracker = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Tracker, OpenCVForUnity.Tracker> (newTracker);
+
             if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("image is not initialized. Add Action \"newMat\".");
@@ -112,7 +127,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
 
-            storeResult.Value = wrapped_owner.add (wrapped_image, new OpenCVForUnity.Rect2d ((double)boundingBox_x.Value, (double)boundingBox_y.Value, (double)boundingBox_width.Value, (double)boundingBox_height.Value));
+            storeResult.Value = wrapped_owner.add (wrapped_newTracker, wrapped_image, new OpenCVForUnity.Rect2d ((double)boundingBox_x.Value, (double)boundingBox_y.Value, (double)boundingBox_width.Value, (double)boundingBox_height.Value));
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

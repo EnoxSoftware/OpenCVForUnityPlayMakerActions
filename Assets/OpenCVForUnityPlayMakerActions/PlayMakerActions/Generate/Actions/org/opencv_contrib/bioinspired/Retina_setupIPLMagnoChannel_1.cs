@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setupIPLMagnoChannel ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void setupIPLMagnoChannel ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Retina), "owner")]
     public class Retina_setupIPLMagnoChannel_1 : HutongGames.PlayMaker.FsmStateAction
     {

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public   CascadeClassifier (string filename)")]
+    [HutongGames.PlayMaker.Tooltip ("public CascadeClassifier (string filename)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.CascadeClassifier), "storeResult")]
     public class CascadeClassifier_newCascadeClassifier : HutongGames.PlayMaker.FsmStateAction

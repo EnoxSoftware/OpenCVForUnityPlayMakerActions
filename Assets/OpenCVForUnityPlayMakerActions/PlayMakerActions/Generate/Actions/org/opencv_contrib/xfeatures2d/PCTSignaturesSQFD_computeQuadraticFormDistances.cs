@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void computeQuadraticFormDistances (Mat sourceSignature, List<Mat> imageSignatures, MatOfFloat distances)")]
+    [HutongGames.PlayMaker.Tooltip ("public void computeQuadraticFormDistances (Mat sourceSignature, List<Mat> imageSignatures, MatOfFloat distances)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "sourceSignature")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "imageSignatures")]

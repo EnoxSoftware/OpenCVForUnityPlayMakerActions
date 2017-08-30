@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setRankProportion (float rankProportion)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setRankProportion (float rankProportion)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HausdorffDistanceExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "rankProportion")]
     public class HausdorffDistanceExtractor_setRankProportion : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDropThreshold (float dropThreshold)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDropThreshold (float dropThreshold)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "dropThreshold")]
     public class PCTSignatures_setDropThreshold : HutongGames.PlayMaker.FsmStateAction

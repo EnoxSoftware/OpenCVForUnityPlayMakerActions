@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_transitionMatrix (Mat transitionMatrix)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_transitionMatrix (Mat transitionMatrix)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KalmanFilter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "transitionMatrix")]
     public class KalmanFilter_set_transitionMatrix : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void unwrapPhaseMap (List<Mat> wrappedPhaseMap, Mat unwrappedPhaseMap, Size camSize)")]
+    [HutongGames.PlayMaker.Tooltip ("public void unwrapPhaseMap (List<Mat> wrappedPhaseMap, Mat unwrappedPhaseMap, Size camSize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SinusoidalPattern), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "wrappedPhaseMap")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "unwrappedPhaseMap")]

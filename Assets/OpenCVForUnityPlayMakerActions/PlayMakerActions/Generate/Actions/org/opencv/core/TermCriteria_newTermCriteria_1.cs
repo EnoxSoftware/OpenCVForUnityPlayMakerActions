@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public TermCriteria () : this(0, 0, 0.0)")]
+    [HutongGames.PlayMaker.Tooltip ("public TermCriteria ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TermCriteria), "storeResult")]
     public class TermCriteria_newTermCriteria_1 : HutongGames.PlayMaker.FsmStateAction
     {

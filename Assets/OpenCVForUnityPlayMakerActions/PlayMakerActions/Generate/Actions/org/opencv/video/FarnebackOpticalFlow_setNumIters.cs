@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNumIters (int numIters)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNumIters (int numIters)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.FarnebackOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "numIters")]
     public class FarnebackOpticalFlow_setNumIters : HutongGames.PlayMaker.FsmStateAction

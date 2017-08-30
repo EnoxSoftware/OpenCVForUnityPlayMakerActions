@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setSpeckleWindowSize (int speckleWindowSize)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setSpeckleWindowSize (int speckleWindowSize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.StereoMatcher), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "speckleWindowSize")]
     public class StereoMatcher_setSpeckleWindowSize : HutongGames.PlayMaker.FsmStateAction

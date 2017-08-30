@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDescriptorType (int dtype)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDescriptorType (int dtype)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.AKAZE), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "dtype")]
     public class AKAZE_setDescriptorType : HutongGames.PlayMaker.FsmStateAction

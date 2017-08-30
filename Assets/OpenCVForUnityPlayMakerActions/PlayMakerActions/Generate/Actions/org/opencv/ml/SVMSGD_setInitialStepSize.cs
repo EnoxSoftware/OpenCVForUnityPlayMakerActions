@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setInitialStepSize (float InitialStepSize)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setInitialStepSize (float InitialStepSize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SVMSGD), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "InitialStepSize")]
     public class SVMSGD_setInitialStepSize : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNMixtures (int nmix)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNMixtures (int nmix)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorMOG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nmix")]
     public class BackgroundSubtractorMOG_setNMixtures : HutongGames.PlayMaker.FsmStateAction

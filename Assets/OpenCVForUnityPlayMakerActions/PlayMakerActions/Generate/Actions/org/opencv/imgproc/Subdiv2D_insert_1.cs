@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void insert (MatOfPoint2f ptvec)")]
+    [HutongGames.PlayMaker.Tooltip ("public void insert (MatOfPoint2f ptvec)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Subdiv2D), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "ptvec")]
     public class Subdiv2D_insert_1 : HutongGames.PlayMaker.FsmStateAction

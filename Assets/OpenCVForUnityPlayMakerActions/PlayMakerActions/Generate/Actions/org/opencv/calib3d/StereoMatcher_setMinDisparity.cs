@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setMinDisparity (int minDisparity)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setMinDisparity (int minDisparity)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.StereoMatcher), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "minDisparity")]
     public class StereoMatcher_setMinDisparity : HutongGames.PlayMaker.FsmStateAction

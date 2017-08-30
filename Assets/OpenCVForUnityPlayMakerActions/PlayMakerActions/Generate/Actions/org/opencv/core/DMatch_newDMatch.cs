@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public DMatch () : this(-1, -1, float.MaxValue)")]
+    [HutongGames.PlayMaker.Tooltip ("public DMatch ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DMatch), "storeResult")]
     public class DMatch_newDMatch : HutongGames.PlayMaker.FsmStateAction
     {

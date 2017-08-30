@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void switchToSelectiveSearchFast ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void switchToSelectiveSearchFast ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentation), "owner")]
     public class SelectiveSearchSegmentation_switchToSelectiveSearchFast_1 : HutongGames.PlayMaker.FsmStateAction
     {

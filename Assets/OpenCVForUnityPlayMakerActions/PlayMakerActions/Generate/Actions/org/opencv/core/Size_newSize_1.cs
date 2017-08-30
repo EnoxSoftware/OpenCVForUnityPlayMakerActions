@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public Size () : this (0, 0)")]
+    [HutongGames.PlayMaker.Tooltip ("public Size ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "storeResult")]
     public class Size_newSize_1 : HutongGames.PlayMaker.FsmStateAction
     {

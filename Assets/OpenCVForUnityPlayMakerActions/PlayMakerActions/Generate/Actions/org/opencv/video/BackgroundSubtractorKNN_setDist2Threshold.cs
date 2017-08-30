@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDist2Threshold (double _dist2Threshold)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDist2Threshold (double _dist2Threshold)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorKNN), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "_dist2Threshold")]
     public class BackgroundSubtractorKNN_setDist2Threshold : HutongGames.PlayMaker.FsmStateAction

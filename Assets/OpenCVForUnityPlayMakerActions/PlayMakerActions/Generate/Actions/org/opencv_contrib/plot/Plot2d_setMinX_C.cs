@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setMinX (double _plotMinX)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setMinX (double _plotMinX)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Plot2d), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "_plotMinX")]
     public class Plot2d_setMinX_C : HutongGames.PlayMaker.FsmStateAction

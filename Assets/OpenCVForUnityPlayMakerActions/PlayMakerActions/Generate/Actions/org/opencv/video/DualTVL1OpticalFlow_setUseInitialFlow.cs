@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setUseInitialFlow (bool val)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setUseInitialFlow (bool val)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DualTVL1OpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "val")]
     public class DualTVL1OpticalFlow_setUseInitialFlow : HutongGames.PlayMaker.FsmStateAction

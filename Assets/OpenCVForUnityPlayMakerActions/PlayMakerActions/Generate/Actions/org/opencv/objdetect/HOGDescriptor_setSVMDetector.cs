@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setSVMDetector (Mat _svmdetector)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setSVMDetector (Mat _svmdetector)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HOGDescriptor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "_svmdetector")]
     public class HOGDescriptor_setSVMDetector : HutongGames.PlayMaker.FsmStateAction

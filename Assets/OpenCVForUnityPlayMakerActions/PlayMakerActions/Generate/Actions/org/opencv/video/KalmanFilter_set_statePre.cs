@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_statePre (Mat statePre)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_statePre (Mat statePre)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KalmanFilter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "statePre")]
     public class KalmanFilter_set_statePre : HutongGames.PlayMaker.FsmStateAction

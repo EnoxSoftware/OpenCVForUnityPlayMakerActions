@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setGrayscaleBits (int grayscaleBits)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setGrayscaleBits (int grayscaleBits)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "grayscaleBits")]
     public class PCTSignatures_setGrayscaleBits : HutongGames.PlayMaker.FsmStateAction

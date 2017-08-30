@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDiffusivity (int diff)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDiffusivity (int diff)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KAZE), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "diff")]
     public class KAZE_setDiffusivity : HutongGames.PlayMaker.FsmStateAction

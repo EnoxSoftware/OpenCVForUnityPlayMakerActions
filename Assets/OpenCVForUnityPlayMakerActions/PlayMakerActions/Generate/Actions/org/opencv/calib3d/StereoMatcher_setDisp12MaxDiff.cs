@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDisp12MaxDiff (int disp12MaxDiff)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDisp12MaxDiff (int disp12MaxDiff)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.StereoMatcher), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "disp12MaxDiff")]
     public class StereoMatcher_setDisp12MaxDiff : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNumFrames (int nframes)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNumFrames (int nframes)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nframes")]
     public class BackgroundSubtractorGMG_setNumFrames : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void switchToSingleStrategy ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void switchToSingleStrategy ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentation), "owner")]
     public class SelectiveSearchSegmentation_switchToSingleStrategy_1 : HutongGames.PlayMaker.FsmStateAction
     {

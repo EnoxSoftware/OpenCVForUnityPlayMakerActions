@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setFGSLambda (float _lambda)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setFGSLambda (float _lambda)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "_lambda")]
     public class EdgeAwareInterpolator_setFGSLambda : HutongGames.PlayMaker.FsmStateAction

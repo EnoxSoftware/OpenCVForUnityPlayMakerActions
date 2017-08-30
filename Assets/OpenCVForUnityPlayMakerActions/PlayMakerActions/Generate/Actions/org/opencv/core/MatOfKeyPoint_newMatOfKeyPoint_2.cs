@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public MatOfKeyPoint (params KeyPoint[] a) : base()")]
+    [HutongGames.PlayMaker.Tooltip ("public MatOfKeyPoint (params KeyPoint[] a)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "a")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfKeyPoint), "storeResult")]
     public class MatOfKeyPoint_newMatOfKeyPoint_2 : HutongGames.PlayMaker.FsmStateAction

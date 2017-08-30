@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_processNoiseCov (Mat processNoiseCov)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_processNoiseCov (Mat processNoiseCov)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KalmanFilter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "processNoiseCov")]
     public class KalmanFilter_set_processNoiseCov : HutongGames.PlayMaker.FsmStateAction

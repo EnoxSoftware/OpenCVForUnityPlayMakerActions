@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setUseMeanNormalization (bool val)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setUseMeanNormalization (bool val)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DISOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "val")]
     public class DISOpticalFlow_setUseMeanNormalization : HutongGames.PlayMaker.FsmStateAction

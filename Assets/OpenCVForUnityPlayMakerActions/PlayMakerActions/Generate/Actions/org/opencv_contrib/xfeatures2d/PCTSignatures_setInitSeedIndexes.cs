@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setInitSeedIndexes (MatOfInt initSeedIndexes)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setInitSeedIndexes (MatOfInt initSeedIndexes)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "initSeedIndexes")]
     public class PCTSignatures_setInitSeedIndexes : HutongGames.PlayMaker.FsmStateAction

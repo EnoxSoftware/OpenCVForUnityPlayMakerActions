@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setScaleFactor (double scaleFactor)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setScaleFactor (double scaleFactor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ORB), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "scaleFactor")]
     public class ORB_setScaleFactor_C : HutongGames.PlayMaker.FsmStateAction

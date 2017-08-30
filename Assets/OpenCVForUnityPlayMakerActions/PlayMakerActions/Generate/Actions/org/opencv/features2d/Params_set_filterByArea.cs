@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_filterByArea (bool filterByArea)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_filterByArea (bool filterByArea)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "filterByArea")]
     public class Params_set_filterByArea : HutongGames.PlayMaker.FsmStateAction

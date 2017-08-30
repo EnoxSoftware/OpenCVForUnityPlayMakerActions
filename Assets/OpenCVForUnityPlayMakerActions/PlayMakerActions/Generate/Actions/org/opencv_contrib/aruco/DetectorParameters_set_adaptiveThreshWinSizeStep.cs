@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_adaptiveThreshWinSizeStep (int adaptiveThreshWinSizeStep)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_adaptiveThreshWinSizeStep (int adaptiveThreshWinSizeStep)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "adaptiveThreshWinSizeStep")]
     public class DetectorParameters_set_adaptiveThreshWinSizeStep : HutongGames.PlayMaker.FsmStateAction

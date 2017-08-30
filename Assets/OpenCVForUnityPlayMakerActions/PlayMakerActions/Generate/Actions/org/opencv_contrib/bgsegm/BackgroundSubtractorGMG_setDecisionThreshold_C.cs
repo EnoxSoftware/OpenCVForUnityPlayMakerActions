@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDecisionThreshold (double thresh)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDecisionThreshold (double thresh)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "thresh")]
     public class BackgroundSubtractorGMG_setDecisionThreshold_C : HutongGames.PlayMaker.FsmStateAction

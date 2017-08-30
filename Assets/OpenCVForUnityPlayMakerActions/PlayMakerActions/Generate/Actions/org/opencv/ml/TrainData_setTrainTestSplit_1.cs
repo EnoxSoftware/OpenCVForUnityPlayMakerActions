@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setTrainTestSplit (int count)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setTrainTestSplit (int count)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TrainData), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "count")]
     public class TrainData_setTrainTestSplit_1 : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void getParvoRAW (Mat retinaOutput_parvo)")]
+    [HutongGames.PlayMaker.Tooltip ("public void getParvoRAW (Mat retinaOutput_parvo)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Retina), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "retinaOutput_parvo")]
     public class Retina_getParvoRAW_1 : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void getMagnoRAW (Mat retinaOutput_magno)")]
+    [HutongGames.PlayMaker.Tooltip ("public void getMagnoRAW (Mat retinaOutput_magno)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Retina), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "retinaOutput_magno")]
     public class Retina_getMagnoRAW_1 : HutongGames.PlayMaker.FsmStateAction

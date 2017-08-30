@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setMarginRegularization (float marginRegularization)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setMarginRegularization (float marginRegularization)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SVMSGD), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "marginRegularization")]
     public class SVMSGD_setMarginRegularization : HutongGames.PlayMaker.FsmStateAction

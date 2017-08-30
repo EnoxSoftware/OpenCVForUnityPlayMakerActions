@@ -8,9 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  bool open (string filename, int fourcc, double fps, Size frameSize, bool isColor)")]
+    [HutongGames.PlayMaker.Tooltip ("public bool open (string filename, int apiPreference, int fourcc, double fps, Size frameSize, bool isColor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.VideoWriter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "apiPreference")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "fourcc")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "fps")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "frameSize_width")]
@@ -36,15 +37,20 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt apiPreference;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg3] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt fourcc;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] double(Double)")]
+        [HutongGames.PlayMaker.ActionSection ("[arg4] double(Double)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject fps;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg4] Size")]
+        [HutongGames.PlayMaker.ActionSection ("[arg5] Size")]
 
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
@@ -54,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat frameSize_height;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg5] bool")]
+        [HutongGames.PlayMaker.ActionSection ("[arg6] bool")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
         public HutongGames.PlayMaker.FsmBool isColor;
@@ -78,6 +84,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             owner = null;
             filename = null;
+            apiPreference = 0;
             fourcc = 0;
             fps = null;
             frameSize_width = 0.0f;
@@ -121,7 +128,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_fps = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (fps);
 
-            storeResult.Value = wrapped_owner.open (filename.Value, fourcc.Value, wrapped_fps, new OpenCVForUnity.Size ((double)frameSize_width.Value, (double)frameSize_height.Value), isColor.Value);
+            storeResult.Value = wrapped_owner.open (filename.Value, apiPreference.Value, fourcc.Value, wrapped_fps, new OpenCVForUnity.Size ((double)frameSize_width.Value, (double)frameSize_height.Value), isColor.Value);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

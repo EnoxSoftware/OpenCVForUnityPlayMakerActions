@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setQuantizationLevels (int nlevels)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setQuantizationLevels (int nlevels)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nlevels")]
     public class BackgroundSubtractorGMG_setQuantizationLevels : HutongGames.PlayMaker.FsmStateAction

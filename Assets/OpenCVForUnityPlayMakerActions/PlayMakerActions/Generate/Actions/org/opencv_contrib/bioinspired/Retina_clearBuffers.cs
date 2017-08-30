@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void clearBuffers ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void clearBuffers ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Retina), "owner")]
     public class Retina_clearBuffers : HutongGames.PlayMaker.FsmStateAction
     {

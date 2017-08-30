@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDistanceFunction (int distanceFunction)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDistanceFunction (int distanceFunction)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "distanceFunction")]
     public class PCTSignatures_setDistanceFunction : HutongGames.PlayMaker.FsmStateAction

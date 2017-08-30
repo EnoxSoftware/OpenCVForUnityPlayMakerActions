@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setIterationCount (int iterationCount)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setIterationCount (int iterationCount)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "iterationCount")]
     public class PCTSignatures_setIterationCount : HutongGames.PlayMaker.FsmStateAction

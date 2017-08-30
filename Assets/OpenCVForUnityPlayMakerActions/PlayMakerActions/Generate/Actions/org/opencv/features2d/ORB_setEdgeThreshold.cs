@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setEdgeThreshold (int edgeThreshold)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setEdgeThreshold (int edgeThreshold)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ORB), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "edgeThreshold")]
     public class ORB_setEdgeThreshold : HutongGames.PlayMaker.FsmStateAction

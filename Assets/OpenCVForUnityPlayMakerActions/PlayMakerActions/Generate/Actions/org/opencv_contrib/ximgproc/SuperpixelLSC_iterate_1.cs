@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void iterate ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void iterate ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SuperpixelLSC), "owner")]
     public class SuperpixelLSC_iterate_1 : HutongGames.PlayMaker.FsmStateAction
     {

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public   VideoCapture ()")]
+    [HutongGames.PlayMaker.Tooltip ("public VideoCapture ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.VideoCapture), "storeResult")]
     public class VideoCapture_newVideoCapture_3 : HutongGames.PlayMaker.FsmStateAction
     {

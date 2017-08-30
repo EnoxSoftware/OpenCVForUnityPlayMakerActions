@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDistanceFlag (int distanceFlag)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDistanceFlag (int distanceFlag)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HausdorffDistanceExtractor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "distanceFlag")]
     public class HausdorffDistanceExtractor_setDistanceFlag : HutongGames.PlayMaker.FsmStateAction

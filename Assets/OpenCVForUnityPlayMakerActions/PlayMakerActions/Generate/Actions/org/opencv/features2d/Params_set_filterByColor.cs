@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_filterByColor (bool filterByColor)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_filterByColor (bool filterByColor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "filterByColor")]
     public class Params_set_filterByColor : HutongGames.PlayMaker.FsmStateAction

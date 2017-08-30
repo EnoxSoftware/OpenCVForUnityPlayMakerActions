@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public MatOfRect2d (params Rect2d[] a) : base()")]
+    [HutongGames.PlayMaker.Tooltip ("public MatOfRect2d (params Rect2d[] a)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "a")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfRect2d), "storeResult")]
     public class MatOfRect2d_newMatOfRect2d_2 : HutongGames.PlayMaker.FsmStateAction

@@ -8,9 +8,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public static void cornerSubPix (Mat image, MatOfPoint2f corners, Size winSize, Size zeroZone, TermCriteria criteria)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void cornerSubPix (Mat image, Mat corners, Size winSize, Size zeroZone, TermCriteria criteria)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "corners")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "corners")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "winSize")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "zeroZone")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TermCriteria), "criteria")]
@@ -23,10 +23,10 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject image;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] MatOfPoint2f")]
+        [HutongGames.PlayMaker.ActionSection ("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f))]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject corners;
 
         [HutongGames.PlayMaker.ActionSection ("[arg3] Size")]
@@ -86,12 +86,12 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
 
-            if (!(corners.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
+            if (!(corners.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("corners is not initialized. Add Action \"newMatOfPoint2f\".");
+                LogError ("corners is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_corners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (corners);
+            OpenCVForUnity.Mat wrapped_corners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (corners);
 
             if (!(winSize.Value is OpenCVForUnityPlayMakerActions.Size))
             {

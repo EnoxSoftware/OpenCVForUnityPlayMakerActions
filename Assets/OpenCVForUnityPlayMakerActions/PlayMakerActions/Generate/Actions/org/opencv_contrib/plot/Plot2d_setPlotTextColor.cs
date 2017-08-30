@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setPlotTextColor (Scalar _plotTextColor)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setPlotTextColor (Scalar _plotTextColor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Plot2d), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "_plotTextColor")]
     public class Plot2d_setPlotTextColor : HutongGames.PlayMaker.FsmStateAction

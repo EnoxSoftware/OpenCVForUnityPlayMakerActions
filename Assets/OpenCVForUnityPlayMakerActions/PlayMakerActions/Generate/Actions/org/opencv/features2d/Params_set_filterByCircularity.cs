@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_filterByCircularity (bool filterByCircularity)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_filterByCircularity (bool filterByCircularity)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "filterByCircularity")]
     public class Params_set_filterByCircularity : HutongGames.PlayMaker.FsmStateAction

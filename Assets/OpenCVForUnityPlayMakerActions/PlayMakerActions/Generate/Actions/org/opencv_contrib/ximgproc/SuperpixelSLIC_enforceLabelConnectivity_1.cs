@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void enforceLabelConnectivity ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void enforceLabelConnectivity ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SuperpixelSLIC), "owner")]
     public class SuperpixelSLIC_enforceLabelConnectivity_1 : HutongGames.PlayMaker.FsmStateAction
     {

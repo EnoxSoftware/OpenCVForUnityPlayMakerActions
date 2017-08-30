@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void activateContoursProcessing (bool activate)")]
+    [HutongGames.PlayMaker.Tooltip ("public void activateContoursProcessing (bool activate)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Retina), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "activate")]
     public class Retina_activateContoursProcessing : HutongGames.PlayMaker.FsmStateAction

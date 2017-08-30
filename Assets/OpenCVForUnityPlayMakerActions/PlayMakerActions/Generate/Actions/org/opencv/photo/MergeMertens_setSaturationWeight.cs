@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setSaturationWeight (float saturation_weight)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setSaturationWeight (float saturation_weight)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MergeMertens), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "saturation_weight")]
     public class MergeMertens_setSaturationWeight : HutongGames.PlayMaker.FsmStateAction

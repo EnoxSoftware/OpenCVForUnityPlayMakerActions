@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setColorSaturation ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void setColorSaturation ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Retina), "owner")]
     public class Retina_setColorSaturation_1 : HutongGames.PlayMaker.FsmStateAction
     {

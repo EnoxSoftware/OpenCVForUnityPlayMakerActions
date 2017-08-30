@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void getEdgeList (MatOfFloat4 edgeList)")]
+    [HutongGames.PlayMaker.Tooltip ("public void getEdgeList (MatOfFloat4 edgeList)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Subdiv2D), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat4), "edgeList")]
     public class Subdiv2D_getEdgeList : HutongGames.PlayMaker.FsmStateAction

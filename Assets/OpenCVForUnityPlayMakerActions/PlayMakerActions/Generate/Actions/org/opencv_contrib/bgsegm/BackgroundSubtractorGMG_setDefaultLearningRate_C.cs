@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setDefaultLearningRate (double lr)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setDefaultLearningRate (double lr)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "lr")]
     public class BackgroundSubtractorGMG_setDefaultLearningRate_C : HutongGames.PlayMaker.FsmStateAction

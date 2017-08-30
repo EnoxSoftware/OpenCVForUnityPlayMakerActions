@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setComplexityReductionThreshold (double ct)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setComplexityReductionThreshold (double ct)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorMOG2), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "ct")]
     public class BackgroundSubtractorMOG2_setComplexityReductionThreshold_C : HutongGames.PlayMaker.FsmStateAction

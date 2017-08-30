@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void set_cornerRefinementMinAccuracy (double cornerRefinementMinAccuracy)")]
+    [HutongGames.PlayMaker.Tooltip ("public void set_cornerRefinementMinAccuracy (double cornerRefinementMinAccuracy)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "cornerRefinementMinAccuracy")]
     public class DetectorParameters_set_cornerRefinementMinAccuracy_C : HutongGames.PlayMaker.FsmStateAction

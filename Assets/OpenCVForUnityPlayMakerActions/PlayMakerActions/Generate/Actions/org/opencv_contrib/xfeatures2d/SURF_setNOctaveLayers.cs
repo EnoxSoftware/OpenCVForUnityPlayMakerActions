@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNOctaveLayers (int nOctaveLayers)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNOctaveLayers (int nOctaveLayers)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SURF), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nOctaveLayers")]
     public class SURF_setNOctaveLayers : HutongGames.PlayMaker.FsmStateAction

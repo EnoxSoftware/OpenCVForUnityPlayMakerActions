@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void getLeadingEdgeList (MatOfInt leadingEdgeList)")]
+    [HutongGames.PlayMaker.Tooltip ("public void getLeadingEdgeList (MatOfInt leadingEdgeList)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Subdiv2D), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "leadingEdgeList")]
     public class Subdiv2D_getLeadingEdgeList : HutongGames.PlayMaker.FsmStateAction

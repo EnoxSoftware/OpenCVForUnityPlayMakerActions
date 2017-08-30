@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setSigmaSpace (float sigma_space)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setSigmaSpace (float sigma_space)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TonemapDurand), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "sigma_space")]
     public class TonemapDurand_setSigmaSpace : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public KeyPoint () : this(0, 0, 0, -1, 0, 0, -1)")]
+    [HutongGames.PlayMaker.Tooltip ("public KeyPoint ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KeyPoint), "storeResult")]
     public class KeyPoint_newKeyPoint_1 : HutongGames.PlayMaker.FsmStateAction
     {

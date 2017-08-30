@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public  void setNoiseSigma (double noiseSigma)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setNoiseSigma (double noiseSigma)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorMOG), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "noiseSigma")]
     public class BackgroundSubtractorMOG_setNoiseSigma : HutongGames.PlayMaker.FsmStateAction

@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public   Params ()")]
+    [HutongGames.PlayMaker.Tooltip ("public Params ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "storeResult")]
     public class Params_newParams : HutongGames.PlayMaker.FsmStateAction
     {
