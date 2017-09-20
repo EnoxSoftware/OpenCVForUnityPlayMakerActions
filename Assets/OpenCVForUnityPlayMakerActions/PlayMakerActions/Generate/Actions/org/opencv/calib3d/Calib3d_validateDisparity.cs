@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_calib3d")]
     [HutongGames.PlayMaker.Tooltip ("public static void validateDisparity (Mat disparity, Mat cost, int minDisparity, int numberOfDisparities, int disp12MaxDisp)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "disparity")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "cost")]

@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
     [HutongGames.PlayMaker.Tooltip ("public static double Mahalanobis (Mat v1, Mat v2, Mat icovar)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "v1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "v2")]

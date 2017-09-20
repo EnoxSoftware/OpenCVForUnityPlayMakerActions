@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_video")]
     [HutongGames.PlayMaker.Tooltip ("public void calc (Mat prevImg, Mat nextImg, Mat prevPts, Mat nextPts, Mat status)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SparseOpticalFlow), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "prevImg")]

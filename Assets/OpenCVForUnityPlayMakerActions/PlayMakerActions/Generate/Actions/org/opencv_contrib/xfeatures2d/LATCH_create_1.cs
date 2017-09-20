@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
     [HutongGames.PlayMaker.Tooltip ("public static LATCH create ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.LATCH), "storeResult")]
     public class LATCH_create_1 : HutongGames.PlayMaker.FsmStateAction

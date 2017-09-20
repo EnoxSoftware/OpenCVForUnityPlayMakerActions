@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_objdetect")]
     [HutongGames.PlayMaker.Tooltip ("public HOGDescriptor ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HOGDescriptor), "storeResult")]
     public class HOGDescriptor_newHOGDescriptor_3 : HutongGames.PlayMaker.FsmStateAction

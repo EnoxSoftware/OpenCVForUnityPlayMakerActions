@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
     [HutongGames.PlayMaker.Tooltip ("public static RTrees create ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.RTrees), "storeResult")]
     public class RTrees_create : HutongGames.PlayMaker.FsmStateAction

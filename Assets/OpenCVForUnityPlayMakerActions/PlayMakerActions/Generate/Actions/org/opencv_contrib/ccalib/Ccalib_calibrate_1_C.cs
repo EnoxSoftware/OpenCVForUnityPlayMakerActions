@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ccalib")]
     [HutongGames.PlayMaker.Tooltip ("public static double calibrate (List<Mat> objectPoints, List<Mat> imagePoints, Size size, Mat K, Mat xi, Mat D, List<Mat> rvecs, List<Mat> tvecs, int flags, TermCriteria criteria)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "objectPoints")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "imagePoints")]

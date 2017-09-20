@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xphoto")]
     [HutongGames.PlayMaker.Tooltip ("public static LearningBasedWB createLearningBasedWB ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.LearningBasedWB), "storeResult")]
     public class Xphoto_createLearningBasedWB_1 : HutongGames.PlayMaker.FsmStateAction

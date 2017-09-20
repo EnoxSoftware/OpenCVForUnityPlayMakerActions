@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
     [HutongGames.PlayMaker.Tooltip ("public static SIFT create ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SIFT), "storeResult")]
     public class SIFT_create_1 : HutongGames.PlayMaker.FsmStateAction

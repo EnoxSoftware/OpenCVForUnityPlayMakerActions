@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_bgsegm")]
     [HutongGames.PlayMaker.Tooltip ("public static BackgroundSubtractorGMG createBackgroundSubtractorGMG ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "storeResult")]
     public class Bgsegm_createBackgroundSubtractorGMG_1 : HutongGames.PlayMaker.FsmStateAction

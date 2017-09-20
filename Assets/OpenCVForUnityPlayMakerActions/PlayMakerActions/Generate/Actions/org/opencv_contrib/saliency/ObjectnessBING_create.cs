@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_saliency")]
     [HutongGames.PlayMaker.Tooltip ("public static ObjectnessBING create ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ObjectnessBING), "storeResult")]
     public class ObjectnessBING_create : HutongGames.PlayMaker.FsmStateAction

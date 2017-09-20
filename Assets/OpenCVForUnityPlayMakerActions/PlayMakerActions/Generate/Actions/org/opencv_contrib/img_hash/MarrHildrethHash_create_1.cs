@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_img_hash")]
     [HutongGames.PlayMaker.Tooltip ("public static MarrHildrethHash create ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MarrHildrethHash), "storeResult")]
     public class MarrHildrethHash_create_1 : HutongGames.PlayMaker.FsmStateAction

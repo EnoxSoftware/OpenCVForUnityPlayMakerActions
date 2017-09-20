@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ccalib")]
     [HutongGames.PlayMaker.Tooltip ("public static void stereoReconstruct (Mat image1, Mat image2, Mat K1, Mat D1, Mat xi1, Mat K2, Mat D2, Mat xi2, Mat R, Mat T, int flag, int numDisparities, int SADWindowSize, Mat disparity, Mat image1Rec, Mat image2Rec)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image2")]

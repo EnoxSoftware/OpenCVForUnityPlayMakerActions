@@ -8,7 +8,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_dnn")]
     [HutongGames.PlayMaker.Tooltip ("public void getLayerShapes (MatOfInt netInputShape, int layerId, List<MatOfInt> inLayerShapes, List<MatOfInt> outLayerShapes)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Net), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "netInputShape")]

@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
     [HutongGames.PlayMaker.Tooltip ("public static SelectiveSearchSegmentationStrategyTexture createSelectiveSearchSegmentationStrategyTexture ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyTexture), "storeResult")]
     public class Ximgproc_createSelectiveSearchSegmentationStrategyTexture : HutongGames.PlayMaker.FsmStateAction

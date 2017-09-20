@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_shape")]
     [HutongGames.PlayMaker.Tooltip ("public static HausdorffDistanceExtractor createHausdorffDistanceExtractor ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HausdorffDistanceExtractor), "storeResult")]
     public class Shape_createHausdorffDistanceExtractor_1 : HutongGames.PlayMaker.FsmStateAction

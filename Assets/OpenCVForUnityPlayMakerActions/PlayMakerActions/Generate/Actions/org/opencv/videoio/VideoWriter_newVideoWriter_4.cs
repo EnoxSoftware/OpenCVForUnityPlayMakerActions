@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_videoio")]
     [HutongGames.PlayMaker.Tooltip ("public VideoWriter ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.VideoWriter), "storeResult")]
     public class VideoWriter_newVideoWriter_4 : HutongGames.PlayMaker.FsmStateAction

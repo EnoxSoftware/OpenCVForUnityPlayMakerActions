@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_bioinspired")]
     [HutongGames.PlayMaker.Tooltip ("public void clearAllBuffers ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule), "owner")]
     public class TransientAreasSegmentationModule_clearAllBuffers : HutongGames.PlayMaker.FsmStateAction

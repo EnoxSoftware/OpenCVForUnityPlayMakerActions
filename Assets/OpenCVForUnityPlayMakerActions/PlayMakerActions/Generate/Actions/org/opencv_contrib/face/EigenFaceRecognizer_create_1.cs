@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_face")]
     [HutongGames.PlayMaker.Tooltip ("public static EigenFaceRecognizer create ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.EigenFaceRecognizer), "storeResult")]
     public class EigenFaceRecognizer_create_1 : HutongGames.PlayMaker.FsmStateAction

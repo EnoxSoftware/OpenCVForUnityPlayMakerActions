@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_tracking")]
     [HutongGames.PlayMaker.Tooltip ("public static MultiTracker create ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MultiTracker), "storeResult")]
     public class MultiTracker_create : HutongGames.PlayMaker.FsmStateAction

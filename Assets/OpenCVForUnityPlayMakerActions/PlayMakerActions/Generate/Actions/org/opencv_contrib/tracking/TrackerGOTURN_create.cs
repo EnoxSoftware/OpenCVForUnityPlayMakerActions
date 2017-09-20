@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_tracking")]
     [HutongGames.PlayMaker.Tooltip ("public static TrackerGOTURN create ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TrackerGOTURN), "storeResult")]
     public class TrackerGOTURN_create : HutongGames.PlayMaker.FsmStateAction

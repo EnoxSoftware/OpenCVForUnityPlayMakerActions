@@ -7,7 +7,7 @@ using OpenCVForUnity;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_text")]
     [HutongGames.PlayMaker.Tooltip ("public static OCRBeamSearchDecoder create (string filename, string vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table, int mode, int beam_size)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "vocabulary")]
