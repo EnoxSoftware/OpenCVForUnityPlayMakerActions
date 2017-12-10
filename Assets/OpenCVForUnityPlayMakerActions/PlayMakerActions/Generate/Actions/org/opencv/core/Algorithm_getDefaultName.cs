@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public string getDefaultName ()")]
+    [HutongGames.PlayMaker.Tooltip ("public virtual string getDefaultName ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Algorithm), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "storeResult")]
     public class Algorithm_getDefaultName : HutongGames.PlayMaker.FsmStateAction

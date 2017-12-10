@@ -1,3 +1,4 @@
+#if !UNITY_WEBGL && !UNITY_WSA_10_0
 using System;
 using UnityEngine;
 using UnityEditor;
@@ -15,3 +16,4 @@ namespace OpenCVForUnityPlayMakerActions
 
     }
 }
+#endif

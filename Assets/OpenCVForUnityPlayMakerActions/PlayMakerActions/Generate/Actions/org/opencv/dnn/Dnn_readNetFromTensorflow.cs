@@ -9,8 +9,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip ("public static Net readNetFromTensorflow (string model)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Net readNetFromTensorflow (string model, string config)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "model")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "config")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Net), "storeResult")]
     public class Dnn_readNetFromTensorflow : HutongGames.PlayMaker.FsmStateAction
     {
@@ -19,6 +20,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
         public HutongGames.PlayMaker.FsmString model;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] string")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
+        public HutongGames.PlayMaker.FsmString config;
 
         [HutongGames.PlayMaker.ActionSection ("[return] Net")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -32,6 +38,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             model = null;
+            config = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -55,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Net)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Net ();
-            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = OpenCVForUnity.Dnn.readNetFromTensorflow (model.Value);
+            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = OpenCVForUnity.Dnn.readNetFromTensorflow (model.Value, config.Value);
 
 
         }

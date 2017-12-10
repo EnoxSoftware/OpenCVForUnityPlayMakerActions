@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public virtual void save (string filename)")]
+    [HutongGames.PlayMaker.Tooltip ("public void save (string filename)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Algorithm), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
     public class Algorithm_save : HutongGames.PlayMaker.FsmStateAction

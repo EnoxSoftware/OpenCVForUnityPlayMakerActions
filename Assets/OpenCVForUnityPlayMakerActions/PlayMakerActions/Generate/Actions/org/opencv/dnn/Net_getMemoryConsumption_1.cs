@@ -9,12 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip ("public void getMemoryConsumption (MatOfInt netInputShape, MatOfInt layerIds, MatOfDouble weights, MatOfDouble blobs)")]
+    [HutongGames.PlayMaker.Tooltip ("public void getMemoryConsumption (int layerId, MatOfInt netInputShape, long[] weights, long[] blobs)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Net), "owner")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "layerId")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "netInputShape")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "layerIds")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfDouble), "weights")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfDouble), "blobs")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.LongArray), "weights")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.LongArray), "blobs")]
     public class Net_getMemoryConsumption_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -24,28 +24,27 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Net))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] MatOfInt")]
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfInt))]
-        public HutongGames.PlayMaker.FsmObject netInputShape;
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt layerId;
 
         [HutongGames.PlayMaker.ActionSection ("[arg2] MatOfInt")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfInt))]
-        public HutongGames.PlayMaker.FsmObject layerIds;
+        public HutongGames.PlayMaker.FsmObject netInputShape;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] MatOfDouble")]
+        [HutongGames.PlayMaker.ActionSection ("[arg3] long[](LongArray)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfDouble))]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.LongArray))]
         public HutongGames.PlayMaker.FsmObject weights;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg4] MatOfDouble")]
+        [HutongGames.PlayMaker.ActionSection ("[arg4] long[](LongArray)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfDouble))]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.LongArray))]
         public HutongGames.PlayMaker.FsmObject blobs;
 
         [HutongGames.PlayMaker.ActionSection ("")]
@@ -55,8 +54,8 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             owner = null;
+            layerId = 0;
             netInputShape = null;
-            layerIds = null;
             weights = null;
             blobs = null;
             everyFrame = false;
@@ -94,28 +93,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MatOfInt wrapped_netInputShape = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (netInputShape);
 
-            if (!(layerIds.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
+            if (!(weights.Value is OpenCVForUnityPlayMakerActions.LongArray))
             {
-                LogError ("layerIds is not initialized. Add Action \"newMatOfInt\".");
+                LogError ("weights is not initialized. Add Action \"newLongArray\".");
                 return;
             }
-            OpenCVForUnity.MatOfInt wrapped_layerIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (layerIds);
+            System.Int64[] wrapped_weights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.LongArray, System.Int64[]> (weights);
 
-            if (!(weights.Value is OpenCVForUnityPlayMakerActions.MatOfDouble))
+            if (!(blobs.Value is OpenCVForUnityPlayMakerActions.LongArray))
             {
-                LogError ("weights is not initialized. Add Action \"newMatOfDouble\".");
+                LogError ("blobs is not initialized. Add Action \"newLongArray\".");
                 return;
             }
-            OpenCVForUnity.MatOfDouble wrapped_weights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDouble, OpenCVForUnity.MatOfDouble> (weights);
+            System.Int64[] wrapped_blobs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.LongArray, System.Int64[]> (blobs);
 
-            if (!(blobs.Value is OpenCVForUnityPlayMakerActions.MatOfDouble))
-            {
-                LogError ("blobs is not initialized. Add Action \"newMatOfDouble\".");
-                return;
-            }
-            OpenCVForUnity.MatOfDouble wrapped_blobs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDouble, OpenCVForUnity.MatOfDouble> (blobs);
-
-            wrapped_owner.getMemoryConsumption (wrapped_netInputShape, wrapped_layerIds, wrapped_weights, wrapped_blobs);
+            wrapped_owner.getMemoryConsumption (layerId.Value, wrapped_netInputShape, wrapped_weights, wrapped_blobs);
 
 
         }

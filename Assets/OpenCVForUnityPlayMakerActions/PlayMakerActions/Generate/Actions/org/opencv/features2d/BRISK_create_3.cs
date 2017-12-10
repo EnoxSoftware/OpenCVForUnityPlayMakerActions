@@ -8,24 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static BRISK create (MatOfFloat radiusList, MatOfInt numberList)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat), "radiusList")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "numberList")]
+    [HutongGames.PlayMaker.Tooltip ("public static BRISK create ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BRISK), "storeResult")]
     public class BRISK_create_3 : HutongGames.PlayMaker.FsmStateAction
     {
-
-        [HutongGames.PlayMaker.ActionSection ("[arg1] MatOfFloat")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat))]
-        public HutongGames.PlayMaker.FsmObject radiusList;
-
-        [HutongGames.PlayMaker.ActionSection ("[arg2] MatOfInt")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfInt))]
-        public HutongGames.PlayMaker.FsmObject numberList;
 
         [HutongGames.PlayMaker.ActionSection ("[return] BRISK")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -38,8 +24,6 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
-            radiusList = null;
-            numberList = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -62,22 +46,8 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            if (!(radiusList.Value is OpenCVForUnityPlayMakerActions.MatOfFloat))
-            {
-                LogError ("radiusList is not initialized. Add Action \"newMatOfFloat\".");
-                return;
-            }
-            OpenCVForUnity.MatOfFloat wrapped_radiusList = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.MatOfFloat> (radiusList);
-
-            if (!(numberList.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
-            {
-                LogError ("numberList is not initialized. Add Action \"newMatOfInt\".");
-                return;
-            }
-            OpenCVForUnity.MatOfInt wrapped_numberList = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (numberList);
-
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BRISK)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BRISK ();
-            ((OpenCVForUnityPlayMakerActions.BRISK)storeResult.Value).wrappedObject = OpenCVForUnity.BRISK.create (wrapped_radiusList, wrapped_numberList);
+            ((OpenCVForUnityPlayMakerActions.BRISK)storeResult.Value).wrappedObject = OpenCVForUnity.BRISK.create ();
 
 
         }

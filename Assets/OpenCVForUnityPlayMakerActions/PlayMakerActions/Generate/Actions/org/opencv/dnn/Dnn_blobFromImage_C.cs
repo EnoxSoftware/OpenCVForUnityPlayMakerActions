@@ -9,12 +9,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip ("public static Mat blobFromImage (Mat image, double scalefactor, Size size, Scalar mean, bool swapRB)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Mat blobFromImage (Mat image, double scalefactor, Size size, Scalar mean, bool swapRB, bool crop)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "scalefactor")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "size")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "mean")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "swapRB")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "crop")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Dnn_blobFromImage_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -47,6 +48,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
         public HutongGames.PlayMaker.FsmBool swapRB;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool crop;
+
         [HutongGames.PlayMaker.ActionSection ("[return] Mat")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
@@ -63,6 +69,7 @@ namespace OpenCVForUnityPlayMakerActions
             size = null;
             mean = null;
             swapRB = false;
+            crop = false;
             storeResult = null;
             everyFrame = false;
         }
@@ -107,7 +114,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.Scalar wrapped_mean = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (mean);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Dnn.blobFromImage (wrapped_image, (float)scalefactor.Value, wrapped_size, wrapped_mean, swapRB.Value);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Dnn.blobFromImage (wrapped_image, (float)scalefactor.Value, wrapped_size, wrapped_mean, swapRB.Value, crop.Value);
 
 
         }
