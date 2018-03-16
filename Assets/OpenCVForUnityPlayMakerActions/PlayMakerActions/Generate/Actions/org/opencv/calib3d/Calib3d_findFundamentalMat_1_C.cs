@@ -8,12 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip ("public static Mat findFundamentalMat (MatOfPoint2f points1, MatOfPoint2f points2, int method, double param1, double param2)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Mat findFundamentalMat (MatOfPoint2f points1, MatOfPoint2f points2, int method, double ransacReprojThreshold, double confidence)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "points1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "points2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "method")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "param1")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "param2")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "ransacReprojThreshold")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "confidence")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Calib3d_findFundamentalMat_1_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -38,12 +38,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection ("[arg4] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat param1;
+        public HutongGames.PlayMaker.FsmFloat ransacReprojThreshold;
 
         [HutongGames.PlayMaker.ActionSection ("[arg5] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat param2;
+        public HutongGames.PlayMaker.FsmFloat confidence;
 
         [HutongGames.PlayMaker.ActionSection ("[return] Mat")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -59,8 +59,8 @@ namespace OpenCVForUnityPlayMakerActions
             points1 = null;
             points2 = null;
             method = 0;
-            param1 = 0.0f;
-            param2 = 0.0f;
+            ransacReprojThreshold = 0.0f;
+            confidence = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -98,7 +98,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.MatOfPoint2f wrapped_points2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (points2);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3d.findFundamentalMat (wrapped_points1, wrapped_points2, method.Value, (float)param1.Value, (float)param2.Value);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3d.findFundamentalMat (wrapped_points1, wrapped_points2, method.Value, (float)ransacReprojThreshold.Value, (float)confidence.Value);
 
 
         }

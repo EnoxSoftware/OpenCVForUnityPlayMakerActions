@@ -8,12 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip ("public static Mat findFundamentalMat (MatOfPoint2f points1, MatOfPoint2f points2, int method, double param1, double param2)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Mat findFundamentalMat (MatOfPoint2f points1, MatOfPoint2f points2, int method, double ransacReprojThreshold, double confidence)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "points1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "points2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "method")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "param1")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "param2")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "ransacReprojThreshold")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "confidence")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Calib3d_findFundamentalMat_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -39,13 +39,13 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
-        public HutongGames.PlayMaker.FsmObject param1;
+        public HutongGames.PlayMaker.FsmObject ransacReprojThreshold;
 
         [HutongGames.PlayMaker.ActionSection ("[arg5] double(Double)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
-        public HutongGames.PlayMaker.FsmObject param2;
+        public HutongGames.PlayMaker.FsmObject confidence;
 
         [HutongGames.PlayMaker.ActionSection ("[return] Mat")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -61,8 +61,8 @@ namespace OpenCVForUnityPlayMakerActions
             points1 = null;
             points2 = null;
             method = 0;
-            param1 = null;
-            param2 = null;
+            ransacReprojThreshold = null;
+            confidence = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -99,22 +99,22 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MatOfPoint2f wrapped_points2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (points2);
 
-            if (!(param1.Value is OpenCVForUnityPlayMakerActions.Double))
+            if (!(ransacReprojThreshold.Value is OpenCVForUnityPlayMakerActions.Double))
             {
-                LogError ("param1 is not initialized. Add Action \"newDouble\".");
+                LogError ("ransacReprojThreshold is not initialized. Add Action \"newDouble\".");
                 return;
             }
-            System.Double wrapped_param1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (param1);
+            System.Double wrapped_ransacReprojThreshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (ransacReprojThreshold);
 
-            if (!(param2.Value is OpenCVForUnityPlayMakerActions.Double))
+            if (!(confidence.Value is OpenCVForUnityPlayMakerActions.Double))
             {
-                LogError ("param2 is not initialized. Add Action \"newDouble\".");
+                LogError ("confidence is not initialized. Add Action \"newDouble\".");
                 return;
             }
-            System.Double wrapped_param2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (param2);
+            System.Double wrapped_confidence = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (confidence);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3d.findFundamentalMat (wrapped_points1, wrapped_points2, method.Value, wrapped_param1, wrapped_param2);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3d.findFundamentalMat (wrapped_points1, wrapped_points2, method.Value, wrapped_ransacReprojThreshold, wrapped_confidence);
 
 
         }

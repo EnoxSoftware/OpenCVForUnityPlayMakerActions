@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public static RTrees load (string filepath)")]
+    [HutongGames.PlayMaker.Tooltip ("public static new RTrees load (string filepath)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filepath")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.RTrees), "storeResult")]
     public class RTrees_load_1 : HutongGames.PlayMaker.FsmStateAction

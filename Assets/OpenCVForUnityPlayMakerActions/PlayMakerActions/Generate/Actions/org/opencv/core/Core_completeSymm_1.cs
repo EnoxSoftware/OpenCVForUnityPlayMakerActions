@@ -8,8 +8,8 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public static void completeSymm (Mat mtx)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "mtx")]
+    [HutongGames.PlayMaker.Tooltip ("public static void completeSymm (Mat m)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "m")]
     public class Core_completeSymm_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -17,7 +17,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject mtx;
+        public HutongGames.PlayMaker.FsmObject m;
 
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
@@ -25,7 +25,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
-            mtx = null;
+            m = null;
             everyFrame = false;
         }
 
@@ -47,14 +47,14 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            if (!(mtx.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(m.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("mtx is not initialized. Add Action \"newMat\".");
+                LogError ("m is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mtx = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mtx);
+            OpenCVForUnity.Mat wrapped_m = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (m);
 
-            OpenCVForUnity.Core.completeSymm (wrapped_mtx);
+            OpenCVForUnity.Core.completeSymm (wrapped_m);
 
 
         }
