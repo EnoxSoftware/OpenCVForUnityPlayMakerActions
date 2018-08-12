@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void morphologyEx (Mat src, Mat dst, int op, Mat kernel, Point anchor, int iterations)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void morphologyEx (Mat src, Mat dst, int op, Mat kernel, Point anchor, int iterations, int borderType)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "op")]
@@ -16,6 +16,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "anchor_x")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "anchor_y")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "iterations")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "borderType")]
     public class Imgproc_morphologyEx_1_S : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -57,6 +58,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt iterations;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg7] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt borderType;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -70,6 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
             anchor_x = 0.0f;
             anchor_y = 0.0f;
             iterations = 0;
+            borderType = 0;
             everyFrame = false;
         }
 
@@ -112,7 +119,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_kernel = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (kernel);
 
-            OpenCVForUnity.Imgproc.morphologyEx (wrapped_src, wrapped_dst, op.Value, wrapped_kernel, new OpenCVForUnity.Point ((double)anchor_x.Value, (double)anchor_y.Value), iterations.Value);
+            OpenCVForUnity.Imgproc.morphologyEx (wrapped_src, wrapped_dst, op.Value, wrapped_kernel, new OpenCVForUnity.Point ((double)anchor_x.Value, (double)anchor_y.Value), iterations.Value, borderType.Value);
 
 
         }

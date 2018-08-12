@@ -8,9 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public bool trainEM (Mat samples)")]
+    [HutongGames.PlayMaker.Tooltip ("public bool trainEM (Mat samples, Mat logLikelihoods, Mat labels)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.EM), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "samples")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "logLikelihoods")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "labels")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "trueEvent")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "falseEvent")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "storeResult")]
@@ -28,6 +30,18 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject samples;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject logLikelihoods;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg3] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject labels;
 
         [HutongGames.PlayMaker.ActionSection ("[return] bool")]
         [HutongGames.PlayMaker.Tooltip ("Event to send if result is true.")]
@@ -48,6 +62,8 @@ namespace OpenCVForUnityPlayMakerActions
         {
             owner = null;
             samples = null;
+            logLikelihoods = null;
+            labels = null;
             trueEvent = null;
             falseEvent = null;
             storeResult = null;
@@ -86,7 +102,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_samples = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (samples);
 
-            storeResult.Value = wrapped_owner.trainEM (wrapped_samples);
+            if (!(logLikelihoods.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("logLikelihoods is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_logLikelihoods = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (logLikelihoods);
+
+            if (!(labels.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("labels is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_labels = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (labels);
+
+            storeResult.Value = wrapped_owner.trainEM (wrapped_samples, wrapped_logLikelihoods, wrapped_labels);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

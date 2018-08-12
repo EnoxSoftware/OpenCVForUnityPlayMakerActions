@@ -8,11 +8,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void arrowedLine (Mat img, Point pt1, Point pt2, Scalar color)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void arrowedLine (Mat img, Point pt1, Point pt2, Scalar color, int thickness, int line_type, int shift)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "img")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point), "pt1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point), "pt2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "color")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "thickness")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "line_type")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "shift")]
     public class Imgproc_arrowedLine_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -40,6 +43,21 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Scalar))]
         public HutongGames.PlayMaker.FsmObject color;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt thickness;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg6] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt line_type;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt shift;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -50,6 +68,9 @@ namespace OpenCVForUnityPlayMakerActions
             pt1 = null;
             pt2 = null;
             color = null;
+            thickness = 0;
+            line_type = 0;
+            shift = 0;
             everyFrame = false;
         }
 
@@ -99,7 +120,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Scalar wrapped_color = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (color);
 
-            OpenCVForUnity.Imgproc.arrowedLine (wrapped_img, wrapped_pt1, wrapped_pt2, wrapped_color);
+            OpenCVForUnity.Imgproc.arrowedLine (wrapped_img, wrapped_pt1, wrapped_pt2, wrapped_color, thickness.Value, line_type.Value, shift.Value);
 
 
         }

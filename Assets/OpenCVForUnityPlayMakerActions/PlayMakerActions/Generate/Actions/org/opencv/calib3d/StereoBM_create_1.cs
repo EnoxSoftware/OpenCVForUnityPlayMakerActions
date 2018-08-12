@@ -8,10 +8,16 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip ("public static StereoBM create ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static StereoBM create (int numDisparities)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "numDisparities")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.StereoBM), "storeResult")]
     public class StereoBM_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt numDisparities;
 
         [HutongGames.PlayMaker.ActionSection ("[return] StereoBM")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +30,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            numDisparities = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +54,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.StereoBM)) storeResult.Value = new OpenCVForUnityPlayMakerActions.StereoBM ();
-            ((OpenCVForUnityPlayMakerActions.StereoBM)storeResult.Value).wrappedObject = OpenCVForUnity.StereoBM.create ();
+            ((OpenCVForUnityPlayMakerActions.StereoBM)storeResult.Value).wrappedObject = OpenCVForUnity.StereoBM.create (numDisparities.Value);
 
 
         }

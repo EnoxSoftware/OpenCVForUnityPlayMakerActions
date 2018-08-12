@@ -8,10 +8,23 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_video")]
-    [HutongGames.PlayMaker.Tooltip ("public static BackgroundSubtractorKNN createBackgroundSubtractorKNN ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static BackgroundSubtractorKNN createBackgroundSubtractorKNN (int history, double dist2Threshold)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "history")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "dist2Threshold")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorKNN), "storeResult")]
     public class Video_createBackgroundSubtractorKNN_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt history;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject dist2Threshold;
 
         [HutongGames.PlayMaker.ActionSection ("[return] BackgroundSubtractorKNN")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +37,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            history = 0;
+            dist2Threshold = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -46,8 +61,15 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
+            if (!(dist2Threshold.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("dist2Threshold is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_dist2Threshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (dist2Threshold);
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BackgroundSubtractorKNN)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BackgroundSubtractorKNN ();
-            ((OpenCVForUnityPlayMakerActions.BackgroundSubtractorKNN)storeResult.Value).wrappedObject = OpenCVForUnity.Video.createBackgroundSubtractorKNN ();
+            ((OpenCVForUnityPlayMakerActions.BackgroundSubtractorKNN)storeResult.Value).wrappedObject = OpenCVForUnity.Video.createBackgroundSubtractorKNN (history.Value, wrapped_dist2Threshold);
 
 
         }

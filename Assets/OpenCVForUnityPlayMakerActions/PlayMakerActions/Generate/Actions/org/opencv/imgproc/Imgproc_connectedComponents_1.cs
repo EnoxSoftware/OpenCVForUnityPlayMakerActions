@@ -8,9 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static int connectedComponents (Mat image, Mat labels)")]
+    [HutongGames.PlayMaker.Tooltip ("public static int connectedComponents (Mat image, Mat labels, int connectivity)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "labels")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "connectivity")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "storeResult")]
     public class Imgproc_connectedComponents_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -27,6 +28,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject labels;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt connectivity;
+
         [HutongGames.PlayMaker.ActionSection ("[return] int")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
@@ -40,6 +46,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             image = null;
             labels = null;
+            connectivity = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -76,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_labels = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (labels);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.connectedComponents (wrapped_image, wrapped_labels);
+            storeResult.Value = OpenCVForUnity.Imgproc.connectedComponents (wrapped_image, wrapped_labels, connectivity.Value);
 
 
         }

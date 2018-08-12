@@ -8,9 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_aruco")]
-    [HutongGames.PlayMaker.Tooltip ("public static void drawDetectedDiamonds (Mat image, List<Mat> diamondCorners)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void drawDetectedDiamonds (Mat image, List<Mat> diamondCorners, Mat diamondIds)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "diamondCorners")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "diamondIds")]
     public class Aruco_drawDetectedDiamonds_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -26,6 +27,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ArrayEditor (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmArray diamondCorners;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject diamondIds;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -34,6 +41,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             image = null;
             diamondCorners = null;
+            diamondIds = null;
             everyFrame = false;
         }
 
@@ -65,7 +73,14 @@ namespace OpenCVForUnityPlayMakerActions
             List<OpenCVForUnity.Mat> wrapped_diamondCorners = new List<OpenCVForUnity.Mat> ();
             OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (diamondCorners, wrapped_diamondCorners);
 
-            OpenCVForUnity.Aruco.drawDetectedDiamonds (wrapped_image, wrapped_diamondCorners);
+            if (!(diamondIds.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("diamondIds is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_diamondIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (diamondIds);
+
+            OpenCVForUnity.Aruco.drawDetectedDiamonds (wrapped_image, wrapped_diamondCorners, wrapped_diamondIds);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_diamondCorners, diamondCorners);
 

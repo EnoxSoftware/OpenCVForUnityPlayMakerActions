@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void weightedMedianFilter (Mat joint, Mat src, Mat dst, int r)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void weightedMedianFilter (Mat joint, Mat src, Mat dst, int r, double sigma)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "joint")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "r")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "sigma")]
     public class Ximgproc_weightedMedianFilter_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -39,6 +40,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt r;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject sigma;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -49,6 +56,7 @@ namespace OpenCVForUnityPlayMakerActions
             src = null;
             dst = null;
             r = 0;
+            sigma = null;
             everyFrame = false;
         }
 
@@ -91,7 +99,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            OpenCVForUnity.Ximgproc.weightedMedianFilter (wrapped_joint, wrapped_src, wrapped_dst, r.Value);
+            if (!(sigma.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("sigma is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_sigma = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (sigma);
+
+            OpenCVForUnity.Ximgproc.weightedMedianFilter (wrapped_joint, wrapped_src, wrapped_dst, r.Value, wrapped_sigma);
 
 
         }

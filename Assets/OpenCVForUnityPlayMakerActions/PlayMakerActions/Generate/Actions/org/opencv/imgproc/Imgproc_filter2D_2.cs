@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void filter2D (Mat src, Mat dst, int ddepth, Mat kernel)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void filter2D (Mat src, Mat dst, int ddepth, Mat kernel, Point anchor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "ddepth")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "kernel")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point), "anchor")]
     public class Imgproc_filter2D_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -39,6 +40,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject kernel;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] Point")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Point))]
+        public HutongGames.PlayMaker.FsmObject anchor;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -49,6 +56,7 @@ namespace OpenCVForUnityPlayMakerActions
             dst = null;
             ddepth = 0;
             kernel = null;
+            anchor = null;
             everyFrame = false;
         }
 
@@ -91,7 +99,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_kernel = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (kernel);
 
-            OpenCVForUnity.Imgproc.filter2D (wrapped_src, wrapped_dst, ddepth.Value, wrapped_kernel);
+            if (!(anchor.Value is OpenCVForUnityPlayMakerActions.Point))
+            {
+                LogError ("anchor is not initialized. Add Action \"newPoint\".");
+                return;
+            }
+            OpenCVForUnity.Point wrapped_anchor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (anchor);
+
+            OpenCVForUnity.Imgproc.filter2D (wrapped_src, wrapped_dst, ddepth.Value, wrapped_kernel, wrapped_anchor);
 
 
         }

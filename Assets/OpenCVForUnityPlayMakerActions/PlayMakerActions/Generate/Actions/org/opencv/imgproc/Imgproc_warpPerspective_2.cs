@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void warpPerspective (Mat src, Mat dst, Mat M, Size dsize)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void warpPerspective (Mat src, Mat dst, Mat M, Size dsize, int flags)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "M")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "dsize")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "flags")]
     public class Imgproc_warpPerspective_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -40,6 +41,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Size))]
         public HutongGames.PlayMaker.FsmObject dsize;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt flags;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -50,6 +56,7 @@ namespace OpenCVForUnityPlayMakerActions
             dst = null;
             M = null;
             dsize = null;
+            flags = 0;
             everyFrame = false;
         }
 
@@ -99,7 +106,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Size wrapped_dsize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (dsize);
 
-            OpenCVForUnity.Imgproc.warpPerspective (wrapped_src, wrapped_dst, wrapped_M, wrapped_dsize);
+            OpenCVForUnity.Imgproc.warpPerspective (wrapped_src, wrapped_dst, wrapped_M, wrapped_dsize, flags.Value);
 
 
         }

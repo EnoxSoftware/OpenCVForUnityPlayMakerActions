@@ -8,13 +8,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_aruco")]
-    [HutongGames.PlayMaker.Tooltip ("public static int interpolateCornersCharuco (List<Mat> markerCorners, Mat markerIds, Mat image, CharucoBoard board, Mat charucoCorners, Mat charucoIds)")]
+    [HutongGames.PlayMaker.Tooltip ("public static int interpolateCornersCharuco (List<Mat> markerCorners, Mat markerIds, Mat image, CharucoBoard board, Mat charucoCorners, Mat charucoIds, Mat cameraMatrix, Mat distCoeffs)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "markerCorners")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "markerIds")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.CharucoBoard), "board")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "charucoCorners")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "charucoIds")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "distCoeffs")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "storeResult")]
     public class Aruco_interpolateCornersCharuco_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -55,6 +57,18 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject charucoIds;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg7] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject cameraMatrix;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg8] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject distCoeffs;
+
         [HutongGames.PlayMaker.ActionSection ("[return] int")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
@@ -72,6 +86,8 @@ namespace OpenCVForUnityPlayMakerActions
             board = null;
             charucoCorners = null;
             charucoIds = null;
+            cameraMatrix = null;
+            distCoeffs = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -132,7 +148,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_charucoIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (charucoIds);
 
-            storeResult.Value = OpenCVForUnity.Aruco.interpolateCornersCharuco (wrapped_markerCorners, wrapped_markerIds, wrapped_image, wrapped_board, wrapped_charucoCorners, wrapped_charucoIds);
+            if (!(cameraMatrix.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("cameraMatrix is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (cameraMatrix);
+
+            if (!(distCoeffs.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("distCoeffs is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_distCoeffs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (distCoeffs);
+
+            storeResult.Value = OpenCVForUnity.Aruco.interpolateCornersCharuco (wrapped_markerCorners, wrapped_markerIds, wrapped_image, wrapped_board, wrapped_charucoCorners, wrapped_charucoIds, wrapped_cameraMatrix, wrapped_distCoeffs);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_markerCorners, markerCorners);
 

@@ -8,9 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_bgsegm")]
-    [HutongGames.PlayMaker.Tooltip ("public static SyntheticSequenceGenerator createSyntheticSequenceGenerator (Mat background, Mat _object)")]
+    [HutongGames.PlayMaker.Tooltip ("public static SyntheticSequenceGenerator createSyntheticSequenceGenerator (Mat background, Mat _object, double amplitude, double wavelength, double wavespeed)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "background")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "_object")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "amplitude")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "wavelength")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "wavespeed")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator), "storeResult")]
     public class Bgsegm_createSyntheticSequenceGenerator_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -27,6 +30,24 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject _object;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject amplitude;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg4] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject wavelength;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject wavespeed;
+
         [HutongGames.PlayMaker.ActionSection ("[return] SyntheticSequenceGenerator")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator))]
@@ -40,6 +61,9 @@ namespace OpenCVForUnityPlayMakerActions
         {
             background = null;
             _object = null;
+            amplitude = null;
+            wavelength = null;
+            wavespeed = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -76,8 +100,29 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped__object = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_object);
 
+            if (!(amplitude.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("amplitude is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_amplitude = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (amplitude);
+
+            if (!(wavelength.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("wavelength is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_wavelength = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (wavelength);
+
+            if (!(wavespeed.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("wavespeed is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_wavespeed = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (wavespeed);
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator ();
-            ((OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator)storeResult.Value).wrappedObject = OpenCVForUnity.Bgsegm.createSyntheticSequenceGenerator (wrapped_background, wrapped__object);
+            ((OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator)storeResult.Value).wrappedObject = OpenCVForUnity.Bgsegm.createSyntheticSequenceGenerator (wrapped_background, wrapped__object, wrapped_amplitude, wrapped_wavelength, wrapped_wavespeed);
 
 
         }

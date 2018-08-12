@@ -8,10 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_structured_light")]
-    [HutongGames.PlayMaker.Tooltip ("public void computePhaseMap (List<Mat> patternImages, Mat wrappedPhaseMap)")]
+    [HutongGames.PlayMaker.Tooltip ("public void computePhaseMap (List<Mat> patternImages, Mat wrappedPhaseMap, Mat shadowMask)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SinusoidalPattern), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "patternImages")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "wrappedPhaseMap")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "shadowMask")]
     public class SinusoidalPattern_computePhaseMap_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +34,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject wrappedPhaseMap;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject shadowMask;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +49,7 @@ namespace OpenCVForUnityPlayMakerActions
             owner = null;
             patternImages = null;
             wrappedPhaseMap = null;
+            shadowMask = null;
             everyFrame = false;
         }
 
@@ -80,7 +88,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_wrappedPhaseMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (wrappedPhaseMap);
 
-            wrapped_owner.computePhaseMap (wrapped_patternImages, wrapped_wrappedPhaseMap);
+            if (!(shadowMask.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("shadowMask is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_shadowMask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (shadowMask);
+
+            wrapped_owner.computePhaseMap (wrapped_patternImages, wrapped_wrappedPhaseMap, wrapped_shadowMask);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_patternImages, patternImages);
 

@@ -8,10 +8,24 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public static ParamGrid create ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static ParamGrid create (double minVal, double maxVal)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "minVal")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "maxVal")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ParamGrid), "storeResult")]
     public class ParamGrid_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject minVal;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject maxVal;
 
         [HutongGames.PlayMaker.ActionSection ("[return] ParamGrid")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +38,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            minVal = null;
+            maxVal = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -46,8 +62,22 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
+            if (!(minVal.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("minVal is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_minVal = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (minVal);
+
+            if (!(maxVal.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("maxVal is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_maxVal = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (maxVal);
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.ParamGrid)) storeResult.Value = new OpenCVForUnityPlayMakerActions.ParamGrid ();
-            ((OpenCVForUnityPlayMakerActions.ParamGrid)storeResult.Value).wrappedObject = OpenCVForUnity.ParamGrid.create ();
+            ((OpenCVForUnityPlayMakerActions.ParamGrid)storeResult.Value).wrappedObject = OpenCVForUnity.ParamGrid.create (wrapped_minVal, wrapped_maxVal);
 
 
         }

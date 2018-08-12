@@ -8,12 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void HoughLinesP (Mat image, Mat lines, double rho, double theta, int threshold)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void HoughLinesP (Mat image, Mat lines, double rho, double theta, int threshold, double minLineLength)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "lines")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "rho")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "theta")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "threshold")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "minLineLength")]
     public class Imgproc_HoughLinesP_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -46,6 +47,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt threshold;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject minLineLength;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -57,6 +64,7 @@ namespace OpenCVForUnityPlayMakerActions
             rho = null;
             theta = null;
             threshold = 0;
+            minLineLength = null;
             everyFrame = false;
         }
 
@@ -106,7 +114,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_theta = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (theta);
 
-            OpenCVForUnity.Imgproc.HoughLinesP (wrapped_image, wrapped_lines, wrapped_rho, wrapped_theta, threshold.Value);
+            if (!(minLineLength.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("minLineLength is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_minLineLength = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (minLineLength);
+
+            OpenCVForUnity.Imgproc.HoughLinesP (wrapped_image, wrapped_lines, wrapped_rho, wrapped_theta, threshold.Value, wrapped_minLineLength);
 
 
         }

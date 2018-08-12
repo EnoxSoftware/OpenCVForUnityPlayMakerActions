@@ -8,12 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void dtFilter (Mat guide, Mat src, Mat dst, double sigmaSpatial, double sigmaColor)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void dtFilter (Mat guide, Mat src, Mat dst, double sigmaSpatial, double sigmaColor, int mode)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "guide")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "sigmaSpatial")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "sigmaColor")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "mode")]
     public class Ximgproc_dtFilter_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -47,6 +48,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject sigmaColor;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt mode;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -58,6 +64,7 @@ namespace OpenCVForUnityPlayMakerActions
             dst = null;
             sigmaSpatial = null;
             sigmaColor = null;
+            mode = 0;
             everyFrame = false;
         }
 
@@ -114,7 +121,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_sigmaColor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (sigmaColor);
 
-            OpenCVForUnity.Ximgproc.dtFilter (wrapped_guide, wrapped_src, wrapped_dst, wrapped_sigmaSpatial, wrapped_sigmaColor);
+            OpenCVForUnity.Ximgproc.dtFilter (wrapped_guide, wrapped_src, wrapped_dst, wrapped_sigmaSpatial, wrapped_sigmaColor, mode.Value);
 
 
         }

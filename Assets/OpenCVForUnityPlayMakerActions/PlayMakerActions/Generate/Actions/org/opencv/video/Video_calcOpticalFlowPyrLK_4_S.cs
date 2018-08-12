@@ -1,0 +1,153 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+using OpenCVForUnity;
+
+
+namespace OpenCVForUnityPlayMakerActions
+{
+
+    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_video")]
+    [HutongGames.PlayMaker.Tooltip ("public static void calcOpticalFlowPyrLK (Mat prevImg, Mat nextImg, MatOfPoint2f prevPts, MatOfPoint2f nextPts, MatOfByte status, MatOfFloat err, Size winSize)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "prevImg")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "nextImg")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "prevPts")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "nextPts")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfByte), "status")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat), "err")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "winSize_width")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "winSize_height")]
+    public class Video_calcOpticalFlowPyrLK_4_S : HutongGames.PlayMaker.FsmStateAction
+    {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject prevImg;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject nextImg;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg3] MatOfPoint2f")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f))]
+        public HutongGames.PlayMaker.FsmObject prevPts;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg4] MatOfPoint2f")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f))]
+        public HutongGames.PlayMaker.FsmObject nextPts;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] MatOfByte")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfByte))]
+        public HutongGames.PlayMaker.FsmObject status;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg6] MatOfFloat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat))]
+        public HutongGames.PlayMaker.FsmObject err;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] Size")]
+
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat winSize_width;
+
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat winSize_height;
+
+        [HutongGames.PlayMaker.ActionSection ("")]
+        [Tooltip ("Repeat every frame.")]
+        public bool everyFrame;
+
+        public override void Reset ()
+        {
+            prevImg = null;
+            nextImg = null;
+            prevPts = null;
+            nextPts = null;
+            status = null;
+            err = null;
+            winSize_width = 0.0f;
+            winSize_height = 0.0f;
+            everyFrame = false;
+        }
+
+        public override void OnEnter ()
+        {
+            DoProcess ();
+
+            if (!everyFrame)
+            {
+                Finish ();
+            }
+        }
+
+        public override void OnUpdate ()
+        {
+            DoProcess ();
+        }
+
+        void DoProcess ()
+        {
+
+            if (!(prevImg.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("prevImg is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_prevImg = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (prevImg);
+
+            if (!(nextImg.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("nextImg is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_nextImg = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (nextImg);
+
+            if (!(prevPts.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
+            {
+                LogError ("prevPts is not initialized. Add Action \"newMatOfPoint2f\".");
+                return;
+            }
+            OpenCVForUnity.MatOfPoint2f wrapped_prevPts = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (prevPts);
+
+            if (!(nextPts.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
+            {
+                LogError ("nextPts is not initialized. Add Action \"newMatOfPoint2f\".");
+                return;
+            }
+            OpenCVForUnity.MatOfPoint2f wrapped_nextPts = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (nextPts);
+
+            if (!(status.Value is OpenCVForUnityPlayMakerActions.MatOfByte))
+            {
+                LogError ("status is not initialized. Add Action \"newMatOfByte\".");
+                return;
+            }
+            OpenCVForUnity.MatOfByte wrapped_status = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfByte, OpenCVForUnity.MatOfByte> (status);
+
+            if (!(err.Value is OpenCVForUnityPlayMakerActions.MatOfFloat))
+            {
+                LogError ("err is not initialized. Add Action \"newMatOfFloat\".");
+                return;
+            }
+            OpenCVForUnity.MatOfFloat wrapped_err = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.MatOfFloat> (err);
+
+            OpenCVForUnity.Video.calcOpticalFlowPyrLK (wrapped_prevImg, wrapped_nextImg, wrapped_prevPts, wrapped_nextPts, wrapped_status, wrapped_err, new OpenCVForUnity.Size ((double)winSize_width.Value, (double)winSize_height.Value));
+
+
+        }
+
+    }
+
+}

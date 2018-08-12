@@ -8,10 +8,16 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_face")]
-    [HutongGames.PlayMaker.Tooltip ("public static BIF create ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static BIF create (int num_bands)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "num_bands")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BIF), "storeResult")]
     public class BIF_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt num_bands;
 
         [HutongGames.PlayMaker.ActionSection ("[return] BIF")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +30,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            num_bands = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +54,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BIF)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BIF ();
-            ((OpenCVForUnityPlayMakerActions.BIF)storeResult.Value).wrappedObject = OpenCVForUnity.BIF.create ();
+            ((OpenCVForUnityPlayMakerActions.BIF)storeResult.Value).wrappedObject = OpenCVForUnity.BIF.create (num_bands.Value);
 
 
         }

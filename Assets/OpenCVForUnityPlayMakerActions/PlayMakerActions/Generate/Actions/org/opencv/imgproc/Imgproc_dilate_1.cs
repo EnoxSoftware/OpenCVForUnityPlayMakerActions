@@ -8,12 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void dilate (Mat src, Mat dst, Mat kernel, Point anchor, int iterations)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void dilate (Mat src, Mat dst, Mat kernel, Point anchor, int iterations, int borderType)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "kernel")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point), "anchor")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "iterations")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "borderType")]
     public class Imgproc_dilate_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -46,6 +47,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt iterations;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt borderType;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -57,6 +63,7 @@ namespace OpenCVForUnityPlayMakerActions
             kernel = null;
             anchor = null;
             iterations = 0;
+            borderType = 0;
             everyFrame = false;
         }
 
@@ -106,7 +113,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Point wrapped_anchor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (anchor);
 
-            OpenCVForUnity.Imgproc.dilate (wrapped_src, wrapped_dst, wrapped_kernel, wrapped_anchor, iterations.Value);
+            OpenCVForUnity.Imgproc.dilate (wrapped_src, wrapped_dst, wrapped_kernel, wrapped_anchor, iterations.Value, borderType.Value);
 
 
         }

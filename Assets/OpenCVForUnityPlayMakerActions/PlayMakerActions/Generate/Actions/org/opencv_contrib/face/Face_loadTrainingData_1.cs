@@ -8,10 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_face")]
-    [HutongGames.PlayMaker.Tooltip ("public static bool loadTrainingData (string filename, List<string> images, Mat facePoints)")]
+    [HutongGames.PlayMaker.Tooltip ("public static bool loadTrainingData (string filename, List<string> images, Mat facePoints, char delim)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "images")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "facePoints")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Char), "delim")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "trueEvent")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "falseEvent")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "storeResult")]
@@ -34,6 +35,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject facePoints;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] char(Char)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Char))]
+        public HutongGames.PlayMaker.FsmObject delim;
+
         [HutongGames.PlayMaker.ActionSection ("[return] bool")]
         [HutongGames.PlayMaker.Tooltip ("Event to send if result is true.")]
         public HutongGames.PlayMaker.FsmEvent trueEvent;
@@ -54,6 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
             filename = null;
             images = null;
             facePoints = null;
+            delim = null;
             trueEvent = null;
             falseEvent = null;
             storeResult = null;
@@ -88,7 +96,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_facePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (facePoints);
 
-            storeResult.Value = OpenCVForUnity.Face.loadTrainingData (filename.Value, wrapped_images, wrapped_facePoints);
+            if (!(delim.Value is OpenCVForUnityPlayMakerActions.Char))
+            {
+                LogError ("delim is not initialized. Add Action \"newChar\".");
+                return;
+            }
+            System.Char wrapped_delim = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Char, System.Char> (delim);
+
+            storeResult.Value = OpenCVForUnity.Face.loadTrainingData (filename.Value, wrapped_images, wrapped_facePoints, wrapped_delim);
 
             wrapped_images.CopyTo (string_images);
 

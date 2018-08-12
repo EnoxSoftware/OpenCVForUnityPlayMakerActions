@@ -8,10 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_aruco")]
-    [HutongGames.PlayMaker.Tooltip ("public static Dictionary create_from (int nMarkers, int markerSize, Dictionary baseDictionary)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Dictionary create_from (int nMarkers, int markerSize, Dictionary baseDictionary, int randomSeed)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nMarkers")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "markerSize")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Dictionary), "baseDictionary")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "randomSeed")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Dictionary), "storeResult")]
     public class Dictionary_create_from : HutongGames.PlayMaker.FsmStateAction
     {
@@ -32,6 +33,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Dictionary))]
         public HutongGames.PlayMaker.FsmObject baseDictionary;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt randomSeed;
+
         [HutongGames.PlayMaker.ActionSection ("[return] Dictionary")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Dictionary))]
@@ -46,6 +52,7 @@ namespace OpenCVForUnityPlayMakerActions
             nMarkers = 0;
             markerSize = 0;
             baseDictionary = null;
+            randomSeed = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -76,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.Dictionary wrapped_baseDictionary = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Dictionary, OpenCVForUnity.Dictionary> (baseDictionary);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Dictionary)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Dictionary ();
-            ((OpenCVForUnityPlayMakerActions.Dictionary)storeResult.Value).wrappedObject = OpenCVForUnity.Dictionary.create_from (nMarkers.Value, markerSize.Value, wrapped_baseDictionary);
+            ((OpenCVForUnityPlayMakerActions.Dictionary)storeResult.Value).wrappedObject = OpenCVForUnity.Dictionary.create_from (nMarkers.Value, markerSize.Value, wrapped_baseDictionary, randomSeed.Value);
 
 
         }

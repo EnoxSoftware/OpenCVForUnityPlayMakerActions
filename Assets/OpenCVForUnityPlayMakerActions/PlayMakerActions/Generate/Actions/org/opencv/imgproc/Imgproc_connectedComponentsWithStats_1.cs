@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static int connectedComponentsWithStats (Mat image, Mat labels, Mat stats, Mat centroids)")]
+    [HutongGames.PlayMaker.Tooltip ("public static int connectedComponentsWithStats (Mat image, Mat labels, Mat stats, Mat centroids, int connectivity)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "labels")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "stats")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "centroids")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "connectivity")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "storeResult")]
     public class Imgproc_connectedComponentsWithStats_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -41,6 +42,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject centroids;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt connectivity;
+
         [HutongGames.PlayMaker.ActionSection ("[return] int")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
@@ -56,6 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
             labels = null;
             stats = null;
             centroids = null;
+            connectivity = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -106,7 +113,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_centroids = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (centroids);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.connectedComponentsWithStats (wrapped_image, wrapped_labels, wrapped_stats, wrapped_centroids);
+            storeResult.Value = OpenCVForUnity.Imgproc.connectedComponentsWithStats (wrapped_image, wrapped_labels, wrapped_stats, wrapped_centroids, connectivity.Value);
 
 
         }

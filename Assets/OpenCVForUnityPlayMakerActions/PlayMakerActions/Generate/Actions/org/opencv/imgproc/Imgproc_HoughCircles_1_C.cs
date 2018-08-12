@@ -8,12 +8,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void HoughCircles (Mat image, Mat circles, int method, double dp, double minDist)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void HoughCircles (Mat image, Mat circles, int method, double dp, double minDist, double param1, double param2, int minRadius)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "circles")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "method")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "dp")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minDist")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "param1")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "param2")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "minRadius")]
     public class Imgproc_HoughCircles_1_C : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -44,6 +47,21 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat minDist;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] double(float)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat param1;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] double(float)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat param2;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg8] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt minRadius;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -55,6 +73,9 @@ namespace OpenCVForUnityPlayMakerActions
             method = 0;
             dp = 0.0f;
             minDist = 0.0f;
+            param1 = 0.0f;
+            param2 = 0.0f;
+            minRadius = 0;
             everyFrame = false;
         }
 
@@ -90,7 +111,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_circles = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (circles);
 
-            OpenCVForUnity.Imgproc.HoughCircles (wrapped_image, wrapped_circles, method.Value, (float)dp.Value, (float)minDist.Value);
+            OpenCVForUnity.Imgproc.HoughCircles (wrapped_image, wrapped_circles, method.Value, (float)dp.Value, (float)minDist.Value, (float)param1.Value, (float)param2.Value, minRadius.Value);
 
 
         }

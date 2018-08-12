@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void pyrMeanShiftFiltering (Mat src, Mat dst, double sp, double sr)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void pyrMeanShiftFiltering (Mat src, Mat dst, double sp, double sr, int maxLevel)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "sp")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "sr")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "maxLevel")]
     public class Imgproc_pyrMeanShiftFiltering_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -40,6 +41,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject sr;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt maxLevel;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -50,6 +56,7 @@ namespace OpenCVForUnityPlayMakerActions
             dst = null;
             sp = null;
             sr = null;
+            maxLevel = 0;
             everyFrame = false;
         }
 
@@ -99,7 +106,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_sr = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (sr);
 
-            OpenCVForUnity.Imgproc.pyrMeanShiftFiltering (wrapped_src, wrapped_dst, wrapped_sp, wrapped_sr);
+            OpenCVForUnity.Imgproc.pyrMeanShiftFiltering (wrapped_src, wrapped_dst, wrapped_sp, wrapped_sr, maxLevel.Value);
 
 
         }

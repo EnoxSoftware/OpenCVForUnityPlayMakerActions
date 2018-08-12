@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void putText (Mat img, string text, Point org, int fontFace, double fontScale, Scalar color, int thickness)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void putText (Mat img, string text, Point org, int fontFace, double fontScale, Scalar color, int thickness, int lineType)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "img")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "text")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point), "org")]
@@ -16,6 +16,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "fontScale")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "color")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "thickness")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "lineType")]
     public class Imgproc_putText_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -58,6 +59,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt thickness;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg8] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt lineType;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -71,6 +77,7 @@ namespace OpenCVForUnityPlayMakerActions
             fontScale = null;
             color = null;
             thickness = 0;
+            lineType = 0;
             everyFrame = false;
         }
 
@@ -120,7 +127,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Scalar wrapped_color = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (color);
 
-            OpenCVForUnity.Imgproc.putText (wrapped_img, text.Value, wrapped_org, fontFace.Value, wrapped_fontScale, wrapped_color, thickness.Value);
+            OpenCVForUnity.Imgproc.putText (wrapped_img, text.Value, wrapped_org, fontFace.Value, wrapped_fontScale, wrapped_color, thickness.Value, lineType.Value);
 
 
         }

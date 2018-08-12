@@ -8,10 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void Laplacian (Mat src, Mat dst, int ddepth)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void Laplacian (Mat src, Mat dst, int ddepth, int ksize, double scale)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "ddepth")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "ksize")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "scale")]
     public class Imgproc_Laplacian_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -32,6 +34,17 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt ddepth;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt ksize;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject scale;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -41,6 +54,8 @@ namespace OpenCVForUnityPlayMakerActions
             src = null;
             dst = null;
             ddepth = 0;
+            ksize = 0;
+            scale = null;
             everyFrame = false;
         }
 
@@ -76,7 +91,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            OpenCVForUnity.Imgproc.Laplacian (wrapped_src, wrapped_dst, ddepth.Value);
+            if (!(scale.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("scale is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (scale);
+
+            OpenCVForUnity.Imgproc.Laplacian (wrapped_src, wrapped_dst, ddepth.Value, ksize.Value, wrapped_scale);
 
 
         }

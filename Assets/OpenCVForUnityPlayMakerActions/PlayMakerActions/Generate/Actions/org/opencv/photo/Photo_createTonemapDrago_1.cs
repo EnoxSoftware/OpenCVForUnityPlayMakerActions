@@ -8,10 +8,22 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_photo")]
-    [HutongGames.PlayMaker.Tooltip ("public static TonemapDrago createTonemapDrago ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static TonemapDrago createTonemapDrago (float gamma, float saturation)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "gamma")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "saturation")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TonemapDrago), "storeResult")]
     public class Photo_createTonemapDrago_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat gamma;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat saturation;
 
         [HutongGames.PlayMaker.ActionSection ("[return] TonemapDrago")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +36,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            gamma = 0.0f;
+            saturation = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TonemapDrago)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TonemapDrago ();
-            ((OpenCVForUnityPlayMakerActions.TonemapDrago)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createTonemapDrago ();
+            ((OpenCVForUnityPlayMakerActions.TonemapDrago)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createTonemapDrago (gamma.Value, saturation.Value);
 
 
         }

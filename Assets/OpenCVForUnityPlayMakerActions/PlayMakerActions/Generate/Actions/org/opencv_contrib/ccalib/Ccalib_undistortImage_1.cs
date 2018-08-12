@@ -8,13 +8,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ccalib")]
-    [HutongGames.PlayMaker.Tooltip ("public static void undistortImage (Mat distorted, Mat undistorted, Mat K, Mat D, Mat xi, int flags)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void undistortImage (Mat distorted, Mat undistorted, Mat K, Mat D, Mat xi, int flags, Mat Knew, Size new_size)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "distorted")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "undistorted")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "K")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "D")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "xi")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "flags")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "Knew")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "new_size")]
     public class Ccalib_undistortImage_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -53,6 +55,18 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt flags;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg7] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject Knew;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg8] Size")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Size))]
+        public HutongGames.PlayMaker.FsmObject new_size;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -65,6 +79,8 @@ namespace OpenCVForUnityPlayMakerActions
             D = null;
             xi = null;
             flags = 0;
+            Knew = null;
+            new_size = null;
             everyFrame = false;
         }
 
@@ -121,7 +137,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_xi = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (xi);
 
-            OpenCVForUnity.Ccalib.undistortImage (wrapped_distorted, wrapped_undistorted, wrapped_K, wrapped_D, wrapped_xi, flags.Value);
+            if (!(Knew.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("Knew is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_Knew = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (Knew);
+
+            if (!(new_size.Value is OpenCVForUnityPlayMakerActions.Size))
+            {
+                LogError ("new_size is not initialized. Add Action \"newSize\".");
+                return;
+            }
+            OpenCVForUnity.Size wrapped_new_size = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (new_size);
+
+            OpenCVForUnity.Ccalib.undistortImage (wrapped_distorted, wrapped_undistorted, wrapped_K, wrapped_D, wrapped_xi, flags.Value, wrapped_Knew, wrapped_new_size);
 
 
         }

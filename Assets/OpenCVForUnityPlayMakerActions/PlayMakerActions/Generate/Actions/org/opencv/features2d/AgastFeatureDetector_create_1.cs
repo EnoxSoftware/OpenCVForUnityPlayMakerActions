@@ -8,10 +8,22 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static AgastFeatureDetector create ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static AgastFeatureDetector create (int threshold, bool nonmaxSuppression)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "threshold")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "nonmaxSuppression")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.AgastFeatureDetector), "storeResult")]
     public class AgastFeatureDetector_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt threshold;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool nonmaxSuppression;
 
         [HutongGames.PlayMaker.ActionSection ("[return] AgastFeatureDetector")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +36,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            threshold = 0;
+            nonmaxSuppression = false;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.AgastFeatureDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.AgastFeatureDetector ();
-            ((OpenCVForUnityPlayMakerActions.AgastFeatureDetector)storeResult.Value).wrappedObject = OpenCVForUnity.AgastFeatureDetector.create ();
+            ((OpenCVForUnityPlayMakerActions.AgastFeatureDetector)storeResult.Value).wrappedObject = OpenCVForUnity.AgastFeatureDetector.create (threshold.Value, nonmaxSuppression.Value);
 
 
         }

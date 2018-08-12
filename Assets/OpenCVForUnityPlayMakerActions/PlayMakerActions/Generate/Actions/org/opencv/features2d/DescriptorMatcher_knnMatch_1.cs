@@ -8,12 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip ("public void knnMatch (Mat queryDescriptors, Mat trainDescriptors, List<MatOfDMatch> matches, int k)")]
+    [HutongGames.PlayMaker.Tooltip ("public void knnMatch (Mat queryDescriptors, Mat trainDescriptors, List<MatOfDMatch> matches, int k, Mat mask)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DescriptorMatcher), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "queryDescriptors")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "trainDescriptors")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "matches")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "k")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "mask")]
     public class DescriptorMatcher_knnMatch_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -46,6 +47,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt k;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject mask;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -57,6 +64,7 @@ namespace OpenCVForUnityPlayMakerActions
             trainDescriptors = null;
             matches = null;
             k = 0;
+            mask = null;
             everyFrame = false;
         }
 
@@ -102,7 +110,14 @@ namespace OpenCVForUnityPlayMakerActions
             List<OpenCVForUnity.MatOfDMatch> wrapped_matches = new List<OpenCVForUnity.MatOfDMatch> ();
             OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfDMatch, OpenCVForUnity.MatOfDMatch> (matches, wrapped_matches);
 
-            wrapped_owner.knnMatch (wrapped_queryDescriptors, wrapped_trainDescriptors, wrapped_matches, k.Value);
+            if (!(mask.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("mask is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mask);
+
+            wrapped_owner.knnMatch (wrapped_queryDescriptors, wrapped_trainDescriptors, wrapped_matches, k.Value, wrapped_mask);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.MatOfDMatch, OpenCVForUnityPlayMakerActions.MatOfDMatch> (wrapped_matches, matches);
 

@@ -8,10 +8,16 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static LUCID create ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static LUCID create (int lucid_kernel)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "lucid_kernel")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.LUCID), "storeResult")]
     public class LUCID_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt lucid_kernel;
 
         [HutongGames.PlayMaker.ActionSection ("[return] LUCID")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +30,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            lucid_kernel = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +54,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.LUCID)) storeResult.Value = new OpenCVForUnityPlayMakerActions.LUCID ();
-            ((OpenCVForUnityPlayMakerActions.LUCID)storeResult.Value).wrappedObject = OpenCVForUnity.LUCID.create ();
+            ((OpenCVForUnityPlayMakerActions.LUCID)storeResult.Value).wrappedObject = OpenCVForUnity.LUCID.create (lucid_kernel.Value);
 
 
         }

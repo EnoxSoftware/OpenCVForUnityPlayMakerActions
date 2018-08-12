@@ -8,10 +8,16 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static BFMatcher create ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static new BFMatcher create (int normType)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "normType")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BFMatcher), "storeResult")]
     public class BFMatcher_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt normType;
 
         [HutongGames.PlayMaker.ActionSection ("[return] BFMatcher")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +30,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            normType = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +54,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BFMatcher)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BFMatcher ();
-            ((OpenCVForUnityPlayMakerActions.BFMatcher)storeResult.Value).wrappedObject = OpenCVForUnity.BFMatcher.create ();
+            ((OpenCVForUnityPlayMakerActions.BFMatcher)storeResult.Value).wrappedObject = OpenCVForUnity.BFMatcher.create (normType.Value);
 
 
         }

@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_aruco")]
-    [HutongGames.PlayMaker.Tooltip ("public static void drawPlanarBoard (Board board, Size outSize, Mat img)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void drawPlanarBoard (Board board, Size outSize, Mat img, int marginSize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Board), "board")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "outSize_width")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "outSize_height")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "img")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "marginSize")]
     public class Aruco_drawPlanarBoard_1_S : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -38,6 +39,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject img;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt marginSize;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -48,6 +54,7 @@ namespace OpenCVForUnityPlayMakerActions
             outSize_width = 0.0f;
             outSize_height = 0.0f;
             img = null;
+            marginSize = 0;
             everyFrame = false;
         }
 
@@ -83,7 +90,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
 
-            OpenCVForUnity.Aruco.drawPlanarBoard (wrapped_board, new OpenCVForUnity.Size ((double)outSize_width.Value, (double)outSize_height.Value), wrapped_img);
+            OpenCVForUnity.Aruco.drawPlanarBoard (wrapped_board, new OpenCVForUnity.Size ((double)outSize_width.Value, (double)outSize_height.Value), wrapped_img, marginSize.Value);
 
 
         }

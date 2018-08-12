@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ccalib")]
-    [HutongGames.PlayMaker.Tooltip ("public static void stereoReconstruct (Mat image1, Mat image2, Mat K1, Mat D1, Mat xi1, Mat K2, Mat D2, Mat xi2, Mat R, Mat T, int flag, int numDisparities, int SADWindowSize, Mat disparity, Mat image1Rec, Mat image2Rec)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void stereoReconstruct (Mat image1, Mat image2, Mat K1, Mat D1, Mat xi1, Mat K2, Mat D2, Mat xi2, Mat R, Mat T, int flag, int numDisparities, int SADWindowSize, Mat disparity, Mat image1Rec, Mat image2Rec, Size newSize, Mat Knew, Mat pointCloud)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "K1")]
@@ -25,6 +25,9 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "disparity")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image1Rec")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image2Rec")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "newSize")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "Knew")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "pointCloud")]
     public class Ccalib_stereoReconstruct_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -121,6 +124,24 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject image2Rec;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg17] Size")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Size))]
+        public HutongGames.PlayMaker.FsmObject newSize;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg18] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject Knew;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg19] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject pointCloud;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -143,6 +164,9 @@ namespace OpenCVForUnityPlayMakerActions
             disparity = null;
             image1Rec = null;
             image2Rec = null;
+            newSize = null;
+            Knew = null;
+            pointCloud = null;
             everyFrame = false;
         }
 
@@ -255,7 +279,28 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_image2Rec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image2Rec);
 
-            OpenCVForUnity.Ccalib.stereoReconstruct (wrapped_image1, wrapped_image2, wrapped_K1, wrapped_D1, wrapped_xi1, wrapped_K2, wrapped_D2, wrapped_xi2, wrapped_R, wrapped_T, flag.Value, numDisparities.Value, SADWindowSize.Value, wrapped_disparity, wrapped_image1Rec, wrapped_image2Rec);
+            if (!(newSize.Value is OpenCVForUnityPlayMakerActions.Size))
+            {
+                LogError ("newSize is not initialized. Add Action \"newSize\".");
+                return;
+            }
+            OpenCVForUnity.Size wrapped_newSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (newSize);
+
+            if (!(Knew.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("Knew is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_Knew = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (Knew);
+
+            if (!(pointCloud.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("pointCloud is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_pointCloud = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (pointCloud);
+
+            OpenCVForUnity.Ccalib.stereoReconstruct (wrapped_image1, wrapped_image2, wrapped_K1, wrapped_D1, wrapped_xi1, wrapped_K2, wrapped_D2, wrapped_xi2, wrapped_R, wrapped_T, flag.Value, numDisparities.Value, SADWindowSize.Value, wrapped_disparity, wrapped_image1Rec, wrapped_image2Rec, wrapped_newSize, wrapped_Knew, wrapped_pointCloud);
 
 
         }

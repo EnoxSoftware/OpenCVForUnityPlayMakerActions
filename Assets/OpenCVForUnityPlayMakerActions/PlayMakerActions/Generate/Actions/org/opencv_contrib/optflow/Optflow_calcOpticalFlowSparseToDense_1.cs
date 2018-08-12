@@ -8,10 +8,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_optflow")]
-    [HutongGames.PlayMaker.Tooltip ("public static void calcOpticalFlowSparseToDense (Mat from, Mat to, Mat flow)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void calcOpticalFlowSparseToDense (Mat from, Mat to, Mat flow, int grid_step, int k, float sigma, bool use_post_proc, float fgs_lambda)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "from")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "to")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "flow")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "grid_step")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "k")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "sigma")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "use_post_proc")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "fgs_lambda")]
     public class Optflow_calcOpticalFlowSparseToDense_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +38,31 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject flow;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt grid_step;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt k;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg6] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat sigma;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool use_post_proc;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg8] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat fgs_lambda;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +72,11 @@ namespace OpenCVForUnityPlayMakerActions
             from = null;
             to = null;
             flow = null;
+            grid_step = 0;
+            k = 0;
+            sigma = 0.0f;
+            use_post_proc = false;
+            fgs_lambda = 0.0f;
             everyFrame = false;
         }
 
@@ -84,7 +119,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (flow);
 
-            OpenCVForUnity.Optflow.calcOpticalFlowSparseToDense (wrapped_from, wrapped_to, wrapped_flow);
+            OpenCVForUnity.Optflow.calcOpticalFlowSparseToDense (wrapped_from, wrapped_to, wrapped_flow, grid_step.Value, k.Value, sigma.Value, use_post_proc.Value, fgs_lambda.Value);
 
 
         }

@@ -8,12 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void getDerivKernels (Mat kx, Mat ky, int dx, int dy, int ksize)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void getDerivKernels (Mat kx, Mat ky, int dx, int dy, int ksize, bool normalize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "kx")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "ky")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "dx")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "dy")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "ksize")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "normalize")]
     public class Imgproc_getDerivKernels_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -44,6 +45,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt ksize;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool normalize;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -55,6 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
             dx = 0;
             dy = 0;
             ksize = 0;
+            normalize = false;
             everyFrame = false;
         }
 
@@ -90,7 +97,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_ky = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (ky);
 
-            OpenCVForUnity.Imgproc.getDerivKernels (wrapped_kx, wrapped_ky, dx.Value, dy.Value, ksize.Value);
+            OpenCVForUnity.Imgproc.getDerivKernels (wrapped_kx, wrapped_ky, dx.Value, dy.Value, ksize.Value, normalize.Value);
 
 
         }

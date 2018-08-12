@@ -8,9 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void fourierDescriptor (Mat src, Mat dst)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void fourierDescriptor (Mat src, Mat dst, int nbElt)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nbElt")]
     public class Ximgproc_fourierDescriptor_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -26,6 +27,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt nbElt;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -34,6 +40,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             src = null;
             dst = null;
+            nbElt = 0;
             everyFrame = false;
         }
 
@@ -69,7 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            OpenCVForUnity.Ximgproc.fourierDescriptor (wrapped_src, wrapped_dst);
+            OpenCVForUnity.Ximgproc.fourierDescriptor (wrapped_src, wrapped_dst, nbElt.Value);
 
 
         }

@@ -8,13 +8,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static Mat getGaborKernel (Size ksize, double sigma, double theta, double lambd, double gamma)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Mat getGaborKernel (Size ksize, double sigma, double theta, double lambd, double gamma, double psi)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "ksize_width")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "ksize_height")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "sigma")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "theta")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "lambd")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "gamma")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "psi")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Imgproc_getGaborKernel_1_S : HutongGames.PlayMaker.FsmStateAction
     {
@@ -53,6 +54,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject gamma;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject psi;
+
         [HutongGames.PlayMaker.ActionSection ("[return] Mat")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
@@ -70,6 +77,7 @@ namespace OpenCVForUnityPlayMakerActions
             theta = null;
             lambd = null;
             gamma = null;
+            psi = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -120,8 +128,15 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_gamma = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (gamma);
 
+            if (!(psi.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("psi is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_psi = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (psi);
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.getGaborKernel (new OpenCVForUnity.Size ((double)ksize_width.Value, (double)ksize_height.Value), wrapped_sigma, wrapped_theta, wrapped_lambd, wrapped_gamma);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.getGaborKernel (new OpenCVForUnity.Size ((double)ksize_width.Value, (double)ksize_height.Value), wrapped_sigma, wrapped_theta, wrapped_lambd, wrapped_gamma, wrapped_psi);
 
 
         }

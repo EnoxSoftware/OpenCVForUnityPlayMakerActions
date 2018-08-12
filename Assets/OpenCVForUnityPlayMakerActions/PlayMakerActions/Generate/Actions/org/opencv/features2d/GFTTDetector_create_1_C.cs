@@ -8,12 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static GFTTDetector create (int maxCorners, double qualityLevel, double minDistance, int blockSize, int gradiantSize)")]
+    [HutongGames.PlayMaker.Tooltip ("public static GFTTDetector create (int maxCorners, double qualityLevel, double minDistance, int blockSize, int gradiantSize, bool useHarrisDetector)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "maxCorners")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "qualityLevel")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minDistance")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "blockSize")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "gradiantSize")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "useHarrisDetector")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.GFTTDetector), "storeResult")]
     public class GFTTDetector_create_1_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -43,6 +44,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt gradiantSize;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool useHarrisDetector;
+
         [HutongGames.PlayMaker.ActionSection ("[return] GFTTDetector")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.GFTTDetector))]
@@ -59,6 +65,7 @@ namespace OpenCVForUnityPlayMakerActions
             minDistance = 0.0f;
             blockSize = 0;
             gradiantSize = 0;
+            useHarrisDetector = false;
             storeResult = null;
             everyFrame = false;
         }
@@ -82,7 +89,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.GFTTDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.GFTTDetector ();
-            ((OpenCVForUnityPlayMakerActions.GFTTDetector)storeResult.Value).wrappedObject = OpenCVForUnity.GFTTDetector.create (maxCorners.Value, (float)qualityLevel.Value, (float)minDistance.Value, blockSize.Value, gradiantSize.Value);
+            ((OpenCVForUnityPlayMakerActions.GFTTDetector)storeResult.Value).wrappedObject = OpenCVForUnity.GFTTDetector.create (maxCorners.Value, (float)qualityLevel.Value, (float)minDistance.Value, blockSize.Value, gradiantSize.Value, useHarrisDetector.Value);
 
 
         }

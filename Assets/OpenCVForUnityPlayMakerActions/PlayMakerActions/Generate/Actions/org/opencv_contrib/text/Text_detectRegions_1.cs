@@ -9,11 +9,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_text")]
-    [HutongGames.PlayMaker.Tooltip ("public static void detectRegions (Mat image, ERFilter er_filter1, ERFilter er_filter2, MatOfRect groups_rects)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void detectRegions (Mat image, ERFilter er_filter1, ERFilter er_filter2, MatOfRect groups_rects, int method, string filename)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ERFilter), "er_filter1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ERFilter), "er_filter2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfRect), "groups_rects")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "method")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
     public class Text_detectRegions_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -41,6 +43,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfRect))]
         public HutongGames.PlayMaker.FsmObject groups_rects;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt method;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg6] string")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
+        public HutongGames.PlayMaker.FsmString filename;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -51,6 +63,8 @@ namespace OpenCVForUnityPlayMakerActions
             er_filter1 = null;
             er_filter2 = null;
             groups_rects = null;
+            method = 0;
+            filename = null;
             everyFrame = false;
         }
 
@@ -100,7 +114,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MatOfRect wrapped_groups_rects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.MatOfRect> (groups_rects);
 
-            OpenCVForUnity.Text.detectRegions (wrapped_image, wrapped_er_filter1, wrapped_er_filter2, wrapped_groups_rects);
+            OpenCVForUnity.Text.detectRegions (wrapped_image, wrapped_er_filter1, wrapped_er_filter2, wrapped_groups_rects, method.Value, filename.Value);
 
 
         }

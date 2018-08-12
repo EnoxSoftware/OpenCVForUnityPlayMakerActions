@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public virtual void setAnnealItePerStep (int val)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setAnnealItePerStep (int val)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ANN_MLP), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "val")]
     public class ANN_MLP_setAnnealItePerStep : HutongGames.PlayMaker.FsmStateAction

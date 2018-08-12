@@ -8,10 +8,16 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_shape")]
-    [HutongGames.PlayMaker.Tooltip ("public static HausdorffDistanceExtractor createHausdorffDistanceExtractor ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static HausdorffDistanceExtractor createHausdorffDistanceExtractor (int distanceFlag)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "distanceFlag")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HausdorffDistanceExtractor), "storeResult")]
     public class Shape_createHausdorffDistanceExtractor_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt distanceFlag;
 
         [HutongGames.PlayMaker.ActionSection ("[return] HausdorffDistanceExtractor")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +30,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            distanceFlag = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +54,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.HausdorffDistanceExtractor)) storeResult.Value = new OpenCVForUnityPlayMakerActions.HausdorffDistanceExtractor ();
-            ((OpenCVForUnityPlayMakerActions.HausdorffDistanceExtractor)storeResult.Value).wrappedObject = OpenCVForUnity.Shape.createHausdorffDistanceExtractor ();
+            ((OpenCVForUnityPlayMakerActions.HausdorffDistanceExtractor)storeResult.Value).wrappedObject = OpenCVForUnity.Shape.createHausdorffDistanceExtractor (distanceFlag.Value);
 
 
         }

@@ -8,8 +8,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_bioinspired")]
-    [HutongGames.PlayMaker.Tooltip ("public void setColorSaturation ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void setColorSaturation (bool saturateColors)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Retina), "owner")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "saturateColors")]
     public class Retina_setColorSaturation_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -19,6 +20,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Retina))]
         public HutongGames.PlayMaker.FsmObject owner;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg1] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool saturateColors;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -26,6 +32,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             owner = null;
+            saturateColors = false;
             everyFrame = false;
         }
 
@@ -54,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Retina wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Retina, OpenCVForUnity.Retina> (owner);
 
-            wrapped_owner.setColorSaturation ();
+            wrapped_owner.setColorSaturation (saturateColors.Value);
 
 
         }

@@ -8,9 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_aruco")]
-    [HutongGames.PlayMaker.Tooltip ("public static void drawDetectedCornersCharuco (Mat image, Mat charucoCorners)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void drawDetectedCornersCharuco (Mat image, Mat charucoCorners, Mat charucoIds)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "charucoCorners")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "charucoIds")]
     public class Aruco_drawDetectedCornersCharuco_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -26,6 +27,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject charucoCorners;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject charucoIds;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -34,6 +41,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             image = null;
             charucoCorners = null;
+            charucoIds = null;
             everyFrame = false;
         }
 
@@ -69,7 +77,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_charucoCorners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (charucoCorners);
 
-            OpenCVForUnity.Aruco.drawDetectedCornersCharuco (wrapped_image, wrapped_charucoCorners);
+            if (!(charucoIds.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("charucoIds is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_charucoIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (charucoIds);
+
+            OpenCVForUnity.Aruco.drawDetectedCornersCharuco (wrapped_image, wrapped_charucoCorners, wrapped_charucoIds);
 
 
         }

@@ -8,9 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public static double PSNR (Mat src1, Mat src2)")]
+    [HutongGames.PlayMaker.Tooltip ("public static double PSNR (Mat src1, Mat src2, double R)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src2")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "R")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "storeResult")]
     public class Core_PSNR_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -27,6 +28,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject src2;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] double(float)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat R;
+
         [HutongGames.PlayMaker.ActionSection ("[return] double(float)")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
@@ -40,6 +46,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             src1 = null;
             src2 = null;
+            R = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -76,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_src2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src2);
 
-            storeResult.Value = (float)OpenCVForUnity.Core.PSNR (wrapped_src1, wrapped_src2);
+            storeResult.Value = (float)OpenCVForUnity.Core.PSNR (wrapped_src1, wrapped_src2, (float)R.Value);
 
 
         }

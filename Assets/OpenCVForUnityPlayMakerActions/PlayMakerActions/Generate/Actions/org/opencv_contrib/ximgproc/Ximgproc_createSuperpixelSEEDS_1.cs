@@ -8,12 +8,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static SuperpixelSEEDS createSuperpixelSEEDS (int image_width, int image_height, int image_channels, int num_superpixels, int num_levels)")]
+    [HutongGames.PlayMaker.Tooltip ("public static SuperpixelSEEDS createSuperpixelSEEDS (int image_width, int image_height, int image_channels, int num_superpixels, int num_levels, int prior, int histogram_bins)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "image_width")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "image_height")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "image_channels")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "num_superpixels")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "num_levels")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "prior")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "histogram_bins")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SuperpixelSEEDS), "storeResult")]
     public class Ximgproc_createSuperpixelSEEDS_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -43,6 +45,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt num_levels;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt prior;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt histogram_bins;
+
         [HutongGames.PlayMaker.ActionSection ("[return] SuperpixelSEEDS")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.SuperpixelSEEDS))]
@@ -59,6 +71,8 @@ namespace OpenCVForUnityPlayMakerActions
             image_channels = 0;
             num_superpixels = 0;
             num_levels = 0;
+            prior = 0;
+            histogram_bins = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -82,7 +96,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SuperpixelSEEDS)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SuperpixelSEEDS ();
-            ((OpenCVForUnityPlayMakerActions.SuperpixelSEEDS)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createSuperpixelSEEDS (image_width.Value, image_height.Value, image_channels.Value, num_superpixels.Value, num_levels.Value);
+            ((OpenCVForUnityPlayMakerActions.SuperpixelSEEDS)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createSuperpixelSEEDS (image_width.Value, image_height.Value, image_channels.Value, num_superpixels.Value, num_levels.Value, prior.Value, histogram_bins.Value);
 
 
         }

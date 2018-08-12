@@ -8,10 +8,22 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_shape")]
-    [HutongGames.PlayMaker.Tooltip ("public static HistogramCostExtractor createNormHistogramCostExtractor ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static HistogramCostExtractor createNormHistogramCostExtractor (int flag, int nDummies)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "flag")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nDummies")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HistogramCostExtractor), "storeResult")]
     public class Shape_createNormHistogramCostExtractor_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt flag;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt nDummies;
 
         [HutongGames.PlayMaker.ActionSection ("[return] HistogramCostExtractor")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +36,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            flag = 0;
+            nDummies = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.HistogramCostExtractor)) storeResult.Value = new OpenCVForUnityPlayMakerActions.HistogramCostExtractor ();
-            ((OpenCVForUnityPlayMakerActions.HistogramCostExtractor)storeResult.Value).wrappedObject = OpenCVForUnity.Shape.createNormHistogramCostExtractor ();
+            ((OpenCVForUnityPlayMakerActions.HistogramCostExtractor)storeResult.Value).wrappedObject = OpenCVForUnity.Shape.createNormHistogramCostExtractor (flag.Value, nDummies.Value);
 
 
         }

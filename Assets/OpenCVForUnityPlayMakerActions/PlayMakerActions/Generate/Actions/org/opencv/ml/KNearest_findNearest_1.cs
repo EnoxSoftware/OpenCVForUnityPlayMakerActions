@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public float findNearest (Mat samples, int k, Mat results)")]
+    [HutongGames.PlayMaker.Tooltip ("public float findNearest (Mat samples, int k, Mat results, Mat neighborResponses)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KNearest), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "samples")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "k")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "results")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "neighborResponses")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "storeResult")]
     public class KNearest_findNearest_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -40,6 +41,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject results;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject neighborResponses;
+
         [HutongGames.PlayMaker.ActionSection ("[return] float")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
@@ -55,6 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
             samples = null;
             k = 0;
             results = null;
+            neighborResponses = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -98,7 +106,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_results = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (results);
 
-            storeResult.Value = wrapped_owner.findNearest (wrapped_samples, k.Value, wrapped_results);
+            if (!(neighborResponses.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("neighborResponses is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_neighborResponses = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (neighborResponses);
+
+            storeResult.Value = wrapped_owner.findNearest (wrapped_samples, k.Value, wrapped_results, wrapped_neighborResponses);
 
 
         }

@@ -8,12 +8,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void boxFilter (Mat src, Mat dst, int ddepth, Size ksize)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void boxFilter (Mat src, Mat dst, int ddepth, Size ksize, Point anchor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "ddepth")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "ksize_width")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "ksize_height")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "anchor_x")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "anchor_y")]
     public class Imgproc_boxFilter_2_S : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -44,6 +46,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat ksize_height;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] Point")]
+
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat anchor_x;
+
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat anchor_y;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -55,6 +67,8 @@ namespace OpenCVForUnityPlayMakerActions
             ddepth = 0;
             ksize_width = 0.0f;
             ksize_height = 0.0f;
+            anchor_x = 0.0f;
+            anchor_y = 0.0f;
             everyFrame = false;
         }
 
@@ -90,7 +104,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            OpenCVForUnity.Imgproc.boxFilter (wrapped_src, wrapped_dst, ddepth.Value, new OpenCVForUnity.Size ((double)ksize_width.Value, (double)ksize_height.Value));
+            OpenCVForUnity.Imgproc.boxFilter (wrapped_src, wrapped_dst, ddepth.Value, new OpenCVForUnity.Size ((double)ksize_width.Value, (double)ksize_height.Value), new OpenCVForUnity.Point ((double)anchor_x.Value, (double)anchor_y.Value));
 
 
         }

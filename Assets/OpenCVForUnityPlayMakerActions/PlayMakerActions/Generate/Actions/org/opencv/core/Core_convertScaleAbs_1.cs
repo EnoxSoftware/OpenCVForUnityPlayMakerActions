@@ -8,9 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public static void convertScaleAbs (Mat src, Mat dst)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void convertScaleAbs (Mat src, Mat dst, double alpha)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "alpha")]
     public class Core_convertScaleAbs_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -26,6 +27,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject alpha;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -34,6 +41,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             src = null;
             dst = null;
+            alpha = null;
             everyFrame = false;
         }
 
@@ -69,7 +77,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            OpenCVForUnity.Core.convertScaleAbs (wrapped_src, wrapped_dst);
+            if (!(alpha.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("alpha is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_alpha = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (alpha);
+
+            OpenCVForUnity.Core.convertScaleAbs (wrapped_src, wrapped_dst, wrapped_alpha);
 
 
         }

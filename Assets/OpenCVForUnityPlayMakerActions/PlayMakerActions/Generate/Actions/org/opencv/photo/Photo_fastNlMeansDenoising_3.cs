@@ -8,10 +8,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_photo")]
-    [HutongGames.PlayMaker.Tooltip ("public static void fastNlMeansDenoising (Mat src, Mat dst, MatOfFloat h)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void fastNlMeansDenoising (Mat src, Mat dst)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat), "h")]
     public class Photo_fastNlMeansDenoising_3 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -27,12 +26,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] MatOfFloat")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat))]
-        public HutongGames.PlayMaker.FsmObject h;
-
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -41,7 +34,6 @@ namespace OpenCVForUnityPlayMakerActions
         {
             src = null;
             dst = null;
-            h = null;
             everyFrame = false;
         }
 
@@ -77,14 +69,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            if (!(h.Value is OpenCVForUnityPlayMakerActions.MatOfFloat))
-            {
-                LogError ("h is not initialized. Add Action \"newMatOfFloat\".");
-                return;
-            }
-            OpenCVForUnity.MatOfFloat wrapped_h = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.MatOfFloat> (h);
-
-            OpenCVForUnity.Photo.fastNlMeansDenoising (wrapped_src, wrapped_dst, wrapped_h);
+            OpenCVForUnity.Photo.fastNlMeansDenoising (wrapped_src, wrapped_dst);
 
 
         }

@@ -8,10 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void erode (Mat src, Mat dst, Mat kernel)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void erode (Mat src, Mat dst, Mat kernel, Point anchor, int iterations)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "kernel")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point), "anchor")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "iterations")]
     public class Imgproc_erode_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +35,17 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject kernel;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] Point")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Point))]
+        public HutongGames.PlayMaker.FsmObject anchor;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt iterations;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +55,8 @@ namespace OpenCVForUnityPlayMakerActions
             src = null;
             dst = null;
             kernel = null;
+            anchor = null;
+            iterations = 0;
             everyFrame = false;
         }
 
@@ -84,7 +99,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_kernel = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (kernel);
 
-            OpenCVForUnity.Imgproc.erode (wrapped_src, wrapped_dst, wrapped_kernel);
+            if (!(anchor.Value is OpenCVForUnityPlayMakerActions.Point))
+            {
+                LogError ("anchor is not initialized. Add Action \"newPoint\".");
+                return;
+            }
+            OpenCVForUnity.Point wrapped_anchor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (anchor);
+
+            OpenCVForUnity.Imgproc.erode (wrapped_src, wrapped_dst, wrapped_kernel, wrapped_anchor, iterations.Value);
 
 
         }

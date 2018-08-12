@@ -8,10 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static void drawSignature (Mat source, Mat signature, Mat result)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void drawSignature (Mat source, Mat signature, Mat result, float radiusToShorterSideRatio)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "source")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "signature")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "result")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "radiusToShorterSideRatio")]
     public class PCTSignatures_drawSignature_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +34,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject result;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat radiusToShorterSideRatio;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
             source = null;
             signature = null;
             result = null;
+            radiusToShorterSideRatio = 0.0f;
             everyFrame = false;
         }
 
@@ -84,7 +91,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_result = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (result);
 
-            OpenCVForUnity.PCTSignatures.drawSignature (wrapped_source, wrapped_signature, wrapped_result);
+            OpenCVForUnity.PCTSignatures.drawSignature (wrapped_source, wrapped_signature, wrapped_result, radiusToShorterSideRatio.Value);
 
 
         }

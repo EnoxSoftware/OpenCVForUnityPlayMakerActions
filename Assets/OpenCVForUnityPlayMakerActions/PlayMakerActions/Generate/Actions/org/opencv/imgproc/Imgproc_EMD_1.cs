@@ -8,10 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static float EMD (Mat signature1, Mat signature2, int distType)")]
+    [HutongGames.PlayMaker.Tooltip ("public static float EMD (Mat signature1, Mat signature2, int distType, Mat cost)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "signature1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "signature2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "distType")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "cost")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "storeResult")]
     public class Imgproc_EMD_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -33,6 +34,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt distType;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject cost;
+
         [HutongGames.PlayMaker.ActionSection ("[return] float")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
@@ -47,6 +54,7 @@ namespace OpenCVForUnityPlayMakerActions
             signature1 = null;
             signature2 = null;
             distType = 0;
+            cost = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -83,7 +91,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_signature2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (signature2);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.EMD (wrapped_signature1, wrapped_signature2, distType.Value);
+            if (!(cost.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("cost is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_cost = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (cost);
+
+            storeResult.Value = OpenCVForUnity.Imgproc.EMD (wrapped_signature1, wrapped_signature2, distType.Value, wrapped_cost);
 
 
         }

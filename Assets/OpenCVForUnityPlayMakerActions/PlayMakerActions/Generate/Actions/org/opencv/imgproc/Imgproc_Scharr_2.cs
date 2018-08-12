@@ -8,12 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void Scharr (Mat src, Mat dst, int ddepth, int dx, int dy)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void Scharr (Mat src, Mat dst, int ddepth, int dx, int dy, double scale)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "ddepth")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "dx")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "dy")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "scale")]
     public class Imgproc_Scharr_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -44,6 +45,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt dy;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject scale;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -55,6 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
             ddepth = 0;
             dx = 0;
             dy = 0;
+            scale = null;
             everyFrame = false;
         }
 
@@ -90,7 +98,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            OpenCVForUnity.Imgproc.Scharr (wrapped_src, wrapped_dst, ddepth.Value, dx.Value, dy.Value);
+            if (!(scale.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("scale is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (scale);
+
+            OpenCVForUnity.Imgproc.Scharr (wrapped_src, wrapped_dst, ddepth.Value, dx.Value, dy.Value, wrapped_scale);
 
 
         }

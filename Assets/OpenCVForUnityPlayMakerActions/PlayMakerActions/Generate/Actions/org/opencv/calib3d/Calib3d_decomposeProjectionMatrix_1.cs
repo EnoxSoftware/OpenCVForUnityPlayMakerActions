@@ -8,11 +8,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip ("public static void decomposeProjectionMatrix (Mat projMatrix, Mat cameraMatrix, Mat rotMatrix, Mat transVect)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void decomposeProjectionMatrix (Mat projMatrix, Mat cameraMatrix, Mat rotMatrix, Mat transVect, Mat rotMatrixX, Mat rotMatrixY, Mat rotMatrixZ)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "projMatrix")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "rotMatrix")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "transVect")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "rotMatrixX")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "rotMatrixY")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "rotMatrixZ")]
     public class Calib3d_decomposeProjectionMatrix_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -40,6 +43,24 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject transVect;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject rotMatrixX;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg6] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject rotMatrixY;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject rotMatrixZ;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -50,6 +71,9 @@ namespace OpenCVForUnityPlayMakerActions
             cameraMatrix = null;
             rotMatrix = null;
             transVect = null;
+            rotMatrixX = null;
+            rotMatrixY = null;
+            rotMatrixZ = null;
             everyFrame = false;
         }
 
@@ -99,7 +123,28 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_transVect = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (transVect);
 
-            OpenCVForUnity.Calib3d.decomposeProjectionMatrix (wrapped_projMatrix, wrapped_cameraMatrix, wrapped_rotMatrix, wrapped_transVect);
+            if (!(rotMatrixX.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("rotMatrixX is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_rotMatrixX = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (rotMatrixX);
+
+            if (!(rotMatrixY.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("rotMatrixY is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_rotMatrixY = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (rotMatrixY);
+
+            if (!(rotMatrixZ.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("rotMatrixZ is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_rotMatrixZ = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (rotMatrixZ);
+
+            OpenCVForUnity.Calib3d.decomposeProjectionMatrix (wrapped_projMatrix, wrapped_cameraMatrix, wrapped_rotMatrix, wrapped_transVect, wrapped_rotMatrixX, wrapped_rotMatrixY, wrapped_rotMatrixZ);
 
 
         }

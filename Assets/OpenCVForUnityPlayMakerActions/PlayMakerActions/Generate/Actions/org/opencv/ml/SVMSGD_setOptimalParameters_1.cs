@@ -8,8 +8,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public void setOptimalParameters ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void setOptimalParameters (int svmsgdType)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SVMSGD), "owner")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "svmsgdType")]
     public class SVMSGD_setOptimalParameters_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -19,6 +20,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.SVMSGD))]
         public HutongGames.PlayMaker.FsmObject owner;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt svmsgdType;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -26,6 +32,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             owner = null;
+            svmsgdType = 0;
             everyFrame = false;
         }
 
@@ -54,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.SVMSGD wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SVMSGD, OpenCVForUnity.SVMSGD> (owner);
 
-            wrapped_owner.setOptimalParameters ();
+            wrapped_owner.setOptimalParameters (svmsgdType.Value);
 
 
         }

@@ -8,10 +8,28 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_photo")]
-    [HutongGames.PlayMaker.Tooltip ("public static TonemapReinhard createTonemapReinhard ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static TonemapReinhard createTonemapReinhard (float gamma, float intensity, float light_adapt)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "gamma")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "intensity")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "light_adapt")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TonemapReinhard), "storeResult")]
     public class Photo_createTonemapReinhard_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat gamma;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat intensity;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg3] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat light_adapt;
 
         [HutongGames.PlayMaker.ActionSection ("[return] TonemapReinhard")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +42,9 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            gamma = 0.0f;
+            intensity = 0.0f;
+            light_adapt = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +68,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TonemapReinhard)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TonemapReinhard ();
-            ((OpenCVForUnityPlayMakerActions.TonemapReinhard)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createTonemapReinhard ();
+            ((OpenCVForUnityPlayMakerActions.TonemapReinhard)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createTonemapReinhard (gamma.Value, intensity.Value, light_adapt.Value);
 
 
         }

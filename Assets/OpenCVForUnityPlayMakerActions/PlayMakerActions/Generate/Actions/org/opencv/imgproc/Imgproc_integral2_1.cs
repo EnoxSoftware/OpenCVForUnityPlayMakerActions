@@ -8,10 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void integral2 (Mat src, Mat sum, Mat sqsum)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void integral2 (Mat src, Mat sum, Mat sqsum, int sdepth)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "sum")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "sqsum")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "sdepth")]
     public class Imgproc_integral2_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +34,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject sqsum;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt sdepth;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
             src = null;
             sum = null;
             sqsum = null;
+            sdepth = 0;
             everyFrame = false;
         }
 
@@ -84,7 +91,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_sqsum = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (sqsum);
 
-            OpenCVForUnity.Imgproc.integral2 (wrapped_src, wrapped_sum, wrapped_sqsum);
+            OpenCVForUnity.Imgproc.integral2 (wrapped_src, wrapped_sum, wrapped_sqsum, sdepth.Value);
 
 
         }

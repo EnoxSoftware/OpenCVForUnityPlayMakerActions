@@ -8,10 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_photo")]
-    [HutongGames.PlayMaker.Tooltip ("public static void colorChange (Mat src, Mat mask, Mat dst)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void colorChange (Mat src, Mat mask, Mat dst, float red_mul, float green_mul)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "mask")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "red_mul")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "green_mul")]
     public class Photo_colorChange_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +35,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat red_mul;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat green_mul;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +54,8 @@ namespace OpenCVForUnityPlayMakerActions
             src = null;
             mask = null;
             dst = null;
+            red_mul = 0.0f;
+            green_mul = 0.0f;
             everyFrame = false;
         }
 
@@ -84,7 +98,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            OpenCVForUnity.Photo.colorChange (wrapped_src, wrapped_mask, wrapped_dst);
+            OpenCVForUnity.Photo.colorChange (wrapped_src, wrapped_mask, wrapped_dst, red_mul.Value, green_mul.Value);
 
 
         }

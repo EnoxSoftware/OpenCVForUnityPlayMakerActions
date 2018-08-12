@@ -9,11 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_text")]
-    [HutongGames.PlayMaker.Tooltip ("public static OCRBeamSearchDecoder create (string filename, string vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table)")]
+    [HutongGames.PlayMaker.Tooltip ("public static OCRBeamSearchDecoder create (string filename, string vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table, int mode)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "vocabulary")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "transition_probabilities_table")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "emission_probabilities_table")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "mode")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder), "storeResult")]
     public class OCRBeamSearchDecoder_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -40,6 +41,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject emission_probabilities_table;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt mode;
+
         [HutongGames.PlayMaker.ActionSection ("[return] OCRBeamSearchDecoder")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder))]
@@ -55,6 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
             vocabulary = null;
             transition_probabilities_table = null;
             emission_probabilities_table = null;
+            mode = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -92,7 +99,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.Mat wrapped_emission_probabilities_table = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (emission_probabilities_table);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder)) storeResult.Value = new OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder ();
-            ((OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder)storeResult.Value).wrappedObject = OpenCVForUnity.OCRBeamSearchDecoder.create (filename.Value, vocabulary.Value, wrapped_transition_probabilities_table, wrapped_emission_probabilities_table);
+            ((OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder)storeResult.Value).wrappedObject = OpenCVForUnity.OCRBeamSearchDecoder.create (filename.Value, vocabulary.Value, wrapped_transition_probabilities_table, wrapped_emission_probabilities_table, mode.Value);
 
 
         }

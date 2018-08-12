@@ -8,8 +8,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static Mat getDefaultNewCameraMatrix (Mat cameraMatrix)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Mat getDefaultNewCameraMatrix (Mat cameraMatrix, Size imgsize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "imgsize")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Imgproc_getDefaultNewCameraMatrix_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -19,6 +20,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject cameraMatrix;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] Size")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Size))]
+        public HutongGames.PlayMaker.FsmObject imgsize;
 
         [HutongGames.PlayMaker.ActionSection ("[return] Mat")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -32,6 +39,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             cameraMatrix = null;
+            imgsize = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -61,8 +69,15 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (cameraMatrix);
 
+            if (!(imgsize.Value is OpenCVForUnityPlayMakerActions.Size))
+            {
+                LogError ("imgsize is not initialized. Add Action \"newSize\".");
+                return;
+            }
+            OpenCVForUnity.Size wrapped_imgsize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (imgsize);
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.getDefaultNewCameraMatrix (wrapped_cameraMatrix);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.getDefaultNewCameraMatrix (wrapped_cameraMatrix, wrapped_imgsize);
 
 
         }

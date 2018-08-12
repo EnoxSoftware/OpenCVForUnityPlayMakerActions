@@ -8,10 +8,22 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_photo")]
-    [HutongGames.PlayMaker.Tooltip ("public static AlignMTB createAlignMTB ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static AlignMTB createAlignMTB (int max_bits, int exclude_range)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "max_bits")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "exclude_range")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.AlignMTB), "storeResult")]
     public class Photo_createAlignMTB_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt max_bits;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt exclude_range;
 
         [HutongGames.PlayMaker.ActionSection ("[return] AlignMTB")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +36,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            max_bits = 0;
+            exclude_range = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.AlignMTB)) storeResult.Value = new OpenCVForUnityPlayMakerActions.AlignMTB ();
-            ((OpenCVForUnityPlayMakerActions.AlignMTB)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createAlignMTB ();
+            ((OpenCVForUnityPlayMakerActions.AlignMTB)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createAlignMTB (max_bits.Value, exclude_range.Value);
 
 
         }

@@ -8,11 +8,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip ("public void detectMultiScale2 (Mat image, MatOfRect objects, MatOfInt numDetections)")]
+    [HutongGames.PlayMaker.Tooltip ("public void detectMultiScale2 (Mat image, MatOfRect objects, MatOfInt numDetections, double scaleFactor, int minNeighbors, int flags, Size minSize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.CascadeClassifier), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfRect), "objects")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "numDetections")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "scaleFactor")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "minNeighbors")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "flags")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "minSize")]
     public class CascadeClassifier_detectMultiScale2_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -40,6 +44,28 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfInt))]
         public HutongGames.PlayMaker.FsmObject numDetections;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject scaleFactor;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt minNeighbors;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg6] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt flags;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] Size")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Size))]
+        public HutongGames.PlayMaker.FsmObject minSize;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -50,6 +76,10 @@ namespace OpenCVForUnityPlayMakerActions
             image = null;
             objects = null;
             numDetections = null;
+            scaleFactor = null;
+            minNeighbors = 0;
+            flags = 0;
+            minSize = null;
             everyFrame = false;
         }
 
@@ -99,7 +129,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MatOfInt wrapped_numDetections = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (numDetections);
 
-            wrapped_owner.detectMultiScale2 (wrapped_image, wrapped_objects, wrapped_numDetections);
+            if (!(scaleFactor.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("scaleFactor is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_scaleFactor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (scaleFactor);
+
+            if (!(minSize.Value is OpenCVForUnityPlayMakerActions.Size))
+            {
+                LogError ("minSize is not initialized. Add Action \"newSize\".");
+                return;
+            }
+            OpenCVForUnity.Size wrapped_minSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (minSize);
+
+            wrapped_owner.detectMultiScale2 (wrapped_image, wrapped_objects, wrapped_numDetections, wrapped_scaleFactor, minNeighbors.Value, flags.Value, wrapped_minSize);
 
 
         }

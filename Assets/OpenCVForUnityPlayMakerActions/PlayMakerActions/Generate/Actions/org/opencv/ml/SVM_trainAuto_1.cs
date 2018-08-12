@@ -8,11 +8,18 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public bool trainAuto (Mat samples, int layout, Mat responses)")]
+    [HutongGames.PlayMaker.Tooltip ("public bool trainAuto (Mat samples, int layout, Mat responses, int kFold, ParamGrid Cgrid, ParamGrid gammaGrid, ParamGrid pGrid, ParamGrid nuGrid, ParamGrid coeffGrid, ParamGrid degreeGrid)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SVM), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "samples")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "layout")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "responses")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "kFold")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ParamGrid), "Cgrid")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ParamGrid), "gammaGrid")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ParamGrid), "pGrid")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ParamGrid), "nuGrid")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ParamGrid), "coeffGrid")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ParamGrid), "degreeGrid")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "trueEvent")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "falseEvent")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "storeResult")]
@@ -42,6 +49,47 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject responses;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt kFold;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] ParamGrid")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.ParamGrid))]
+        public HutongGames.PlayMaker.FsmObject Cgrid;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg6] ParamGrid")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.ParamGrid))]
+        public HutongGames.PlayMaker.FsmObject gammaGrid;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] ParamGrid")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.ParamGrid))]
+        public HutongGames.PlayMaker.FsmObject pGrid;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg8] ParamGrid")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.ParamGrid))]
+        public HutongGames.PlayMaker.FsmObject nuGrid;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg9] ParamGrid")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.ParamGrid))]
+        public HutongGames.PlayMaker.FsmObject coeffGrid;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg10] ParamGrid")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.ParamGrid))]
+        public HutongGames.PlayMaker.FsmObject degreeGrid;
+
         [HutongGames.PlayMaker.ActionSection ("[return] bool")]
         [HutongGames.PlayMaker.Tooltip ("Event to send if result is true.")]
         public HutongGames.PlayMaker.FsmEvent trueEvent;
@@ -63,6 +111,13 @@ namespace OpenCVForUnityPlayMakerActions
             samples = null;
             layout = 0;
             responses = null;
+            kFold = 0;
+            Cgrid = null;
+            gammaGrid = null;
+            pGrid = null;
+            nuGrid = null;
+            coeffGrid = null;
+            degreeGrid = null;
             trueEvent = null;
             falseEvent = null;
             storeResult = null;
@@ -108,7 +163,49 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_responses = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (responses);
 
-            storeResult.Value = wrapped_owner.trainAuto (wrapped_samples, layout.Value, wrapped_responses);
+            if (!(Cgrid.Value is OpenCVForUnityPlayMakerActions.ParamGrid))
+            {
+                LogError ("Cgrid is not initialized. Add Action \"newParamGrid\".");
+                return;
+            }
+            OpenCVForUnity.ParamGrid wrapped_Cgrid = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ParamGrid, OpenCVForUnity.ParamGrid> (Cgrid);
+
+            if (!(gammaGrid.Value is OpenCVForUnityPlayMakerActions.ParamGrid))
+            {
+                LogError ("gammaGrid is not initialized. Add Action \"newParamGrid\".");
+                return;
+            }
+            OpenCVForUnity.ParamGrid wrapped_gammaGrid = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ParamGrid, OpenCVForUnity.ParamGrid> (gammaGrid);
+
+            if (!(pGrid.Value is OpenCVForUnityPlayMakerActions.ParamGrid))
+            {
+                LogError ("pGrid is not initialized. Add Action \"newParamGrid\".");
+                return;
+            }
+            OpenCVForUnity.ParamGrid wrapped_pGrid = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ParamGrid, OpenCVForUnity.ParamGrid> (pGrid);
+
+            if (!(nuGrid.Value is OpenCVForUnityPlayMakerActions.ParamGrid))
+            {
+                LogError ("nuGrid is not initialized. Add Action \"newParamGrid\".");
+                return;
+            }
+            OpenCVForUnity.ParamGrid wrapped_nuGrid = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ParamGrid, OpenCVForUnity.ParamGrid> (nuGrid);
+
+            if (!(coeffGrid.Value is OpenCVForUnityPlayMakerActions.ParamGrid))
+            {
+                LogError ("coeffGrid is not initialized. Add Action \"newParamGrid\".");
+                return;
+            }
+            OpenCVForUnity.ParamGrid wrapped_coeffGrid = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ParamGrid, OpenCVForUnity.ParamGrid> (coeffGrid);
+
+            if (!(degreeGrid.Value is OpenCVForUnityPlayMakerActions.ParamGrid))
+            {
+                LogError ("degreeGrid is not initialized. Add Action \"newParamGrid\".");
+                return;
+            }
+            OpenCVForUnity.ParamGrid wrapped_degreeGrid = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ParamGrid, OpenCVForUnity.ParamGrid> (degreeGrid);
+
+            storeResult.Value = wrapped_owner.trainAuto (wrapped_samples, layout.Value, wrapped_responses, kFold.Value, wrapped_Cgrid, wrapped_gammaGrid, wrapped_pGrid, wrapped_nuGrid, wrapped_coeffGrid, wrapped_degreeGrid);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

@@ -8,10 +8,16 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_face")]
-    [HutongGames.PlayMaker.Tooltip ("public static EigenFaceRecognizer create ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static EigenFaceRecognizer create (int num_components)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "num_components")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.EigenFaceRecognizer), "storeResult")]
     public class EigenFaceRecognizer_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt num_components;
 
         [HutongGames.PlayMaker.ActionSection ("[return] EigenFaceRecognizer")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +30,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            num_components = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +54,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.EigenFaceRecognizer)) storeResult.Value = new OpenCVForUnityPlayMakerActions.EigenFaceRecognizer ();
-            ((OpenCVForUnityPlayMakerActions.EigenFaceRecognizer)storeResult.Value).wrappedObject = OpenCVForUnity.EigenFaceRecognizer.create ();
+            ((OpenCVForUnityPlayMakerActions.EigenFaceRecognizer)storeResult.Value).wrappedObject = OpenCVForUnity.EigenFaceRecognizer.create (num_components.Value);
 
 
         }

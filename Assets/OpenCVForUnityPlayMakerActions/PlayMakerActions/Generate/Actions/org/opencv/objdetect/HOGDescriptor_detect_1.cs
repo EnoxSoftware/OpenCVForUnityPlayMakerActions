@@ -8,11 +8,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip ("public void detect (Mat img, MatOfPoint foundLocations, MatOfDouble weights)")]
+    [HutongGames.PlayMaker.Tooltip ("public void detect (Mat img, MatOfPoint foundLocations, MatOfDouble weights, double hitThreshold, Size winStride, Size padding)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HOGDescriptor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "img")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint), "foundLocations")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfDouble), "weights")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "hitThreshold")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "winStride")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "padding")]
     public class HOGDescriptor_detect_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -40,6 +43,24 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfDouble))]
         public HutongGames.PlayMaker.FsmObject weights;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject hitThreshold;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] Size")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Size))]
+        public HutongGames.PlayMaker.FsmObject winStride;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg6] Size")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Size))]
+        public HutongGames.PlayMaker.FsmObject padding;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -50,6 +71,9 @@ namespace OpenCVForUnityPlayMakerActions
             img = null;
             foundLocations = null;
             weights = null;
+            hitThreshold = null;
+            winStride = null;
+            padding = null;
             everyFrame = false;
         }
 
@@ -99,7 +123,28 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MatOfDouble wrapped_weights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDouble, OpenCVForUnity.MatOfDouble> (weights);
 
-            wrapped_owner.detect (wrapped_img, wrapped_foundLocations, wrapped_weights);
+            if (!(hitThreshold.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("hitThreshold is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_hitThreshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (hitThreshold);
+
+            if (!(winStride.Value is OpenCVForUnityPlayMakerActions.Size))
+            {
+                LogError ("winStride is not initialized. Add Action \"newSize\".");
+                return;
+            }
+            OpenCVForUnity.Size wrapped_winStride = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (winStride);
+
+            if (!(padding.Value is OpenCVForUnityPlayMakerActions.Size))
+            {
+                LogError ("padding is not initialized. Add Action \"newSize\".");
+                return;
+            }
+            OpenCVForUnity.Size wrapped_padding = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (padding);
+
+            wrapped_owner.detect (wrapped_img, wrapped_foundLocations, wrapped_weights, wrapped_hitThreshold, wrapped_winStride, wrapped_padding);
 
 
         }

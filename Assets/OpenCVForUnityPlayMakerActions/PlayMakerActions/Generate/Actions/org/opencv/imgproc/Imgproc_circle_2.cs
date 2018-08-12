@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void circle (Mat img, Point center, int radius, Scalar color)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void circle (Mat img, Point center, int radius, Scalar color, int thickness)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "img")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point), "center")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "radius")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "color")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "thickness")]
     public class Imgproc_circle_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -39,6 +40,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Scalar))]
         public HutongGames.PlayMaker.FsmObject color;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt thickness;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -49,6 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
             center = null;
             radius = 0;
             color = null;
+            thickness = 0;
             everyFrame = false;
         }
 
@@ -91,7 +98,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Scalar wrapped_color = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (color);
 
-            OpenCVForUnity.Imgproc.circle (wrapped_img, wrapped_center, radius.Value, wrapped_color);
+            OpenCVForUnity.Imgproc.circle (wrapped_img, wrapped_center, radius.Value, wrapped_color, thickness.Value);
 
 
         }

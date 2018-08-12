@@ -8,8 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public static bool checkRange (Mat a)")]
+    [HutongGames.PlayMaker.Tooltip ("public static bool checkRange (Mat a, bool quiet, double minVal)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "a")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "quiet")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "minVal")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "trueEvent")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "falseEvent")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "storeResult")]
@@ -21,6 +23,17 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject a;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool quiet;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg3] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject minVal;
 
         [HutongGames.PlayMaker.ActionSection ("[return] bool")]
         [HutongGames.PlayMaker.Tooltip ("Event to send if result is true.")]
@@ -40,6 +53,8 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             a = null;
+            quiet = false;
+            minVal = null;
             trueEvent = null;
             falseEvent = null;
             storeResult = null;
@@ -71,7 +86,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_a = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (a);
 
-            storeResult.Value = OpenCVForUnity.Core.checkRange (wrapped_a);
+            if (!(minVal.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("minVal is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_minVal = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (minVal);
+
+            storeResult.Value = OpenCVForUnity.Core.checkRange (wrapped_a, quiet.Value, wrapped_minVal);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

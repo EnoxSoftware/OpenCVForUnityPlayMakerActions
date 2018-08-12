@@ -8,11 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public void filter (Mat disparity_map_left, Mat left_view, Mat filtered_disparity_map)")]
+    [HutongGames.PlayMaker.Tooltip ("public void filter (Mat disparity_map_left, Mat left_view, Mat filtered_disparity_map, Mat disparity_map_right, Rect ROI)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DisparityFilter), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "disparity_map_left")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "left_view")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "filtered_disparity_map")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "disparity_map_right")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Rect), "ROI")]
     public class DisparityFilter_filter_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -40,6 +42,18 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject filtered_disparity_map;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject disparity_map_right;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] Rect")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Rect))]
+        public HutongGames.PlayMaker.FsmObject ROI;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -50,6 +64,8 @@ namespace OpenCVForUnityPlayMakerActions
             disparity_map_left = null;
             left_view = null;
             filtered_disparity_map = null;
+            disparity_map_right = null;
+            ROI = null;
             everyFrame = false;
         }
 
@@ -99,7 +115,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_filtered_disparity_map = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (filtered_disparity_map);
 
-            wrapped_owner.filter (wrapped_disparity_map_left, wrapped_left_view, wrapped_filtered_disparity_map);
+            if (!(disparity_map_right.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("disparity_map_right is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_disparity_map_right = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (disparity_map_right);
+
+            if (!(ROI.Value is OpenCVForUnityPlayMakerActions.Rect))
+            {
+                LogError ("ROI is not initialized. Add Action \"newRect\".");
+                return;
+            }
+            OpenCVForUnity.Rect wrapped_ROI = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.Rect> (ROI);
+
+            wrapped_owner.filter (wrapped_disparity_map_left, wrapped_left_view, wrapped_filtered_disparity_map, wrapped_disparity_map_right, wrapped_ROI);
 
 
         }

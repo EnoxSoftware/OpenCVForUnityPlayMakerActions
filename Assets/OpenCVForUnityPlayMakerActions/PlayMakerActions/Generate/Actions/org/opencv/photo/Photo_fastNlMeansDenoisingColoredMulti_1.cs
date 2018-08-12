@@ -8,11 +8,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_photo")]
-    [HutongGames.PlayMaker.Tooltip ("public static void fastNlMeansDenoisingColoredMulti (List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void fastNlMeansDenoisingColoredMulti (List<Mat> srcImgs, Mat dst, int imgToDenoiseIndex, int temporalWindowSize, float h, float hColor, int templateWindowSize)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "srcImgs")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "imgToDenoiseIndex")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "temporalWindowSize")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "h")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "hColor")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "templateWindowSize")]
     public class Photo_fastNlMeansDenoisingColoredMulti_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -38,6 +41,21 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt temporalWindowSize;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat h;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg6] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat hColor;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt templateWindowSize;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -48,6 +66,9 @@ namespace OpenCVForUnityPlayMakerActions
             dst = null;
             imgToDenoiseIndex = 0;
             temporalWindowSize = 0;
+            h = 0.0f;
+            hColor = 0.0f;
+            templateWindowSize = 0;
             everyFrame = false;
         }
 
@@ -79,7 +100,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            OpenCVForUnity.Photo.fastNlMeansDenoisingColoredMulti (wrapped_srcImgs, wrapped_dst, imgToDenoiseIndex.Value, temporalWindowSize.Value);
+            OpenCVForUnity.Photo.fastNlMeansDenoisingColoredMulti (wrapped_srcImgs, wrapped_dst, imgToDenoiseIndex.Value, temporalWindowSize.Value, h.Value, hColor.Value, templateWindowSize.Value);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_srcImgs, srcImgs);
 

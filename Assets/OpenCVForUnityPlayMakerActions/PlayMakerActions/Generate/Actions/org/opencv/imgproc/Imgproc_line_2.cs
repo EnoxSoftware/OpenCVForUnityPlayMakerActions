@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void line (Mat img, Point pt1, Point pt2, Scalar color)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void line (Mat img, Point pt1, Point pt2, Scalar color, int thickness)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "img")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point), "pt1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point), "pt2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "color")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "thickness")]
     public class Imgproc_line_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -40,6 +41,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Scalar))]
         public HutongGames.PlayMaker.FsmObject color;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt thickness;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -50,6 +56,7 @@ namespace OpenCVForUnityPlayMakerActions
             pt1 = null;
             pt2 = null;
             color = null;
+            thickness = 0;
             everyFrame = false;
         }
 
@@ -99,7 +106,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Scalar wrapped_color = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (color);
 
-            OpenCVForUnity.Imgproc.line (wrapped_img, wrapped_pt1, wrapped_pt2, wrapped_color);
+            OpenCVForUnity.Imgproc.line (wrapped_img, wrapped_pt1, wrapped_pt2, wrapped_color, thickness.Value);
 
 
         }

@@ -9,11 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_text")]
-    [HutongGames.PlayMaker.Tooltip ("public static void detectRegions (Mat image, ERFilter er_filter1, ERFilter er_filter2, List<MatOfPoint> regions)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void detectRegions (Mat image, ERFilter er_filter1, ERFilter er_filter2, MatOfRect groups_rects, int method)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ERFilter), "er_filter1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ERFilter), "er_filter2")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "regions")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfRect), "groups_rects")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "method")]
     public class Text_detectRegions_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -35,11 +36,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.ERFilter))]
         public HutongGames.PlayMaker.FsmObject er_filter2;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg4] List<MatOfPoint>(Array(MatOfPoint))")]
+        [HutongGames.PlayMaker.ActionSection ("[arg4] MatOfRect")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ArrayEditor (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint))]
-        public HutongGames.PlayMaker.FsmArray regions;
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfRect))]
+        public HutongGames.PlayMaker.FsmObject groups_rects;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt method;
 
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
@@ -50,7 +56,8 @@ namespace OpenCVForUnityPlayMakerActions
             image = null;
             er_filter1 = null;
             er_filter2 = null;
-            regions = null;
+            groups_rects = null;
+            method = 0;
             everyFrame = false;
         }
 
@@ -93,12 +100,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.ERFilter wrapped_er_filter2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ERFilter, OpenCVForUnity.ERFilter> (er_filter2);
 
-            List<OpenCVForUnity.MatOfPoint> wrapped_regions = new List<OpenCVForUnity.MatOfPoint> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.MatOfPoint> (regions, wrapped_regions);
+            if (!(groups_rects.Value is OpenCVForUnityPlayMakerActions.MatOfRect))
+            {
+                LogError ("groups_rects is not initialized. Add Action \"newMatOfRect\".");
+                return;
+            }
+            OpenCVForUnity.MatOfRect wrapped_groups_rects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.MatOfRect> (groups_rects);
 
-            OpenCVForUnity.Text.detectRegions (wrapped_image, wrapped_er_filter1, wrapped_er_filter2, wrapped_regions);
-
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.MatOfPoint, OpenCVForUnityPlayMakerActions.MatOfPoint> (wrapped_regions, regions);
+            OpenCVForUnity.Text.detectRegions (wrapped_image, wrapped_er_filter1, wrapped_er_filter2, wrapped_groups_rects, method.Value);
 
 
         }

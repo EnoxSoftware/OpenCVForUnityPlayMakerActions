@@ -8,9 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public void setActivationFunction (int type)")]
+    [HutongGames.PlayMaker.Tooltip ("public void setActivationFunction (int type, double param1)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ANN_MLP), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "type")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "param1")]
     public class ANN_MLP_setActivationFunction_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -25,6 +26,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt type;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg2] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject param1;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -33,6 +40,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             owner = null;
             type = 0;
+            param1 = null;
             everyFrame = false;
         }
 
@@ -61,7 +69,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.ANN_MLP wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ANN_MLP, OpenCVForUnity.ANN_MLP> (owner);
 
-            wrapped_owner.setActivationFunction (type.Value);
+            if (!(param1.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("param1 is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_param1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (param1);
+
+            wrapped_owner.setActivationFunction (type.Value, wrapped_param1);
 
 
         }

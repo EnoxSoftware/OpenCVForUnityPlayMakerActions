@@ -8,8 +8,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static SuperpixelLSC createSuperpixelLSC (Mat image)")]
+    [HutongGames.PlayMaker.Tooltip ("public static SuperpixelLSC createSuperpixelLSC (Mat image, int region_size)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "region_size")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SuperpixelLSC), "storeResult")]
     public class Ximgproc_createSuperpixelLSC_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -19,6 +20,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject image;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt region_size;
 
         [HutongGames.PlayMaker.ActionSection ("[return] SuperpixelLSC")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -32,6 +38,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             image = null;
+            region_size = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -62,7 +69,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SuperpixelLSC)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SuperpixelLSC ();
-            ((OpenCVForUnityPlayMakerActions.SuperpixelLSC)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createSuperpixelLSC (wrapped_image);
+            ((OpenCVForUnityPlayMakerActions.SuperpixelLSC)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createSuperpixelLSC (wrapped_image, region_size.Value);
 
 
         }

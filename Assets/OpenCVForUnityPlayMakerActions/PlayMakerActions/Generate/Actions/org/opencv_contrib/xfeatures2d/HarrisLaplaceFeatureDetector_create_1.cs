@@ -8,10 +8,34 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static HarrisLaplaceFeatureDetector create ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static HarrisLaplaceFeatureDetector create (int numOctaves, float corn_thresh, float DOG_thresh, int maxCorners)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "numOctaves")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "corn_thresh")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "DOG_thresh")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "maxCorners")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HarrisLaplaceFeatureDetector), "storeResult")]
     public class HarrisLaplaceFeatureDetector_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt numOctaves;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat corn_thresh;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg3] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat DOG_thresh;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg4] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt maxCorners;
 
         [HutongGames.PlayMaker.ActionSection ("[return] HarrisLaplaceFeatureDetector")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +48,10 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            numOctaves = 0;
+            corn_thresh = 0.0f;
+            DOG_thresh = 0.0f;
+            maxCorners = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +75,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.HarrisLaplaceFeatureDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.HarrisLaplaceFeatureDetector ();
-            ((OpenCVForUnityPlayMakerActions.HarrisLaplaceFeatureDetector)storeResult.Value).wrappedObject = OpenCVForUnity.HarrisLaplaceFeatureDetector.create ();
+            ((OpenCVForUnityPlayMakerActions.HarrisLaplaceFeatureDetector)storeResult.Value).wrappedObject = OpenCVForUnity.HarrisLaplaceFeatureDetector.create (numOctaves.Value, corn_thresh.Value, DOG_thresh.Value, maxCorners.Value);
 
 
         }

@@ -8,10 +8,16 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_photo")]
-    [HutongGames.PlayMaker.Tooltip ("public static CalibrateRobertson createCalibrateRobertson ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static CalibrateRobertson createCalibrateRobertson (int max_iter)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "max_iter")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.CalibrateRobertson), "storeResult")]
     public class Photo_createCalibrateRobertson_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt max_iter;
 
         [HutongGames.PlayMaker.ActionSection ("[return] CalibrateRobertson")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +30,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            max_iter = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +54,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.CalibrateRobertson)) storeResult.Value = new OpenCVForUnityPlayMakerActions.CalibrateRobertson ();
-            ((OpenCVForUnityPlayMakerActions.CalibrateRobertson)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createCalibrateRobertson ();
+            ((OpenCVForUnityPlayMakerActions.CalibrateRobertson)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createCalibrateRobertson (max_iter.Value);
 
 
         }

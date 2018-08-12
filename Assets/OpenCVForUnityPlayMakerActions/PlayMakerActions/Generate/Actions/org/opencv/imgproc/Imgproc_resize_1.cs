@@ -8,10 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void resize (Mat src, Mat dst, Size dsize)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void resize (Mat src, Mat dst, Size dsize, double fx, double fy)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "dsize")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "fx")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "fy")]
     public class Imgproc_resize_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +35,18 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Size))]
         public HutongGames.PlayMaker.FsmObject dsize;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject fx;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject fy;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +56,8 @@ namespace OpenCVForUnityPlayMakerActions
             src = null;
             dst = null;
             dsize = null;
+            fx = null;
+            fy = null;
             everyFrame = false;
         }
 
@@ -84,7 +100,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Size wrapped_dsize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (dsize);
 
-            OpenCVForUnity.Imgproc.resize (wrapped_src, wrapped_dst, wrapped_dsize);
+            if (!(fx.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("fx is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_fx = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (fx);
+
+            if (!(fy.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("fy is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_fy = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (fy);
+
+            OpenCVForUnity.Imgproc.resize (wrapped_src, wrapped_dst, wrapped_dsize, wrapped_fx, wrapped_fy);
 
 
         }

@@ -9,12 +9,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip ("public static void NMSBoxes (MatOfRect bboxes, MatOfFloat scores, float score_threshold, float nms_threshold, MatOfInt indices)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void NMSBoxes (MatOfRect bboxes, MatOfFloat scores, float score_threshold, float nms_threshold, MatOfInt indices, float eta)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfRect), "bboxes")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat), "scores")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "score_threshold")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "nms_threshold")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "indices")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "eta")]
     public class Dnn_NMSBoxes_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -46,6 +47,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfInt))]
         public HutongGames.PlayMaker.FsmObject indices;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat eta;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -57,6 +63,7 @@ namespace OpenCVForUnityPlayMakerActions
             score_threshold = 0.0f;
             nms_threshold = 0.0f;
             indices = null;
+            eta = 0.0f;
             everyFrame = false;
         }
 
@@ -99,7 +106,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MatOfInt wrapped_indices = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (indices);
 
-            OpenCVForUnity.Dnn.NMSBoxes (wrapped_bboxes, wrapped_scores, score_threshold.Value, nms_threshold.Value, wrapped_indices);
+            OpenCVForUnity.Dnn.NMSBoxes (wrapped_bboxes, wrapped_scores, score_threshold.Value, nms_threshold.Value, wrapped_indices, eta.Value);
 
 
         }

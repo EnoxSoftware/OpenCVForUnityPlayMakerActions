@@ -9,8 +9,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_text")]
-    [HutongGames.PlayMaker.Tooltip ("public static ERFilter createERFilterNM1 (string filename)")]
+    [HutongGames.PlayMaker.Tooltip ("public static ERFilter createERFilterNM1 (string filename, int thresholdDelta, float minArea, float maxArea, float minProbability, bool nonMaxSuppression)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "thresholdDelta")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minArea")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "maxArea")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "minProbability")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "nonMaxSuppression")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ERFilter), "storeResult")]
     public class Text_createERFilterNM1_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -19,6 +24,31 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
         public HutongGames.PlayMaker.FsmString filename;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt thresholdDelta;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg3] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat minArea;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg4] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat maxArea;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat minProbability;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg6] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool nonMaxSuppression;
 
         [HutongGames.PlayMaker.ActionSection ("[return] ERFilter")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -32,6 +62,11 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             filename = null;
+            thresholdDelta = 0;
+            minArea = 0.0f;
+            maxArea = 0.0f;
+            minProbability = 0.0f;
+            nonMaxSuppression = false;
             storeResult = null;
             everyFrame = false;
         }
@@ -55,7 +90,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.ERFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.ERFilter ();
-            ((OpenCVForUnityPlayMakerActions.ERFilter)storeResult.Value).wrappedObject = OpenCVForUnity.Text.createERFilterNM1 (filename.Value);
+            ((OpenCVForUnityPlayMakerActions.ERFilter)storeResult.Value).wrappedObject = OpenCVForUnity.Text.createERFilterNM1 (filename.Value, thresholdDelta.Value, minArea.Value, maxArea.Value, minProbability.Value, nonMaxSuppression.Value);
 
 
         }

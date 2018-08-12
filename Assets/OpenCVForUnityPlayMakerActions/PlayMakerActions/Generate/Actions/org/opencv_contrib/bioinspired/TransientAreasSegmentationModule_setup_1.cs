@@ -8,8 +8,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_bioinspired")]
-    [HutongGames.PlayMaker.Tooltip ("public void setup ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void setup (string segmentationParameterFile)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule), "owner")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "segmentationParameterFile")]
     public class TransientAreasSegmentationModule_setup_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -19,6 +20,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule))]
         public HutongGames.PlayMaker.FsmObject owner;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg1] string")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
+        public HutongGames.PlayMaker.FsmString segmentationParameterFile;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -26,6 +32,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             owner = null;
+            segmentationParameterFile = null;
             everyFrame = false;
         }
 
@@ -54,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.TransientAreasSegmentationModule wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule, OpenCVForUnity.TransientAreasSegmentationModule> (owner);
 
-            wrapped_owner.setup ();
+            wrapped_owner.setup (segmentationParameterFile.Value);
 
 
         }

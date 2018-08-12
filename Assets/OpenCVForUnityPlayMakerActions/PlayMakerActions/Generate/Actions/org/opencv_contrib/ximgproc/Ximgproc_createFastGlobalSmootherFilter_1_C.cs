@@ -8,10 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static FastGlobalSmootherFilter createFastGlobalSmootherFilter (Mat guide, double lambda, double sigma_color)")]
+    [HutongGames.PlayMaker.Tooltip ("public static FastGlobalSmootherFilter createFastGlobalSmootherFilter (Mat guide, double lambda, double sigma_color, double lambda_attenuation)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "guide")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "lambda")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "sigma_color")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "lambda_attenuation")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.FastGlobalSmootherFilter), "storeResult")]
     public class Ximgproc_createFastGlobalSmootherFilter_1_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -32,6 +33,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat sigma_color;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] double(float)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat lambda_attenuation;
+
         [HutongGames.PlayMaker.ActionSection ("[return] FastGlobalSmootherFilter")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.FastGlobalSmootherFilter))]
@@ -46,6 +52,7 @@ namespace OpenCVForUnityPlayMakerActions
             guide = null;
             lambda = 0.0f;
             sigma_color = 0.0f;
+            lambda_attenuation = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -76,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.Mat wrapped_guide = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (guide);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FastGlobalSmootherFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FastGlobalSmootherFilter ();
-            ((OpenCVForUnityPlayMakerActions.FastGlobalSmootherFilter)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createFastGlobalSmootherFilter (wrapped_guide, (float)lambda.Value, (float)sigma_color.Value);
+            ((OpenCVForUnityPlayMakerActions.FastGlobalSmootherFilter)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createFastGlobalSmootherFilter (wrapped_guide, (float)lambda.Value, (float)sigma_color.Value, (float)lambda_attenuation.Value);
 
 
         }

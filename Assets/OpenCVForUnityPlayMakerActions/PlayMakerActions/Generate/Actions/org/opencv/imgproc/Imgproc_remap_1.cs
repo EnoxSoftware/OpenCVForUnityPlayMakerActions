@@ -8,12 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void remap (Mat src, Mat dst, Mat map1, Mat map2, int interpolation)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void remap (Mat src, Mat dst, Mat map1, Mat map2, int interpolation, int borderMode)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "map1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "map2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "interpolation")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "borderMode")]
     public class Imgproc_remap_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -46,6 +47,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt interpolation;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt borderMode;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -57,6 +63,7 @@ namespace OpenCVForUnityPlayMakerActions
             map1 = null;
             map2 = null;
             interpolation = 0;
+            borderMode = 0;
             everyFrame = false;
         }
 
@@ -106,7 +113,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_map2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (map2);
 
-            OpenCVForUnity.Imgproc.remap (wrapped_src, wrapped_dst, wrapped_map1, wrapped_map2, interpolation.Value);
+            OpenCVForUnity.Imgproc.remap (wrapped_src, wrapped_dst, wrapped_map1, wrapped_map2, interpolation.Value, borderMode.Value);
 
 
         }

@@ -8,10 +8,17 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_img_hash")]
-    [HutongGames.PlayMaker.Tooltip ("public static RadialVarianceHash create ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static RadialVarianceHash create (double sigma)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "sigma")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.RadialVarianceHash), "storeResult")]
     public class RadialVarianceHash_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject sigma;
 
         [HutongGames.PlayMaker.ActionSection ("[return] RadialVarianceHash")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +31,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            sigma = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -46,8 +54,15 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
+            if (!(sigma.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("sigma is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_sigma = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (sigma);
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.RadialVarianceHash)) storeResult.Value = new OpenCVForUnityPlayMakerActions.RadialVarianceHash ();
-            ((OpenCVForUnityPlayMakerActions.RadialVarianceHash)storeResult.Value).wrappedObject = OpenCVForUnity.RadialVarianceHash.create ();
+            ((OpenCVForUnityPlayMakerActions.RadialVarianceHash)storeResult.Value).wrappedObject = OpenCVForUnity.RadialVarianceHash.create (wrapped_sigma);
 
 
         }

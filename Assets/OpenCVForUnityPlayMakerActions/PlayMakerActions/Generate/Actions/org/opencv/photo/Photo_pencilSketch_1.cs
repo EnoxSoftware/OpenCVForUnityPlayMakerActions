@@ -8,10 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_photo")]
-    [HutongGames.PlayMaker.Tooltip ("public static void pencilSketch (Mat src, Mat dst1, Mat dst2)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void pencilSketch (Mat src, Mat dst1, Mat dst2, float sigma_s, float sigma_r)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst2")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "sigma_s")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "sigma_r")]
     public class Photo_pencilSketch_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +35,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst2;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat sigma_s;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat sigma_r;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +54,8 @@ namespace OpenCVForUnityPlayMakerActions
             src = null;
             dst1 = null;
             dst2 = null;
+            sigma_s = 0.0f;
+            sigma_r = 0.0f;
             everyFrame = false;
         }
 
@@ -84,7 +98,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst2);
 
-            OpenCVForUnity.Photo.pencilSketch (wrapped_src, wrapped_dst1, wrapped_dst2);
+            OpenCVForUnity.Photo.pencilSketch (wrapped_src, wrapped_dst1, wrapped_dst2, sigma_s.Value, sigma_r.Value);
 
 
         }

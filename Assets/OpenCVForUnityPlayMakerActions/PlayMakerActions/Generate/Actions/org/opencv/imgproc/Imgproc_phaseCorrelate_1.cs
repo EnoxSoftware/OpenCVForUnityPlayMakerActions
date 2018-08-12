@@ -8,9 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static Point phaseCorrelate (Mat src1, Mat src2)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Point phaseCorrelate (Mat src1, Mat src2, Mat window)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src2")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "window")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Point), "storeResult")]
     public class Imgproc_phaseCorrelate_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -27,6 +28,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject src2;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject window;
+
         [HutongGames.PlayMaker.ActionSection ("[return] Point")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Point))]
@@ -40,6 +47,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             src1 = null;
             src2 = null;
+            window = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -76,8 +84,15 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_src2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src2);
 
+            if (!(window.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("window is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_window = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (window);
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Point)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Point ();
-            ((OpenCVForUnityPlayMakerActions.Point)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.phaseCorrelate (wrapped_src1, wrapped_src2);
+            ((OpenCVForUnityPlayMakerActions.Point)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.phaseCorrelate (wrapped_src1, wrapped_src2, wrapped_window);
 
 
         }

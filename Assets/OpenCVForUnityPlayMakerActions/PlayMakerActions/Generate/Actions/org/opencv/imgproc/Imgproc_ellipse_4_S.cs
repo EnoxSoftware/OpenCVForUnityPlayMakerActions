@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void ellipse (Mat img, RotatedRect box, Scalar color, int thickness)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void ellipse (Mat img, RotatedRect box, Scalar color, int thickness, int lineType)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "img")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "box_center_x")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "box_center_y")]
@@ -20,6 +20,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "color_v2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "color_v3")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "thickness")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "lineType")]
     public class Imgproc_ellipse_4_S : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -74,6 +75,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt thickness;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt lineType;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -91,6 +97,7 @@ namespace OpenCVForUnityPlayMakerActions
             color_v2 = 0.0f;
             color_v3 = 0.0f;
             thickness = 0;
+            lineType = 0;
             everyFrame = false;
         }
 
@@ -119,7 +126,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
 
-            OpenCVForUnity.Imgproc.ellipse (wrapped_img, new OpenCVForUnity.RotatedRect (new OpenCVForUnity.Point ((double)box_center_x.Value, (double)box_center_y.Value), new OpenCVForUnity.Size ((double)box_size_width.Value, (double)box_size_height.Value), (double)box_angle.Value), new OpenCVForUnity.Scalar ((double)color_v0.Value, (double)color_v1.Value, (double)color_v2.Value, (double)color_v3.Value), thickness.Value);
+            OpenCVForUnity.Imgproc.ellipse (wrapped_img, new OpenCVForUnity.RotatedRect (new OpenCVForUnity.Point ((double)box_center_x.Value, (double)box_center_y.Value), new OpenCVForUnity.Size ((double)box_size_width.Value, (double)box_size_height.Value), (double)box_angle.Value), new OpenCVForUnity.Scalar ((double)color_v0.Value, (double)color_v1.Value, (double)color_v2.Value, (double)color_v3.Value), thickness.Value, lineType.Value);
 
 
         }

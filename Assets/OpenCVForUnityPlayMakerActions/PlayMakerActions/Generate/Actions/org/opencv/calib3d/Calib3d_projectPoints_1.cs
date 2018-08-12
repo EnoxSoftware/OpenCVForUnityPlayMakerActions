@@ -8,13 +8,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip ("public static void projectPoints (MatOfPoint3f objectPoints, Mat rvec, Mat tvec, Mat cameraMatrix, MatOfDouble distCoeffs, MatOfPoint2f imagePoints)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void projectPoints (MatOfPoint3f objectPoints, Mat rvec, Mat tvec, Mat cameraMatrix, MatOfDouble distCoeffs, MatOfPoint2f imagePoints, Mat jacobian)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint3f), "objectPoints")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "rvec")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "tvec")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfDouble), "distCoeffs")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "imagePoints")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "jacobian")]
     public class Calib3d_projectPoints_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -54,6 +55,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f))]
         public HutongGames.PlayMaker.FsmObject imagePoints;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg7] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject jacobian;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -66,6 +73,7 @@ namespace OpenCVForUnityPlayMakerActions
             cameraMatrix = null;
             distCoeffs = null;
             imagePoints = null;
+            jacobian = null;
             everyFrame = false;
         }
 
@@ -129,7 +137,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MatOfPoint2f wrapped_imagePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (imagePoints);
 
-            OpenCVForUnity.Calib3d.projectPoints (wrapped_objectPoints, wrapped_rvec, wrapped_tvec, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_imagePoints);
+            if (!(jacobian.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("jacobian is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_jacobian = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (jacobian);
+
+            OpenCVForUnity.Calib3d.projectPoints (wrapped_objectPoints, wrapped_rvec, wrapped_tvec, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_imagePoints, wrapped_jacobian);
 
 
         }

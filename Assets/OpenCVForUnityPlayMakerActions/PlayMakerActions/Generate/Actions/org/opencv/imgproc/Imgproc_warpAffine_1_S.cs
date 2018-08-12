@@ -8,13 +8,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void warpAffine (Mat src, Mat dst, Mat M, Size dsize, int flags)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void warpAffine (Mat src, Mat dst, Mat M, Size dsize, int flags, int borderMode)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "M")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "dsize_width")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "dsize_height")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "flags")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "borderMode")]
     public class Imgproc_warpAffine_1_S : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -51,6 +52,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt flags;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt borderMode;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -63,6 +69,7 @@ namespace OpenCVForUnityPlayMakerActions
             dsize_width = 0.0f;
             dsize_height = 0.0f;
             flags = 0;
+            borderMode = 0;
             everyFrame = false;
         }
 
@@ -105,7 +112,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_M = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (M);
 
-            OpenCVForUnity.Imgproc.warpAffine (wrapped_src, wrapped_dst, wrapped_M, new OpenCVForUnity.Size ((double)dsize_width.Value, (double)dsize_height.Value), flags.Value);
+            OpenCVForUnity.Imgproc.warpAffine (wrapped_src, wrapped_dst, wrapped_M, new OpenCVForUnity.Size ((double)dsize_width.Value, (double)dsize_height.Value), flags.Value, borderMode.Value);
 
 
         }

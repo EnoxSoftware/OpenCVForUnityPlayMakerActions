@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static float initWideAngleProjMap (Mat cameraMatrix, Mat distCoeffs, Size imageSize, int destImageWidth, int m1type, Mat map1, Mat map2)")]
+    [HutongGames.PlayMaker.Tooltip ("public static float initWideAngleProjMap (Mat cameraMatrix, Mat distCoeffs, Size imageSize, int destImageWidth, int m1type, Mat map1, Mat map2, int projType)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "distCoeffs")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "imageSize")]
@@ -16,6 +16,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "m1type")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "map1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "map2")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "projType")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "storeResult")]
     public class Imgproc_initWideAngleProjMap_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -60,6 +61,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject map2;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg8] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt projType;
+
         [HutongGames.PlayMaker.ActionSection ("[return] float")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
@@ -78,6 +84,7 @@ namespace OpenCVForUnityPlayMakerActions
             m1type = 0;
             map1 = null;
             map2 = null;
+            projType = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -135,7 +142,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_map2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (map2);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.initWideAngleProjMap (wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_imageSize, destImageWidth.Value, m1type.Value, wrapped_map1, wrapped_map2);
+            storeResult.Value = OpenCVForUnity.Imgproc.initWideAngleProjMap (wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_imageSize, destImageWidth.Value, m1type.Value, wrapped_map1, wrapped_map2, projType.Value);
 
 
         }

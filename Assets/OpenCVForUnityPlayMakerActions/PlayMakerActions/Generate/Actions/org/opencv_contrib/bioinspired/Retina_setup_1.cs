@@ -8,8 +8,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_bioinspired")]
-    [HutongGames.PlayMaker.Tooltip ("public void setup ()")]
+    [HutongGames.PlayMaker.Tooltip ("public void setup (string retinaParameterFile)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Retina), "owner")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "retinaParameterFile")]
     public class Retina_setup_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -19,6 +20,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Retina))]
         public HutongGames.PlayMaker.FsmObject owner;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg1] string")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
+        public HutongGames.PlayMaker.FsmString retinaParameterFile;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -26,6 +32,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             owner = null;
+            retinaParameterFile = null;
             everyFrame = false;
         }
 
@@ -54,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Retina wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Retina, OpenCVForUnity.Retina> (owner);
 
-            wrapped_owner.setup ();
+            wrapped_owner.setup (retinaParameterFile.Value);
 
 
         }

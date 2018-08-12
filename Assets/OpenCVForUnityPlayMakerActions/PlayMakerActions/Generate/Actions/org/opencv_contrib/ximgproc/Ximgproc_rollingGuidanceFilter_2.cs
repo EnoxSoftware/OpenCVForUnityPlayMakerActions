@@ -8,9 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void rollingGuidanceFilter (Mat src, Mat dst)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void rollingGuidanceFilter (Mat src, Mat dst, int d, double sigmaColor, double sigmaSpace)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "d")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "sigmaColor")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "sigmaSpace")]
     public class Ximgproc_rollingGuidanceFilter_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -26,6 +29,23 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt d;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg4] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject sigmaColor;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg5] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject sigmaSpace;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -34,6 +54,9 @@ namespace OpenCVForUnityPlayMakerActions
         {
             src = null;
             dst = null;
+            d = 0;
+            sigmaColor = null;
+            sigmaSpace = null;
             everyFrame = false;
         }
 
@@ -69,7 +92,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            OpenCVForUnity.Ximgproc.rollingGuidanceFilter (wrapped_src, wrapped_dst);
+            if (!(sigmaColor.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("sigmaColor is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_sigmaColor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (sigmaColor);
+
+            if (!(sigmaSpace.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("sigmaSpace is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_sigmaSpace = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (sigmaSpace);
+
+            OpenCVForUnity.Ximgproc.rollingGuidanceFilter (wrapped_src, wrapped_dst, d.Value, wrapped_sigmaColor, wrapped_sigmaSpace);
 
 
         }

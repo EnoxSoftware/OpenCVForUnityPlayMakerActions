@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public static void batchDistance (Mat src1, Mat src2, Mat dist, int dtype, Mat nidx, int normType, int K)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void batchDistance (Mat src1, Mat src2, Mat dist, int dtype, Mat nidx, int normType, int K, Mat mask, int update)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dist")]
@@ -16,6 +16,8 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "nidx")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "normType")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "K")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "mask")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "update")]
     public class Core_batchDistance_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -58,6 +60,17 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt K;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg8] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject mask;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg9] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt update;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -71,6 +84,8 @@ namespace OpenCVForUnityPlayMakerActions
             nidx = null;
             normType = 0;
             K = 0;
+            mask = null;
+            update = 0;
             everyFrame = false;
         }
 
@@ -120,7 +135,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_nidx = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (nidx);
 
-            OpenCVForUnity.Core.batchDistance (wrapped_src1, wrapped_src2, wrapped_dist, dtype.Value, wrapped_nidx, normType.Value, K.Value);
+            if (!(mask.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("mask is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mask);
+
+            OpenCVForUnity.Core.batchDistance (wrapped_src1, wrapped_src2, wrapped_dist, dtype.Value, wrapped_nidx, normType.Value, K.Value, wrapped_mask, update.Value);
 
 
         }

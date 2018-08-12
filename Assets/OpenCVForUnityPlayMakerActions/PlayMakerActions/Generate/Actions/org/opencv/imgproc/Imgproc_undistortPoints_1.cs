@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void undistortPoints (Mat src, Mat dst, Mat cameraMatrix, Mat distCoeffs)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void undistortPoints (Mat src, Mat dst, Mat cameraMatrix, Mat distCoeffs, Mat R)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "distCoeffs")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "R")]
     public class Imgproc_undistortPoints_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -40,6 +41,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject distCoeffs;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject R;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -50,6 +57,7 @@ namespace OpenCVForUnityPlayMakerActions
             dst = null;
             cameraMatrix = null;
             distCoeffs = null;
+            R = null;
             everyFrame = false;
         }
 
@@ -99,7 +107,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_distCoeffs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (distCoeffs);
 
-            OpenCVForUnity.Imgproc.undistortPoints (wrapped_src, wrapped_dst, wrapped_cameraMatrix, wrapped_distCoeffs);
+            if (!(R.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("R is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_R = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (R);
+
+            OpenCVForUnity.Imgproc.undistortPoints (wrapped_src, wrapped_dst, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_R);
 
 
         }

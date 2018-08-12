@@ -6,8 +6,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public static void setDebugMode (bool debugMode)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void setDebugMode (bool debugMode, bool throwException = false)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "debugMode")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "throwException")]
     public class Utils_setDebugMode : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -15,6 +16,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         public HutongGames.PlayMaker.FsmBool
             debugMode;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        public HutongGames.PlayMaker.FsmBool
+            throwException;
 
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
@@ -24,6 +30,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             debugMode = false;
+            throwException = false;
             everyFrame = false;
 
         }
@@ -46,7 +53,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            Utils.setDebugMode (debugMode.Value);
+            Utils.setDebugMode (debugMode.Value, throwException.Value);
 
         }
 

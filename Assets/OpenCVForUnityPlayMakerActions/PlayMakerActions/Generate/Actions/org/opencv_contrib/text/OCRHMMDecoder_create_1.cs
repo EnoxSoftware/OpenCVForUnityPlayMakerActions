@@ -9,11 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_text")]
-    [HutongGames.PlayMaker.Tooltip ("public static OCRHMMDecoder create (string filename, string vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table)")]
+    [HutongGames.PlayMaker.Tooltip ("public static OCRHMMDecoder create (string filename, string vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table, int mode)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "vocabulary")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "transition_probabilities_table")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "emission_probabilities_table")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "mode")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.OCRHMMDecoder), "storeResult")]
     public class OCRHMMDecoder_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -40,6 +41,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject emission_probabilities_table;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt mode;
+
         [HutongGames.PlayMaker.ActionSection ("[return] OCRHMMDecoder")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.OCRHMMDecoder))]
@@ -55,6 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
             vocabulary = null;
             transition_probabilities_table = null;
             emission_probabilities_table = null;
+            mode = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -92,7 +99,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.Mat wrapped_emission_probabilities_table = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (emission_probabilities_table);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.OCRHMMDecoder)) storeResult.Value = new OpenCVForUnityPlayMakerActions.OCRHMMDecoder ();
-            ((OpenCVForUnityPlayMakerActions.OCRHMMDecoder)storeResult.Value).wrappedObject = OpenCVForUnity.OCRHMMDecoder.create (filename.Value, vocabulary.Value, wrapped_transition_probabilities_table, wrapped_emission_probabilities_table);
+            ((OpenCVForUnityPlayMakerActions.OCRHMMDecoder)storeResult.Value).wrappedObject = OpenCVForUnity.OCRHMMDecoder.create (filename.Value, vocabulary.Value, wrapped_transition_probabilities_table, wrapped_emission_probabilities_table, mode.Value);
 
 
         }

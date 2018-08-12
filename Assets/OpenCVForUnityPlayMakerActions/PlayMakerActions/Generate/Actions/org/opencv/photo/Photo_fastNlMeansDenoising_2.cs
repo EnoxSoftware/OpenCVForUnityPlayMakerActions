@@ -8,13 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_photo")]
-    [HutongGames.PlayMaker.Tooltip ("public static void fastNlMeansDenoising (Mat src, Mat dst, MatOfFloat h, int templateWindowSize, int searchWindowSize, int normType)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void fastNlMeansDenoising (Mat src, Mat dst, float h)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat), "h")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "templateWindowSize")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "searchWindowSize")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "normType")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "h")]
     public class Photo_fastNlMeansDenoising_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -30,26 +27,10 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] MatOfFloat")]
+        [HutongGames.PlayMaker.ActionSection ("[arg3] float")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat))]
-        public HutongGames.PlayMaker.FsmObject h;
-
-        [HutongGames.PlayMaker.ActionSection ("[arg4] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt templateWindowSize;
-
-        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt searchWindowSize;
-
-        [HutongGames.PlayMaker.ActionSection ("[arg6] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt normType;
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat h;
 
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
@@ -59,10 +40,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             src = null;
             dst = null;
-            h = null;
-            templateWindowSize = 0;
-            searchWindowSize = 0;
-            normType = 0;
+            h = 0.0f;
             everyFrame = false;
         }
 
@@ -98,14 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
 
-            if (!(h.Value is OpenCVForUnityPlayMakerActions.MatOfFloat))
-            {
-                LogError ("h is not initialized. Add Action \"newMatOfFloat\".");
-                return;
-            }
-            OpenCVForUnity.MatOfFloat wrapped_h = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.MatOfFloat> (h);
-
-            OpenCVForUnity.Photo.fastNlMeansDenoising (wrapped_src, wrapped_dst, wrapped_h, templateWindowSize.Value, searchWindowSize.Value, normType.Value);
+            OpenCVForUnity.Photo.fastNlMeansDenoising (wrapped_src, wrapped_dst, h.Value);
 
 
         }

@@ -8,10 +8,22 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_photo")]
-    [HutongGames.PlayMaker.Tooltip ("public static MergeMertens createMergeMertens ()")]
+    [HutongGames.PlayMaker.Tooltip ("public static MergeMertens createMergeMertens (float contrast_weight, float saturation_weight)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "contrast_weight")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "saturation_weight")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MergeMertens), "storeResult")]
     public class Photo_createMergeMertens_1 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat contrast_weight;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat saturation_weight;
 
         [HutongGames.PlayMaker.ActionSection ("[return] MergeMertens")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +36,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            contrast_weight = 0.0f;
+            saturation_weight = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MergeMertens)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MergeMertens ();
-            ((OpenCVForUnityPlayMakerActions.MergeMertens)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createMergeMertens ();
+            ((OpenCVForUnityPlayMakerActions.MergeMertens)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createMergeMertens (contrast_weight.Value, saturation_weight.Value);
 
 
         }

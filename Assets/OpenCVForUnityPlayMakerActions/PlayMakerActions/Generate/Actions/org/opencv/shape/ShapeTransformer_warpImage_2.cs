@@ -8,10 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_shape")]
-    [HutongGames.PlayMaker.Tooltip ("public void warpImage (Mat transformingImage, Mat output)")]
+    [HutongGames.PlayMaker.Tooltip ("public void warpImage (Mat transformingImage, Mat output, int flags)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ShapeTransformer), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "transformingImage")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "output")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "flags")]
     public class ShapeTransformer_warpImage_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +34,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject output;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt flags;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
             owner = null;
             transformingImage = null;
             output = null;
+            flags = 0;
             everyFrame = false;
         }
 
@@ -84,7 +91,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_output = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (output);
 
-            wrapped_owner.warpImage (wrapped_transformingImage, wrapped_output);
+            wrapped_owner.warpImage (wrapped_transformingImage, wrapped_output, flags.Value);
 
 
         }

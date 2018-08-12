@@ -8,12 +8,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void HoughCircles (Mat image, Mat circles, int method, double dp, double minDist)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void HoughCircles (Mat image, Mat circles, int method, double dp, double minDist, double param1, double param2, int minRadius)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "circles")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "method")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "dp")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "minDist")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "param1")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "param2")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "minRadius")]
     public class Imgproc_HoughCircles_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -46,6 +49,23 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject minDist;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg6] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject param1;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg7] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject param2;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg8] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt minRadius;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -57,6 +77,9 @@ namespace OpenCVForUnityPlayMakerActions
             method = 0;
             dp = null;
             minDist = null;
+            param1 = null;
+            param2 = null;
+            minRadius = 0;
             everyFrame = false;
         }
 
@@ -106,7 +129,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_minDist = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (minDist);
 
-            OpenCVForUnity.Imgproc.HoughCircles (wrapped_image, wrapped_circles, method.Value, wrapped_dp, wrapped_minDist);
+            if (!(param1.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("param1 is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_param1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (param1);
+
+            if (!(param2.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("param2 is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_param2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (param2);
+
+            OpenCVForUnity.Imgproc.HoughCircles (wrapped_image, wrapped_circles, method.Value, wrapped_dp, wrapped_minDist, wrapped_param1, wrapped_param2, minRadius.Value);
 
 
         }

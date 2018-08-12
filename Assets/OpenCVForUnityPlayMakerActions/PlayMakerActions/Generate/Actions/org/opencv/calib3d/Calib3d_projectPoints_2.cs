@@ -8,15 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip ("public static void projectPoints (MatOfPoint3f objectPoints, MatOfPoint2f imagePoints, Mat rvec, Mat tvec, Mat K, Mat D, double alpha, Mat jacobian)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void projectPoints (MatOfPoint3f objectPoints, Mat rvec, Mat tvec, Mat cameraMatrix, MatOfDouble distCoeffs, MatOfPoint2f imagePoints)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint3f), "objectPoints")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "imagePoints")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "rvec")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "tvec")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "K")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "D")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "alpha")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "jacobian")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfDouble), "distCoeffs")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "imagePoints")]
     public class Calib3d_projectPoints_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -26,47 +24,35 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint3f))]
         public HutongGames.PlayMaker.FsmObject objectPoints;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] MatOfPoint2f")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f))]
-        public HutongGames.PlayMaker.FsmObject imagePoints;
-
-        [HutongGames.PlayMaker.ActionSection ("[arg3] Mat")]
+        [HutongGames.PlayMaker.ActionSection ("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject rvec;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg4] Mat")]
+        [HutongGames.PlayMaker.ActionSection ("[arg3] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject tvec;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg5] Mat")]
+        [HutongGames.PlayMaker.ActionSection ("[arg4] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject K;
+        public HutongGames.PlayMaker.FsmObject cameraMatrix;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg6] Mat")]
+        [HutongGames.PlayMaker.ActionSection ("[arg5] MatOfDouble")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject D;
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfDouble))]
+        public HutongGames.PlayMaker.FsmObject distCoeffs;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg7] double(Double)")]
+        [HutongGames.PlayMaker.ActionSection ("[arg6] MatOfPoint2f")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
-        public HutongGames.PlayMaker.FsmObject alpha;
-
-        [HutongGames.PlayMaker.ActionSection ("[arg8] Mat")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject jacobian;
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f))]
+        public HutongGames.PlayMaker.FsmObject imagePoints;
 
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
@@ -75,13 +61,11 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             objectPoints = null;
-            imagePoints = null;
             rvec = null;
             tvec = null;
-            K = null;
-            D = null;
-            alpha = null;
-            jacobian = null;
+            cameraMatrix = null;
+            distCoeffs = null;
+            imagePoints = null;
             everyFrame = false;
         }
 
@@ -110,13 +94,6 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MatOfPoint3f wrapped_objectPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint3f, OpenCVForUnity.MatOfPoint3f> (objectPoints);
 
-            if (!(imagePoints.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
-            {
-                LogError ("imagePoints is not initialized. Add Action \"newMatOfPoint2f\".");
-                return;
-            }
-            OpenCVForUnity.MatOfPoint2f wrapped_imagePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (imagePoints);
-
             if (!(rvec.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("rvec is not initialized. Add Action \"newMat\".");
@@ -131,35 +108,28 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_tvec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (tvec);
 
-            if (!(K.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(cameraMatrix.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("K is not initialized. Add Action \"newMat\".");
+                LogError ("cameraMatrix is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_K = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (K);
+            OpenCVForUnity.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (cameraMatrix);
 
-            if (!(D.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(distCoeffs.Value is OpenCVForUnityPlayMakerActions.MatOfDouble))
             {
-                LogError ("D is not initialized. Add Action \"newMat\".");
+                LogError ("distCoeffs is not initialized. Add Action \"newMatOfDouble\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_D = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (D);
+            OpenCVForUnity.MatOfDouble wrapped_distCoeffs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDouble, OpenCVForUnity.MatOfDouble> (distCoeffs);
 
-            if (!(alpha.Value is OpenCVForUnityPlayMakerActions.Double))
+            if (!(imagePoints.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
             {
-                LogError ("alpha is not initialized. Add Action \"newDouble\".");
+                LogError ("imagePoints is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            System.Double wrapped_alpha = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (alpha);
+            OpenCVForUnity.MatOfPoint2f wrapped_imagePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (imagePoints);
 
-            if (!(jacobian.Value is OpenCVForUnityPlayMakerActions.Mat))
-            {
-                LogError ("jacobian is not initialized. Add Action \"newMat\".");
-                return;
-            }
-            OpenCVForUnity.Mat wrapped_jacobian = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (jacobian);
-
-            OpenCVForUnity.Calib3d.projectPoints (wrapped_objectPoints, wrapped_imagePoints, wrapped_rvec, wrapped_tvec, wrapped_K, wrapped_D, wrapped_alpha, wrapped_jacobian);
+            OpenCVForUnity.Calib3d.projectPoints (wrapped_objectPoints, wrapped_rvec, wrapped_tvec, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_imagePoints);
 
 
         }

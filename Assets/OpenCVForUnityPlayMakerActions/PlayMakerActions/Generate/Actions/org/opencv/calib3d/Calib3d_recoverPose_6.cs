@@ -8,7 +8,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip ("public static int recoverPose (Mat E, Mat points1, Mat points2, Mat cameraMatrix, Mat R, Mat t, double distanceThresh)")]
+    [HutongGames.PlayMaker.Tooltip ("public static int recoverPose (Mat E, Mat points1, Mat points2, Mat cameraMatrix, Mat R, Mat t, double distanceThresh, Mat mask, Mat triangulatedPoints)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "E")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "points1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "points2")]
@@ -16,6 +16,8 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "R")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "t")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "distanceThresh")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "mask")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "triangulatedPoints")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "storeResult")]
     public class Calib3d_recoverPose_6 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -62,6 +64,18 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject distanceThresh;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg8] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject mask;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg9] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject triangulatedPoints;
+
         [HutongGames.PlayMaker.ActionSection ("[return] int")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
@@ -80,6 +94,8 @@ namespace OpenCVForUnityPlayMakerActions
             R = null;
             t = null;
             distanceThresh = null;
+            mask = null;
+            triangulatedPoints = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -151,7 +167,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_distanceThresh = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (distanceThresh);
 
-            storeResult.Value = OpenCVForUnity.Calib3d.recoverPose (wrapped_E, wrapped_points1, wrapped_points2, wrapped_cameraMatrix, wrapped_R, wrapped_t, wrapped_distanceThresh);
+            if (!(mask.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("mask is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mask);
+
+            if (!(triangulatedPoints.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError ("triangulatedPoints is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.Mat wrapped_triangulatedPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (triangulatedPoints);
+
+            storeResult.Value = OpenCVForUnity.Calib3d.recoverPose (wrapped_E, wrapped_points1, wrapped_points2, wrapped_cameraMatrix, wrapped_R, wrapped_t, wrapped_distanceThresh, wrapped_mask, wrapped_triangulatedPoints);
 
 
         }

@@ -8,11 +8,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip ("public void computeGradient (Mat img, Mat grad, Mat angleOfs)")]
+    [HutongGames.PlayMaker.Tooltip ("public void computeGradient (Mat img, Mat grad, Mat angleOfs, Size paddingTL)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.HOGDescriptor), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "img")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "grad")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "angleOfs")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "paddingTL")]
     public class HOGDescriptor_computeGradient_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -40,6 +41,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject angleOfs;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg4] Size")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Size))]
+        public HutongGames.PlayMaker.FsmObject paddingTL;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -50,6 +57,7 @@ namespace OpenCVForUnityPlayMakerActions
             img = null;
             grad = null;
             angleOfs = null;
+            paddingTL = null;
             everyFrame = false;
         }
 
@@ -99,7 +107,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_angleOfs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (angleOfs);
 
-            wrapped_owner.computeGradient (wrapped_img, wrapped_grad, wrapped_angleOfs);
+            if (!(paddingTL.Value is OpenCVForUnityPlayMakerActions.Size))
+            {
+                LogError ("paddingTL is not initialized. Add Action \"newSize\".");
+                return;
+            }
+            OpenCVForUnity.Size wrapped_paddingTL = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (paddingTL);
+
+            wrapped_owner.computeGradient (wrapped_img, wrapped_grad, wrapped_angleOfs, wrapped_paddingTL);
 
 
         }

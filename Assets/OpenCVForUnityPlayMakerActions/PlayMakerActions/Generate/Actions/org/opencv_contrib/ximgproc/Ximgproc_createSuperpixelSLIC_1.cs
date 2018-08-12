@@ -8,8 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static SuperpixelSLIC createSuperpixelSLIC (Mat image)")]
+    [HutongGames.PlayMaker.Tooltip ("public static SuperpixelSLIC createSuperpixelSLIC (Mat image, int algorithm, int region_size)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "algorithm")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "region_size")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SuperpixelSLIC), "storeResult")]
     public class Ximgproc_createSuperpixelSLIC_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -19,6 +21,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject image;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt algorithm;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg3] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt region_size;
 
         [HutongGames.PlayMaker.ActionSection ("[return] SuperpixelSLIC")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -32,6 +44,8 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             image = null;
+            algorithm = 0;
+            region_size = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -62,7 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SuperpixelSLIC)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SuperpixelSLIC ();
-            ((OpenCVForUnityPlayMakerActions.SuperpixelSLIC)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createSuperpixelSLIC (wrapped_image);
+            ((OpenCVForUnityPlayMakerActions.SuperpixelSLIC)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createSuperpixelSLIC (wrapped_image, algorithm.Value, region_size.Value);
 
 
         }

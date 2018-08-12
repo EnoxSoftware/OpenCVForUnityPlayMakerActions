@@ -8,13 +8,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static void matchGMS (Size size1, Size size2, MatOfKeyPoint keypoints1, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, MatOfDMatch matchesGMS)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void matchGMS (Size size1, Size size2, MatOfKeyPoint keypoints1, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, MatOfDMatch matchesGMS, bool withRotation, bool withScale)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "size1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "size2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfKeyPoint), "keypoints1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfKeyPoint), "keypoints2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfDMatch), "matches1to2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfDMatch), "matchesGMS")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "withRotation")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "withScale")]
     public class Xfeatures2d_matchGMS_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -54,6 +56,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfDMatch))]
         public HutongGames.PlayMaker.FsmObject matchesGMS;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg7] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool withRotation;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg8] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool withScale;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -66,6 +78,8 @@ namespace OpenCVForUnityPlayMakerActions
             keypoints2 = null;
             matches1to2 = null;
             matchesGMS = null;
+            withRotation = false;
+            withScale = false;
             everyFrame = false;
         }
 
@@ -129,7 +143,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MatOfDMatch wrapped_matchesGMS = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDMatch, OpenCVForUnity.MatOfDMatch> (matchesGMS);
 
-            OpenCVForUnity.Xfeatures2d.matchGMS (wrapped_size1, wrapped_size2, wrapped_keypoints1, wrapped_keypoints2, wrapped_matches1to2, wrapped_matchesGMS);
+            OpenCVForUnity.Xfeatures2d.matchGMS (wrapped_size1, wrapped_size2, wrapped_keypoints1, wrapped_keypoints2, wrapped_matches1to2, wrapped_matchesGMS, withRotation.Value, withScale.Value);
 
 
         }

@@ -8,9 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_img_hash")]
-    [HutongGames.PlayMaker.Tooltip ("public static void marrHildrethHash (Mat inputArr, Mat outputArr)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void marrHildrethHash (Mat inputArr, Mat outputArr, float alpha)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "inputArr")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "outputArr")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "alpha")]
     public class Img_hash_marrHildrethHash_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -26,6 +27,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject outputArr;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat alpha;
+
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -34,6 +40,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             inputArr = null;
             outputArr = null;
+            alpha = 0.0f;
             everyFrame = false;
         }
 
@@ -69,7 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.Mat wrapped_outputArr = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (outputArr);
 
-            OpenCVForUnity.Img_hash.marrHildrethHash (wrapped_inputArr, wrapped_outputArr);
+            OpenCVForUnity.Img_hash.marrHildrethHash (wrapped_inputArr, wrapped_outputArr, alpha.Value);
 
 
         }
