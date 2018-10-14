@@ -3,8 +3,12 @@ OpenCVForUnityPlayMakerActions
 
 Overview
 -----
-<https://www.assetstore.unity3d.com/#!/content/94516>  
+[https://assetstore.unity.com/packages/tools/visual-scripting/playmakeractions-for-opencvforunity-94516](https://assetstore.unity.com/packages/tools/visual-scripting/playmakeractions-for-opencvforunity-94516?aid=1011l4ehR)
 
+Environment
+-----
+[OpenCVForUnity](https://assetstore.unity.com/packages/tools/integration/opencv-for-unity-21088?aid=1011l4ehR)  
+[Playmaker](https://assetstore.unity.com/packages/tools/visual-scripting/playmaker-368?aid=1011l4ehR)
 
 Manual
 -----
