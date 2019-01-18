@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newFacemark\".");
                 return;
             }
-            OpenCVForUnity.Facemark wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Facemark, OpenCVForUnity.Facemark> (owner);
+            OpenCVForUnity.FaceModule.Facemark wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Facemark, OpenCVForUnity.FaceModule.Facemark> (owner);
 
             wrapped_owner.loadModel (model.Value);
 

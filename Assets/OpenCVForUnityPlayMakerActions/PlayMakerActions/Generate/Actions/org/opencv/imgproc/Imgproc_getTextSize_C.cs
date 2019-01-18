@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Size)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Size ();
-            ((OpenCVForUnityPlayMakerActions.Size)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.getTextSize (text.Value, fontFace.Value, (float)fontScale.Value, thickness.Value, baseLine.intValues);
+            ((OpenCVForUnityPlayMakerActions.Size)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.getTextSize (text.Value, fontFace.Value, (float)fontScale.Value, thickness.Value, baseLine.intValues);
 
 
         }

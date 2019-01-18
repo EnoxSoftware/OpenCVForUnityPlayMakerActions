@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -90,21 +91,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newOCRBeamSearchDecoder\".");
                 return;
             }
-            OpenCVForUnity.OCRBeamSearchDecoder wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder, OpenCVForUnity.OCRBeamSearchDecoder> (owner);
+            OpenCVForUnity.TextModule.OCRBeamSearchDecoder wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder, OpenCVForUnity.TextModule.OCRBeamSearchDecoder> (owner);
 
             if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(mask.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("mask is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mask);
+            OpenCVForUnity.CoreModule.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mask);
 
             storeResult.Value = wrapped_owner.run (wrapped_image, wrapped_mask, min_confidence.Value, component_level.Value);
 

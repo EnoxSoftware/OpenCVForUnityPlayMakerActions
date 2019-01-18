@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,14 +60,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (owner);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (owner);
 
-            List<OpenCVForUnity.Point> wrapped_lp = new List<OpenCVForUnity.Point> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (lp, wrapped_lp);
+            List<OpenCVForUnity.CoreModule.Point> wrapped_lp = new List<OpenCVForUnity.CoreModule.Point> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (lp, wrapped_lp);
 
             wrapped_owner.fromList (wrapped_lp);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Point, OpenCVForUnityPlayMakerActions.Point> (wrapped_lp, lp);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Point, OpenCVForUnityPlayMakerActions.Point> (wrapped_lp, lp);
 
 
         }

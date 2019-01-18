@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BioinspiredModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,10 +60,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("inputSize is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped_inputSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (inputSize);
+            OpenCVForUnity.CoreModule.Size wrapped_inputSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (inputSize);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule ();
-            ((OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule)storeResult.Value).wrappedObject = OpenCVForUnity.TransientAreasSegmentationModule.create (wrapped_inputSize);
+            ((OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule)storeResult.Value).wrappedObject = OpenCVForUnity.BioinspiredModule.TransientAreasSegmentationModule.create (wrapped_inputSize);
 
 
         }

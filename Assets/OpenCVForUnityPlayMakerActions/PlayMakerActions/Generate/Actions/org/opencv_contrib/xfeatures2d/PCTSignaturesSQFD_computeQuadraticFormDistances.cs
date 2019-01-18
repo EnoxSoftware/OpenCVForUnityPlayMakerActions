@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,28 +77,28 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newPCTSignaturesSQFD\".");
                 return;
             }
-            OpenCVForUnity.PCTSignaturesSQFD wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD, OpenCVForUnity.PCTSignaturesSQFD> (owner);
+            OpenCVForUnity.Xfeatures2dModule.PCTSignaturesSQFD wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD, OpenCVForUnity.Xfeatures2dModule.PCTSignaturesSQFD> (owner);
 
             if (!(sourceSignature.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("sourceSignature is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_sourceSignature = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (sourceSignature);
+            OpenCVForUnity.CoreModule.Mat wrapped_sourceSignature = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (sourceSignature);
 
-            List<OpenCVForUnity.Mat> wrapped_imageSignatures = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (imageSignatures, wrapped_imageSignatures);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_imageSignatures = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (imageSignatures, wrapped_imageSignatures);
 
             if (!(distances.Value is OpenCVForUnityPlayMakerActions.MatOfFloat))
             {
                 LogError ("distances is not initialized. Add Action \"newMatOfFloat\".");
                 return;
             }
-            OpenCVForUnity.MatOfFloat wrapped_distances = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.MatOfFloat> (distances);
+            OpenCVForUnity.CoreModule.MatOfFloat wrapped_distances = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.CoreModule.MatOfFloat> (distances);
 
             wrapped_owner.computeQuadraticFormDistances (wrapped_sourceSignature, wrapped_imageSignatures, wrapped_distances);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_imageSignatures, imageSignatures);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_imageSignatures, imageSignatures);
 
 
         }

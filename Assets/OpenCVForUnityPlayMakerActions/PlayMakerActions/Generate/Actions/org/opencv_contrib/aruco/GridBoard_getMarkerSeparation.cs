@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newGridBoard\".");
                 return;
             }
-            OpenCVForUnity.GridBoard wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.GridBoard, OpenCVForUnity.GridBoard> (owner);
+            OpenCVForUnity.ArucoModule.GridBoard wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.GridBoard, OpenCVForUnity.ArucoModule.GridBoard> (owner);
 
             storeResult.Value = wrapped_owner.getMarkerSeparation ();
 

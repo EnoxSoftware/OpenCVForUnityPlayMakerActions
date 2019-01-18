@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,21 +77,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newBackgroundSubtractor\".");
                 return;
             }
-            OpenCVForUnity.BackgroundSubtractor wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractor, OpenCVForUnity.BackgroundSubtractor> (owner);
+            OpenCVForUnity.VideoModule.BackgroundSubtractor wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractor, OpenCVForUnity.VideoModule.BackgroundSubtractor> (owner);
 
             if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(fgmask.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("fgmask is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_fgmask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (fgmask);
+            OpenCVForUnity.CoreModule.Mat wrapped_fgmask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (fgmask);
 
             if (!(learningRate.Value is OpenCVForUnityPlayMakerActions.Double))
             {

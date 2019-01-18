@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,23 +82,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("samples is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_samples = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (samples);
+            OpenCVForUnity.CoreModule.Mat wrapped_samples = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (samples);
 
             if (!(covar.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("covar is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_covar = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (covar);
+            OpenCVForUnity.CoreModule.Mat wrapped_covar = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (covar);
 
             if (!(mean.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("mean is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mean = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mean);
+            OpenCVForUnity.CoreModule.Mat wrapped_mean = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mean);
 
-            OpenCVForUnity.Core.calcCovarMatrix (wrapped_samples, wrapped_covar, wrapped_mean, flags.Value, ctype.Value);
+            OpenCVForUnity.CoreModule.Core.calcCovarMatrix (wrapped_samples, wrapped_covar, wrapped_mean, flags.Value, ctype.Value);
 
 
         }

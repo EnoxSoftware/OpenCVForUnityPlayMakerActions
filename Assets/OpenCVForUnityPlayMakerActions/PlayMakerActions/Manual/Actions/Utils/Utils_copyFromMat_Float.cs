@@ -1,6 +1,6 @@
 using UnityEngine;
 
-using OpenCVForUnity;
+using OpenCVForUnity.UnityUtils;
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -62,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("mat is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mat = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mat);
+			OpenCVForUnity.CoreModule.Mat wrapped_mat = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mat);
 
             Utils.copyFromMat<float> (wrapped_mat, array.floatValues);
 

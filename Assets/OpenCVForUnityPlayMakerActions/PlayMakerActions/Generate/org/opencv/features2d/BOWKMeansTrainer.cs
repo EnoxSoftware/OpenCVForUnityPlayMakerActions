@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public BOWKMeansTrainer (OpenCVForUnity.BOWKMeansTrainer nativeObj)
+        public BOWKMeansTrainer (OpenCVForUnity.Features2dModule.BOWKMeansTrainer nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.CalibrateRobertson)) storeResult.Value = new OpenCVForUnityPlayMakerActions.CalibrateRobertson ();
-            ((OpenCVForUnityPlayMakerActions.CalibrateRobertson)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createCalibrateRobertson (max_iter.Value);
+            ((OpenCVForUnityPlayMakerActions.CalibrateRobertson)storeResult.Value).wrappedObject = OpenCVForUnity.PhotoModule.Photo.createCalibrateRobertson (max_iter.Value);
 
 
         }

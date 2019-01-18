@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -66,7 +67,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newDescriptorMatcher\".");
                 return;
             }
-            OpenCVForUnity.DescriptorMatcher wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DescriptorMatcher, OpenCVForUnity.DescriptorMatcher> (owner);
+            OpenCVForUnity.Features2dModule.DescriptorMatcher wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DescriptorMatcher, OpenCVForUnity.Features2dModule.DescriptorMatcher> (owner);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.DescriptorMatcher)) storeResult.Value = new OpenCVForUnityPlayMakerActions.DescriptorMatcher ();
             ((OpenCVForUnityPlayMakerActions.DescriptorMatcher)storeResult.Value).wrappedObject = wrapped_owner.clone (emptyTrainData.Value);

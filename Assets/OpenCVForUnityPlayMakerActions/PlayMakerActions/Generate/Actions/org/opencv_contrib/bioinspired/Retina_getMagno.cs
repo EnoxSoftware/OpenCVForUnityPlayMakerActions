@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BioinspiredModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,14 +61,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newRetina\".");
                 return;
             }
-            OpenCVForUnity.Retina wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Retina, OpenCVForUnity.Retina> (owner);
+            OpenCVForUnity.BioinspiredModule.Retina wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Retina, OpenCVForUnity.BioinspiredModule.Retina> (owner);
 
             if (!(retinaOutput_magno.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("retinaOutput_magno is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_retinaOutput_magno = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (retinaOutput_magno);
+            OpenCVForUnity.CoreModule.Mat wrapped_retinaOutput_magno = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (retinaOutput_magno);
 
             wrapped_owner.getMagno (wrapped_retinaOutput_magno);
 

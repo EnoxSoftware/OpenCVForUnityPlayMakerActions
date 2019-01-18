@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,30 +76,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src);
+            OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src);
 
             if (!(lowerb.Value is OpenCVForUnityPlayMakerActions.Scalar))
             {
                 LogError ("lowerb is not initialized. Add Action \"newScalar\".");
                 return;
             }
-            OpenCVForUnity.Scalar wrapped_lowerb = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (lowerb);
+            OpenCVForUnity.CoreModule.Scalar wrapped_lowerb = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.CoreModule.Scalar> (lowerb);
 
             if (!(upperb.Value is OpenCVForUnityPlayMakerActions.Scalar))
             {
                 LogError ("upperb is not initialized. Add Action \"newScalar\".");
                 return;
             }
-            OpenCVForUnity.Scalar wrapped_upperb = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (upperb);
+            OpenCVForUnity.CoreModule.Scalar wrapped_upperb = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.CoreModule.Scalar> (upperb);
 
             if (!(dst.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dst is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
+            OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dst);
 
-            OpenCVForUnity.Core.inRange (wrapped_src, wrapped_lowerb, wrapped_upperb, wrapped_dst);
+            OpenCVForUnity.CoreModule.Core.inRange (wrapped_src, wrapped_lowerb, wrapped_upperb, wrapped_dst);
 
 
         }

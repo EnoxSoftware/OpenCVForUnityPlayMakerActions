@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,14 +62,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("_src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_src);
+            OpenCVForUnity.CoreModule.Mat wrapped__src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_src);
 
-            List<OpenCVForUnity.Mat> wrapped__channels = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_channels, wrapped__channels);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped__channels = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_channels, wrapped__channels);
 
-            OpenCVForUnity.Text.computeNMChannels (wrapped__src, wrapped__channels);
+            OpenCVForUnity.TextModule.Text.computeNMChannels (wrapped__src, wrapped__channels);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped__channels, _channels);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped__channels, _channels);
 
 
         }

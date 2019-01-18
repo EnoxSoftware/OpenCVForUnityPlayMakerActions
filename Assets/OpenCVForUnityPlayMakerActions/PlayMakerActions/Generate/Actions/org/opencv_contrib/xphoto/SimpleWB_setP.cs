@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XphotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newSimpleWB\".");
                 return;
             }
-            OpenCVForUnity.SimpleWB wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SimpleWB, OpenCVForUnity.SimpleWB> (owner);
+            OpenCVForUnity.XphotoModule.SimpleWB wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SimpleWB, OpenCVForUnity.XphotoModule.SimpleWB> (owner);
 
             wrapped_owner.setP (val.Value);
 

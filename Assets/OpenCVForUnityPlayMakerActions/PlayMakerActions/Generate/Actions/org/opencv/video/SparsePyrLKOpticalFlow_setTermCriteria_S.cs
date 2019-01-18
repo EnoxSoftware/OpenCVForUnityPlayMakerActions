@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -72,9 +73,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newSparsePyrLKOpticalFlow\".");
                 return;
             }
-            OpenCVForUnity.SparsePyrLKOpticalFlow wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SparsePyrLKOpticalFlow, OpenCVForUnity.SparsePyrLKOpticalFlow> (owner);
+            OpenCVForUnity.VideoModule.SparsePyrLKOpticalFlow wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SparsePyrLKOpticalFlow, OpenCVForUnity.VideoModule.SparsePyrLKOpticalFlow> (owner);
 
-            wrapped_owner.setTermCriteria (new OpenCVForUnity.TermCriteria ((int)crit_type.Value, (int)crit_maxCount.Value, (double)crit_epsilon.Value));
+            wrapped_owner.setTermCriteria (new OpenCVForUnity.CoreModule.TermCriteria ((int)crit_type.Value, (int)crit_maxCount.Value, (double)crit_epsilon.Value));
 
 
         }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -93,7 +93,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newScalar\".");
                 return;
             }
-            OpenCVForUnity.Scalar wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (owner);
+            OpenCVForUnity.CoreModule.Scalar wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.CoreModule.Scalar> (owner);
 
             if (!(scale.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -103,7 +103,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (scale);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Scalar)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Scalar ();
-            ((OpenCVForUnityPlayMakerActions.Scalar)storeResult.Value).wrappedObject = wrapped_owner.mul (new OpenCVForUnity.Scalar ((double)it_v0.Value, (double)it_v1.Value, (double)it_v2.Value, (double)it_v3.Value), wrapped_scale);
+            ((OpenCVForUnityPlayMakerActions.Scalar)storeResult.Value).wrappedObject = wrapped_owner.mul (new OpenCVForUnity.CoreModule.Scalar ((double)it_v0.Value, (double)it_v1.Value, (double)it_v2.Value, (double)it_v3.Value), wrapped_scale);
 
 
         }

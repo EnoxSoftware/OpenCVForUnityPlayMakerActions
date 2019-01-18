@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BgsegmModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -75,21 +76,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newBackgroundSubtractorGSOC\".");
                 return;
             }
-            OpenCVForUnity.BackgroundSubtractorGSOC wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractorGSOC, OpenCVForUnity.BackgroundSubtractorGSOC> (owner);
+            OpenCVForUnity.BgsegmModule.BackgroundSubtractorGSOC wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractorGSOC, OpenCVForUnity.BgsegmModule.BackgroundSubtractorGSOC> (owner);
 
             if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(fgmask.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("fgmask is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_fgmask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (fgmask);
+            OpenCVForUnity.CoreModule.Mat wrapped_fgmask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (fgmask);
 
             wrapped_owner.apply (wrapped_image, wrapped_fgmask, (float)learningRate.Value);
 

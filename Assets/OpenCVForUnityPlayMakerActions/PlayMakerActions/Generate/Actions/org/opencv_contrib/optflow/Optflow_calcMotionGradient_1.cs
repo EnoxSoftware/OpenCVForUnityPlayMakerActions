@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.OptflowModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -84,21 +85,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("mhi is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mhi = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mhi);
+            OpenCVForUnity.CoreModule.Mat wrapped_mhi = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mhi);
 
             if (!(mask.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("mask is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mask);
+            OpenCVForUnity.CoreModule.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mask);
 
             if (!(orientation.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("orientation is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_orientation = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (orientation);
+            OpenCVForUnity.CoreModule.Mat wrapped_orientation = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (orientation);
 
             if (!(delta1.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -114,7 +115,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_delta2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (delta2);
 
-            OpenCVForUnity.Optflow.calcMotionGradient (wrapped_mhi, wrapped_mask, wrapped_orientation, wrapped_delta1, wrapped_delta2);
+            OpenCVForUnity.OptflowModule.Optflow.calcMotionGradient (wrapped_mhi, wrapped_mask, wrapped_orientation, wrapped_delta1, wrapped_delta2);
 
 
         }

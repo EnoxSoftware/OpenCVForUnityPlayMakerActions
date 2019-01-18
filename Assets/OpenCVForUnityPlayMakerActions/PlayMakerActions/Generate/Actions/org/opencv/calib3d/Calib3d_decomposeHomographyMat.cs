@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -91,31 +92,31 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("H is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_H = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (H);
+            OpenCVForUnity.CoreModule.Mat wrapped_H = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (H);
 
             if (!(K.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("K is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_K = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (K);
+            OpenCVForUnity.CoreModule.Mat wrapped_K = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (K);
 
-            List<OpenCVForUnity.Mat> wrapped_rotations = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (rotations, wrapped_rotations);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_rotations = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (rotations, wrapped_rotations);
 
-            List<OpenCVForUnity.Mat> wrapped_translations = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (translations, wrapped_translations);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_translations = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (translations, wrapped_translations);
 
-            List<OpenCVForUnity.Mat> wrapped_normals = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (normals, wrapped_normals);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_normals = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (normals, wrapped_normals);
 
-            storeResult.Value = OpenCVForUnity.Calib3d.decomposeHomographyMat (wrapped_H, wrapped_K, wrapped_rotations, wrapped_translations, wrapped_normals);
+            storeResult.Value = OpenCVForUnity.Calib3dModule.Calib3d.decomposeHomographyMat (wrapped_H, wrapped_K, wrapped_rotations, wrapped_translations, wrapped_normals);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_rotations, rotations);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_rotations, rotations);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_translations, translations);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_translations, translations);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_normals, normals);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_normals, normals);
 
 
         }

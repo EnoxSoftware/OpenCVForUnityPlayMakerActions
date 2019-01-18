@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.RegModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMapperGradAffine\".");
                 return;
             }
-            OpenCVForUnity.MapperGradAffine wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MapperGradAffine, OpenCVForUnity.MapperGradAffine> (owner);
+            OpenCVForUnity.RegModule.MapperGradAffine wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MapperGradAffine, OpenCVForUnity.RegModule.MapperGradAffine> (owner);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Map)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Map ();
             ((OpenCVForUnityPlayMakerActions.Map)storeResult.Value).wrappedObject = wrapped_owner.getMap ();

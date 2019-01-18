@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,23 +68,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("x is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_x = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (x);
+            OpenCVForUnity.CoreModule.Mat wrapped_x = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (x);
 
             if (!(y.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("y is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_y = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (y);
+            OpenCVForUnity.CoreModule.Mat wrapped_y = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (y);
 
             if (!(magnitude.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("magnitude is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_magnitude = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (magnitude);
+            OpenCVForUnity.CoreModule.Mat wrapped_magnitude = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (magnitude);
 
-            OpenCVForUnity.Core.magnitude (wrapped_x, wrapped_y, wrapped_magnitude);
+            OpenCVForUnity.CoreModule.Core.magnitude (wrapped_x, wrapped_y, wrapped_magnitude);
 
 
         }

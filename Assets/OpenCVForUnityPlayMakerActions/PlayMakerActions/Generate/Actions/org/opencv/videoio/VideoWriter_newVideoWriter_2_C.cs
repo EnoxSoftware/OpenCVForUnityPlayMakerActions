@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoioModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -87,10 +88,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("frameSize is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped_frameSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (frameSize);
+            OpenCVForUnity.CoreModule.Size wrapped_frameSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (frameSize);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.VideoWriter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.VideoWriter ();
-            ((OpenCVForUnityPlayMakerActions.VideoWriter)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoWriter (filename.Value, fourcc.Value, (float)fps.Value, wrapped_frameSize, isColor.Value);
+            ((OpenCVForUnityPlayMakerActions.VideoWriter)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoioModule.VideoWriter (filename.Value, fourcc.Value, (float)fps.Value, wrapped_frameSize, isColor.Value);
 
 
         }

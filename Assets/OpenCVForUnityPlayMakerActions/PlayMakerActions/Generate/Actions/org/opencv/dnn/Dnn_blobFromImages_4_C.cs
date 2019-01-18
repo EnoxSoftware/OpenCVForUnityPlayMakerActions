@@ -2,16 +2,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip ("public static Mat blobFromImages (List<Mat> images, double scalefactor)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Mat blobFromImages (List<Mat> images, double scalefactor, Size size)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "images")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "scalefactor")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Size), "size")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Dnn_blobFromImages_4_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -27,6 +29,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat scalefactor;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg3] Size")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Size))]
+        public HutongGames.PlayMaker.FsmObject size;
+
         [HutongGames.PlayMaker.ActionSection ("[return] Mat")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
@@ -40,6 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             images = null;
             scalefactor = 0.0f;
+            size = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -62,13 +71,20 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            List<OpenCVForUnity.Mat> wrapped_images = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (images, wrapped_images);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_images = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (images, wrapped_images);
+
+            if (!(size.Value is OpenCVForUnityPlayMakerActions.Size))
+            {
+                LogError ("size is not initialized. Add Action \"newSize\".");
+                return;
+            }
+            OpenCVForUnity.CoreModule.Size wrapped_size = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (size);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Dnn.blobFromImages (wrapped_images, (float)scalefactor.Value);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.DnnModule.Dnn.blobFromImages (wrapped_images, (float)scalefactor.Value, wrapped_size);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_images, images);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_images, images);
 
 
         }

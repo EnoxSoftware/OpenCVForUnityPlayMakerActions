@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Structured_lightModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public GrayCodePattern (OpenCVForUnity.GrayCodePattern nativeObj)
+        public GrayCodePattern (OpenCVForUnity.Structured_lightModule.GrayCodePattern nativeObj)
             : base (nativeObj)
         {
 

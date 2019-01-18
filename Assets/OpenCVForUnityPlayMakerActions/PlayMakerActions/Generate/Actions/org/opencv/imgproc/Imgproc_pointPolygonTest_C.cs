@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -74,16 +75,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("contour is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_contour = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (contour);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_contour = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (contour);
 
             if (!(pt.Value is OpenCVForUnityPlayMakerActions.Point))
             {
                 LogError ("pt is not initialized. Add Action \"newPoint\".");
                 return;
             }
-            OpenCVForUnity.Point wrapped_pt = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (pt);
+            OpenCVForUnity.CoreModule.Point wrapped_pt = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (pt);
 
-            storeResult.Value = (float)OpenCVForUnity.Imgproc.pointPolygonTest (wrapped_contour, wrapped_pt, measureDist.Value);
+            storeResult.Value = (float)OpenCVForUnity.ImgprocModule.Imgproc.pointPolygonTest (wrapped_contour, wrapped_pt, measureDist.Value);
 
 
         }

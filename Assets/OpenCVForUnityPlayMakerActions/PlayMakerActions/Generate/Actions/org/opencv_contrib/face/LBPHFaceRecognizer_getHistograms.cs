@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,13 +60,13 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newLBPHFaceRecognizer\".");
                 return;
             }
-            OpenCVForUnity.LBPHFaceRecognizer wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.LBPHFaceRecognizer, OpenCVForUnity.LBPHFaceRecognizer> (owner);
+            OpenCVForUnity.FaceModule.LBPHFaceRecognizer wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.LBPHFaceRecognizer, OpenCVForUnity.FaceModule.LBPHFaceRecognizer> (owner);
 
-            List<OpenCVForUnity.Mat> wrapped_storeResult = wrapped_owner.getHistograms ();
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_storeResult = wrapped_owner.getHistograms ();
 
             if (!storeResult.IsNone)
             {
-                OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_storeResult, storeResult);
+                OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_storeResult, storeResult);
             }
 
 

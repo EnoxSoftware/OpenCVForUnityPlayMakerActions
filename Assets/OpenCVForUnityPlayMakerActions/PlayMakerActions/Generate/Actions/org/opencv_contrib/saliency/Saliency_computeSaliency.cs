@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.SaliencyModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -85,21 +86,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newSaliency\".");
                 return;
             }
-            OpenCVForUnity.Saliency wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Saliency, OpenCVForUnity.Saliency> (owner);
+            OpenCVForUnity.SaliencyModule.Saliency wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Saliency, OpenCVForUnity.SaliencyModule.Saliency> (owner);
 
             if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(saliencyMap.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("saliencyMap is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_saliencyMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (saliencyMap);
+            OpenCVForUnity.CoreModule.Mat wrapped_saliencyMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (saliencyMap);
 
             storeResult.Value = wrapped_owner.computeSaliency (wrapped_image, wrapped_saliencyMap);
 

@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public SparseMatchInterpolator (OpenCVForUnity.SparseMatchInterpolator nativeObj)
+        public SparseMatchInterpolator (OpenCVForUnity.XimgprocModule.SparseMatchInterpolator nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -89,23 +90,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newLineSegmentDetector\".");
                 return;
             }
-            OpenCVForUnity.LineSegmentDetector wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.LineSegmentDetector, OpenCVForUnity.LineSegmentDetector> (owner);
+            OpenCVForUnity.ImgprocModule.LineSegmentDetector wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.LineSegmentDetector, OpenCVForUnity.ImgprocModule.LineSegmentDetector> (owner);
 
             if (!(lines1.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("lines1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_lines1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (lines1);
+            OpenCVForUnity.CoreModule.Mat wrapped_lines1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (lines1);
 
             if (!(lines2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("lines2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_lines2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (lines2);
+            OpenCVForUnity.CoreModule.Mat wrapped_lines2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (lines2);
 
-            storeResult.Value = wrapped_owner.compareSegments (new OpenCVForUnity.Size ((double)size_width.Value, (double)size_height.Value), wrapped_lines1, wrapped_lines2);
+            storeResult.Value = wrapped_owner.compareSegments (new OpenCVForUnity.CoreModule.Size ((double)size_width.Value, (double)size_height.Value), wrapped_lines1, wrapped_lines2);
 
 
         }

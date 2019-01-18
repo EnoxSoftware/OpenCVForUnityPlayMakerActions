@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newBlockMeanHash\".");
                 return;
             }
-            OpenCVForUnity.BlockMeanHash wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BlockMeanHash, OpenCVForUnity.BlockMeanHash> (owner);
+            OpenCVForUnity.Img_hashModule.BlockMeanHash wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BlockMeanHash, OpenCVForUnity.Img_hashModule.BlockMeanHash> (owner);
 
             wrapped_owner.setMode (mode.Value);
 

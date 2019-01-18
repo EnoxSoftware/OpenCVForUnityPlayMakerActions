@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -65,7 +66,7 @@ namespace OpenCVForUnityPlayMakerActions
             List<string> wrapped_lexicon = new List<string> (string_lexicon);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Text.createOCRHMMTransitionsTable (vocabulary.Value, wrapped_lexicon);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.TextModule.Text.createOCRHMMTransitionsTable (vocabulary.Value, wrapped_lexicon);
 
             wrapped_lexicon.CopyTo (string_lexicon);
 

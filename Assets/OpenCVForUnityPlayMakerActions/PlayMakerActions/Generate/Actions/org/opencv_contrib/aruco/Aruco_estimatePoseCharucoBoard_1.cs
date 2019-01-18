@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -117,51 +118,51 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("charucoCorners is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_charucoCorners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (charucoCorners);
+            OpenCVForUnity.CoreModule.Mat wrapped_charucoCorners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (charucoCorners);
 
             if (!(charucoIds.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("charucoIds is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_charucoIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (charucoIds);
+            OpenCVForUnity.CoreModule.Mat wrapped_charucoIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (charucoIds);
 
             if (!(board.Value is OpenCVForUnityPlayMakerActions.CharucoBoard))
             {
                 LogError ("board is not initialized. Add Action \"newCharucoBoard\".");
                 return;
             }
-            OpenCVForUnity.CharucoBoard wrapped_board = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.CharucoBoard, OpenCVForUnity.CharucoBoard> (board);
+            OpenCVForUnity.ArucoModule.CharucoBoard wrapped_board = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.CharucoBoard, OpenCVForUnity.ArucoModule.CharucoBoard> (board);
 
             if (!(cameraMatrix.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("cameraMatrix is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (cameraMatrix);
+            OpenCVForUnity.CoreModule.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (cameraMatrix);
 
             if (!(distCoeffs.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("distCoeffs is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_distCoeffs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (distCoeffs);
+            OpenCVForUnity.CoreModule.Mat wrapped_distCoeffs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (distCoeffs);
 
             if (!(rvec.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("rvec is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_rvec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (rvec);
+            OpenCVForUnity.CoreModule.Mat wrapped_rvec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (rvec);
 
             if (!(tvec.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("tvec is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_tvec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (tvec);
+            OpenCVForUnity.CoreModule.Mat wrapped_tvec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (tvec);
 
-            storeResult.Value = OpenCVForUnity.Aruco.estimatePoseCharucoBoard (wrapped_charucoCorners, wrapped_charucoIds, wrapped_board, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_rvec, wrapped_tvec);
+            storeResult.Value = OpenCVForUnity.ArucoModule.Aruco.estimatePoseCharucoBoard (wrapped_charucoCorners, wrapped_charucoIds, wrapped_board, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_rvec, wrapped_tvec);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

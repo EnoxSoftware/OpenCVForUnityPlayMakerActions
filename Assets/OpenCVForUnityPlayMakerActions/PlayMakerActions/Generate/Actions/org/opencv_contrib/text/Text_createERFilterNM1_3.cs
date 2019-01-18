@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,7 +77,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.ERFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.ERFilter ();
-            ((OpenCVForUnityPlayMakerActions.ERFilter)storeResult.Value).wrappedObject = OpenCVForUnity.Text.createERFilterNM1 (filename.Value, thresholdDelta.Value, minArea.Value, maxArea.Value);
+            ((OpenCVForUnityPlayMakerActions.ERFilter)storeResult.Value).wrappedObject = OpenCVForUnity.TextModule.Text.createERFilterNM1 (filename.Value, thresholdDelta.Value, minArea.Value, maxArea.Value);
 
 
         }

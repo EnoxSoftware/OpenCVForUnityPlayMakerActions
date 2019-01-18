@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -84,35 +85,35 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("board is not initialized. Add Action \"newBoard\".");
                 return;
             }
-            OpenCVForUnity.Board wrapped_board = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Board, OpenCVForUnity.Board> (board);
+            OpenCVForUnity.ArucoModule.Board wrapped_board = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Board, OpenCVForUnity.ArucoModule.Board> (board);
 
-            List<OpenCVForUnity.Mat> wrapped_detectedCorners = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (detectedCorners, wrapped_detectedCorners);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_detectedCorners = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (detectedCorners, wrapped_detectedCorners);
 
             if (!(detectedIds.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("detectedIds is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_detectedIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (detectedIds);
+            OpenCVForUnity.CoreModule.Mat wrapped_detectedIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (detectedIds);
 
             if (!(objPoints.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("objPoints is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_objPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (objPoints);
+            OpenCVForUnity.CoreModule.Mat wrapped_objPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (objPoints);
 
             if (!(imgPoints.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("imgPoints is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_imgPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (imgPoints);
+            OpenCVForUnity.CoreModule.Mat wrapped_imgPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (imgPoints);
 
-            OpenCVForUnity.Aruco.getBoardObjectAndImagePoints (wrapped_board, wrapped_detectedCorners, wrapped_detectedIds, wrapped_objPoints, wrapped_imgPoints);
+            OpenCVForUnity.ArucoModule.Aruco.getBoardObjectAndImagePoints (wrapped_board, wrapped_detectedCorners, wrapped_detectedIds, wrapped_objPoints, wrapped_imgPoints);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_detectedCorners, detectedCorners);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_detectedCorners, detectedCorners);
 
 
         }

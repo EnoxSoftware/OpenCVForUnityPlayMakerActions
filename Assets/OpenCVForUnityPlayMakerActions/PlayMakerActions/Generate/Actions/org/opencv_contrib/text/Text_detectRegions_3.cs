@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -77,30 +78,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(er_filter1.Value is OpenCVForUnityPlayMakerActions.ERFilter))
             {
                 LogError ("er_filter1 is not initialized. Add Action \"newERFilter\".");
                 return;
             }
-            OpenCVForUnity.ERFilter wrapped_er_filter1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ERFilter, OpenCVForUnity.ERFilter> (er_filter1);
+            OpenCVForUnity.TextModule.ERFilter wrapped_er_filter1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ERFilter, OpenCVForUnity.TextModule.ERFilter> (er_filter1);
 
             if (!(er_filter2.Value is OpenCVForUnityPlayMakerActions.ERFilter))
             {
                 LogError ("er_filter2 is not initialized. Add Action \"newERFilter\".");
                 return;
             }
-            OpenCVForUnity.ERFilter wrapped_er_filter2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ERFilter, OpenCVForUnity.ERFilter> (er_filter2);
+            OpenCVForUnity.TextModule.ERFilter wrapped_er_filter2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ERFilter, OpenCVForUnity.TextModule.ERFilter> (er_filter2);
 
             if (!(groups_rects.Value is OpenCVForUnityPlayMakerActions.MatOfRect))
             {
                 LogError ("groups_rects is not initialized. Add Action \"newMatOfRect\".");
                 return;
             }
-            OpenCVForUnity.MatOfRect wrapped_groups_rects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.MatOfRect> (groups_rects);
+            OpenCVForUnity.CoreModule.MatOfRect wrapped_groups_rects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect> (groups_rects);
 
-            OpenCVForUnity.Text.detectRegions (wrapped_image, wrapped_er_filter1, wrapped_er_filter2, wrapped_groups_rects);
+            OpenCVForUnity.TextModule.Text.detectRegions (wrapped_image, wrapped_er_filter1, wrapped_er_filter2, wrapped_groups_rects);
 
 
         }

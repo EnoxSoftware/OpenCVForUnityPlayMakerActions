@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.RegModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public MapperGradProj (OpenCVForUnity.MapperGradProj nativeObj)
+        public MapperGradProj (OpenCVForUnity.RegModule.MapperGradProj nativeObj)
             : base (nativeObj)
         {
 

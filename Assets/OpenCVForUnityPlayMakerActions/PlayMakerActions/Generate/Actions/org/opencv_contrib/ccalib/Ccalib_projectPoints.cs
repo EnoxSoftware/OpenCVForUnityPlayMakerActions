@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.CcalibModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -108,35 +109,35 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("objectPoints is not initialized. Add Action \"newMatOfPoint3f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint3f wrapped_objectPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint3f, OpenCVForUnity.MatOfPoint3f> (objectPoints);
+            OpenCVForUnity.CoreModule.MatOfPoint3f wrapped_objectPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint3f, OpenCVForUnity.CoreModule.MatOfPoint3f> (objectPoints);
 
             if (!(imagePoints.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
             {
                 LogError ("imagePoints is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_imagePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (imagePoints);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_imagePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (imagePoints);
 
             if (!(rvec.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("rvec is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_rvec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (rvec);
+            OpenCVForUnity.CoreModule.Mat wrapped_rvec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (rvec);
 
             if (!(tvec.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("tvec is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_tvec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (tvec);
+            OpenCVForUnity.CoreModule.Mat wrapped_tvec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (tvec);
 
             if (!(K.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("K is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_K = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (K);
+            OpenCVForUnity.CoreModule.Mat wrapped_K = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (K);
 
             if (!(xi.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -150,16 +151,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("D is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_D = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (D);
+            OpenCVForUnity.CoreModule.Mat wrapped_D = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (D);
 
             if (!(jacobian.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("jacobian is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_jacobian = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (jacobian);
+            OpenCVForUnity.CoreModule.Mat wrapped_jacobian = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (jacobian);
 
-            OpenCVForUnity.Ccalib.projectPoints (wrapped_objectPoints, wrapped_imagePoints, wrapped_rvec, wrapped_tvec, wrapped_K, wrapped_xi, wrapped_D, wrapped_jacobian);
+            OpenCVForUnity.CcalibModule.Ccalib.projectPoints (wrapped_objectPoints, wrapped_imagePoints, wrapped_rvec, wrapped_tvec, wrapped_K, wrapped_xi, wrapped_D, wrapped_jacobian);
 
 
         }

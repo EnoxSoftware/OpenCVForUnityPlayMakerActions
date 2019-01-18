@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,7 +69,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.ParamGrid)) storeResult.Value = new OpenCVForUnityPlayMakerActions.ParamGrid ();
-            ((OpenCVForUnityPlayMakerActions.ParamGrid)storeResult.Value).wrappedObject = OpenCVForUnity.ParamGrid.create ((float)minVal.Value, (float)maxVal.Value, (float)logstep.Value);
+            ((OpenCVForUnityPlayMakerActions.ParamGrid)storeResult.Value).wrappedObject = OpenCVForUnity.MlModule.ParamGrid.create ((float)minVal.Value, (float)maxVal.Value, (float)logstep.Value);
 
 
         }

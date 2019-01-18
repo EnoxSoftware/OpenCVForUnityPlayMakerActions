@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,10 +60,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("rect is not initialized. Add Action \"newRect\".");
                 return;
             }
-            OpenCVForUnity.Rect wrapped_rect = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.Rect> (rect);
+            OpenCVForUnity.CoreModule.Rect wrapped_rect = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect> (rect);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Subdiv2D)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Subdiv2D ();
-            ((OpenCVForUnityPlayMakerActions.Subdiv2D)storeResult.Value).wrappedObject = new OpenCVForUnity.Subdiv2D (wrapped_rect);
+            ((OpenCVForUnityPlayMakerActions.Subdiv2D)storeResult.Value).wrappedObject = new OpenCVForUnity.ImgprocModule.Subdiv2D (wrapped_rect);
 
 
         }

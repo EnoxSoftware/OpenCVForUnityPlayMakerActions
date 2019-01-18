@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.OptflowModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public PCAPrior (OpenCVForUnity.PCAPrior nativeObj)
+        public PCAPrior (OpenCVForUnity.OptflowModule.PCAPrior nativeObj)
             : base (nativeObj)
         {
 

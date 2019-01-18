@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public CharucoBoard (OpenCVForUnity.CharucoBoard nativeObj)
+        public CharucoBoard (OpenCVForUnity.ArucoModule.CharucoBoard nativeObj)
             : base (nativeObj)
         {
 

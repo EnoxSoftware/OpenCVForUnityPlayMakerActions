@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MACE)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MACE ();
-            ((OpenCVForUnityPlayMakerActions.MACE)storeResult.Value).wrappedObject = OpenCVForUnity.MACE.load (filename.Value, objname.Value);
+            ((OpenCVForUnityPlayMakerActions.MACE)storeResult.Value).wrappedObject = OpenCVForUnity.FaceModule.MACE.load (filename.Value, objname.Value);
 
 
         }

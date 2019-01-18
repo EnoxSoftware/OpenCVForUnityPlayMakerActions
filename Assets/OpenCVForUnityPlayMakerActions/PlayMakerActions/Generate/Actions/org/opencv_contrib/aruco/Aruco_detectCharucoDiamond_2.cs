@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -91,33 +92,33 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
-            List<OpenCVForUnity.Mat> wrapped_markerCorners = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (markerCorners, wrapped_markerCorners);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_markerCorners = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (markerCorners, wrapped_markerCorners);
 
             if (!(markerIds.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("markerIds is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_markerIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (markerIds);
+            OpenCVForUnity.CoreModule.Mat wrapped_markerIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (markerIds);
 
-            List<OpenCVForUnity.Mat> wrapped_diamondCorners = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (diamondCorners, wrapped_diamondCorners);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_diamondCorners = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (diamondCorners, wrapped_diamondCorners);
 
             if (!(diamondIds.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("diamondIds is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_diamondIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (diamondIds);
+            OpenCVForUnity.CoreModule.Mat wrapped_diamondIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (diamondIds);
 
-            OpenCVForUnity.Aruco.detectCharucoDiamond (wrapped_image, wrapped_markerCorners, wrapped_markerIds, squareMarkerLengthRate.Value, wrapped_diamondCorners, wrapped_diamondIds);
+            OpenCVForUnity.ArucoModule.Aruco.detectCharucoDiamond (wrapped_image, wrapped_markerCorners, wrapped_markerIds, squareMarkerLengthRate.Value, wrapped_diamondCorners, wrapped_diamondIds);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_markerCorners, markerCorners);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_markerCorners, markerCorners);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_diamondCorners, diamondCorners);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_diamondCorners, diamondCorners);
 
 
         }

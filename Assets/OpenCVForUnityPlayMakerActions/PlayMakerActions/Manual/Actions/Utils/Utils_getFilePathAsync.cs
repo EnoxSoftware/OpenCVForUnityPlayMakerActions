@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.UnityUtils;
 
 namespace OpenCVForUnityPlayMakerActions
 {

@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Feature2D (OpenCVForUnity.Feature2D nativeObj)
+        public Feature2D (OpenCVForUnity.Features2dModule.Feature2D nativeObj)
             : base (nativeObj)
         {
 

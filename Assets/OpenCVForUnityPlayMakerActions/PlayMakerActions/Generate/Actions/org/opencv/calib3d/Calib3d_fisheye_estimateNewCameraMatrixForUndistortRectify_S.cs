@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -120,28 +121,28 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("K is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_K = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (K);
+            OpenCVForUnity.CoreModule.Mat wrapped_K = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (K);
 
             if (!(D.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("D is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_D = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (D);
+            OpenCVForUnity.CoreModule.Mat wrapped_D = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (D);
 
             if (!(R.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("R is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_R = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (R);
+            OpenCVForUnity.CoreModule.Mat wrapped_R = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (R);
 
             if (!(P.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("P is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_P = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (P);
+            OpenCVForUnity.CoreModule.Mat wrapped_P = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (P);
 
             if (!(balance.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -157,7 +158,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_fov_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (fov_scale);
 
-            OpenCVForUnity.Calib3d.fisheye_estimateNewCameraMatrixForUndistortRectify (wrapped_K, wrapped_D, new OpenCVForUnity.Size ((double)image_size_width.Value, (double)image_size_height.Value), wrapped_R, wrapped_P, wrapped_balance, new OpenCVForUnity.Size ((double)new_size_width.Value, (double)new_size_height.Value), wrapped_fov_scale);
+            OpenCVForUnity.Calib3dModule.Calib3d.fisheye_estimateNewCameraMatrixForUndistortRectify (wrapped_K, wrapped_D, new OpenCVForUnity.CoreModule.Size ((double)image_size_width.Value, (double)image_size_height.Value), wrapped_R, wrapped_P, wrapped_balance, new OpenCVForUnity.CoreModule.Size ((double)new_size_width.Value, (double)new_size_height.Value), wrapped_fov_scale);
 
 
         }

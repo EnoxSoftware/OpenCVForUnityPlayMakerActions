@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,13 +59,13 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMatOfKeyPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfKeyPoint wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.MatOfKeyPoint> (owner);
+            OpenCVForUnity.CoreModule.MatOfKeyPoint wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.CoreModule.MatOfKeyPoint> (owner);
 
-            List<OpenCVForUnity.KeyPoint> wrapped_storeResult = wrapped_owner.toList ();
+            List<OpenCVForUnity.CoreModule.KeyPoint> wrapped_storeResult = wrapped_owner.toList ();
 
             if (!storeResult.IsNone)
             {
-                OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.KeyPoint, OpenCVForUnityPlayMakerActions.KeyPoint> (wrapped_storeResult, storeResult);
+                OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.KeyPoint, OpenCVForUnityPlayMakerActions.KeyPoint> (wrapped_storeResult, storeResult);
             }
 
 

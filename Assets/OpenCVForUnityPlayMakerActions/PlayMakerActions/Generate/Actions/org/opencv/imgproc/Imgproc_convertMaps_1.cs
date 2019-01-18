@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -83,30 +84,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("map1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_map1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (map1);
+            OpenCVForUnity.CoreModule.Mat wrapped_map1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (map1);
 
             if (!(map2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("map2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_map2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (map2);
+            OpenCVForUnity.CoreModule.Mat wrapped_map2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (map2);
 
             if (!(dstmap1.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dstmap1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dstmap1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dstmap1);
+            OpenCVForUnity.CoreModule.Mat wrapped_dstmap1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dstmap1);
 
             if (!(dstmap2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dstmap2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dstmap2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dstmap2);
+            OpenCVForUnity.CoreModule.Mat wrapped_dstmap2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dstmap2);
 
-            OpenCVForUnity.Imgproc.convertMaps (wrapped_map1, wrapped_map2, wrapped_dstmap1, wrapped_dstmap2, dstmap1type.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.convertMaps (wrapped_map1, wrapped_map2, wrapped_dstmap1, wrapped_dstmap2, dstmap1type.Value);
 
 
         }

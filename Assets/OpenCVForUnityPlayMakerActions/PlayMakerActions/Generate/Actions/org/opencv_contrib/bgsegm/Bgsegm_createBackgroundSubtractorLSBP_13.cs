@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BgsegmModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BackgroundSubtractorLSBP)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BackgroundSubtractorLSBP ();
-            ((OpenCVForUnityPlayMakerActions.BackgroundSubtractorLSBP)storeResult.Value).wrappedObject = OpenCVForUnity.Bgsegm.createBackgroundSubtractorLSBP ();
+            ((OpenCVForUnityPlayMakerActions.BackgroundSubtractorLSBP)storeResult.Value).wrappedObject = OpenCVForUnity.BgsegmModule.Bgsegm.createBackgroundSubtractorLSBP ();
 
 
         }

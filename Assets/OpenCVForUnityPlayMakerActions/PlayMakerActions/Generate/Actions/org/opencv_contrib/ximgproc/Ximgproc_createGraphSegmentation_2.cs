@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -62,7 +63,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_sigma = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (sigma);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.GraphSegmentation)) storeResult.Value = new OpenCVForUnityPlayMakerActions.GraphSegmentation ();
-            ((OpenCVForUnityPlayMakerActions.GraphSegmentation)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createGraphSegmentation (wrapped_sigma);
+            ((OpenCVForUnityPlayMakerActions.GraphSegmentation)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createGraphSegmentation (wrapped_sigma);
 
 
         }

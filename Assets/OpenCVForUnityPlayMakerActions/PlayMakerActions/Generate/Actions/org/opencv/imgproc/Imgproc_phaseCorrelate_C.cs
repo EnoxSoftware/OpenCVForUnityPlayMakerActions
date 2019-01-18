@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,28 +83,28 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("src1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_src1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src1);
+            OpenCVForUnity.CoreModule.Mat wrapped_src1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src1);
 
             if (!(src2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("src2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_src2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src2);
+            OpenCVForUnity.CoreModule.Mat wrapped_src2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src2);
 
             if (!(window.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("window is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_window = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (window);
+            OpenCVForUnity.CoreModule.Mat wrapped_window = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (window);
 
             float[] float_response = response.floatValues;
             double[] casted_response = new double[float_response.Length];
             float_response.CopyTo (casted_response, 0);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Point)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Point ();
-            ((OpenCVForUnityPlayMakerActions.Point)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.phaseCorrelate (wrapped_src1, wrapped_src2, wrapped_window, casted_response);
+            ((OpenCVForUnityPlayMakerActions.Point)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.phaseCorrelate (wrapped_src1, wrapped_src2, wrapped_window, casted_response);
 
             for (int i = 0; i < casted_response.Length; i++)
             {

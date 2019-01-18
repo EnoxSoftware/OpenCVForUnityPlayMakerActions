@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,28 +77,28 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newDenseOpticalFlow\".");
                 return;
             }
-            OpenCVForUnity.DenseOpticalFlow wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DenseOpticalFlow, OpenCVForUnity.DenseOpticalFlow> (owner);
+            OpenCVForUnity.VideoModule.DenseOpticalFlow wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DenseOpticalFlow, OpenCVForUnity.VideoModule.DenseOpticalFlow> (owner);
 
             if (!(I0.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("I0 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_I0 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (I0);
+            OpenCVForUnity.CoreModule.Mat wrapped_I0 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (I0);
 
             if (!(I1.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("I1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_I1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (I1);
+            OpenCVForUnity.CoreModule.Mat wrapped_I1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (I1);
 
             if (!(flow.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("flow is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (flow);
+            OpenCVForUnity.CoreModule.Mat wrapped_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (flow);
 
             wrapped_owner.calc (wrapped_I0, wrapped_I1, wrapped_flow);
 

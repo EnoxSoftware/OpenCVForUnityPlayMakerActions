@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -67,17 +67,17 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("p1 is not initialized. Add Action \"newPoint\".");
                 return;
             }
-            OpenCVForUnity.Point wrapped_p1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (p1);
+            OpenCVForUnity.CoreModule.Point wrapped_p1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (p1);
 
             if (!(p2.Value is OpenCVForUnityPlayMakerActions.Point))
             {
                 LogError ("p2 is not initialized. Add Action \"newPoint\".");
                 return;
             }
-            OpenCVForUnity.Point wrapped_p2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (p2);
+            OpenCVForUnity.CoreModule.Point wrapped_p2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (p2);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Rect2d)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Rect2d ();
-            ((OpenCVForUnityPlayMakerActions.Rect2d)storeResult.Value).wrappedObject = new OpenCVForUnity.Rect2d (wrapped_p1, wrapped_p2);
+            ((OpenCVForUnityPlayMakerActions.Rect2d)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.Rect2d (wrapped_p1, wrapped_p2);
 
 
         }

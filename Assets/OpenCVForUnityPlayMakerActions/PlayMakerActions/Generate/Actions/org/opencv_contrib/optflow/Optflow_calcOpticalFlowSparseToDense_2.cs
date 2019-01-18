@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.OptflowModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -96,23 +97,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("from is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_from = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (from);
+            OpenCVForUnity.CoreModule.Mat wrapped_from = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (from);
 
             if (!(to.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("to is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_to = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (to);
+            OpenCVForUnity.CoreModule.Mat wrapped_to = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (to);
 
             if (!(flow.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("flow is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (flow);
+            OpenCVForUnity.CoreModule.Mat wrapped_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (flow);
 
-            OpenCVForUnity.Optflow.calcOpticalFlowSparseToDense (wrapped_from, wrapped_to, wrapped_flow, grid_step.Value, k.Value, sigma.Value, use_post_proc.Value);
+            OpenCVForUnity.OptflowModule.Optflow.calcOpticalFlowSparseToDense (wrapped_from, wrapped_to, wrapped_flow, grid_step.Value, k.Value, sigma.Value, use_post_proc.Value);
 
 
         }

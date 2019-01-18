@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -67,17 +67,17 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("a is not initialized. Add Action \"newRect2d\".");
                 return;
             }
-            OpenCVForUnity.Rect2d wrapped_a = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect2d, OpenCVForUnity.Rect2d> (a);
+            OpenCVForUnity.CoreModule.Rect2d wrapped_a = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect2d, OpenCVForUnity.CoreModule.Rect2d> (a);
 
             if (!(b.Value is OpenCVForUnityPlayMakerActions.Rect2d))
             {
                 LogError ("b is not initialized. Add Action \"newRect2d\".");
                 return;
             }
-            OpenCVForUnity.Rect2d wrapped_b = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect2d, OpenCVForUnity.Rect2d> (b);
+            OpenCVForUnity.CoreModule.Rect2d wrapped_b = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect2d, OpenCVForUnity.CoreModule.Rect2d> (b);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Rect2d)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Rect2d ();
-            ((OpenCVForUnityPlayMakerActions.Rect2d)storeResult.Value).wrappedObject = OpenCVForUnity.Rect2d.union (wrapped_a, wrapped_b);
+            ((OpenCVForUnityPlayMakerActions.Rect2d)storeResult.Value).wrappedObject = OpenCVForUnity.CoreModule.Rect2d.union (wrapped_a, wrapped_b);
 
 
         }

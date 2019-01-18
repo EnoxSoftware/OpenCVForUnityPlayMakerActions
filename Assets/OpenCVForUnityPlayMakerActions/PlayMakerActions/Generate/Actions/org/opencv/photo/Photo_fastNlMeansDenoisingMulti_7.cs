@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -77,26 +78,26 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            List<OpenCVForUnity.Mat> wrapped_srcImgs = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (srcImgs, wrapped_srcImgs);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_srcImgs = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (srcImgs, wrapped_srcImgs);
 
             if (!(dst.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dst is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
+            OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dst);
 
             if (!(h.Value is OpenCVForUnityPlayMakerActions.MatOfFloat))
             {
                 LogError ("h is not initialized. Add Action \"newMatOfFloat\".");
                 return;
             }
-            OpenCVForUnity.MatOfFloat wrapped_h = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.MatOfFloat> (h);
+            OpenCVForUnity.CoreModule.MatOfFloat wrapped_h = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.CoreModule.MatOfFloat> (h);
 
-            OpenCVForUnity.Photo.fastNlMeansDenoisingMulti (wrapped_srcImgs, wrapped_dst, imgToDenoiseIndex.Value, temporalWindowSize.Value, wrapped_h);
+            OpenCVForUnity.PhotoModule.Photo.fastNlMeansDenoisingMulti (wrapped_srcImgs, wrapped_dst, imgToDenoiseIndex.Value, temporalWindowSize.Value, wrapped_h);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_srcImgs, srcImgs);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_srcImgs, srcImgs);
 
 
         }

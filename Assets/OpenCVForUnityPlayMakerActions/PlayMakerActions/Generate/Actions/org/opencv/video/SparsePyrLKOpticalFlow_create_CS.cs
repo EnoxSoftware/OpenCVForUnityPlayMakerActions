@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -102,7 +103,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SparsePyrLKOpticalFlow)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SparsePyrLKOpticalFlow ();
-            ((OpenCVForUnityPlayMakerActions.SparsePyrLKOpticalFlow)storeResult.Value).wrappedObject = OpenCVForUnity.SparsePyrLKOpticalFlow.create (new OpenCVForUnity.Size ((double)winSize_width.Value, (double)winSize_height.Value), maxLevel.Value, new OpenCVForUnity.TermCriteria ((int)crit_type.Value, (int)crit_maxCount.Value, (double)crit_epsilon.Value), flags.Value, (float)minEigThreshold.Value);
+            ((OpenCVForUnityPlayMakerActions.SparsePyrLKOpticalFlow)storeResult.Value).wrappedObject = OpenCVForUnity.VideoModule.SparsePyrLKOpticalFlow.create (new OpenCVForUnity.CoreModule.Size ((double)winSize_width.Value, (double)winSize_height.Value), maxLevel.Value, new OpenCVForUnity.CoreModule.TermCriteria ((int)crit_type.Value, (int)crit_maxCount.Value, (double)crit_epsilon.Value), flags.Value, (float)minEigThreshold.Value);
 
 
         }

@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public MergeRobertson (OpenCVForUnity.MergeRobertson nativeObj)
+        public MergeRobertson (OpenCVForUnity.PhotoModule.MergeRobertson nativeObj)
             : base (nativeObj)
         {
 

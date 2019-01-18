@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -83,30 +84,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(patchSize.Value is OpenCVForUnityPlayMakerActions.Size))
             {
                 LogError ("patchSize is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped_patchSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (patchSize);
+            OpenCVForUnity.CoreModule.Size wrapped_patchSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (patchSize);
 
             if (!(center.Value is OpenCVForUnityPlayMakerActions.Point))
             {
                 LogError ("center is not initialized. Add Action \"newPoint\".");
                 return;
             }
-            OpenCVForUnity.Point wrapped_center = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (center);
+            OpenCVForUnity.CoreModule.Point wrapped_center = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (center);
 
             if (!(patch.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("patch is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_patch = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (patch);
+            OpenCVForUnity.CoreModule.Mat wrapped_patch = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (patch);
 
-            OpenCVForUnity.Imgproc.getRectSubPix (wrapped_image, wrapped_patchSize, wrapped_center, wrapped_patch, patchType.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.getRectSubPix (wrapped_image, wrapped_patchSize, wrapped_center, wrapped_patch, patchType.Value);
 
 
         }

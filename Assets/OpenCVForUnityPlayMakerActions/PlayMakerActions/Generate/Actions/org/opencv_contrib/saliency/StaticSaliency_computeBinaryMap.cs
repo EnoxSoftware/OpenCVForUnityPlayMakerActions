@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.SaliencyModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -85,21 +86,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newStaticSaliency\".");
                 return;
             }
-            OpenCVForUnity.StaticSaliency wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StaticSaliency, OpenCVForUnity.StaticSaliency> (owner);
+            OpenCVForUnity.SaliencyModule.StaticSaliency wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StaticSaliency, OpenCVForUnity.SaliencyModule.StaticSaliency> (owner);
 
             if (!(_saliencyMap.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_saliencyMap is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__saliencyMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_saliencyMap);
+            OpenCVForUnity.CoreModule.Mat wrapped__saliencyMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_saliencyMap);
 
             if (!(_binaryMap.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_binaryMap is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__binaryMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_binaryMap);
+            OpenCVForUnity.CoreModule.Mat wrapped__binaryMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_binaryMap);
 
             storeResult.Value = wrapped_owner.computeBinaryMap (wrapped__saliencyMap, wrapped__binaryMap);
 

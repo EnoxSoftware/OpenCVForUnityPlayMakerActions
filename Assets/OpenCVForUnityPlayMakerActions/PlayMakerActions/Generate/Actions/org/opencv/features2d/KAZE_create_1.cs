@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.KAZE)) storeResult.Value = new OpenCVForUnityPlayMakerActions.KAZE ();
-            ((OpenCVForUnityPlayMakerActions.KAZE)storeResult.Value).wrappedObject = OpenCVForUnity.KAZE.create (extended.Value, upright.Value, threshold.Value, nOctaves.Value, nOctaveLayers.Value);
+            ((OpenCVForUnityPlayMakerActions.KAZE)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.KAZE.create (extended.Value, upright.Value, threshold.Value, nOctaves.Value, nOctaveLayers.Value);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,23 +69,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("contour is not initialized. Add Action \"newMatOfPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint wrapped_contour = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.MatOfPoint> (contour);
+            OpenCVForUnity.CoreModule.MatOfPoint wrapped_contour = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.CoreModule.MatOfPoint> (contour);
 
             if (!(convexhull.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
             {
                 LogError ("convexhull is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.MatOfInt wrapped_convexhull = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (convexhull);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_convexhull = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (convexhull);
 
             if (!(convexityDefects.Value is OpenCVForUnityPlayMakerActions.MatOfInt4))
             {
                 LogError ("convexityDefects is not initialized. Add Action \"newMatOfInt4\".");
                 return;
             }
-            OpenCVForUnity.MatOfInt4 wrapped_convexityDefects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt4, OpenCVForUnity.MatOfInt4> (convexityDefects);
+            OpenCVForUnity.CoreModule.MatOfInt4 wrapped_convexityDefects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt4, OpenCVForUnity.CoreModule.MatOfInt4> (convexityDefects);
 
-            OpenCVForUnity.Imgproc.convexityDefects (wrapped_contour, wrapped_convexhull, wrapped_convexityDefects);
+            OpenCVForUnity.ImgprocModule.Imgproc.convexityDefects (wrapped_contour, wrapped_convexhull, wrapped_convexityDefects);
 
 
         }

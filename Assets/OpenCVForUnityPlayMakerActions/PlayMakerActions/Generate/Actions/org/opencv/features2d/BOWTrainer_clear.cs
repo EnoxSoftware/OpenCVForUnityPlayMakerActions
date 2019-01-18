@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -52,7 +53,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newBOWTrainer\".");
                 return;
             }
-            OpenCVForUnity.BOWTrainer wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BOWTrainer, OpenCVForUnity.BOWTrainer> (owner);
+            OpenCVForUnity.Features2dModule.BOWTrainer wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BOWTrainer, OpenCVForUnity.Features2dModule.BOWTrainer> (owner);
 
             wrapped_owner.clear ();
 

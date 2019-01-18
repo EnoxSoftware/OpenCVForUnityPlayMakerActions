@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.EigenFaceRecognizer)) storeResult.Value = new OpenCVForUnityPlayMakerActions.EigenFaceRecognizer ();
-            ((OpenCVForUnityPlayMakerActions.EigenFaceRecognizer)storeResult.Value).wrappedObject = OpenCVForUnity.EigenFaceRecognizer.create (num_components.Value, (float)threshold.Value);
+            ((OpenCVForUnityPlayMakerActions.EigenFaceRecognizer)storeResult.Value).wrappedObject = OpenCVForUnity.FaceModule.EigenFaceRecognizer.create (num_components.Value, (float)threshold.Value);
 
 
         }

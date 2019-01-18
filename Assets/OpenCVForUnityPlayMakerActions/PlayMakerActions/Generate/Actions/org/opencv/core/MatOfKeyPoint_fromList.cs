@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,14 +60,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMatOfKeyPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfKeyPoint wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.MatOfKeyPoint> (owner);
+            OpenCVForUnity.CoreModule.MatOfKeyPoint wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.CoreModule.MatOfKeyPoint> (owner);
 
-            List<OpenCVForUnity.KeyPoint> wrapped_lkp = new List<OpenCVForUnity.KeyPoint> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.KeyPoint, OpenCVForUnity.KeyPoint> (lkp, wrapped_lkp);
+            List<OpenCVForUnity.CoreModule.KeyPoint> wrapped_lkp = new List<OpenCVForUnity.CoreModule.KeyPoint> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.KeyPoint, OpenCVForUnity.CoreModule.KeyPoint> (lkp, wrapped_lkp);
 
             wrapped_owner.fromList (wrapped_lkp);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.KeyPoint, OpenCVForUnityPlayMakerActions.KeyPoint> (wrapped_lkp, lkp);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.KeyPoint, OpenCVForUnityPlayMakerActions.KeyPoint> (wrapped_lkp, lkp);
 
 
         }

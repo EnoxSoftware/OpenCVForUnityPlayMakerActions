@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -93,9 +94,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("facePoints is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_facePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (facePoints);
+            OpenCVForUnity.CoreModule.Mat wrapped_facePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (facePoints);
 
-            storeResult.Value = OpenCVForUnity.Face.loadTrainingData (imageList.Value, groundTruth.Value, wrapped_images, wrapped_facePoints);
+            storeResult.Value = OpenCVForUnity.FaceModule.Face.loadTrainingData (imageList.Value, groundTruth.Value, wrapped_images, wrapped_facePoints);
 
             wrapped_images.CopyTo (string_images);
 

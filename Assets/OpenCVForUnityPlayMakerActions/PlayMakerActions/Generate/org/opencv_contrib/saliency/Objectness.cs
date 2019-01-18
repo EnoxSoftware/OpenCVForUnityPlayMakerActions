@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.SaliencyModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Objectness (OpenCVForUnity.Objectness nativeObj)
+        public Objectness (OpenCVForUnity.SaliencyModule.Objectness nativeObj)
             : base (nativeObj)
         {
 

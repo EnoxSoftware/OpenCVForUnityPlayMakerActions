@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -75,23 +76,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("_p1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__p1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_p1);
+            OpenCVForUnity.CoreModule.Mat wrapped__p1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_p1);
 
             if (!(_p2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_p2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__p2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_p2);
+            OpenCVForUnity.CoreModule.Mat wrapped__p2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_p2);
 
             if (!(_p12.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_p12 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__p12 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_p12);
+            OpenCVForUnity.CoreModule.Mat wrapped__p12 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_p12);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.intersectConvexConvex (wrapped__p1, wrapped__p2, wrapped__p12);
+            storeResult.Value = OpenCVForUnity.ImgprocModule.Imgproc.intersectConvexConvex (wrapped__p1, wrapped__p2, wrapped__p12);
 
 
         }

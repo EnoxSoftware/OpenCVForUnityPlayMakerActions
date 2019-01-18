@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.SaliencyModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MotionSaliencyBinWangApr2014)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MotionSaliencyBinWangApr2014 ();
-            ((OpenCVForUnityPlayMakerActions.MotionSaliencyBinWangApr2014)storeResult.Value).wrappedObject = OpenCVForUnity.MotionSaliencyBinWangApr2014.create ();
+            ((OpenCVForUnityPlayMakerActions.MotionSaliencyBinWangApr2014)storeResult.Value).wrappedObject = OpenCVForUnity.SaliencyModule.MotionSaliencyBinWangApr2014.create ();
 
 
         }

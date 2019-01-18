@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,21 +69,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newFaceRecognizer\".");
                 return;
             }
-            OpenCVForUnity.FaceRecognizer wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.FaceRecognizer, OpenCVForUnity.FaceRecognizer> (owner);
+            OpenCVForUnity.FaceModule.FaceRecognizer wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.FaceRecognizer, OpenCVForUnity.FaceModule.FaceRecognizer> (owner);
 
             if (!(src.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src);
+            OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src);
 
             if (!(collector.Value is OpenCVForUnityPlayMakerActions.PredictCollector))
             {
                 LogError ("collector is not initialized. Add Action \"newPredictCollector\".");
                 return;
             }
-            OpenCVForUnity.PredictCollector wrapped_collector = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.PredictCollector, OpenCVForUnity.PredictCollector> (collector);
+            OpenCVForUnity.FaceModule.PredictCollector wrapped_collector = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.PredictCollector, OpenCVForUnity.FaceModule.PredictCollector> (collector);
 
             wrapped_owner.predict_collect (wrapped_src, wrapped_collector);
 

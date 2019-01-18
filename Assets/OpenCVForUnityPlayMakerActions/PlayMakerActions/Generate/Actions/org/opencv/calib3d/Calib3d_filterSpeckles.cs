@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -83,7 +84,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
+            OpenCVForUnity.CoreModule.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img);
 
             if (!(newVal.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -104,9 +105,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("buf is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_buf = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (buf);
+            OpenCVForUnity.CoreModule.Mat wrapped_buf = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (buf);
 
-            OpenCVForUnity.Calib3d.filterSpeckles (wrapped_img, wrapped_newVal, maxSpeckleSize.Value, wrapped_maxDiff, wrapped_buf);
+            OpenCVForUnity.Calib3dModule.Calib3d.filterSpeckles (wrapped_img, wrapped_newVal, maxSpeckleSize.Value, wrapped_maxDiff, wrapped_buf);
 
 
         }

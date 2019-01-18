@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,13 +54,13 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            OpenCVForUnity.Point3[] wrapped_a = new OpenCVForUnity.Point3[a.Length];
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.Point3, OpenCVForUnity.Point3> (a, wrapped_a);
+            OpenCVForUnity.CoreModule.Point3[] wrapped_a = new OpenCVForUnity.CoreModule.Point3[a.Length];
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.Point3, OpenCVForUnity.CoreModule.Point3> (a, wrapped_a);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfPoint3)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfPoint3 ();
-            ((OpenCVForUnityPlayMakerActions.MatOfPoint3)storeResult.Value).wrappedObject = new OpenCVForUnity.MatOfPoint3 (wrapped_a);
+            ((OpenCVForUnityPlayMakerActions.MatOfPoint3)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfPoint3 (wrapped_a);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.Point3, OpenCVForUnityPlayMakerActions.Point3> (wrapped_a, a);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.CoreModule.Point3, OpenCVForUnityPlayMakerActions.Point3> (wrapped_a, a);
 
 
         }

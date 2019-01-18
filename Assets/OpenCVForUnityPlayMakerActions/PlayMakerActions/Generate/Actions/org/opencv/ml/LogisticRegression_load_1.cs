@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.LogisticRegression)) storeResult.Value = new OpenCVForUnityPlayMakerActions.LogisticRegression ();
-            ((OpenCVForUnityPlayMakerActions.LogisticRegression)storeResult.Value).wrappedObject = OpenCVForUnity.LogisticRegression.load (filepath.Value);
+            ((OpenCVForUnityPlayMakerActions.LogisticRegression)storeResult.Value).wrappedObject = OpenCVForUnity.MlModule.LogisticRegression.load (filepath.Value);
 
 
         }

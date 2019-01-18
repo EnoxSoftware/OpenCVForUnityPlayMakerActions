@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.OptflowModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public OpticalFlowPCAFlow (OpenCVForUnity.OpticalFlowPCAFlow nativeObj)
+        public OpticalFlowPCAFlow (OpenCVForUnity.OptflowModule.OpticalFlowPCAFlow nativeObj)
             : base (nativeObj)
         {
 

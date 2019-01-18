@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -114,7 +115,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped__ang_th = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (_ang_th);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.LineSegmentDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.LineSegmentDetector ();
-            ((OpenCVForUnityPlayMakerActions.LineSegmentDetector)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.createLineSegmentDetector (_refine.Value, wrapped__scale, wrapped__sigma_scale, wrapped__quant, wrapped__ang_th);
+            ((OpenCVForUnityPlayMakerActions.LineSegmentDetector)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.createLineSegmentDetector (_refine.Value, wrapped__scale, wrapped__sigma_scale, wrapped__quant, wrapped__ang_th);
 
 
         }

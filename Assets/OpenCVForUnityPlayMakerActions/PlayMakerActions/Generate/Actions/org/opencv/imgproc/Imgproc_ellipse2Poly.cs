@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -96,23 +97,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("center is not initialized. Add Action \"newPoint\".");
                 return;
             }
-            OpenCVForUnity.Point wrapped_center = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (center);
+            OpenCVForUnity.CoreModule.Point wrapped_center = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (center);
 
             if (!(axes.Value is OpenCVForUnityPlayMakerActions.Size))
             {
                 LogError ("axes is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped_axes = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (axes);
+            OpenCVForUnity.CoreModule.Size wrapped_axes = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (axes);
 
             if (!(pts.Value is OpenCVForUnityPlayMakerActions.MatOfPoint))
             {
                 LogError ("pts is not initialized. Add Action \"newMatOfPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint wrapped_pts = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.MatOfPoint> (pts);
+            OpenCVForUnity.CoreModule.MatOfPoint wrapped_pts = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.CoreModule.MatOfPoint> (pts);
 
-            OpenCVForUnity.Imgproc.ellipse2Poly (wrapped_center, wrapped_axes, angle.Value, arcStart.Value, arcEnd.Value, delta.Value, wrapped_pts);
+            OpenCVForUnity.ImgprocModule.Imgproc.ellipse2Poly (wrapped_center, wrapped_axes, angle.Value, arcStart.Value, arcEnd.Value, delta.Value, wrapped_pts);
 
 
         }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -46,7 +46,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            storeResult.Value = OpenCVForUnity.Core.getBuildInformation ();
+            storeResult.Value = OpenCVForUnity.CoreModule.Core.getBuildInformation ();
 
 
         }

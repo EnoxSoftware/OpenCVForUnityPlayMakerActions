@@ -1,14 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static void drawMatches (Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, Scalar matchColor, Scalar singlePointColor)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void drawMatches (Mat img1, MatOfKeyPoint keypoints1, Mat img2, MatOfKeyPoint keypoints2, MatOfDMatch matches1to2, Mat outImg, Scalar matchColor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "img1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfKeyPoint), "keypoints1")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "img2")]
@@ -16,7 +17,6 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfDMatch), "matches1to2")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "outImg")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "matchColor")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "singlePointColor")]
     public class Features2d_drawMatches_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -62,12 +62,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Scalar))]
         public HutongGames.PlayMaker.FsmObject matchColor;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg8] Scalar")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Scalar))]
-        public HutongGames.PlayMaker.FsmObject singlePointColor;
-
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -81,7 +75,6 @@ namespace OpenCVForUnityPlayMakerActions
             matches1to2 = null;
             outImg = null;
             matchColor = null;
-            singlePointColor = null;
             everyFrame = false;
         }
 
@@ -108,58 +101,51 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("img1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img1);
+            OpenCVForUnity.CoreModule.Mat wrapped_img1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img1);
 
             if (!(keypoints1.Value is OpenCVForUnityPlayMakerActions.MatOfKeyPoint))
             {
                 LogError ("keypoints1 is not initialized. Add Action \"newMatOfKeyPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfKeyPoint wrapped_keypoints1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.MatOfKeyPoint> (keypoints1);
+            OpenCVForUnity.CoreModule.MatOfKeyPoint wrapped_keypoints1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.CoreModule.MatOfKeyPoint> (keypoints1);
 
             if (!(img2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("img2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img2);
+            OpenCVForUnity.CoreModule.Mat wrapped_img2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img2);
 
             if (!(keypoints2.Value is OpenCVForUnityPlayMakerActions.MatOfKeyPoint))
             {
                 LogError ("keypoints2 is not initialized. Add Action \"newMatOfKeyPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfKeyPoint wrapped_keypoints2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.MatOfKeyPoint> (keypoints2);
+            OpenCVForUnity.CoreModule.MatOfKeyPoint wrapped_keypoints2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.CoreModule.MatOfKeyPoint> (keypoints2);
 
             if (!(matches1to2.Value is OpenCVForUnityPlayMakerActions.MatOfDMatch))
             {
                 LogError ("matches1to2 is not initialized. Add Action \"newMatOfDMatch\".");
                 return;
             }
-            OpenCVForUnity.MatOfDMatch wrapped_matches1to2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDMatch, OpenCVForUnity.MatOfDMatch> (matches1to2);
+            OpenCVForUnity.CoreModule.MatOfDMatch wrapped_matches1to2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDMatch, OpenCVForUnity.CoreModule.MatOfDMatch> (matches1to2);
 
             if (!(outImg.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("outImg is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_outImg = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (outImg);
+            OpenCVForUnity.CoreModule.Mat wrapped_outImg = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (outImg);
 
             if (!(matchColor.Value is OpenCVForUnityPlayMakerActions.Scalar))
             {
                 LogError ("matchColor is not initialized. Add Action \"newScalar\".");
                 return;
             }
-            OpenCVForUnity.Scalar wrapped_matchColor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (matchColor);
+            OpenCVForUnity.CoreModule.Scalar wrapped_matchColor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.CoreModule.Scalar> (matchColor);
 
-            if (!(singlePointColor.Value is OpenCVForUnityPlayMakerActions.Scalar))
-            {
-                LogError ("singlePointColor is not initialized. Add Action \"newScalar\".");
-                return;
-            }
-            OpenCVForUnity.Scalar wrapped_singlePointColor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (singlePointColor);
-
-            OpenCVForUnity.Features2d.drawMatches (wrapped_img1, wrapped_keypoints1, wrapped_img2, wrapped_keypoints2, wrapped_matches1to2, wrapped_outImg, wrapped_matchColor, wrapped_singlePointColor);
+            OpenCVForUnity.Features2dModule.Features2d.drawMatches (wrapped_img1, wrapped_keypoints1, wrapped_img2, wrapped_keypoints2, wrapped_matches1to2, wrapped_outImg, wrapped_matchColor);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -104,30 +105,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(labels.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("labels is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_labels = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (labels);
+            OpenCVForUnity.CoreModule.Mat wrapped_labels = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (labels);
 
             if (!(stats.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("stats is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_stats = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (stats);
+            OpenCVForUnity.CoreModule.Mat wrapped_stats = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (stats);
 
             if (!(centroids.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("centroids is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_centroids = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (centroids);
+            OpenCVForUnity.CoreModule.Mat wrapped_centroids = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (centroids);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.connectedComponentsWithStatsWithAlgorithm (wrapped_image, wrapped_labels, wrapped_stats, wrapped_centroids, connectivity.Value, ltype.Value, ccltype.Value);
+            storeResult.Value = OpenCVForUnity.ImgprocModule.Imgproc.connectedComponentsWithStatsWithAlgorithm (wrapped_image, wrapped_labels, wrapped_stats, wrapped_centroids, connectivity.Value, ltype.Value, ccltype.Value);
 
 
         }

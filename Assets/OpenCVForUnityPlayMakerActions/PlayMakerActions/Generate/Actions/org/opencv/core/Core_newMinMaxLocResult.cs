@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +47,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MinMaxLocResult)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MinMaxLocResult ();
-            ((OpenCVForUnityPlayMakerActions.MinMaxLocResult)storeResult.Value).wrappedObject = new OpenCVForUnity.Core.MinMaxLocResult ();
+            ((OpenCVForUnityPlayMakerActions.MinMaxLocResult)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.Core.MinMaxLocResult ();
 
 
         }

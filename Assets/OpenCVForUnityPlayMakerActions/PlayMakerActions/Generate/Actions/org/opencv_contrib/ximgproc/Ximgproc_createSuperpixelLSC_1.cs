@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -66,10 +67,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SuperpixelLSC)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SuperpixelLSC ();
-            ((OpenCVForUnityPlayMakerActions.SuperpixelLSC)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createSuperpixelLSC (wrapped_image, region_size.Value);
+            ((OpenCVForUnityPlayMakerActions.SuperpixelLSC)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createSuperpixelLSC (wrapped_image, region_size.Value);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newBoostDesc\".");
                 return;
             }
-            OpenCVForUnity.BoostDesc wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BoostDesc, OpenCVForUnity.BoostDesc> (owner);
+            OpenCVForUnity.Xfeatures2dModule.BoostDesc wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BoostDesc, OpenCVForUnity.Xfeatures2dModule.BoostDesc> (owner);
 
             storeResult.Value = wrapped_owner.getScaleFactor ();
 

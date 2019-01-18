@@ -1,23 +1,24 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static DescriptorMatcher create (string descriptorMatcherType)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "descriptorMatcherType")]
+    [HutongGames.PlayMaker.Tooltip ("public static DescriptorMatcher create (int matcherType)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "matcherType")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DescriptorMatcher), "storeResult")]
     public class DescriptorMatcher_create : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] string")]
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
-        public HutongGames.PlayMaker.FsmString descriptorMatcherType;
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt matcherType;
 
         [HutongGames.PlayMaker.ActionSection ("[return] DescriptorMatcher")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -30,7 +31,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
-            descriptorMatcherType = null;
+            matcherType = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.DescriptorMatcher)) storeResult.Value = new OpenCVForUnityPlayMakerActions.DescriptorMatcher ();
-            ((OpenCVForUnityPlayMakerActions.DescriptorMatcher)storeResult.Value).wrappedObject = OpenCVForUnity.DescriptorMatcher.create (descriptorMatcherType.Value);
+            ((OpenCVForUnityPlayMakerActions.DescriptorMatcher)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.DescriptorMatcher.create (matcherType.Value);
 
 
         }

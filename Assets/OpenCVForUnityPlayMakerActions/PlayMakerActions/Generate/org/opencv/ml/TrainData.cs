@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public TrainData (OpenCVForUnity.TrainData nativeObj)
+        public TrainData (OpenCVForUnity.MlModule.TrainData nativeObj)
             : base (nativeObj)
         {
 

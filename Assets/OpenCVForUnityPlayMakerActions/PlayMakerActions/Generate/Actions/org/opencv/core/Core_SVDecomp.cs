@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -83,30 +83,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src);
+            OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src);
 
             if (!(w.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("w is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_w = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (w);
+            OpenCVForUnity.CoreModule.Mat wrapped_w = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (w);
 
             if (!(u.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("u is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_u = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (u);
+            OpenCVForUnity.CoreModule.Mat wrapped_u = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (u);
 
             if (!(vt.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("vt is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_vt = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (vt);
+            OpenCVForUnity.CoreModule.Mat wrapped_vt = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (vt);
 
-            OpenCVForUnity.Core.SVDecomp (wrapped_src, wrapped_w, wrapped_u, wrapped_vt, flags.Value);
+            OpenCVForUnity.CoreModule.Core.SVDecomp (wrapped_src, wrapped_w, wrapped_u, wrapped_vt, flags.Value);
 
 
         }

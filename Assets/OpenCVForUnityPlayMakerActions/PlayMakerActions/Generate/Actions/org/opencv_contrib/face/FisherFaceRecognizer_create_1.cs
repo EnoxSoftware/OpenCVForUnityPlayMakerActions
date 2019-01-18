@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FisherFaceRecognizer)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FisherFaceRecognizer ();
-            ((OpenCVForUnityPlayMakerActions.FisherFaceRecognizer)storeResult.Value).wrappedObject = OpenCVForUnity.FisherFaceRecognizer.create (num_components.Value);
+            ((OpenCVForUnityPlayMakerActions.FisherFaceRecognizer)storeResult.Value).wrappedObject = OpenCVForUnity.FaceModule.FisherFaceRecognizer.create (num_components.Value);
 
 
         }

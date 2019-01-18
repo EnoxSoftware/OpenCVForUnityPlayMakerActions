@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,7 +68,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("dst is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
+            OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dst);
 
             if (!(low.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -84,7 +84,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_high = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (high);
 
-            OpenCVForUnity.Core.randu (wrapped_dst, wrapped_low, wrapped_high);
+            OpenCVForUnity.CoreModule.Core.randu (wrapped_dst, wrapped_low, wrapped_high);
 
 
         }

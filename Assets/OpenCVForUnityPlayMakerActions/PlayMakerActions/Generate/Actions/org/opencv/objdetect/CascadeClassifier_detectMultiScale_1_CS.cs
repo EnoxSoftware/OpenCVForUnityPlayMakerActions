@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ObjdetectModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -103,23 +104,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newCascadeClassifier\".");
                 return;
             }
-            OpenCVForUnity.CascadeClassifier wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.CascadeClassifier, OpenCVForUnity.CascadeClassifier> (owner);
+            OpenCVForUnity.ObjdetectModule.CascadeClassifier wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.CascadeClassifier, OpenCVForUnity.ObjdetectModule.CascadeClassifier> (owner);
 
             if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(objects.Value is OpenCVForUnityPlayMakerActions.MatOfRect))
             {
                 LogError ("objects is not initialized. Add Action \"newMatOfRect\".");
                 return;
             }
-            OpenCVForUnity.MatOfRect wrapped_objects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.MatOfRect> (objects);
+            OpenCVForUnity.CoreModule.MatOfRect wrapped_objects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect> (objects);
 
-            wrapped_owner.detectMultiScale (wrapped_image, wrapped_objects, (float)scaleFactor.Value, minNeighbors.Value, flags.Value, new OpenCVForUnity.Size ((double)minSize_width.Value, (double)minSize_height.Value));
+            wrapped_owner.detectMultiScale (wrapped_image, wrapped_objects, (float)scaleFactor.Value, minNeighbors.Value, flags.Value, new OpenCVForUnity.CoreModule.Size ((double)minSize_width.Value, (double)minSize_height.Value));
 
 
         }

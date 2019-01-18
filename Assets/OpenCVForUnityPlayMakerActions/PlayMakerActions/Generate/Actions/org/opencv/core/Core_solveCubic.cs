@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -67,16 +67,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("coeffs is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_coeffs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (coeffs);
+            OpenCVForUnity.CoreModule.Mat wrapped_coeffs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (coeffs);
 
             if (!(roots.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("roots is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_roots = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (roots);
+            OpenCVForUnity.CoreModule.Mat wrapped_roots = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (roots);
 
-            storeResult.Value = OpenCVForUnity.Core.solveCubic (wrapped_coeffs, wrapped_roots);
+            storeResult.Value = OpenCVForUnity.CoreModule.Core.solveCubic (wrapped_coeffs, wrapped_roots);
 
 
         }

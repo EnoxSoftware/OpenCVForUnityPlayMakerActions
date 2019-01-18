@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,21 +83,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newStatModel\".");
                 return;
             }
-            OpenCVForUnity.StatModel wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StatModel, OpenCVForUnity.StatModel> (owner);
+            OpenCVForUnity.MlModule.StatModel wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StatModel, OpenCVForUnity.MlModule.StatModel> (owner);
 
             if (!(data.Value is OpenCVForUnityPlayMakerActions.TrainData))
             {
                 LogError ("data is not initialized. Add Action \"newTrainData\".");
                 return;
             }
-            OpenCVForUnity.TrainData wrapped_data = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TrainData, OpenCVForUnity.TrainData> (data);
+            OpenCVForUnity.MlModule.TrainData wrapped_data = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TrainData, OpenCVForUnity.MlModule.TrainData> (data);
 
             if (!(resp.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("resp is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_resp = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (resp);
+            OpenCVForUnity.CoreModule.Mat wrapped_resp = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (resp);
 
             storeResult.Value = wrapped_owner.calcError (wrapped_data, test.Value, wrapped_resp);
 

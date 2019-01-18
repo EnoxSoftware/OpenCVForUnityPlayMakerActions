@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public ParamGrid (OpenCVForUnity.ParamGrid nativeObj)
+        public ParamGrid (OpenCVForUnity.MlModule.ParamGrid nativeObj)
             : base (nativeObj)
         {
 

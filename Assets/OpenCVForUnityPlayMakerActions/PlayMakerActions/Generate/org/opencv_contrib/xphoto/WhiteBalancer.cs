@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XphotoModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public WhiteBalancer (OpenCVForUnity.WhiteBalancer nativeObj)
+        public WhiteBalancer (OpenCVForUnity.XphotoModule.WhiteBalancer nativeObj)
             : base (nativeObj)
         {
 

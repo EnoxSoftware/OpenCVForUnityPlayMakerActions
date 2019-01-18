@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Subdiv2D (OpenCVForUnity.Subdiv2D nativeObj)
+        public Subdiv2D (OpenCVForUnity.ImgprocModule.Subdiv2D nativeObj)
             : base (nativeObj)
         {
 

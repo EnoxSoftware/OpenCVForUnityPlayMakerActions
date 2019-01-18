@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SuperpixelSEEDS)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SuperpixelSEEDS ();
-            ((OpenCVForUnityPlayMakerActions.SuperpixelSEEDS)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createSuperpixelSEEDS (image_width.Value, image_height.Value, image_channels.Value, num_superpixels.Value, num_levels.Value);
+            ((OpenCVForUnityPlayMakerActions.SuperpixelSEEDS)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createSuperpixelSEEDS (image_width.Value, image_height.Value, image_channels.Value, num_superpixels.Value, num_levels.Value);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.RegModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,14 +61,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMapProjec\".");
                 return;
             }
-            OpenCVForUnity.MapProjec wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MapProjec, OpenCVForUnity.MapProjec> (owner);
+            OpenCVForUnity.RegModule.MapProjec wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MapProjec, OpenCVForUnity.RegModule.MapProjec> (owner);
 
             if (!(map.Value is OpenCVForUnityPlayMakerActions.Map))
             {
                 LogError ("map is not initialized. Add Action \"newMap\".");
                 return;
             }
-            OpenCVForUnity.Map wrapped_map = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Map, OpenCVForUnity.Map> (map);
+            OpenCVForUnity.RegModule.Map wrapped_map = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Map, OpenCVForUnity.RegModule.Map> (map);
 
             wrapped_owner.compose (wrapped_map);
 

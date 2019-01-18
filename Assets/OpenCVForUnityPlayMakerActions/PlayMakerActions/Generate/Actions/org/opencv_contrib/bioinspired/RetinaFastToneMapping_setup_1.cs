@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BioinspiredModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -66,7 +67,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newRetinaFastToneMapping\".");
                 return;
             }
-            OpenCVForUnity.RetinaFastToneMapping wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RetinaFastToneMapping, OpenCVForUnity.RetinaFastToneMapping> (owner);
+            OpenCVForUnity.BioinspiredModule.RetinaFastToneMapping wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RetinaFastToneMapping, OpenCVForUnity.BioinspiredModule.RetinaFastToneMapping> (owner);
 
             wrapped_owner.setup (photoreceptorsNeighborhoodRadius.Value, ganglioncellsNeighborhoodRadius.Value);
 

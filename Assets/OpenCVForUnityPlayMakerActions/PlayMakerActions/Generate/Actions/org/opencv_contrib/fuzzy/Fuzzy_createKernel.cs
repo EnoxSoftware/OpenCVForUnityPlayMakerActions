@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FuzzyModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -73,9 +74,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("kernel is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_kernel = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (kernel);
+            OpenCVForUnity.CoreModule.Mat wrapped_kernel = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (kernel);
 
-            OpenCVForUnity.Fuzzy.createKernel (function.Value, radius.Value, wrapped_kernel, chn.Value);
+            OpenCVForUnity.FuzzyModule.Fuzzy.createKernel (function.Value, radius.Value, wrapped_kernel, chn.Value);
 
 
         }

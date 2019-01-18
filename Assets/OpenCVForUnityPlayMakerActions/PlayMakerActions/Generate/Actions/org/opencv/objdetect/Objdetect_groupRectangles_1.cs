@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ObjdetectModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -67,16 +68,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("rectList is not initialized. Add Action \"newMatOfRect\".");
                 return;
             }
-            OpenCVForUnity.MatOfRect wrapped_rectList = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.MatOfRect> (rectList);
+            OpenCVForUnity.CoreModule.MatOfRect wrapped_rectList = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect> (rectList);
 
             if (!(weights.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
             {
                 LogError ("weights is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.MatOfInt wrapped_weights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (weights);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_weights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (weights);
 
-            OpenCVForUnity.Objdetect.groupRectangles (wrapped_rectList, wrapped_weights, groupThreshold.Value);
+            OpenCVForUnity.ObjdetectModule.Objdetect.groupRectangles (wrapped_rectList, wrapped_weights, groupThreshold.Value);
 
 
         }

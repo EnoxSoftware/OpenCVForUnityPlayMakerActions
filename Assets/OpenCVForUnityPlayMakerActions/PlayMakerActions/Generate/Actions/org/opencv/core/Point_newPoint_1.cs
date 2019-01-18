@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +47,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Point)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Point ();
-            ((OpenCVForUnityPlayMakerActions.Point)storeResult.Value).wrappedObject = new OpenCVForUnity.Point ();
+            ((OpenCVForUnityPlayMakerActions.Point)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.Point ();
 
 
         }

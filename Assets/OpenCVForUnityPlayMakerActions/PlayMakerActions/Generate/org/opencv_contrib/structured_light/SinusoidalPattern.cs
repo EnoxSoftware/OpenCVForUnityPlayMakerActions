@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Structured_lightModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public SinusoidalPattern (OpenCVForUnity.SinusoidalPattern nativeObj)
+        public SinusoidalPattern (OpenCVForUnity.Structured_lightModule.SinusoidalPattern nativeObj)
             : base (nativeObj)
         {
 

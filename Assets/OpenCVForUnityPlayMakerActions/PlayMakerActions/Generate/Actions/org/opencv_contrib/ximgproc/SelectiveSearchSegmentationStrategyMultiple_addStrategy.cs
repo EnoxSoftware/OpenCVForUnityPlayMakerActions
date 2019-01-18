@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -67,14 +68,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newSelectiveSearchSegmentationStrategyMultiple\".");
                 return;
             }
-            OpenCVForUnity.SelectiveSearchSegmentationStrategyMultiple wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyMultiple, OpenCVForUnity.SelectiveSearchSegmentationStrategyMultiple> (owner);
+            OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategyMultiple wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyMultiple, OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategyMultiple> (owner);
 
             if (!(g.Value is OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy))
             {
                 LogError ("g is not initialized. Add Action \"newSelectiveSearchSegmentationStrategy\".");
                 return;
             }
-            OpenCVForUnity.SelectiveSearchSegmentationStrategy wrapped_g = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy, OpenCVForUnity.SelectiveSearchSegmentationStrategy> (g);
+            OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategy wrapped_g = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy, OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategy> (g);
 
             wrapped_owner.addStrategy (wrapped_g, weight.Value);
 

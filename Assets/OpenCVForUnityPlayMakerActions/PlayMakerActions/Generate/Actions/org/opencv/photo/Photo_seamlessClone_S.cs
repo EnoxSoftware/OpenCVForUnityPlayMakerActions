@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -97,30 +98,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src);
+            OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src);
 
             if (!(dst.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dst is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
+            OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dst);
 
             if (!(mask.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("mask is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mask);
+            OpenCVForUnity.CoreModule.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mask);
 
             if (!(blend.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("blend is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_blend = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (blend);
+            OpenCVForUnity.CoreModule.Mat wrapped_blend = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (blend);
 
-            OpenCVForUnity.Photo.seamlessClone (wrapped_src, wrapped_dst, wrapped_mask, new OpenCVForUnity.Point ((double)p_x.Value, (double)p_y.Value), wrapped_blend, flags.Value);
+            OpenCVForUnity.PhotoModule.Photo.seamlessClone (wrapped_src, wrapped_dst, wrapped_mask, new OpenCVForUnity.CoreModule.Point ((double)p_x.Value, (double)p_y.Value), wrapped_blend, flags.Value);
 
 
         }

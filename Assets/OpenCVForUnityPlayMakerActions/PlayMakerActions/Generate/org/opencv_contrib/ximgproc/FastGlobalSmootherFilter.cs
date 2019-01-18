@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public FastGlobalSmootherFilter (OpenCVForUnity.FastGlobalSmootherFilter nativeObj)
+        public FastGlobalSmootherFilter (OpenCVForUnity.XimgprocModule.FastGlobalSmootherFilter nativeObj)
             : base (nativeObj)
         {
 

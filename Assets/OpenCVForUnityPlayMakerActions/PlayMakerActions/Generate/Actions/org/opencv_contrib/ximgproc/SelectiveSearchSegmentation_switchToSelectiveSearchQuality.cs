@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -73,7 +74,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newSelectiveSearchSegmentation\".");
                 return;
             }
-            OpenCVForUnity.SelectiveSearchSegmentation wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentation, OpenCVForUnity.SelectiveSearchSegmentation> (owner);
+            OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentation wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentation, OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentation> (owner);
 
             wrapped_owner.switchToSelectiveSearchQuality (base_k.Value, inc_k.Value, sigma.Value);
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoioModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -97,7 +98,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_fps = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (fps);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.VideoWriter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.VideoWriter ();
-            ((OpenCVForUnityPlayMakerActions.VideoWriter)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoWriter (filename.Value, fourcc.Value, wrapped_fps, new OpenCVForUnity.Size ((double)frameSize_width.Value, (double)frameSize_height.Value), isColor.Value);
+            ((OpenCVForUnityPlayMakerActions.VideoWriter)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoioModule.VideoWriter (filename.Value, fourcc.Value, wrapped_fps, new OpenCVForUnity.CoreModule.Size ((double)frameSize_width.Value, (double)frameSize_height.Value), isColor.Value);
 
 
         }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,13 +59,13 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMatOfPoint3\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint3 wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint3, OpenCVForUnity.MatOfPoint3> (owner);
+            OpenCVForUnity.CoreModule.MatOfPoint3 wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint3, OpenCVForUnity.CoreModule.MatOfPoint3> (owner);
 
-            List<OpenCVForUnity.Point3> wrapped_storeResult = wrapped_owner.toList ();
+            List<OpenCVForUnity.CoreModule.Point3> wrapped_storeResult = wrapped_owner.toList ();
 
             if (!storeResult.IsNone)
             {
-                OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Point3, OpenCVForUnityPlayMakerActions.Point3> (wrapped_storeResult, storeResult);
+                OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Point3, OpenCVForUnityPlayMakerActions.Point3> (wrapped_storeResult, storeResult);
             }
 
 

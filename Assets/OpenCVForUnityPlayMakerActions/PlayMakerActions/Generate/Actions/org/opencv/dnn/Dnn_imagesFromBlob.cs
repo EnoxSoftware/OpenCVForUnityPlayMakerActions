@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,14 +62,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("blob_ is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_blob_ = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (blob_);
+            OpenCVForUnity.CoreModule.Mat wrapped_blob_ = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (blob_);
 
-            List<OpenCVForUnity.Mat> wrapped_images_ = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (images_, wrapped_images_);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_images_ = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (images_, wrapped_images_);
 
-            OpenCVForUnity.Dnn.imagesFromBlob (wrapped_blob_, wrapped_images_);
+            OpenCVForUnity.DnnModule.Dnn.imagesFromBlob (wrapped_blob_, wrapped_images_);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_images_, images_);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_images_, images_);
 
 
         }

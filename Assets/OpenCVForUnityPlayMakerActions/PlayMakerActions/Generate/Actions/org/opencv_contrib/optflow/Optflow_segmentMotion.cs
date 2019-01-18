@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.OptflowModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -84,21 +85,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("mhi is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mhi = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mhi);
+            OpenCVForUnity.CoreModule.Mat wrapped_mhi = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mhi);
 
             if (!(segmask.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("segmask is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_segmask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (segmask);
+            OpenCVForUnity.CoreModule.Mat wrapped_segmask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (segmask);
 
             if (!(boundingRects.Value is OpenCVForUnityPlayMakerActions.MatOfRect))
             {
                 LogError ("boundingRects is not initialized. Add Action \"newMatOfRect\".");
                 return;
             }
-            OpenCVForUnity.MatOfRect wrapped_boundingRects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.MatOfRect> (boundingRects);
+            OpenCVForUnity.CoreModule.MatOfRect wrapped_boundingRects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect> (boundingRects);
 
             if (!(timestamp.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -114,7 +115,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_segThresh = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (segThresh);
 
-            OpenCVForUnity.Optflow.segmentMotion (wrapped_mhi, wrapped_segmask, wrapped_boundingRects, wrapped_timestamp, wrapped_segThresh);
+            OpenCVForUnity.OptflowModule.Optflow.segmentMotion (wrapped_mhi, wrapped_segmask, wrapped_boundingRects, wrapped_timestamp, wrapped_segThresh);
 
 
         }

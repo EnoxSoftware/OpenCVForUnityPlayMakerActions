@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public FastFeatureDetector (OpenCVForUnity.FastFeatureDetector nativeObj)
+        public FastFeatureDetector (OpenCVForUnity.Features2dModule.FastFeatureDetector nativeObj)
             : base (nativeObj)
         {
 

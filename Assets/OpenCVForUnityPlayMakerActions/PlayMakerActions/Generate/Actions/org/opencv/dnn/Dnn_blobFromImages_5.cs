@@ -2,15 +2,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip ("public static Mat blobFromImages (List<Mat> images)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Mat blobFromImages (List<Mat> images, double scalefactor)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "images")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "scalefactor")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Dnn_blobFromImages_5 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -20,6 +22,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ArrayEditor (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmArray images;
+
+        [HutongGames.PlayMaker.ActionSection ("[arg2] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject scalefactor;
 
         [HutongGames.PlayMaker.ActionSection ("[return] Mat")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -33,6 +41,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             images = null;
+            scalefactor = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -55,13 +64,20 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            List<OpenCVForUnity.Mat> wrapped_images = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (images, wrapped_images);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_images = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (images, wrapped_images);
+
+            if (!(scalefactor.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError ("scalefactor is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_scalefactor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (scalefactor);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Dnn.blobFromImages (wrapped_images);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.DnnModule.Dnn.blobFromImages (wrapped_images, wrapped_scalefactor);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_images, images);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_images, images);
 
 
         }

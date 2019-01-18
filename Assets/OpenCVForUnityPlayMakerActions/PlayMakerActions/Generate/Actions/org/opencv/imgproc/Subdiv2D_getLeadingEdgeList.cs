@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,14 +61,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newSubdiv2D\".");
                 return;
             }
-            OpenCVForUnity.Subdiv2D wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Subdiv2D, OpenCVForUnity.Subdiv2D> (owner);
+            OpenCVForUnity.ImgprocModule.Subdiv2D wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Subdiv2D, OpenCVForUnity.ImgprocModule.Subdiv2D> (owner);
 
             if (!(leadingEdgeList.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
             {
                 LogError ("leadingEdgeList is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.MatOfInt wrapped_leadingEdgeList = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (leadingEdgeList);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_leadingEdgeList = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (leadingEdgeList);
 
             wrapped_owner.getLeadingEdgeList (wrapped_leadingEdgeList);
 

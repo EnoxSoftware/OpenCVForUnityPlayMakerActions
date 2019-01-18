@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public BlockMeanHash (OpenCVForUnity.BlockMeanHash nativeObj)
+        public BlockMeanHash (OpenCVForUnity.Img_hashModule.BlockMeanHash nativeObj)
             : base (nativeObj)
         {
 

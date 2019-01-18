@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -74,16 +75,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("signature1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_signature1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (signature1);
+            OpenCVForUnity.CoreModule.Mat wrapped_signature1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (signature1);
 
             if (!(signature2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("signature2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_signature2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (signature2);
+            OpenCVForUnity.CoreModule.Mat wrapped_signature2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (signature2);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.EMD (wrapped_signature1, wrapped_signature2, distType.Value);
+            storeResult.Value = OpenCVForUnity.ImgprocModule.Imgproc.EMD (wrapped_signature1, wrapped_signature2, distType.Value);
 
 
         }

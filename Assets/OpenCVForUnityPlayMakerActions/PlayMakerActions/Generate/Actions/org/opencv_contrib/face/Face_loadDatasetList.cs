@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -90,7 +91,7 @@ namespace OpenCVForUnityPlayMakerActions
             string[] string_annotations = annotations.stringValues;
             List<string> wrapped_annotations = new List<string> (string_annotations);
 
-            storeResult.Value = OpenCVForUnity.Face.loadDatasetList (imageList.Value, annotationList.Value, wrapped_images, wrapped_annotations);
+            storeResult.Value = OpenCVForUnity.FaceModule.Face.loadDatasetList (imageList.Value, annotationList.Value, wrapped_images, wrapped_annotations);
 
             wrapped_images.CopyTo (string_images);
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentation)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentation ();
-            ((OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentation)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createSelectiveSearchSegmentation ();
+            ((OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentation)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createSelectiveSearchSegmentation ();
 
 
         }

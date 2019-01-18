@@ -1,6 +1,6 @@
 using UnityEngine;
 
-using OpenCVForUnity;
+using OpenCVForUnity.UnityUtils;
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -95,7 +95,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("mat is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mat = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mat);
+            OpenCVForUnity.CoreModule.Mat wrapped_mat = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mat);
 
             Utils.fastMatToTexture2D (wrapped_mat, texture2D.Value as Texture2D, flip.Value, flipCode.Value, flipAfter.Value, updateMipmaps.Value, makeNoLongerReadable.Value);
 

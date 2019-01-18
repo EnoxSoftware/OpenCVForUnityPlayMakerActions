@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -64,7 +65,7 @@ namespace OpenCVForUnityPlayMakerActions
             string[] string_layersTypes = layersTypes.stringValues;
             List<string> wrapped_layersTypes = new List<string> (string_layersTypes);
 
-            OpenCVForUnity.Dnn.shrinkCaffeModel (src.Value, dst.Value, wrapped_layersTypes);
+            OpenCVForUnity.DnnModule.Dnn.shrinkCaffeModel (src.Value, dst.Value, wrapped_layersTypes);
 
             wrapped_layersTypes.CopyTo (string_layersTypes);
 

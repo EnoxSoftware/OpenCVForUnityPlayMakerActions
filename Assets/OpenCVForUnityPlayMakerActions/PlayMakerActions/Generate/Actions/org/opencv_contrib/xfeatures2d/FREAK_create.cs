@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -87,10 +88,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("selectedPairs is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.MatOfInt wrapped_selectedPairs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (selectedPairs);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_selectedPairs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (selectedPairs);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FREAK)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FREAK ();
-            ((OpenCVForUnityPlayMakerActions.FREAK)storeResult.Value).wrappedObject = OpenCVForUnity.FREAK.create (orientationNormalized.Value, scaleNormalized.Value, patternScale.Value, nOctaves.Value, wrapped_selectedPairs);
+            ((OpenCVForUnityPlayMakerActions.FREAK)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.FREAK.create (orientationNormalized.Value, scaleNormalized.Value, patternScale.Value, nOctaves.Value, wrapped_selectedPairs);
 
 
         }

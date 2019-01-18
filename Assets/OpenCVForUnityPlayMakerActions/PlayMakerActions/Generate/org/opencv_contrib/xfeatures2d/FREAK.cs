@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public FREAK (OpenCVForUnity.FREAK nativeObj)
+        public FREAK (OpenCVForUnity.Xfeatures2dModule.FREAK nativeObj)
             : base (nativeObj)
         {
 

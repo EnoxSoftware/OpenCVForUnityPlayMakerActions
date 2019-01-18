@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public RTrees (OpenCVForUnity.RTrees nativeObj)
+        public RTrees (OpenCVForUnity.MlModule.RTrees nativeObj)
             : base (nativeObj)
         {
 

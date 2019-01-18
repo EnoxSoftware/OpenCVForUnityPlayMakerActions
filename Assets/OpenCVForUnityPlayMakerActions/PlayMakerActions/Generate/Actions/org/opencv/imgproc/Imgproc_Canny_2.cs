@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -90,14 +91,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(edges.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("edges is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_edges = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (edges);
+            OpenCVForUnity.CoreModule.Mat wrapped_edges = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (edges);
 
             if (!(threshold1.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -113,7 +114,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_threshold2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (threshold2);
 
-            OpenCVForUnity.Imgproc.Canny (wrapped_image, wrapped_edges, wrapped_threshold1, wrapped_threshold2, apertureSize.Value, L2gradient.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.Canny (wrapped_image, wrapped_edges, wrapped_threshold1, wrapped_threshold2, apertureSize.Value, L2gradient.Value);
 
 
         }

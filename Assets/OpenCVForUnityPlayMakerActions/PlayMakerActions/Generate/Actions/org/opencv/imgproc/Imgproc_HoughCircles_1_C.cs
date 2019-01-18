@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -102,16 +103,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(circles.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("circles is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_circles = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (circles);
+            OpenCVForUnity.CoreModule.Mat wrapped_circles = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (circles);
 
-            OpenCVForUnity.Imgproc.HoughCircles (wrapped_image, wrapped_circles, method.Value, (float)dp.Value, (float)minDist.Value, (float)param1.Value, (float)param2.Value, minRadius.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.HoughCircles (wrapped_image, wrapped_circles, method.Value, (float)dp.Value, (float)minDist.Value, (float)param1.Value, (float)param2.Value, minRadius.Value);
 
 
         }

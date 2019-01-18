@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,10 +61,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("bufferCfg is not initialized. Add Action \"newMatOfByte\".");
                 return;
             }
-            OpenCVForUnity.MatOfByte wrapped_bufferCfg = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfByte, OpenCVForUnity.MatOfByte> (bufferCfg);
+            OpenCVForUnity.CoreModule.MatOfByte wrapped_bufferCfg = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfByte, OpenCVForUnity.CoreModule.MatOfByte> (bufferCfg);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Net)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Net ();
-            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = OpenCVForUnity.Dnn.readNetFromDarknet (wrapped_bufferCfg);
+            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = OpenCVForUnity.DnnModule.Dnn.readNetFromDarknet (wrapped_bufferCfg);
 
 
         }

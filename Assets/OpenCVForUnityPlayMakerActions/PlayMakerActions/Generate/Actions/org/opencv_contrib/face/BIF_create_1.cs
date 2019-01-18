@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BIF)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BIF ();
-            ((OpenCVForUnityPlayMakerActions.BIF)storeResult.Value).wrappedObject = OpenCVForUnity.BIF.create (num_bands.Value);
+            ((OpenCVForUnityPlayMakerActions.BIF)storeResult.Value).wrappedObject = OpenCVForUnity.FaceModule.BIF.create (num_bands.Value);
 
 
         }

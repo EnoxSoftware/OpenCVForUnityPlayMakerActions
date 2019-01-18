@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public DisparityWLSFilter (OpenCVForUnity.DisparityWLSFilter nativeObj)
+        public DisparityWLSFilter (OpenCVForUnity.XimgprocModule.DisparityWLSFilter nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TonemapMantiuk)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TonemapMantiuk ();
-            ((OpenCVForUnityPlayMakerActions.TonemapMantiuk)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createTonemapMantiuk (gamma.Value);
+            ((OpenCVForUnityPlayMakerActions.TonemapMantiuk)storeResult.Value).wrappedObject = OpenCVForUnity.PhotoModule.Photo.createTonemapMantiuk (gamma.Value);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,21 +69,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newRidgeDetectionFilter\".");
                 return;
             }
-            OpenCVForUnity.RidgeDetectionFilter wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RidgeDetectionFilter, OpenCVForUnity.RidgeDetectionFilter> (owner);
+            OpenCVForUnity.XimgprocModule.RidgeDetectionFilter wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RidgeDetectionFilter, OpenCVForUnity.XimgprocModule.RidgeDetectionFilter> (owner);
 
             if (!(_img.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_img);
+            OpenCVForUnity.CoreModule.Mat wrapped__img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_img);
 
             if (!(_out.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_out is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__out = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_out);
+            OpenCVForUnity.CoreModule.Mat wrapped__out = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_out);
 
             wrapped_owner.getRidgeFilteredImage (wrapped__img, wrapped__out);
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.OptflowModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.DenseOpticalFlow)) storeResult.Value = new OpenCVForUnityPlayMakerActions.DenseOpticalFlow ();
-            ((OpenCVForUnityPlayMakerActions.DenseOpticalFlow)storeResult.Value).wrappedObject = OpenCVForUnity.Optflow.createOptFlow_DeepFlow ();
+            ((OpenCVForUnityPlayMakerActions.DenseOpticalFlow)storeResult.Value).wrappedObject = OpenCVForUnity.OptflowModule.Optflow.createOptFlow_DeepFlow ();
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -121,7 +122,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_gamma = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (gamma);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.getGaborKernel (new OpenCVForUnity.Size ((double)ksize_width.Value, (double)ksize_height.Value), wrapped_sigma, wrapped_theta, wrapped_lambd, wrapped_gamma);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.getGaborKernel (new OpenCVForUnity.CoreModule.Size ((double)ksize_width.Value, (double)ksize_height.Value), wrapped_sigma, wrapped_theta, wrapped_lambd, wrapped_gamma);
 
 
         }

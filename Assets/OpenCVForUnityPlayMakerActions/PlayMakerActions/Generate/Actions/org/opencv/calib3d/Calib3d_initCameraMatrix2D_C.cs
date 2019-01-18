@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -77,25 +78,25 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            List<OpenCVForUnity.MatOfPoint3f> wrapped_objectPoints = new List<OpenCVForUnity.MatOfPoint3f> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint3f, OpenCVForUnity.MatOfPoint3f> (objectPoints, wrapped_objectPoints);
+            List<OpenCVForUnity.CoreModule.MatOfPoint3f> wrapped_objectPoints = new List<OpenCVForUnity.CoreModule.MatOfPoint3f> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint3f, OpenCVForUnity.CoreModule.MatOfPoint3f> (objectPoints, wrapped_objectPoints);
 
-            List<OpenCVForUnity.MatOfPoint2f> wrapped_imagePoints = new List<OpenCVForUnity.MatOfPoint2f> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (imagePoints, wrapped_imagePoints);
+            List<OpenCVForUnity.CoreModule.MatOfPoint2f> wrapped_imagePoints = new List<OpenCVForUnity.CoreModule.MatOfPoint2f> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (imagePoints, wrapped_imagePoints);
 
             if (!(imageSize.Value is OpenCVForUnityPlayMakerActions.Size))
             {
                 LogError ("imageSize is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped_imageSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (imageSize);
+            OpenCVForUnity.CoreModule.Size wrapped_imageSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (imageSize);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3d.initCameraMatrix2D (wrapped_objectPoints, wrapped_imagePoints, wrapped_imageSize, (float)aspectRatio.Value);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.initCameraMatrix2D (wrapped_objectPoints, wrapped_imagePoints, wrapped_imageSize, (float)aspectRatio.Value);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.MatOfPoint3f, OpenCVForUnityPlayMakerActions.MatOfPoint3f> (wrapped_objectPoints, objectPoints);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.MatOfPoint3f, OpenCVForUnityPlayMakerActions.MatOfPoint3f> (wrapped_objectPoints, objectPoints);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.MatOfPoint2f, OpenCVForUnityPlayMakerActions.MatOfPoint2f> (wrapped_imagePoints, imagePoints);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.MatOfPoint2f, OpenCVForUnityPlayMakerActions.MatOfPoint2f> (wrapped_imagePoints, imagePoints);
 
 
         }

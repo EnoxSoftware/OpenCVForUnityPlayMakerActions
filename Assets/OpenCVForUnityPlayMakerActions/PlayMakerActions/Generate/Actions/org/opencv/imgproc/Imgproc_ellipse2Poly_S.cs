@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -108,9 +109,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("pts is not initialized. Add Action \"newMatOfPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint wrapped_pts = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.MatOfPoint> (pts);
+            OpenCVForUnity.CoreModule.MatOfPoint wrapped_pts = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.CoreModule.MatOfPoint> (pts);
 
-            OpenCVForUnity.Imgproc.ellipse2Poly (new OpenCVForUnity.Point ((double)center_x.Value, (double)center_y.Value), new OpenCVForUnity.Size ((double)axes_width.Value, (double)axes_height.Value), angle.Value, arcStart.Value, arcEnd.Value, delta.Value, wrapped_pts);
+            OpenCVForUnity.ImgprocModule.Imgproc.ellipse2Poly (new OpenCVForUnity.CoreModule.Point ((double)center_x.Value, (double)center_y.Value), new OpenCVForUnity.CoreModule.Size ((double)axes_width.Value, (double)axes_height.Value), angle.Value, arcStart.Value, arcEnd.Value, delta.Value, wrapped_pts);
 
 
         }

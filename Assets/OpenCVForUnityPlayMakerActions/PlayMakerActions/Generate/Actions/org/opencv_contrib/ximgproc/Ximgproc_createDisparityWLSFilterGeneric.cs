@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.DisparityWLSFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.DisparityWLSFilter ();
-            ((OpenCVForUnityPlayMakerActions.DisparityWLSFilter)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createDisparityWLSFilterGeneric (use_confidence.Value);
+            ((OpenCVForUnityPlayMakerActions.DisparityWLSFilter)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createDisparityWLSFilterGeneric (use_confidence.Value);
 
 
         }

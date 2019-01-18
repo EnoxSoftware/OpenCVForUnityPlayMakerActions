@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -133,16 +134,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(mask.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("mask is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mask);
+            OpenCVForUnity.CoreModule.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mask);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.floodFill (wrapped_image, wrapped_mask, new OpenCVForUnity.Point ((double)seedPoint_x.Value, (double)seedPoint_y.Value), new OpenCVForUnity.Scalar ((double)newVal_v0.Value, (double)newVal_v1.Value, (double)newVal_v2.Value, (double)newVal_v3.Value), new OpenCVForUnity.Rect ((int)rect_x.Value, (int)rect_y.Value, (int)rect_width.Value, (int)rect_height.Value));
+            storeResult.Value = OpenCVForUnity.ImgprocModule.Imgproc.floodFill (wrapped_image, wrapped_mask, new OpenCVForUnity.CoreModule.Point ((double)seedPoint_x.Value, (double)seedPoint_y.Value), new OpenCVForUnity.CoreModule.Scalar ((double)newVal_v0.Value, (double)newVal_v1.Value, (double)newVal_v2.Value, (double)newVal_v3.Value), new OpenCVForUnity.CoreModule.Rect ((int)rect_x.Value, (int)rect_y.Value, (int)rect_width.Value, (int)rect_height.Value));
 
 
         }

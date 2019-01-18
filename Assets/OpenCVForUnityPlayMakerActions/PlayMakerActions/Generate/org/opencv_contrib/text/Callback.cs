@@ -2,7 +2,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -14,7 +16,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Callback (OpenCVForUnity.Callback nativeObj)
+        public Callback (OpenCVForUnity.TextModule.Callback nativeObj)
             : base (nativeObj)
         {
 

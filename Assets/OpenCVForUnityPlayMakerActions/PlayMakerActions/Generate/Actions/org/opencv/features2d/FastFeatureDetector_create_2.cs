@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FastFeatureDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FastFeatureDetector ();
-            ((OpenCVForUnityPlayMakerActions.FastFeatureDetector)storeResult.Value).wrappedObject = OpenCVForUnity.FastFeatureDetector.create (threshold.Value);
+            ((OpenCVForUnityPlayMakerActions.FastFeatureDetector)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.FastFeatureDetector.create (threshold.Value);
 
 
         }

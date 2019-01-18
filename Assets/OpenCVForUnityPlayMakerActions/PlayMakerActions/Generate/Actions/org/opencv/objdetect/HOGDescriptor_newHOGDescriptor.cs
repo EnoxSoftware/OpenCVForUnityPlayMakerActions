@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ObjdetectModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -141,28 +142,28 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("_winSize is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped__winSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (_winSize);
+            OpenCVForUnity.CoreModule.Size wrapped__winSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (_winSize);
 
             if (!(_blockSize.Value is OpenCVForUnityPlayMakerActions.Size))
             {
                 LogError ("_blockSize is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped__blockSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (_blockSize);
+            OpenCVForUnity.CoreModule.Size wrapped__blockSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (_blockSize);
 
             if (!(_blockStride.Value is OpenCVForUnityPlayMakerActions.Size))
             {
                 LogError ("_blockStride is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped__blockStride = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (_blockStride);
+            OpenCVForUnity.CoreModule.Size wrapped__blockStride = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (_blockStride);
 
             if (!(_cellSize.Value is OpenCVForUnityPlayMakerActions.Size))
             {
                 LogError ("_cellSize is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped__cellSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (_cellSize);
+            OpenCVForUnity.CoreModule.Size wrapped__cellSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (_cellSize);
 
             if (!(_winSigma.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -179,7 +180,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped__L2HysThreshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (_L2HysThreshold);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.HOGDescriptor)) storeResult.Value = new OpenCVForUnityPlayMakerActions.HOGDescriptor ();
-            ((OpenCVForUnityPlayMakerActions.HOGDescriptor)storeResult.Value).wrappedObject = new OpenCVForUnity.HOGDescriptor (wrapped__winSize, wrapped__blockSize, wrapped__blockStride, wrapped__cellSize, _nbins.Value, _derivAperture.Value, wrapped__winSigma, _histogramNormType.Value, wrapped__L2HysThreshold, _gammaCorrection.Value, _nlevels.Value, _signedGradient.Value);
+            ((OpenCVForUnityPlayMakerActions.HOGDescriptor)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.HOGDescriptor (wrapped__winSize, wrapped__blockSize, wrapped__blockStride, wrapped__cellSize, _nbins.Value, _derivAperture.Value, wrapped__winSigma, _histogramNormType.Value, wrapped__L2HysThreshold, _gammaCorrection.Value, _nlevels.Value, _signedGradient.Value);
 
 
         }

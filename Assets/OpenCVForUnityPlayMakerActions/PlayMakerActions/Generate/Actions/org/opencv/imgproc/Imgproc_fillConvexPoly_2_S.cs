@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -86,16 +87,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
+            OpenCVForUnity.CoreModule.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img);
 
             if (!(points.Value is OpenCVForUnityPlayMakerActions.MatOfPoint))
             {
                 LogError ("points is not initialized. Add Action \"newMatOfPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint wrapped_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.MatOfPoint> (points);
+            OpenCVForUnity.CoreModule.MatOfPoint wrapped_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.CoreModule.MatOfPoint> (points);
 
-            OpenCVForUnity.Imgproc.fillConvexPoly (wrapped_img, wrapped_points, new OpenCVForUnity.Scalar ((double)color_v0.Value, (double)color_v1.Value, (double)color_v2.Value, (double)color_v3.Value));
+            OpenCVForUnity.ImgprocModule.Imgproc.fillConvexPoly (wrapped_img, wrapped_points, new OpenCVForUnity.CoreModule.Scalar ((double)color_v0.Value, (double)color_v1.Value, (double)color_v2.Value, (double)color_v3.Value));
 
 
         }

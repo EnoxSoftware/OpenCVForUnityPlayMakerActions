@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,30 +77,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("A is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_A = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (A);
+            OpenCVForUnity.CoreModule.Mat wrapped_A = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (A);
 
             if (!(B.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("B is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_B = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (B);
+            OpenCVForUnity.CoreModule.Mat wrapped_B = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (B);
 
             if (!(dABdA.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dABdA is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dABdA = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dABdA);
+            OpenCVForUnity.CoreModule.Mat wrapped_dABdA = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dABdA);
 
             if (!(dABdB.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dABdB is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dABdB = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dABdB);
+            OpenCVForUnity.CoreModule.Mat wrapped_dABdB = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dABdB);
 
-            OpenCVForUnity.Calib3d.matMulDeriv (wrapped_A, wrapped_B, wrapped_dABdA, wrapped_dABdB);
+            OpenCVForUnity.Calib3dModule.Calib3d.matMulDeriv (wrapped_A, wrapped_B, wrapped_dABdA, wrapped_dABdB);
 
 
         }

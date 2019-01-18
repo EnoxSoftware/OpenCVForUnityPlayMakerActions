@@ -2,7 +2,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -14,7 +16,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public DictValue (OpenCVForUnity.DictValue nativeObj)
+        public DictValue (OpenCVForUnity.DnnModule.DictValue nativeObj)
             : base (nativeObj)
         {
 

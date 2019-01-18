@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,10 +60,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("points is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (points);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (points);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.RotatedRect)) storeResult.Value = new OpenCVForUnityPlayMakerActions.RotatedRect ();
-            ((OpenCVForUnityPlayMakerActions.RotatedRect)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.fitEllipse (wrapped_points);
+            ((OpenCVForUnityPlayMakerActions.RotatedRect)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.fitEllipse (wrapped_points);
 
 
         }

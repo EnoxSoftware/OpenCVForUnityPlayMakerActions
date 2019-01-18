@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -84,37 +85,37 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("projMatrix is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_projMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (projMatrix);
+            OpenCVForUnity.CoreModule.Mat wrapped_projMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (projMatrix);
 
             if (!(cameraMatrix.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("cameraMatrix is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (cameraMatrix);
+            OpenCVForUnity.CoreModule.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (cameraMatrix);
 
             if (!(rotMatrix.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("rotMatrix is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_rotMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (rotMatrix);
+            OpenCVForUnity.CoreModule.Mat wrapped_rotMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (rotMatrix);
 
             if (!(transVect.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("transVect is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_transVect = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (transVect);
+            OpenCVForUnity.CoreModule.Mat wrapped_transVect = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (transVect);
 
             if (!(rotMatrixX.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("rotMatrixX is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_rotMatrixX = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (rotMatrixX);
+            OpenCVForUnity.CoreModule.Mat wrapped_rotMatrixX = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (rotMatrixX);
 
-            OpenCVForUnity.Calib3d.decomposeProjectionMatrix (wrapped_projMatrix, wrapped_cameraMatrix, wrapped_rotMatrix, wrapped_transVect, wrapped_rotMatrixX);
+            OpenCVForUnity.Calib3dModule.Calib3d.decomposeProjectionMatrix (wrapped_projMatrix, wrapped_cameraMatrix, wrapped_rotMatrix, wrapped_transVect, wrapped_rotMatrixX);
 
 
         }

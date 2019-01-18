@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.OptflowModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public GPCTrainingSamples (OpenCVForUnity.GPCTrainingSamples nativeObj)
+        public GPCTrainingSamples (OpenCVForUnity.OptflowModule.GPCTrainingSamples nativeObj)
             : base (nativeObj)
         {
 

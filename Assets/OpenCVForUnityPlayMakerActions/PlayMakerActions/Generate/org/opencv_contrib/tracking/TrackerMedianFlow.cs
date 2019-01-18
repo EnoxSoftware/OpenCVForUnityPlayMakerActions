@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TrackingModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public TrackerMedianFlow (OpenCVForUnity.TrackerMedianFlow nativeObj)
+        public TrackerMedianFlow (OpenCVForUnity.TrackingModule.TrackerMedianFlow nativeObj)
             : base (nativeObj)
         {
 

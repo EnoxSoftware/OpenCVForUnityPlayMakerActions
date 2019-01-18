@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -77,14 +78,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMACE\".");
                 return;
             }
-            OpenCVForUnity.MACE wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MACE, OpenCVForUnity.MACE> (owner);
+            OpenCVForUnity.FaceModule.MACE wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MACE, OpenCVForUnity.FaceModule.MACE> (owner);
 
             if (!(query.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("query is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_query = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (query);
+            OpenCVForUnity.CoreModule.Mat wrapped_query = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (query);
 
             storeResult.Value = wrapped_owner.same (wrapped_query);
 

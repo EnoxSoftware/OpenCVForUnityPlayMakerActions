@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,14 +60,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMatOfDMatch\".");
                 return;
             }
-            OpenCVForUnity.MatOfDMatch wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDMatch, OpenCVForUnity.MatOfDMatch> (owner);
+            OpenCVForUnity.CoreModule.MatOfDMatch wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDMatch, OpenCVForUnity.CoreModule.MatOfDMatch> (owner);
 
-            OpenCVForUnity.DMatch[] wrapped_a = new OpenCVForUnity.DMatch[a.Length];
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.DMatch, OpenCVForUnity.DMatch> (a, wrapped_a);
+            OpenCVForUnity.CoreModule.DMatch[] wrapped_a = new OpenCVForUnity.CoreModule.DMatch[a.Length];
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.DMatch, OpenCVForUnity.CoreModule.DMatch> (a, wrapped_a);
 
             wrapped_owner.fromArray (wrapped_a);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.DMatch, OpenCVForUnityPlayMakerActions.DMatch> (wrapped_a, a);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.CoreModule.DMatch, OpenCVForUnityPlayMakerActions.DMatch> (wrapped_a, a);
 
 
         }

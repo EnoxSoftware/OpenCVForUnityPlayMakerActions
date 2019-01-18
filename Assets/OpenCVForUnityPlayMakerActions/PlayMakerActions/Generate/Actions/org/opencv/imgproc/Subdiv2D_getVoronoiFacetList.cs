@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,28 +77,28 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newSubdiv2D\".");
                 return;
             }
-            OpenCVForUnity.Subdiv2D wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Subdiv2D, OpenCVForUnity.Subdiv2D> (owner);
+            OpenCVForUnity.ImgprocModule.Subdiv2D wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Subdiv2D, OpenCVForUnity.ImgprocModule.Subdiv2D> (owner);
 
             if (!(idx.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
             {
                 LogError ("idx is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.MatOfInt wrapped_idx = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (idx);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_idx = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (idx);
 
-            List<OpenCVForUnity.MatOfPoint2f> wrapped_facetList = new List<OpenCVForUnity.MatOfPoint2f> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (facetList, wrapped_facetList);
+            List<OpenCVForUnity.CoreModule.MatOfPoint2f> wrapped_facetList = new List<OpenCVForUnity.CoreModule.MatOfPoint2f> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (facetList, wrapped_facetList);
 
             if (!(facetCenters.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
             {
                 LogError ("facetCenters is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_facetCenters = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (facetCenters);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_facetCenters = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (facetCenters);
 
             wrapped_owner.getVoronoiFacetList (wrapped_idx, wrapped_facetList, wrapped_facetCenters);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.MatOfPoint2f, OpenCVForUnityPlayMakerActions.MatOfPoint2f> (wrapped_facetList, facetList);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.MatOfPoint2f, OpenCVForUnityPlayMakerActions.MatOfPoint2f> (wrapped_facetList, facetList);
 
 
         }

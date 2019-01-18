@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.CcalibModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -121,51 +122,51 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("distorted is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_distorted = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (distorted);
+            OpenCVForUnity.CoreModule.Mat wrapped_distorted = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (distorted);
 
             if (!(undistorted.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("undistorted is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_undistorted = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (undistorted);
+            OpenCVForUnity.CoreModule.Mat wrapped_undistorted = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (undistorted);
 
             if (!(K.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("K is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_K = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (K);
+            OpenCVForUnity.CoreModule.Mat wrapped_K = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (K);
 
             if (!(D.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("D is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_D = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (D);
+            OpenCVForUnity.CoreModule.Mat wrapped_D = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (D);
 
             if (!(xi.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("xi is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_xi = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (xi);
+            OpenCVForUnity.CoreModule.Mat wrapped_xi = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (xi);
 
             if (!(Knew.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("Knew is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_Knew = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (Knew);
+            OpenCVForUnity.CoreModule.Mat wrapped_Knew = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (Knew);
 
             if (!(R.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("R is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_R = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (R);
+            OpenCVForUnity.CoreModule.Mat wrapped_R = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (R);
 
-            OpenCVForUnity.Ccalib.undistortImage (wrapped_distorted, wrapped_undistorted, wrapped_K, wrapped_D, wrapped_xi, flags.Value, wrapped_Knew, new OpenCVForUnity.Size ((double)new_size_width.Value, (double)new_size_height.Value), wrapped_R);
+            OpenCVForUnity.CcalibModule.Ccalib.undistortImage (wrapped_distorted, wrapped_undistorted, wrapped_K, wrapped_D, wrapped_xi, flags.Value, wrapped_Knew, new OpenCVForUnity.CoreModule.Size ((double)new_size_width.Value, (double)new_size_height.Value), wrapped_R);
 
 
         }

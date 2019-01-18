@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TrackingModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMultiTracker\".");
                 return;
             }
-            OpenCVForUnity.MultiTracker wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MultiTracker, OpenCVForUnity.MultiTracker> (owner);
+            OpenCVForUnity.TrackingModule.MultiTracker wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MultiTracker, OpenCVForUnity.TrackingModule.MultiTracker> (owner);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfRect2d)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfRect2d ();
             ((OpenCVForUnityPlayMakerActions.MatOfRect2d)storeResult.Value).wrappedObject = wrapped_owner.getObjects ();

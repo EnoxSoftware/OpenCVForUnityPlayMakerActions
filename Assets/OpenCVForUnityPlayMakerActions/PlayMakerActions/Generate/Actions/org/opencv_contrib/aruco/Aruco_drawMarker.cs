@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -81,16 +82,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("dictionary is not initialized. Add Action \"newDictionary\".");
                 return;
             }
-            OpenCVForUnity.Dictionary wrapped_dictionary = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Dictionary, OpenCVForUnity.Dictionary> (dictionary);
+            OpenCVForUnity.ArucoModule.Dictionary wrapped_dictionary = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Dictionary, OpenCVForUnity.ArucoModule.Dictionary> (dictionary);
 
             if (!(img.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
+            OpenCVForUnity.CoreModule.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img);
 
-            OpenCVForUnity.Aruco.drawMarker (wrapped_dictionary, id.Value, sidePixels.Value, wrapped_img, borderBits.Value);
+            OpenCVForUnity.ArucoModule.Aruco.drawMarker (wrapped_dictionary, id.Value, sidePixels.Value, wrapped_img, borderBits.Value);
 
 
         }

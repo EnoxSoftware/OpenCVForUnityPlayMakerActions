@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -114,21 +115,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("from is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_from = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (from);
+            OpenCVForUnity.CoreModule.Mat wrapped_from = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (from);
 
             if (!(to.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("to is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_to = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (to);
+            OpenCVForUnity.CoreModule.Mat wrapped_to = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (to);
 
             if (!(inliers.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("inliers is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_inliers = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (inliers);
+            OpenCVForUnity.CoreModule.Mat wrapped_inliers = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (inliers);
 
             if (!(ransacReprojThreshold.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -159,7 +160,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Int64 wrapped_refineIters = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Long, System.Int64> (refineIters);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3d.estimateAffine2D (wrapped_from, wrapped_to, wrapped_inliers, method.Value, wrapped_ransacReprojThreshold, wrapped_maxIters, wrapped_confidence, wrapped_refineIters);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.estimateAffine2D (wrapped_from, wrapped_to, wrapped_inliers, method.Value, wrapped_ransacReprojThreshold, wrapped_maxIters, wrapped_confidence, wrapped_refineIters);
 
 
         }

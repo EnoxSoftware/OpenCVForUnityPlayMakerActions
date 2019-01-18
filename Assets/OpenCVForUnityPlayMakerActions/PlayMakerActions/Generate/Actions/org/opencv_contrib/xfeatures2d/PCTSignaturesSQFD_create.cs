@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,7 +69,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD)) storeResult.Value = new OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD ();
-            ((OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD)storeResult.Value).wrappedObject = OpenCVForUnity.PCTSignaturesSQFD.create (distanceFunction.Value, similarityFunction.Value, similarityParameter.Value);
+            ((OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.PCTSignaturesSQFD.create (distanceFunction.Value, similarityFunction.Value, similarityParameter.Value);
 
 
         }

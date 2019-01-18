@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgcodecsModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -78,12 +79,12 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            List<OpenCVForUnity.Mat> wrapped_mats = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mats, wrapped_mats);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_mats = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mats, wrapped_mats);
 
-            storeResult.Value = OpenCVForUnity.Imgcodecs.imreadmulti (filename.Value, wrapped_mats, flags.Value);
+            storeResult.Value = OpenCVForUnity.ImgcodecsModule.Imgcodecs.imreadmulti (filename.Value, wrapped_mats, flags.Value);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_mats, mats);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_mats, mats);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,10 +60,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("matcher_left is not initialized. Add Action \"newStereoMatcher\".");
                 return;
             }
-            OpenCVForUnity.StereoMatcher wrapped_matcher_left = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StereoMatcher, OpenCVForUnity.StereoMatcher> (matcher_left);
+            OpenCVForUnity.Calib3dModule.StereoMatcher wrapped_matcher_left = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StereoMatcher, OpenCVForUnity.Calib3dModule.StereoMatcher> (matcher_left);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.StereoMatcher)) storeResult.Value = new OpenCVForUnityPlayMakerActions.StereoMatcher ();
-            ((OpenCVForUnityPlayMakerActions.StereoMatcher)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createRightMatcher (wrapped_matcher_left);
+            ((OpenCVForUnityPlayMakerActions.StereoMatcher)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createRightMatcher (wrapped_matcher_left);
 
 
         }

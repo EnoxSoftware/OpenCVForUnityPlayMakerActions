@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public FarnebackOpticalFlow (OpenCVForUnity.FarnebackOpticalFlow nativeObj)
+        public FarnebackOpticalFlow (OpenCVForUnity.VideoModule.FarnebackOpticalFlow nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -83,28 +84,28 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newNormalBayesClassifier\".");
                 return;
             }
-            OpenCVForUnity.NormalBayesClassifier wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.NormalBayesClassifier, OpenCVForUnity.NormalBayesClassifier> (owner);
+            OpenCVForUnity.MlModule.NormalBayesClassifier wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.NormalBayesClassifier, OpenCVForUnity.MlModule.NormalBayesClassifier> (owner);
 
             if (!(inputs.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("inputs is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_inputs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (inputs);
+            OpenCVForUnity.CoreModule.Mat wrapped_inputs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (inputs);
 
             if (!(outputs.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("outputs is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_outputs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (outputs);
+            OpenCVForUnity.CoreModule.Mat wrapped_outputs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (outputs);
 
             if (!(outputProbs.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("outputProbs is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_outputProbs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (outputProbs);
+            OpenCVForUnity.CoreModule.Mat wrapped_outputProbs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (outputProbs);
 
             storeResult.Value = wrapped_owner.predictProb (wrapped_inputs, wrapped_outputs, wrapped_outputProbs);
 

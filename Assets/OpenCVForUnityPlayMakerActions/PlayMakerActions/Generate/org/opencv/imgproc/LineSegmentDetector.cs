@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public LineSegmentDetector (OpenCVForUnity.LineSegmentDetector nativeObj)
+        public LineSegmentDetector (OpenCVForUnity.ImgprocModule.LineSegmentDetector nativeObj)
             : base (nativeObj)
         {
 

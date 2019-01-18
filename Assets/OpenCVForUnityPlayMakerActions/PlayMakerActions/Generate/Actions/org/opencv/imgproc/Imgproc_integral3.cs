@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -90,30 +91,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src);
+            OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src);
 
             if (!(sum.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("sum is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_sum = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (sum);
+            OpenCVForUnity.CoreModule.Mat wrapped_sum = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (sum);
 
             if (!(sqsum.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("sqsum is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_sqsum = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (sqsum);
+            OpenCVForUnity.CoreModule.Mat wrapped_sqsum = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (sqsum);
 
             if (!(tilted.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("tilted is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_tilted = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (tilted);
+            OpenCVForUnity.CoreModule.Mat wrapped_tilted = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (tilted);
 
-            OpenCVForUnity.Imgproc.integral3 (wrapped_src, wrapped_sum, wrapped_sqsum, wrapped_tilted, sdepth.Value, sqdepth.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.integral3 (wrapped_src, wrapped_sum, wrapped_sqsum, wrapped_tilted, sdepth.Value, sqdepth.Value);
 
 
         }

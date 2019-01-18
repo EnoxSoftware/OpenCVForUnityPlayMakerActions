@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -75,23 +76,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("rect1 is not initialized. Add Action \"newRotatedRect\".");
                 return;
             }
-            OpenCVForUnity.RotatedRect wrapped_rect1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RotatedRect, OpenCVForUnity.RotatedRect> (rect1);
+            OpenCVForUnity.CoreModule.RotatedRect wrapped_rect1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RotatedRect, OpenCVForUnity.CoreModule.RotatedRect> (rect1);
 
             if (!(rect2.Value is OpenCVForUnityPlayMakerActions.RotatedRect))
             {
                 LogError ("rect2 is not initialized. Add Action \"newRotatedRect\".");
                 return;
             }
-            OpenCVForUnity.RotatedRect wrapped_rect2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RotatedRect, OpenCVForUnity.RotatedRect> (rect2);
+            OpenCVForUnity.CoreModule.RotatedRect wrapped_rect2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RotatedRect, OpenCVForUnity.CoreModule.RotatedRect> (rect2);
 
             if (!(intersectingRegion.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("intersectingRegion is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_intersectingRegion = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (intersectingRegion);
+            OpenCVForUnity.CoreModule.Mat wrapped_intersectingRegion = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (intersectingRegion);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.rotatedRectangleIntersection (wrapped_rect1, wrapped_rect2, wrapped_intersectingRegion);
+            storeResult.Value = OpenCVForUnity.ImgprocModule.Imgproc.rotatedRectangleIntersection (wrapped_rect1, wrapped_rect2, wrapped_intersectingRegion);
 
 
         }

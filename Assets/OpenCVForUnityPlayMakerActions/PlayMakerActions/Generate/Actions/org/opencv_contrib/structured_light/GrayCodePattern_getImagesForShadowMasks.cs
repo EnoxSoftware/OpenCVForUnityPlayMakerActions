@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Structured_lightModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,21 +69,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newGrayCodePattern\".");
                 return;
             }
-            OpenCVForUnity.GrayCodePattern wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.GrayCodePattern, OpenCVForUnity.GrayCodePattern> (owner);
+            OpenCVForUnity.Structured_lightModule.GrayCodePattern wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.GrayCodePattern, OpenCVForUnity.Structured_lightModule.GrayCodePattern> (owner);
 
             if (!(blackImage.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("blackImage is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_blackImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (blackImage);
+            OpenCVForUnity.CoreModule.Mat wrapped_blackImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (blackImage);
 
             if (!(whiteImage.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("whiteImage is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_whiteImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (whiteImage);
+            OpenCVForUnity.CoreModule.Mat wrapped_whiteImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (whiteImage);
 
             wrapped_owner.getImagesForShadowMasks (wrapped_blackImage, wrapped_whiteImage);
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BioinspiredModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Retina)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Retina ();
-            ((OpenCVForUnityPlayMakerActions.Retina)storeResult.Value).wrappedObject = OpenCVForUnity.Retina.create (new OpenCVForUnity.Size ((double)inputSize_width.Value, (double)inputSize_height.Value), colorMode.Value, colorSamplingMethod.Value, useRetinaLogSampling.Value);
+            ((OpenCVForUnityPlayMakerActions.Retina)storeResult.Value).wrappedObject = OpenCVForUnity.BioinspiredModule.Retina.create (new OpenCVForUnity.CoreModule.Size ((double)inputSize_width.Value, (double)inputSize_height.Value), colorMode.Value, colorSamplingMethod.Value, useRetinaLogSampling.Value);
 
 
         }

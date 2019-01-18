@@ -1,16 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoioModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_videoio")]
-    [HutongGames.PlayMaker.Tooltip ("public bool open (int cameraNum, int apiPreference)")]
+    [HutongGames.PlayMaker.Tooltip ("public bool open (int index, int apiPreference)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.VideoCapture), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "cameraNum")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "index")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "apiPreference")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "trueEvent")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "falseEvent")]
@@ -27,7 +28,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt cameraNum;
+        public HutongGames.PlayMaker.FsmInt index;
 
         [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
         [HutongGames.PlayMaker.RequiredField]
@@ -52,7 +53,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset ()
         {
             owner = null;
-            cameraNum = 0;
+            index = 0;
             apiPreference = 0;
             trueEvent = null;
             falseEvent = null;
@@ -83,9 +84,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newVideoCapture\".");
                 return;
             }
-            OpenCVForUnity.VideoCapture wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.VideoCapture, OpenCVForUnity.VideoCapture> (owner);
+            OpenCVForUnity.VideoioModule.VideoCapture wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.VideoCapture, OpenCVForUnity.VideoioModule.VideoCapture> (owner);
 
-            storeResult.Value = wrapped_owner.open (cameraNum.Value, apiPreference.Value);
+            storeResult.Value = wrapped_owner.open (index.Value, apiPreference.Value);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

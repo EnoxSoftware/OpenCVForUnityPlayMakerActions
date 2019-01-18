@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoioModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -74,7 +75,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            storeResult.Value = OpenCVForUnity.VideoWriter.fourcc ((char)c1.Value.ToCharArray ()[0], (char)c2.Value.ToCharArray ()[0], (char)c3.Value.ToCharArray ()[0], (char)c4.Value.ToCharArray ()[0]);
+            storeResult.Value = OpenCVForUnity.VideoioModule.VideoWriter.fourcc ((char)c1.Value.ToCharArray ()[0], (char)c2.Value.ToCharArray ()[0], (char)c3.Value.ToCharArray ()[0], (char)c4.Value.ToCharArray ()[0]);
 
 
         }

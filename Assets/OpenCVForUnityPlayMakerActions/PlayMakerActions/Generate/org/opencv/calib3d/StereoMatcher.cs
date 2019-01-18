@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public StereoMatcher (OpenCVForUnity.StereoMatcher nativeObj)
+        public StereoMatcher (OpenCVForUnity.Calib3dModule.StereoMatcher nativeObj)
             : base (nativeObj)
         {
 

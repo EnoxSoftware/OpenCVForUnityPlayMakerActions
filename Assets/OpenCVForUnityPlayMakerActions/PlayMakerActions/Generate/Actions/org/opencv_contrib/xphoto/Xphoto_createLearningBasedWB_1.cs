@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XphotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.LearningBasedWB)) storeResult.Value = new OpenCVForUnityPlayMakerActions.LearningBasedWB ();
-            ((OpenCVForUnityPlayMakerActions.LearningBasedWB)storeResult.Value).wrappedObject = OpenCVForUnity.Xphoto.createLearningBasedWB ();
+            ((OpenCVForUnityPlayMakerActions.LearningBasedWB)storeResult.Value).wrappedObject = OpenCVForUnity.XphotoModule.Xphoto.createLearningBasedWB ();
 
 
         }

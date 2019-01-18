@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,7 +69,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.AgastFeatureDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.AgastFeatureDetector ();
-            ((OpenCVForUnityPlayMakerActions.AgastFeatureDetector)storeResult.Value).wrappedObject = OpenCVForUnity.AgastFeatureDetector.create (threshold.Value, nonmaxSuppression.Value, type.Value);
+            ((OpenCVForUnityPlayMakerActions.AgastFeatureDetector)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.AgastFeatureDetector.create (threshold.Value, nonmaxSuppression.Value, type.Value);
 
 
         }

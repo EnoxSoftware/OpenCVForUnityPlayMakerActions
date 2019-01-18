@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public LUCID (OpenCVForUnity.LUCID nativeObj)
+        public LUCID (OpenCVForUnity.Xfeatures2dModule.LUCID nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.AdaptiveManifoldFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.AdaptiveManifoldFilter ();
-            ((OpenCVForUnityPlayMakerActions.AdaptiveManifoldFilter)storeResult.Value).wrappedObject = OpenCVForUnity.AdaptiveManifoldFilter.create ();
+            ((OpenCVForUnityPlayMakerActions.AdaptiveManifoldFilter)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.AdaptiveManifoldFilter.create ();
 
 
         }

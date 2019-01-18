@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,23 +83,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("disparity is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_disparity = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (disparity);
+            OpenCVForUnity.CoreModule.Mat wrapped_disparity = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (disparity);
 
             if (!(_3dImage.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_3dImage is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__3dImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_3dImage);
+            OpenCVForUnity.CoreModule.Mat wrapped__3dImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_3dImage);
 
             if (!(Q.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("Q is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_Q = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (Q);
+            OpenCVForUnity.CoreModule.Mat wrapped_Q = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (Q);
 
-            OpenCVForUnity.Calib3d.reprojectImageTo3D (wrapped_disparity, wrapped__3dImage, wrapped_Q, handleMissingValues.Value, ddepth.Value);
+            OpenCVForUnity.Calib3dModule.Calib3d.reprojectImageTo3D (wrapped_disparity, wrapped__3dImage, wrapped_Q, handleMissingValues.Value, ddepth.Value);
 
 
         }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,23 +82,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("a is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_a = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (a);
+            OpenCVForUnity.CoreModule.Mat wrapped_a = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (a);
 
             if (!(b.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("b is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_b = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (b);
+            OpenCVForUnity.CoreModule.Mat wrapped_b = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (b);
 
             if (!(c.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("c is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_c = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (c);
+            OpenCVForUnity.CoreModule.Mat wrapped_c = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (c);
 
-            OpenCVForUnity.Core.mulSpectrums (wrapped_a, wrapped_b, wrapped_c, flags.Value, conjB.Value);
+            OpenCVForUnity.CoreModule.Core.mulSpectrums (wrapped_a, wrapped_b, wrapped_c, flags.Value, conjB.Value);
 
 
         }

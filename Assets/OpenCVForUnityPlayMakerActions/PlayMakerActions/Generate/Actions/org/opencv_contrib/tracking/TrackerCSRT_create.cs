@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TrackingModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TrackerCSRT)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TrackerCSRT ();
-            ((OpenCVForUnityPlayMakerActions.TrackerCSRT)storeResult.Value).wrappedObject = OpenCVForUnity.TrackerCSRT.create ();
+            ((OpenCVForUnityPlayMakerActions.TrackerCSRT)storeResult.Value).wrappedObject = OpenCVForUnity.TrackingModule.TrackerCSRT.create ();
 
 
         }

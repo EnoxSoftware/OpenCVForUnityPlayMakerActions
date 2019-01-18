@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            OpenCVForUnity.Dnn.shrinkCaffeModel (src.Value, dst.Value);
+            OpenCVForUnity.DnnModule.Dnn.shrinkCaffeModel (src.Value, dst.Value);
 
 
         }

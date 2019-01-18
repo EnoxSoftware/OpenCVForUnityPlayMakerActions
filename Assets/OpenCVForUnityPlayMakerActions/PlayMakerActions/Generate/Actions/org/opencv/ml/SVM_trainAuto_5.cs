@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -115,35 +116,35 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newSVM\".");
                 return;
             }
-            OpenCVForUnity.SVM wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SVM, OpenCVForUnity.SVM> (owner);
+            OpenCVForUnity.MlModule.SVM wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SVM, OpenCVForUnity.MlModule.SVM> (owner);
 
             if (!(samples.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("samples is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_samples = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (samples);
+            OpenCVForUnity.CoreModule.Mat wrapped_samples = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (samples);
 
             if (!(responses.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("responses is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_responses = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (responses);
+            OpenCVForUnity.CoreModule.Mat wrapped_responses = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (responses);
 
             if (!(Cgrid.Value is OpenCVForUnityPlayMakerActions.ParamGrid))
             {
                 LogError ("Cgrid is not initialized. Add Action \"newParamGrid\".");
                 return;
             }
-            OpenCVForUnity.ParamGrid wrapped_Cgrid = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ParamGrid, OpenCVForUnity.ParamGrid> (Cgrid);
+            OpenCVForUnity.MlModule.ParamGrid wrapped_Cgrid = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ParamGrid, OpenCVForUnity.MlModule.ParamGrid> (Cgrid);
 
             if (!(gammaGrid.Value is OpenCVForUnityPlayMakerActions.ParamGrid))
             {
                 LogError ("gammaGrid is not initialized. Add Action \"newParamGrid\".");
                 return;
             }
-            OpenCVForUnity.ParamGrid wrapped_gammaGrid = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ParamGrid, OpenCVForUnity.ParamGrid> (gammaGrid);
+            OpenCVForUnity.MlModule.ParamGrid wrapped_gammaGrid = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ParamGrid, OpenCVForUnity.MlModule.ParamGrid> (gammaGrid);
 
             storeResult.Value = wrapped_owner.trainAuto (wrapped_samples, layout.Value, wrapped_responses, kFold.Value, wrapped_Cgrid, wrapped_gammaGrid);
 

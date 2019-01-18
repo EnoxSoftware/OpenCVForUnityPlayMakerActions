@@ -1,17 +1,24 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoioModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_videoio")]
-    [HutongGames.PlayMaker.Tooltip ("public VideoCapture ()")]
+    [HutongGames.PlayMaker.Tooltip ("public VideoCapture (int index)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "index")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.VideoCapture), "storeResult")]
     public class VideoCapture_newVideoCapture_3 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt index;
 
         [HutongGames.PlayMaker.ActionSection ("[return] VideoCapture")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -24,6 +31,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
+            index = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.VideoCapture)) storeResult.Value = new OpenCVForUnityPlayMakerActions.VideoCapture ();
-            ((OpenCVForUnityPlayMakerActions.VideoCapture)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoCapture ();
+            ((OpenCVForUnityPlayMakerActions.VideoCapture)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoioModule.VideoCapture (index.Value);
 
 
         }

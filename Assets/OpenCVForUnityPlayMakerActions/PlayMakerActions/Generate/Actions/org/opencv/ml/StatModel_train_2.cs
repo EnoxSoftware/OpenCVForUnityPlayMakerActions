@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -77,14 +78,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newStatModel\".");
                 return;
             }
-            OpenCVForUnity.StatModel wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StatModel, OpenCVForUnity.StatModel> (owner);
+            OpenCVForUnity.MlModule.StatModel wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StatModel, OpenCVForUnity.MlModule.StatModel> (owner);
 
             if (!(trainData.Value is OpenCVForUnityPlayMakerActions.TrainData))
             {
                 LogError ("trainData is not initialized. Add Action \"newTrainData\".");
                 return;
             }
-            OpenCVForUnity.TrainData wrapped_trainData = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TrainData, OpenCVForUnity.TrainData> (trainData);
+            OpenCVForUnity.MlModule.TrainData wrapped_trainData = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TrainData, OpenCVForUnity.MlModule.TrainData> (trainData);
 
             storeResult.Value = wrapped_owner.train (wrapped_trainData);
 

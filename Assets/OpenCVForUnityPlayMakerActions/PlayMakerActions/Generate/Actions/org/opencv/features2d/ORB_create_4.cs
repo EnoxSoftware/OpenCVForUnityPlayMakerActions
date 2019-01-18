@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.ORB)) storeResult.Value = new OpenCVForUnityPlayMakerActions.ORB ();
-            ((OpenCVForUnityPlayMakerActions.ORB)storeResult.Value).wrappedObject = OpenCVForUnity.ORB.create (nfeatures.Value, scaleFactor.Value, nlevels.Value, edgeThreshold.Value, firstLevel.Value);
+            ((OpenCVForUnityPlayMakerActions.ORB)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.ORB.create (nfeatures.Value, scaleFactor.Value, nlevels.Value, edgeThreshold.Value, firstLevel.Value);
 
 
         }

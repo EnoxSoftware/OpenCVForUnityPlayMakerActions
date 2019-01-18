@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -73,10 +74,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("baseDictionary is not initialized. Add Action \"newDictionary\".");
                 return;
             }
-            OpenCVForUnity.Dictionary wrapped_baseDictionary = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Dictionary, OpenCVForUnity.Dictionary> (baseDictionary);
+            OpenCVForUnity.ArucoModule.Dictionary wrapped_baseDictionary = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Dictionary, OpenCVForUnity.ArucoModule.Dictionary> (baseDictionary);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Dictionary)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Dictionary ();
-            ((OpenCVForUnityPlayMakerActions.Dictionary)storeResult.Value).wrappedObject = OpenCVForUnity.Aruco.custom_dictionary_from (nMarkers.Value, markerSize.Value, wrapped_baseDictionary);
+            ((OpenCVForUnityPlayMakerActions.Dictionary)storeResult.Value).wrappedObject = OpenCVForUnity.ArucoModule.Aruco.custom_dictionary_from (nMarkers.Value, markerSize.Value, wrapped_baseDictionary);
 
 
         }

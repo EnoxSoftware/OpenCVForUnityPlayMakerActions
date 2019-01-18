@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -87,45 +88,45 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            List<OpenCVForUnity.Mat> wrapped_rotations = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (rotations, wrapped_rotations);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_rotations = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (rotations, wrapped_rotations);
 
-            List<OpenCVForUnity.Mat> wrapped_normals = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (normals, wrapped_normals);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_normals = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (normals, wrapped_normals);
 
             if (!(beforePoints.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("beforePoints is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_beforePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (beforePoints);
+            OpenCVForUnity.CoreModule.Mat wrapped_beforePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (beforePoints);
 
             if (!(afterPoints.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("afterPoints is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_afterPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (afterPoints);
+            OpenCVForUnity.CoreModule.Mat wrapped_afterPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (afterPoints);
 
             if (!(possibleSolutions.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("possibleSolutions is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_possibleSolutions = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (possibleSolutions);
+            OpenCVForUnity.CoreModule.Mat wrapped_possibleSolutions = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (possibleSolutions);
 
             if (!(pointsMask.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("pointsMask is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_pointsMask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (pointsMask);
+            OpenCVForUnity.CoreModule.Mat wrapped_pointsMask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (pointsMask);
 
-            OpenCVForUnity.Calib3d.filterHomographyDecompByVisibleRefpoints (wrapped_rotations, wrapped_normals, wrapped_beforePoints, wrapped_afterPoints, wrapped_possibleSolutions, wrapped_pointsMask);
+            OpenCVForUnity.Calib3dModule.Calib3d.filterHomographyDecompByVisibleRefpoints (wrapped_rotations, wrapped_normals, wrapped_beforePoints, wrapped_afterPoints, wrapped_possibleSolutions, wrapped_pointsMask);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_rotations, rotations);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_rotations, rotations);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_normals, normals);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_normals, normals);
 
 
         }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-using OpenCVForUnityExample;
+using OpenCVForUnity.UnityUtils.Helper;
 
 namespace OpenCVForUnityPlayMakerActions
 {

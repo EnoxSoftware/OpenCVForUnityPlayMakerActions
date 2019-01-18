@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TonemapDrago)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TonemapDrago ();
-            ((OpenCVForUnityPlayMakerActions.TonemapDrago)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createTonemapDrago (gamma.Value, saturation.Value);
+            ((OpenCVForUnityPlayMakerActions.TonemapDrago)storeResult.Value).wrappedObject = OpenCVForUnity.PhotoModule.Photo.createTonemapDrago (gamma.Value, saturation.Value);
 
 
         }

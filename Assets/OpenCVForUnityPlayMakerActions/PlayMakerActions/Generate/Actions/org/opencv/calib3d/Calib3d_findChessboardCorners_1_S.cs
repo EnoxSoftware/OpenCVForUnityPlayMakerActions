@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -91,16 +92,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(corners.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
             {
                 LogError ("corners is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_corners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (corners);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_corners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (corners);
 
-            storeResult.Value = OpenCVForUnity.Calib3d.findChessboardCorners (wrapped_image, new OpenCVForUnity.Size ((double)patternSize_width.Value, (double)patternSize_height.Value), wrapped_corners);
+            storeResult.Value = OpenCVForUnity.Calib3dModule.Calib3d.findChessboardCorners (wrapped_image, new OpenCVForUnity.CoreModule.Size ((double)patternSize_width.Value, (double)patternSize_height.Value), wrapped_corners);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

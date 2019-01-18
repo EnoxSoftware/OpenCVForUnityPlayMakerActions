@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +14,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Size (OpenCVForUnity.Size nativeObj)
+        public Size (OpenCVForUnity.CoreModule.Size nativeObj)
             : base (nativeObj)
         {
 

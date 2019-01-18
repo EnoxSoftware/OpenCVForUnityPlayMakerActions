@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.KalmanFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.KalmanFilter ();
-            ((OpenCVForUnityPlayMakerActions.KalmanFilter)storeResult.Value).wrappedObject = new OpenCVForUnity.KalmanFilter (dynamParams.Value, measureParams.Value);
+            ((OpenCVForUnityPlayMakerActions.KalmanFilter)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoModule.KalmanFilter (dynamParams.Value, measureParams.Value);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Boost)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Boost ();
-            ((OpenCVForUnityPlayMakerActions.Boost)storeResult.Value).wrappedObject = OpenCVForUnity.Boost.load (filepath.Value, nodeName.Value);
+            ((OpenCVForUnityPlayMakerActions.Boost)storeResult.Value).wrappedObject = OpenCVForUnity.MlModule.Boost.load (filepath.Value, nodeName.Value);
 
 
         }

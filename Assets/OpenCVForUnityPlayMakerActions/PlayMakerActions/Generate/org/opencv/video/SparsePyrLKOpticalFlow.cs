@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public SparsePyrLKOpticalFlow (OpenCVForUnity.SparsePyrLKOpticalFlow nativeObj)
+        public SparsePyrLKOpticalFlow (OpenCVForUnity.VideoModule.SparsePyrLKOpticalFlow nativeObj)
             : base (nativeObj)
         {
 

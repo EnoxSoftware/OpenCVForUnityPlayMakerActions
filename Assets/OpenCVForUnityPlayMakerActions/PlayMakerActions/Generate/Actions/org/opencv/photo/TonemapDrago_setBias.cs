@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newTonemapDrago\".");
                 return;
             }
-            OpenCVForUnity.TonemapDrago wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TonemapDrago, OpenCVForUnity.TonemapDrago> (owner);
+            OpenCVForUnity.PhotoModule.TonemapDrago wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TonemapDrago, OpenCVForUnity.PhotoModule.TonemapDrago> (owner);
 
             wrapped_owner.setBias (bias.Value);
 

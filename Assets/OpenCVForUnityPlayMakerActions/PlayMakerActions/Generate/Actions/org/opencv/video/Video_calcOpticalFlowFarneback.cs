@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -119,21 +120,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("prev is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_prev = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (prev);
+            OpenCVForUnity.CoreModule.Mat wrapped_prev = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (prev);
 
             if (!(next.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("next is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_next = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (next);
+            OpenCVForUnity.CoreModule.Mat wrapped_next = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (next);
 
             if (!(flow.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("flow is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (flow);
+            OpenCVForUnity.CoreModule.Mat wrapped_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (flow);
 
             if (!(pyr_scale.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -149,7 +150,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_poly_sigma = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (poly_sigma);
 
-            OpenCVForUnity.Video.calcOpticalFlowFarneback (wrapped_prev, wrapped_next, wrapped_flow, wrapped_pyr_scale, levels.Value, winsize.Value, iterations.Value, poly_n.Value, wrapped_poly_sigma, flags.Value);
+            OpenCVForUnity.VideoModule.Video.calcOpticalFlowFarneback (wrapped_prev, wrapped_next, wrapped_flow, wrapped_pyr_scale, levels.Value, winsize.Value, iterations.Value, poly_n.Value, wrapped_poly_sigma, flags.Value);
 
 
         }

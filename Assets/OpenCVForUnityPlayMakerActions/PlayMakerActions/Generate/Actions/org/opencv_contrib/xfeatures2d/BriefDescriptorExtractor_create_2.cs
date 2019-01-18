@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BriefDescriptorExtractor)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BriefDescriptorExtractor ();
-            ((OpenCVForUnityPlayMakerActions.BriefDescriptorExtractor)storeResult.Value).wrappedObject = OpenCVForUnity.BriefDescriptorExtractor.create ();
+            ((OpenCVForUnityPlayMakerActions.BriefDescriptorExtractor)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.BriefDescriptorExtractor.create ();
 
 
         }

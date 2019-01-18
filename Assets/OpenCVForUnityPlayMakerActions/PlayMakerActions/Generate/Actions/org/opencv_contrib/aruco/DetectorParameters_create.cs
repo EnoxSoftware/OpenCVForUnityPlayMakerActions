@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.DetectorParameters)) storeResult.Value = new OpenCVForUnityPlayMakerActions.DetectorParameters ();
-            ((OpenCVForUnityPlayMakerActions.DetectorParameters)storeResult.Value).wrappedObject = OpenCVForUnity.DetectorParameters.create ();
+            ((OpenCVForUnityPlayMakerActions.DetectorParameters)storeResult.Value).wrappedObject = OpenCVForUnity.ArucoModule.DetectorParameters.create ();
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BoostDesc)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BoostDesc ();
-            ((OpenCVForUnityPlayMakerActions.BoostDesc)storeResult.Value).wrappedObject = OpenCVForUnity.BoostDesc.create (desc.Value, use_scale_orientation.Value);
+            ((OpenCVForUnityPlayMakerActions.BoostDesc)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.BoostDesc.create (desc.Value, use_scale_orientation.Value);
 
 
         }

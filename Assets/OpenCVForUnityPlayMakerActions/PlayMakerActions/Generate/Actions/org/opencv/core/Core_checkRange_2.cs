@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,9 +76,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("a is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_a = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (a);
+            OpenCVForUnity.CoreModule.Mat wrapped_a = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (a);
 
-            storeResult.Value = OpenCVForUnity.Core.checkRange (wrapped_a, quiet.Value);
+            storeResult.Value = OpenCVForUnity.CoreModule.Core.checkRange (wrapped_a, quiet.Value);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

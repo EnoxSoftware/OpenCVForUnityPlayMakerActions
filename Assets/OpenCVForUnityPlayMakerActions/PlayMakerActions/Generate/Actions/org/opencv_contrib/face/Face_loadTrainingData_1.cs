@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -94,7 +95,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("facePoints is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_facePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (facePoints);
+            OpenCVForUnity.CoreModule.Mat wrapped_facePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (facePoints);
 
             if (!(delim.Value is OpenCVForUnityPlayMakerActions.Char))
             {
@@ -103,7 +104,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Char wrapped_delim = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Char, System.Char> (delim);
 
-            storeResult.Value = OpenCVForUnity.Face.loadTrainingData (filename.Value, wrapped_images, wrapped_facePoints, wrapped_delim);
+            storeResult.Value = OpenCVForUnity.FaceModule.Face.loadTrainingData (filename.Value, wrapped_images, wrapped_facePoints, wrapped_delim);
 
             wrapped_images.CopyTo (string_images);
 

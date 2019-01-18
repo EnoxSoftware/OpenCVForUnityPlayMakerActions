@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Subdiv2D)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Subdiv2D ();
-            ((OpenCVForUnityPlayMakerActions.Subdiv2D)storeResult.Value).wrappedObject = new OpenCVForUnity.Subdiv2D ();
+            ((OpenCVForUnityPlayMakerActions.Subdiv2D)storeResult.Value).wrappedObject = new OpenCVForUnity.ImgprocModule.Subdiv2D ();
 
 
         }

@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,14 +69,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newNet\".");
                 return;
             }
-            OpenCVForUnity.Net wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Net, OpenCVForUnity.Net> (owner);
+            OpenCVForUnity.DnnModule.Net wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Net, OpenCVForUnity.DnnModule.Net> (owner);
 
             if (!(layerId.Value is OpenCVForUnityPlayMakerActions.DictValue))
             {
                 LogError ("layerId is not initialized. Add Action \"newDictValue\".");
                 return;
             }
-            OpenCVForUnity.DictValue wrapped_layerId = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DictValue, OpenCVForUnity.DictValue> (layerId);
+            OpenCVForUnity.DnnModule.DictValue wrapped_layerId = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DictValue, OpenCVForUnity.DnnModule.DictValue> (layerId);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Layer)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Layer ();
             ((OpenCVForUnityPlayMakerActions.Layer)storeResult.Value).wrappedObject = wrapped_owner.getLayer (wrapped_layerId);

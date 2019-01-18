@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newBIF\".");
                 return;
             }
-            OpenCVForUnity.BIF wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BIF, OpenCVForUnity.BIF> (owner);
+            OpenCVForUnity.FaceModule.BIF wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BIF, OpenCVForUnity.FaceModule.BIF> (owner);
 
             storeResult.Value = wrapped_owner.getNumRotations ();
 

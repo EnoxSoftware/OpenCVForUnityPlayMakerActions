@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public BasicFaceRecognizer (OpenCVForUnity.BasicFaceRecognizer nativeObj)
+        public BasicFaceRecognizer (OpenCVForUnity.FaceModule.BasicFaceRecognizer nativeObj)
             : base (nativeObj)
         {
 

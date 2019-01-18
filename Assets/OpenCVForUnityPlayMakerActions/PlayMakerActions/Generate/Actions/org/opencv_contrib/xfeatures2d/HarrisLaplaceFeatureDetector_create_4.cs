@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.HarrisLaplaceFeatureDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.HarrisLaplaceFeatureDetector ();
-            ((OpenCVForUnityPlayMakerActions.HarrisLaplaceFeatureDetector)storeResult.Value).wrappedObject = OpenCVForUnity.HarrisLaplaceFeatureDetector.create (numOctaves.Value);
+            ((OpenCVForUnityPlayMakerActions.HarrisLaplaceFeatureDetector)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.HarrisLaplaceFeatureDetector.create (numOctaves.Value);
 
 
         }

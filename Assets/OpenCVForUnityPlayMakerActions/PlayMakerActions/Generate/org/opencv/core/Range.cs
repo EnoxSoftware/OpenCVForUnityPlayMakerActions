@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +14,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Range (OpenCVForUnity.Range nativeObj)
+        public Range (OpenCVForUnity.CoreModule.Range nativeObj)
             : base (nativeObj)
         {
 

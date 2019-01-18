@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            storeResult.Value = OpenCVForUnity.Core.fastAtan2 (y.Value, x.Value);
+            storeResult.Value = OpenCVForUnity.CoreModule.Core.fastAtan2 (y.Value, x.Value);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -110,7 +111,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            storeResult.Value = OpenCVForUnity.Imgproc.clipLine (new OpenCVForUnity.Rect ((int)imgRect_x.Value, (int)imgRect_y.Value, (int)imgRect_width.Value, (int)imgRect_height.Value), new OpenCVForUnity.Point ((double)pt1_x.Value, (double)pt1_y.Value), new OpenCVForUnity.Point ((double)pt2_x.Value, (double)pt2_y.Value));
+            storeResult.Value = OpenCVForUnity.ImgprocModule.Imgproc.clipLine (new OpenCVForUnity.CoreModule.Rect ((int)imgRect_x.Value, (int)imgRect_y.Value, (int)imgRect_width.Value, (int)imgRect_height.Value), new OpenCVForUnity.CoreModule.Point ((double)pt1_x.Value, (double)pt1_y.Value), new OpenCVForUnity.CoreModule.Point ((double)pt2_x.Value, (double)pt2_y.Value));
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

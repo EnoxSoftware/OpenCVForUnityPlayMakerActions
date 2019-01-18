@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -75,23 +76,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("source is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_source = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (source);
+            OpenCVForUnity.CoreModule.Mat wrapped_source = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (source);
 
             if (!(signature.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("signature is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_signature = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (signature);
+            OpenCVForUnity.CoreModule.Mat wrapped_signature = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (signature);
 
             if (!(result.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("result is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_result = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (result);
+            OpenCVForUnity.CoreModule.Mat wrapped_result = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (result);
 
-            OpenCVForUnity.PCTSignatures.drawSignature (wrapped_source, wrapped_signature, wrapped_result, radiusToShorterSideRatio.Value);
+            OpenCVForUnity.Xfeatures2dModule.PCTSignatures.drawSignature (wrapped_source, wrapped_signature, wrapped_result, radiusToShorterSideRatio.Value);
 
 
         }

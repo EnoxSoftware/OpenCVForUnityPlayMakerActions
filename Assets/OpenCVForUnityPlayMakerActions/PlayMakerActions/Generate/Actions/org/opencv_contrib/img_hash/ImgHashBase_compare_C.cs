@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -75,21 +76,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newImgHashBase\".");
                 return;
             }
-            OpenCVForUnity.ImgHashBase wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ImgHashBase, OpenCVForUnity.ImgHashBase> (owner);
+            OpenCVForUnity.Img_hashModule.ImgHashBase wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ImgHashBase, OpenCVForUnity.Img_hashModule.ImgHashBase> (owner);
 
             if (!(hashOne.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("hashOne is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_hashOne = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (hashOne);
+            OpenCVForUnity.CoreModule.Mat wrapped_hashOne = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (hashOne);
 
             if (!(hashTwo.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("hashTwo is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_hashTwo = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (hashTwo);
+            OpenCVForUnity.CoreModule.Mat wrapped_hashTwo = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (hashTwo);
 
             storeResult.Value = (float)wrapped_owner.compare (wrapped_hashOne, wrapped_hashTwo);
 

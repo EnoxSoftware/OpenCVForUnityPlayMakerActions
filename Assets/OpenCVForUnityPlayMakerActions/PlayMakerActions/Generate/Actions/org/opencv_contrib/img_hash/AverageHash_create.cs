@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.AverageHash)) storeResult.Value = new OpenCVForUnityPlayMakerActions.AverageHash ();
-            ((OpenCVForUnityPlayMakerActions.AverageHash)storeResult.Value).wrappedObject = OpenCVForUnity.AverageHash.create ();
+            ((OpenCVForUnityPlayMakerActions.AverageHash)storeResult.Value).wrappedObject = OpenCVForUnity.Img_hashModule.AverageHash.create ();
 
 
         }

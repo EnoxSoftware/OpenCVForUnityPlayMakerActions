@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.SaliencyModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -69,7 +70,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMotionSaliencyBinWangApr2014\".");
                 return;
             }
-            OpenCVForUnity.MotionSaliencyBinWangApr2014 wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MotionSaliencyBinWangApr2014, OpenCVForUnity.MotionSaliencyBinWangApr2014> (owner);
+            OpenCVForUnity.SaliencyModule.MotionSaliencyBinWangApr2014 wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MotionSaliencyBinWangApr2014, OpenCVForUnity.SaliencyModule.MotionSaliencyBinWangApr2014> (owner);
 
             storeResult.Value = wrapped_owner.init ();
 

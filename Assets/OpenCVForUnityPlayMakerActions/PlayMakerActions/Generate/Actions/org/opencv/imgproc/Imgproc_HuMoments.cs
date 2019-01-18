@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,16 +61,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("m is not initialized. Add Action \"newMoments\".");
                 return;
             }
-            OpenCVForUnity.Moments wrapped_m = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Moments, OpenCVForUnity.Moments> (m);
+            OpenCVForUnity.ImgprocModule.Moments wrapped_m = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Moments, OpenCVForUnity.ImgprocModule.Moments> (m);
 
             if (!(hu.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("hu is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_hu = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (hu);
+            OpenCVForUnity.CoreModule.Mat wrapped_hu = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (hu);
 
-            OpenCVForUnity.Imgproc.HuMoments (wrapped_m, wrapped_hu);
+            OpenCVForUnity.ImgprocModule.Imgproc.HuMoments (wrapped_m, wrapped_hu);
 
 
         }

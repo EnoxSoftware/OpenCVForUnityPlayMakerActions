@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -90,7 +91,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_fontScale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (fontScale);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Size)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Size ();
-            ((OpenCVForUnityPlayMakerActions.Size)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.getTextSize (text.Value, fontFace.Value, wrapped_fontScale, thickness.Value, baseLine.intValues);
+            ((OpenCVForUnityPlayMakerActions.Size)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.getTextSize (text.Value, fontFace.Value, wrapped_fontScale, thickness.Value, baseLine.intValues);
 
 
         }

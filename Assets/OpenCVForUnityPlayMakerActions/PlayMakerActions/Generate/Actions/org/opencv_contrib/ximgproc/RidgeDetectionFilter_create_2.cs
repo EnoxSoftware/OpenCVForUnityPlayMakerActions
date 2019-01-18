@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -97,7 +98,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (scale);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.RidgeDetectionFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.RidgeDetectionFilter ();
-            ((OpenCVForUnityPlayMakerActions.RidgeDetectionFilter)storeResult.Value).wrappedObject = OpenCVForUnity.RidgeDetectionFilter.create (ddepth.Value, dx.Value, dy.Value, ksize.Value, out_dtype.Value, wrapped_scale);
+            ((OpenCVForUnityPlayMakerActions.RidgeDetectionFilter)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.RidgeDetectionFilter.create (ddepth.Value, dx.Value, dy.Value, ksize.Value, out_dtype.Value, wrapped_scale);
 
 
         }

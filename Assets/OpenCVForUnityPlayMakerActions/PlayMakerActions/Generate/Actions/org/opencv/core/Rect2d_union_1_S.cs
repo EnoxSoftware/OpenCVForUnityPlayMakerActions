@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -99,7 +99,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Rect2d)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Rect2d ();
-            ((OpenCVForUnityPlayMakerActions.Rect2d)storeResult.Value).wrappedObject = OpenCVForUnity.Rect2d.union (new OpenCVForUnity.Rect2d ((double)a_x.Value, (double)a_y.Value, (double)a_width.Value, (double)a_height.Value), new OpenCVForUnity.Rect2d ((double)b_x.Value, (double)b_y.Value, (double)b_width.Value, (double)b_height.Value));
+            ((OpenCVForUnityPlayMakerActions.Rect2d)storeResult.Value).wrappedObject = OpenCVForUnity.CoreModule.Rect2d.union (new OpenCVForUnity.CoreModule.Rect2d ((double)a_x.Value, (double)a_y.Value, (double)a_width.Value, (double)a_height.Value), new OpenCVForUnity.CoreModule.Rect2d ((double)b_x.Value, (double)b_y.Value, (double)b_width.Value, (double)b_height.Value));
 
 
         }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            storeResult.Value = OpenCVForUnity.CvType.makeType (depth.Value, channels.Value);
+            storeResult.Value = OpenCVForUnity.CoreModule.CvType.makeType (depth.Value, channels.Value);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.OptflowModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -167,21 +168,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("from is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_from = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (from);
+            OpenCVForUnity.CoreModule.Mat wrapped_from = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (from);
 
             if (!(to.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("to is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_to = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (to);
+            OpenCVForUnity.CoreModule.Mat wrapped_to = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (to);
 
             if (!(flow.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("flow is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (flow);
+            OpenCVForUnity.CoreModule.Mat wrapped_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (flow);
 
             if (!(sigma_dist.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -239,7 +240,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_speed_up_thr = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (speed_up_thr);
 
-            OpenCVForUnity.Optflow.calcOpticalFlowSF (wrapped_from, wrapped_to, wrapped_flow, layers.Value, averaging_block_size.Value, max_flow.Value, wrapped_sigma_dist, wrapped_sigma_color, postprocess_window.Value, wrapped_sigma_dist_fix, wrapped_sigma_color_fix, wrapped_occ_thr, upscale_averaging_radius.Value, wrapped_upscale_sigma_dist, wrapped_upscale_sigma_color, wrapped_speed_up_thr);
+            OpenCVForUnity.OptflowModule.Optflow.calcOpticalFlowSF (wrapped_from, wrapped_to, wrapped_flow, layers.Value, averaging_block_size.Value, max_flow.Value, wrapped_sigma_dist, wrapped_sigma_color, postprocess_window.Value, wrapped_sigma_dist_fix, wrapped_sigma_color_fix, wrapped_occ_thr, upscale_averaging_radius.Value, wrapped_upscale_sigma_dist, wrapped_upscale_sigma_color, wrapped_speed_up_thr);
 
 
         }

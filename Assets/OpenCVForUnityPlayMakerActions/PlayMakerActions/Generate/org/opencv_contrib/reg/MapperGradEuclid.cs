@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.RegModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public MapperGradEuclid (OpenCVForUnity.MapperGradEuclid nativeObj)
+        public MapperGradEuclid (OpenCVForUnity.RegModule.MapperGradEuclid nativeObj)
             : base (nativeObj)
         {
 

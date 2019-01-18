@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,7 +77,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_clipLimit = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (clipLimit);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.CLAHE)) storeResult.Value = new OpenCVForUnityPlayMakerActions.CLAHE ();
-            ((OpenCVForUnityPlayMakerActions.CLAHE)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.createCLAHE (wrapped_clipLimit, new OpenCVForUnity.Size ((double)tileGridSize_width.Value, (double)tileGridSize_height.Value));
+            ((OpenCVForUnityPlayMakerActions.CLAHE)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.createCLAHE (wrapped_clipLimit, new OpenCVForUnity.CoreModule.Size ((double)tileGridSize_width.Value, (double)tileGridSize_height.Value));
 
 
         }

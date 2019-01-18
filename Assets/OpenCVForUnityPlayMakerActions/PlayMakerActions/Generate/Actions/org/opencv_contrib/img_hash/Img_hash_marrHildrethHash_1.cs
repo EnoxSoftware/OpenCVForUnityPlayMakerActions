@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -67,16 +68,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("inputArr is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_inputArr = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (inputArr);
+            OpenCVForUnity.CoreModule.Mat wrapped_inputArr = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (inputArr);
 
             if (!(outputArr.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("outputArr is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_outputArr = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (outputArr);
+            OpenCVForUnity.CoreModule.Mat wrapped_outputArr = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (outputArr);
 
-            OpenCVForUnity.Img_hash.marrHildrethHash (wrapped_inputArr, wrapped_outputArr, alpha.Value);
+            OpenCVForUnity.Img_hashModule.Img_hash.marrHildrethHash (wrapped_inputArr, wrapped_outputArr, alpha.Value);
 
 
         }

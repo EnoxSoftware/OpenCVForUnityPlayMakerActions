@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Phase_unwrappingModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,21 +69,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newPhaseUnwrapping\".");
                 return;
             }
-            OpenCVForUnity.PhaseUnwrapping wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.PhaseUnwrapping, OpenCVForUnity.PhaseUnwrapping> (owner);
+            OpenCVForUnity.Phase_unwrappingModule.PhaseUnwrapping wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.PhaseUnwrapping, OpenCVForUnity.Phase_unwrappingModule.PhaseUnwrapping> (owner);
 
             if (!(wrappedPhaseMap.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("wrappedPhaseMap is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_wrappedPhaseMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (wrappedPhaseMap);
+            OpenCVForUnity.CoreModule.Mat wrapped_wrappedPhaseMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (wrappedPhaseMap);
 
             if (!(unwrappedPhaseMap.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("unwrappedPhaseMap is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_unwrappedPhaseMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (unwrappedPhaseMap);
+            OpenCVForUnity.CoreModule.Mat wrapped_unwrappedPhaseMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (unwrappedPhaseMap);
 
             wrapped_owner.unwrapPhaseMap (wrapped_wrappedPhaseMap, wrapped_unwrappedPhaseMap);
 

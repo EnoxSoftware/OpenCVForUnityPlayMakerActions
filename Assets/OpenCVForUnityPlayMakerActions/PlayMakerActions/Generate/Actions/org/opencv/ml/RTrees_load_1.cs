@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.RTrees)) storeResult.Value = new OpenCVForUnityPlayMakerActions.RTrees ();
-            ((OpenCVForUnityPlayMakerActions.RTrees)storeResult.Value).wrappedObject = OpenCVForUnity.RTrees.load (filepath.Value);
+            ((OpenCVForUnityPlayMakerActions.RTrees)storeResult.Value).wrappedObject = OpenCVForUnity.MlModule.RTrees.load (filepath.Value);
 
 
         }

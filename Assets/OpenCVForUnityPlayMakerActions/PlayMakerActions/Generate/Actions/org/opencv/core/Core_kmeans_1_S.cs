@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -108,17 +108,17 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("data is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_data = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (data);
+            OpenCVForUnity.CoreModule.Mat wrapped_data = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (data);
 
             if (!(bestLabels.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("bestLabels is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_bestLabels = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (bestLabels);
+            OpenCVForUnity.CoreModule.Mat wrapped_bestLabels = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (bestLabels);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Double)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Double ();
-            ((OpenCVForUnityPlayMakerActions.Double)storeResult.Value).wrappedObject = OpenCVForUnity.Core.kmeans (wrapped_data, K.Value, wrapped_bestLabels, new OpenCVForUnity.TermCriteria ((int)criteria_type.Value, (int)criteria_maxCount.Value, (double)criteria_epsilon.Value), attempts.Value, flags.Value);
+            ((OpenCVForUnityPlayMakerActions.Double)storeResult.Value).wrappedObject = OpenCVForUnity.CoreModule.Core.kmeans (wrapped_data, K.Value, wrapped_bestLabels, new OpenCVForUnity.CoreModule.TermCriteria ((int)criteria_type.Value, (int)criteria_maxCount.Value, (double)criteria_epsilon.Value), attempts.Value, flags.Value);
 
 
         }

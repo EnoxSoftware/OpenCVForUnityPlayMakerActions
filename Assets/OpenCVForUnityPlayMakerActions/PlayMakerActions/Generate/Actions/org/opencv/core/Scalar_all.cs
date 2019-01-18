@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -62,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_v = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (v);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Scalar)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Scalar ();
-            ((OpenCVForUnityPlayMakerActions.Scalar)storeResult.Value).wrappedObject = OpenCVForUnity.Scalar.all (wrapped_v);
+            ((OpenCVForUnityPlayMakerActions.Scalar)storeResult.Value).wrappedObject = OpenCVForUnity.CoreModule.Scalar.all (wrapped_v);
 
 
         }

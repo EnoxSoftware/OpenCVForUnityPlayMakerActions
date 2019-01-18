@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BioinspiredModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule ();
-            ((OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule)storeResult.Value).wrappedObject = OpenCVForUnity.TransientAreasSegmentationModule.create (new OpenCVForUnity.Size ((double)inputSize_width.Value, (double)inputSize_height.Value));
+            ((OpenCVForUnityPlayMakerActions.TransientAreasSegmentationModule)storeResult.Value).wrappedObject = OpenCVForUnity.BioinspiredModule.TransientAreasSegmentationModule.create (new OpenCVForUnity.CoreModule.Size ((double)inputSize_width.Value, (double)inputSize_height.Value));
 
 
         }

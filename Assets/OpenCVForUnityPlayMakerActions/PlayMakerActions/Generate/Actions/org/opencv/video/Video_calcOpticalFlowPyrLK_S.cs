@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -148,42 +149,42 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("prevImg is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_prevImg = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (prevImg);
+            OpenCVForUnity.CoreModule.Mat wrapped_prevImg = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (prevImg);
 
             if (!(nextImg.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("nextImg is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_nextImg = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (nextImg);
+            OpenCVForUnity.CoreModule.Mat wrapped_nextImg = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (nextImg);
 
             if (!(prevPts.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
             {
                 LogError ("prevPts is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_prevPts = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (prevPts);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_prevPts = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (prevPts);
 
             if (!(nextPts.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
             {
                 LogError ("nextPts is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_nextPts = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (nextPts);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_nextPts = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (nextPts);
 
             if (!(status.Value is OpenCVForUnityPlayMakerActions.MatOfByte))
             {
                 LogError ("status is not initialized. Add Action \"newMatOfByte\".");
                 return;
             }
-            OpenCVForUnity.MatOfByte wrapped_status = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfByte, OpenCVForUnity.MatOfByte> (status);
+            OpenCVForUnity.CoreModule.MatOfByte wrapped_status = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfByte, OpenCVForUnity.CoreModule.MatOfByte> (status);
 
             if (!(err.Value is OpenCVForUnityPlayMakerActions.MatOfFloat))
             {
                 LogError ("err is not initialized. Add Action \"newMatOfFloat\".");
                 return;
             }
-            OpenCVForUnity.MatOfFloat wrapped_err = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.MatOfFloat> (err);
+            OpenCVForUnity.CoreModule.MatOfFloat wrapped_err = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.CoreModule.MatOfFloat> (err);
 
             if (!(minEigThreshold.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -192,7 +193,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_minEigThreshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (minEigThreshold);
 
-            OpenCVForUnity.Video.calcOpticalFlowPyrLK (wrapped_prevImg, wrapped_nextImg, wrapped_prevPts, wrapped_nextPts, wrapped_status, wrapped_err, new OpenCVForUnity.Size ((double)winSize_width.Value, (double)winSize_height.Value), maxLevel.Value, new OpenCVForUnity.TermCriteria ((int)criteria_type.Value, (int)criteria_maxCount.Value, (double)criteria_epsilon.Value), flags.Value, wrapped_minEigThreshold);
+            OpenCVForUnity.VideoModule.Video.calcOpticalFlowPyrLK (wrapped_prevImg, wrapped_nextImg, wrapped_prevPts, wrapped_nextPts, wrapped_status, wrapped_err, new OpenCVForUnity.CoreModule.Size ((double)winSize_width.Value, (double)winSize_height.Value), maxLevel.Value, new OpenCVForUnity.CoreModule.TermCriteria ((int)criteria_type.Value, (int)criteria_maxCount.Value, (double)criteria_epsilon.Value), flags.Value, wrapped_minEigThreshold);
 
 
         }

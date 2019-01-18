@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -81,16 +82,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newGridBoard\".");
                 return;
             }
-            OpenCVForUnity.GridBoard wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.GridBoard, OpenCVForUnity.GridBoard> (owner);
+            OpenCVForUnity.ArucoModule.GridBoard wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.GridBoard, OpenCVForUnity.ArucoModule.GridBoard> (owner);
 
             if (!(img.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
+            OpenCVForUnity.CoreModule.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img);
 
-            wrapped_owner.draw (new OpenCVForUnity.Size ((double)outSize_width.Value, (double)outSize_height.Value), wrapped_img, marginSize.Value);
+            wrapped_owner.draw (new OpenCVForUnity.CoreModule.Size ((double)outSize_width.Value, (double)outSize_height.Value), wrapped_img, marginSize.Value);
 
 
         }

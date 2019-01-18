@@ -1,23 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static DAISY create (float radius)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "radius")]
+    [HutongGames.PlayMaker.Tooltip ("public static DAISY create ()")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DAISY), "storeResult")]
     public class DAISY_create_7 : HutongGames.PlayMaker.FsmStateAction
     {
-
-        [HutongGames.PlayMaker.ActionSection ("[arg1] float")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat radius;
 
         [HutongGames.PlayMaker.ActionSection ("[return] DAISY")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -30,7 +25,6 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
-            radius = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -54,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.DAISY)) storeResult.Value = new OpenCVForUnityPlayMakerActions.DAISY ();
-            ((OpenCVForUnityPlayMakerActions.DAISY)storeResult.Value).wrappedObject = OpenCVForUnity.DAISY.create (radius.Value);
+            ((OpenCVForUnityPlayMakerActions.DAISY)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.DAISY.create ();
 
 
         }

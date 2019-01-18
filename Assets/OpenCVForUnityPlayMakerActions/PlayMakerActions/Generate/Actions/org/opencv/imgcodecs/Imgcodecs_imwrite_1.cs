@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgcodecsModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,9 +77,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
+            OpenCVForUnity.CoreModule.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img);
 
-            storeResult.Value = OpenCVForUnity.Imgcodecs.imwrite (filename.Value, wrapped_img);
+            storeResult.Value = OpenCVForUnity.ImgcodecsModule.Imgcodecs.imwrite (filename.Value, wrapped_img);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

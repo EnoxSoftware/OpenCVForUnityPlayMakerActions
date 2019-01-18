@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.ColorMomentHash)) storeResult.Value = new OpenCVForUnityPlayMakerActions.ColorMomentHash ();
-            ((OpenCVForUnityPlayMakerActions.ColorMomentHash)storeResult.Value).wrappedObject = OpenCVForUnity.ColorMomentHash.create ();
+            ((OpenCVForUnityPlayMakerActions.ColorMomentHash)storeResult.Value).wrappedObject = OpenCVForUnity.Img_hashModule.ColorMomentHash.create ();
 
 
         }

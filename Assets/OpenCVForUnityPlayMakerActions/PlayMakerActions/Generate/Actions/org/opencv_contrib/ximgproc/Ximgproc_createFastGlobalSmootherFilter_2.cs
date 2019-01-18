@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -75,7 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("guide is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_guide = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (guide);
+            OpenCVForUnity.CoreModule.Mat wrapped_guide = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (guide);
 
             if (!(lambda.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -92,7 +93,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_sigma_color = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (sigma_color);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FastGlobalSmootherFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FastGlobalSmootherFilter ();
-            ((OpenCVForUnityPlayMakerActions.FastGlobalSmootherFilter)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createFastGlobalSmootherFilter (wrapped_guide, wrapped_lambda, wrapped_sigma_color);
+            ((OpenCVForUnityPlayMakerActions.FastGlobalSmootherFilter)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createFastGlobalSmootherFilter (wrapped_guide, wrapped_lambda, wrapped_sigma_color);
 
 
         }

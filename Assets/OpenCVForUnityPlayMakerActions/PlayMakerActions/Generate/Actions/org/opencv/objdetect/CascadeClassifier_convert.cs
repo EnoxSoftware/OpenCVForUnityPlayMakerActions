@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ObjdetectModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -70,7 +71,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            storeResult.Value = OpenCVForUnity.CascadeClassifier.convert (oldcascade.Value, newcascade.Value);
+            storeResult.Value = OpenCVForUnity.ObjdetectModule.CascadeClassifier.convert (oldcascade.Value, newcascade.Value);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public TonemapMantiuk (OpenCVForUnity.TonemapMantiuk nativeObj)
+        public TonemapMantiuk (OpenCVForUnity.PhotoModule.TonemapMantiuk nativeObj)
             : base (nativeObj)
         {
 

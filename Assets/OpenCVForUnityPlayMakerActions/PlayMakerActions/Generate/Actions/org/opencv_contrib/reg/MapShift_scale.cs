@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.RegModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMapShift\".");
                 return;
             }
-            OpenCVForUnity.MapShift wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MapShift, OpenCVForUnity.MapShift> (owner);
+            OpenCVForUnity.RegModule.MapShift wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MapShift, OpenCVForUnity.RegModule.MapShift> (owner);
 
             if (!(factor.Value is OpenCVForUnityPlayMakerActions.Double))
             {

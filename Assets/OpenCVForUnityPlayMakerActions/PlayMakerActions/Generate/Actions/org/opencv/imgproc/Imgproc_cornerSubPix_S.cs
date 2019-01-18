@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -108,16 +109,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(corners.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("corners is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_corners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (corners);
+            OpenCVForUnity.CoreModule.Mat wrapped_corners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (corners);
 
-            OpenCVForUnity.Imgproc.cornerSubPix (wrapped_image, wrapped_corners, new OpenCVForUnity.Size ((double)winSize_width.Value, (double)winSize_height.Value), new OpenCVForUnity.Size ((double)zeroZone_width.Value, (double)zeroZone_height.Value), new OpenCVForUnity.TermCriteria ((int)criteria_type.Value, (int)criteria_maxCount.Value, (double)criteria_epsilon.Value));
+            OpenCVForUnity.ImgprocModule.Imgproc.cornerSubPix (wrapped_image, wrapped_corners, new OpenCVForUnity.CoreModule.Size ((double)winSize_width.Value, (double)winSize_height.Value), new OpenCVForUnity.CoreModule.Size ((double)zeroZone_width.Value, (double)zeroZone_height.Value), new OpenCVForUnity.CoreModule.TermCriteria ((int)criteria_type.Value, (int)criteria_maxCount.Value, (double)criteria_epsilon.Value));
 
 
         }

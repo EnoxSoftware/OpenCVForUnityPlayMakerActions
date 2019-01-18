@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FuzzyModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -66,9 +67,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("matrix is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_matrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (matrix);
+            OpenCVForUnity.CoreModule.Mat wrapped_matrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (matrix);
 
-            OpenCVForUnity.Fuzzy.FT12D_createPolynomMatrixVertical (radius.Value, wrapped_matrix, chn.Value);
+            OpenCVForUnity.FuzzyModule.Fuzzy.FT12D_createPolynomMatrixVertical (radius.Value, wrapped_matrix, chn.Value);
 
 
         }

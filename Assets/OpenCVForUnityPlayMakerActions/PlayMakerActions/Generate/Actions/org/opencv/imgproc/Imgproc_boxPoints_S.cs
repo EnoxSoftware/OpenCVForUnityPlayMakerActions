@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -84,9 +85,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("points is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (points);
+            OpenCVForUnity.CoreModule.Mat wrapped_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (points);
 
-            OpenCVForUnity.Imgproc.boxPoints (new OpenCVForUnity.RotatedRect (new OpenCVForUnity.Point ((double)box_center_x.Value, (double)box_center_y.Value), new OpenCVForUnity.Size ((double)box_size_width.Value, (double)box_size_height.Value), (double)box_angle.Value), wrapped_points);
+            OpenCVForUnity.ImgprocModule.Imgproc.boxPoints (new OpenCVForUnity.CoreModule.RotatedRect (new OpenCVForUnity.CoreModule.Point ((double)box_center_x.Value, (double)box_center_y.Value), new OpenCVForUnity.CoreModule.Size ((double)box_size_width.Value, (double)box_size_height.Value), (double)box_angle.Value), wrapped_points);
 
 
         }

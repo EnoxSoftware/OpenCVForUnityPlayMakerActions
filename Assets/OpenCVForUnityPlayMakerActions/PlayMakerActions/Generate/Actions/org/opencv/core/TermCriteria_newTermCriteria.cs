@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,7 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_epsilon = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (epsilon);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TermCriteria)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TermCriteria ();
-            ((OpenCVForUnityPlayMakerActions.TermCriteria)storeResult.Value).wrappedObject = new OpenCVForUnity.TermCriteria (type.Value, maxCount.Value, wrapped_epsilon);
+            ((OpenCVForUnityPlayMakerActions.TermCriteria)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.TermCriteria (type.Value, maxCount.Value, wrapped_epsilon);
 
 
         }

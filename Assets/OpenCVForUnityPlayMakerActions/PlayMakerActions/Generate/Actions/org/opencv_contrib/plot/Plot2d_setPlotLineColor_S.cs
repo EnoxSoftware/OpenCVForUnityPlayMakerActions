@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PlotModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -78,9 +79,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newPlot2d\".");
                 return;
             }
-            OpenCVForUnity.Plot2d wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Plot2d, OpenCVForUnity.Plot2d> (owner);
+            OpenCVForUnity.PlotModule.Plot2d wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Plot2d, OpenCVForUnity.PlotModule.Plot2d> (owner);
 
-            wrapped_owner.setPlotLineColor (new OpenCVForUnity.Scalar ((double)_plotLineColor_v0.Value, (double)_plotLineColor_v1.Value, (double)_plotLineColor_v2.Value, (double)_plotLineColor_v3.Value));
+            wrapped_owner.setPlotLineColor (new OpenCVForUnity.CoreModule.Scalar ((double)_plotLineColor_v0.Value, (double)_plotLineColor_v1.Value, (double)_plotLineColor_v2.Value, (double)_plotLineColor_v3.Value));
 
 
         }

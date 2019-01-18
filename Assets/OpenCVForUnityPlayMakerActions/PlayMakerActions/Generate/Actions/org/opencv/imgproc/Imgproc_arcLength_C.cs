@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -66,9 +67,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("curve is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_curve = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (curve);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_curve = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (curve);
 
-            storeResult.Value = (float)OpenCVForUnity.Imgproc.arcLength (wrapped_curve, closed.Value);
+            storeResult.Value = (float)OpenCVForUnity.ImgprocModule.Imgproc.arcLength (wrapped_curve, closed.Value);
 
 
         }

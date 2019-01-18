@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public StereoSGBM (OpenCVForUnity.StereoSGBM nativeObj)
+        public StereoSGBM (OpenCVForUnity.Calib3dModule.StereoSGBM nativeObj)
             : base (nativeObj)
         {
 

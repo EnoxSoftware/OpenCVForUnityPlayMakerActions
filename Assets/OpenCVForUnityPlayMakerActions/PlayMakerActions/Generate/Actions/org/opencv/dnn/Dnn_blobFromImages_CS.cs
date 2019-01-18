@@ -2,14 +2,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip ("public static Mat blobFromImages (List<Mat> images, double scalefactor, Size size, Scalar mean, bool swapRB, bool crop)")]
+    [HutongGames.PlayMaker.Tooltip ("public static Mat blobFromImages (List<Mat> images, double scalefactor, Size size, Scalar mean, bool swapRB, bool crop, int ddepth)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "images")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "scalefactor")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "size_width")]
@@ -20,6 +21,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "mean_v3")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "swapRB")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "crop")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "ddepth")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Dnn_blobFromImages_CS : HutongGames.PlayMaker.FsmStateAction
     {
@@ -73,6 +75,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
         public HutongGames.PlayMaker.FsmBool crop;
 
+        [HutongGames.PlayMaker.ActionSection ("[arg7] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt ddepth;
+
         [HutongGames.PlayMaker.ActionSection ("[return] Mat")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
@@ -94,6 +101,7 @@ namespace OpenCVForUnityPlayMakerActions
             mean_v3 = 0.0f;
             swapRB = false;
             crop = false;
+            ddepth = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -116,13 +124,13 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            List<OpenCVForUnity.Mat> wrapped_images = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (images, wrapped_images);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_images = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (images, wrapped_images);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Dnn.blobFromImages (wrapped_images, (float)scalefactor.Value, new OpenCVForUnity.Size ((double)size_width.Value, (double)size_height.Value), new OpenCVForUnity.Scalar ((double)mean_v0.Value, (double)mean_v1.Value, (double)mean_v2.Value, (double)mean_v3.Value), swapRB.Value, crop.Value);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.DnnModule.Dnn.blobFromImages (wrapped_images, (float)scalefactor.Value, new OpenCVForUnity.CoreModule.Size ((double)size_width.Value, (double)size_height.Value), new OpenCVForUnity.CoreModule.Scalar ((double)mean_v0.Value, (double)mean_v1.Value, (double)mean_v2.Value, (double)mean_v3.Value), swapRB.Value, crop.Value, ddepth.Value);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_images, images);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_images, images);
 
 
         }

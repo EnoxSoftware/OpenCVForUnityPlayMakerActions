@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.RegModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,10 +60,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("sourceMap is not initialized. Add Action \"newMap\".");
                 return;
             }
-            OpenCVForUnity.Map wrapped_sourceMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Map, OpenCVForUnity.Map> (sourceMap);
+            OpenCVForUnity.RegModule.Map wrapped_sourceMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Map, OpenCVForUnity.RegModule.Map> (sourceMap);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MapProjec)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MapProjec ();
-            ((OpenCVForUnityPlayMakerActions.MapProjec)storeResult.Value).wrappedObject = OpenCVForUnity.MapTypeCaster.toProjec (wrapped_sourceMap);
+            ((OpenCVForUnityPlayMakerActions.MapProjec)storeResult.Value).wrappedObject = OpenCVForUnity.RegModule.MapTypeCaster.toProjec (wrapped_sourceMap);
 
 
         }

@@ -1,15 +1,15 @@
 using UnityEngine;
 
-using OpenCVForUnity;
+using OpenCVForUnity.UnityUtils;
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public static void MatToTextureInRenderThread (Mat mat, Texture texture)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void matToTextureInRenderThread (Mat mat, Texture texture)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "mat")]
     [HutongGames.PlayMaker.ActionTarget (typeof (Texture), "texture")]
-    public class Utils_MatToTextureInRenderThread : HutongGames.PlayMaker.FsmStateAction
+    public class Utils_matToTextureInRenderThread : HutongGames.PlayMaker.FsmStateAction
     {
 
         [HutongGames.PlayMaker.ActionSection ("[arg1] Mat")]
@@ -60,9 +60,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("mat is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mat = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mat);
+			OpenCVForUnity.CoreModule.Mat wrapped_mat = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mat);
 
-            Utils.MatToTextureInRenderThread (wrapped_mat, texture.Value as Texture);
+            Utils.matToTextureInRenderThread (wrapped_mat, texture.Value as Texture);
 
         }
 

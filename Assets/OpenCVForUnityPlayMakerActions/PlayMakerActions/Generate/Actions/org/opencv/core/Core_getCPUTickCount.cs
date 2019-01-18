@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +47,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Long)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Long ();
-            ((OpenCVForUnityPlayMakerActions.Long)storeResult.Value).wrappedObject = OpenCVForUnity.Core.getCPUTickCount ();
+            ((OpenCVForUnityPlayMakerActions.Long)storeResult.Value).wrappedObject = OpenCVForUnity.CoreModule.Core.getCPUTickCount ();
 
 
         }

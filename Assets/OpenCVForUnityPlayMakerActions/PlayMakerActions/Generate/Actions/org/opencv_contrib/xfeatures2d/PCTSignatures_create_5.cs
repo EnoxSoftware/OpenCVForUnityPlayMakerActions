@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -67,17 +68,17 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("initSamplingPoints is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_initSamplingPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (initSamplingPoints);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_initSamplingPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (initSamplingPoints);
 
             if (!(initClusterSeedIndexes.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
             {
                 LogError ("initClusterSeedIndexes is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.MatOfInt wrapped_initClusterSeedIndexes = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (initClusterSeedIndexes);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_initClusterSeedIndexes = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (initClusterSeedIndexes);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.PCTSignatures)) storeResult.Value = new OpenCVForUnityPlayMakerActions.PCTSignatures ();
-            ((OpenCVForUnityPlayMakerActions.PCTSignatures)storeResult.Value).wrappedObject = OpenCVForUnity.PCTSignatures.create (wrapped_initSamplingPoints, wrapped_initClusterSeedIndexes);
+            ((OpenCVForUnityPlayMakerActions.PCTSignatures)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.PCTSignatures.create (wrapped_initSamplingPoints, wrapped_initClusterSeedIndexes);
 
 
         }

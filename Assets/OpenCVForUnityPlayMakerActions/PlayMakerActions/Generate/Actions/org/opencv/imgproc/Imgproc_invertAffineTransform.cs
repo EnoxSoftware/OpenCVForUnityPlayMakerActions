@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,16 +61,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("M is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_M = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (M);
+            OpenCVForUnity.CoreModule.Mat wrapped_M = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (M);
 
             if (!(iM.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("iM is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_iM = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (iM);
+            OpenCVForUnity.CoreModule.Mat wrapped_iM = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (iM);
 
-            OpenCVForUnity.Imgproc.invertAffineTransform (wrapped_M, wrapped_iM);
+            OpenCVForUnity.ImgprocModule.Imgproc.invertAffineTransform (wrapped_M, wrapped_iM);
 
 
         }

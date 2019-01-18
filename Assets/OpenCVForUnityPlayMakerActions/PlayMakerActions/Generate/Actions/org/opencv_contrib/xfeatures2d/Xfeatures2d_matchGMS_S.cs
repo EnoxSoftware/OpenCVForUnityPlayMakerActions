@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -126,28 +127,28 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("keypoints1 is not initialized. Add Action \"newMatOfKeyPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfKeyPoint wrapped_keypoints1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.MatOfKeyPoint> (keypoints1);
+            OpenCVForUnity.CoreModule.MatOfKeyPoint wrapped_keypoints1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.CoreModule.MatOfKeyPoint> (keypoints1);
 
             if (!(keypoints2.Value is OpenCVForUnityPlayMakerActions.MatOfKeyPoint))
             {
                 LogError ("keypoints2 is not initialized. Add Action \"newMatOfKeyPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfKeyPoint wrapped_keypoints2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.MatOfKeyPoint> (keypoints2);
+            OpenCVForUnity.CoreModule.MatOfKeyPoint wrapped_keypoints2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.CoreModule.MatOfKeyPoint> (keypoints2);
 
             if (!(matches1to2.Value is OpenCVForUnityPlayMakerActions.MatOfDMatch))
             {
                 LogError ("matches1to2 is not initialized. Add Action \"newMatOfDMatch\".");
                 return;
             }
-            OpenCVForUnity.MatOfDMatch wrapped_matches1to2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDMatch, OpenCVForUnity.MatOfDMatch> (matches1to2);
+            OpenCVForUnity.CoreModule.MatOfDMatch wrapped_matches1to2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDMatch, OpenCVForUnity.CoreModule.MatOfDMatch> (matches1to2);
 
             if (!(matchesGMS.Value is OpenCVForUnityPlayMakerActions.MatOfDMatch))
             {
                 LogError ("matchesGMS is not initialized. Add Action \"newMatOfDMatch\".");
                 return;
             }
-            OpenCVForUnity.MatOfDMatch wrapped_matchesGMS = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDMatch, OpenCVForUnity.MatOfDMatch> (matchesGMS);
+            OpenCVForUnity.CoreModule.MatOfDMatch wrapped_matchesGMS = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDMatch, OpenCVForUnity.CoreModule.MatOfDMatch> (matchesGMS);
 
             if (!(thresholdFactor.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -156,7 +157,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_thresholdFactor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (thresholdFactor);
 
-            OpenCVForUnity.Xfeatures2d.matchGMS (new OpenCVForUnity.Size ((double)size1_width.Value, (double)size1_height.Value), new OpenCVForUnity.Size ((double)size2_width.Value, (double)size2_height.Value), wrapped_keypoints1, wrapped_keypoints2, wrapped_matches1to2, wrapped_matchesGMS, withRotation.Value, withScale.Value, wrapped_thresholdFactor);
+            OpenCVForUnity.Xfeatures2dModule.Xfeatures2d.matchGMS (new OpenCVForUnity.CoreModule.Size ((double)size1_width.Value, (double)size1_height.Value), new OpenCVForUnity.CoreModule.Size ((double)size2_width.Value, (double)size2_height.Value), wrapped_keypoints1, wrapped_keypoints2, wrapped_matches1to2, wrapped_matchesGMS, withRotation.Value, withScale.Value, wrapped_thresholdFactor);
 
 
         }

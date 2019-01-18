@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.CalibrateDebevec)) storeResult.Value = new OpenCVForUnityPlayMakerActions.CalibrateDebevec ();
-            ((OpenCVForUnityPlayMakerActions.CalibrateDebevec)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createCalibrateDebevec (samples.Value, lambda.Value);
+            ((OpenCVForUnityPlayMakerActions.CalibrateDebevec)storeResult.Value).wrappedObject = OpenCVForUnity.PhotoModule.Photo.createCalibrateDebevec (samples.Value, lambda.Value);
 
 
         }

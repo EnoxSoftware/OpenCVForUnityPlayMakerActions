@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +47,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TickMeter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TickMeter ();
-            ((OpenCVForUnityPlayMakerActions.TickMeter)storeResult.Value).wrappedObject = new OpenCVForUnity.TickMeter ();
+            ((OpenCVForUnityPlayMakerActions.TickMeter)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.TickMeter ();
 
 
         }

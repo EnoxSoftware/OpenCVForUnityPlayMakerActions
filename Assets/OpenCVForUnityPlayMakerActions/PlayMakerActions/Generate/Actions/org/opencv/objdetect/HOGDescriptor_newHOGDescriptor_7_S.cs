@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ObjdetectModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -110,7 +111,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.HOGDescriptor)) storeResult.Value = new OpenCVForUnityPlayMakerActions.HOGDescriptor ();
-            ((OpenCVForUnityPlayMakerActions.HOGDescriptor)storeResult.Value).wrappedObject = new OpenCVForUnity.HOGDescriptor (new OpenCVForUnity.Size ((double)_winSize_width.Value, (double)_winSize_height.Value), new OpenCVForUnity.Size ((double)_blockSize_width.Value, (double)_blockSize_height.Value), new OpenCVForUnity.Size ((double)_blockStride_width.Value, (double)_blockStride_height.Value), new OpenCVForUnity.Size ((double)_cellSize_width.Value, (double)_cellSize_height.Value), _nbins.Value);
+            ((OpenCVForUnityPlayMakerActions.HOGDescriptor)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.HOGDescriptor (new OpenCVForUnity.CoreModule.Size ((double)_winSize_width.Value, (double)_winSize_height.Value), new OpenCVForUnity.CoreModule.Size ((double)_blockSize_width.Value, (double)_blockSize_height.Value), new OpenCVForUnity.CoreModule.Size ((double)_blockStride_width.Value, (double)_blockStride_height.Value), new OpenCVForUnity.CoreModule.Size ((double)_cellSize_width.Value, (double)_cellSize_height.Value), _nbins.Value);
 
 
         }

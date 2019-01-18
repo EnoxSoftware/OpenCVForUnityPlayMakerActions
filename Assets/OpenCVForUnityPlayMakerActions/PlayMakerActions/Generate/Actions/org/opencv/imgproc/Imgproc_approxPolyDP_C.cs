@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -74,16 +75,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("curve is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_curve = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (curve);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_curve = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (curve);
 
             if (!(approxCurve.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
             {
                 LogError ("approxCurve is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_approxCurve = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (approxCurve);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_approxCurve = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (approxCurve);
 
-            OpenCVForUnity.Imgproc.approxPolyDP (wrapped_curve, wrapped_approxCurve, (float)epsilon.Value, closed.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.approxPolyDP (wrapped_curve, wrapped_approxCurve, (float)epsilon.Value, closed.Value);
 
 
         }

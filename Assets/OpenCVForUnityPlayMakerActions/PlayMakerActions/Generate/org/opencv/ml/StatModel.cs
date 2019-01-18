@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public StatModel (OpenCVForUnity.StatModel nativeObj)
+        public StatModel (OpenCVForUnity.MlModule.StatModel nativeObj)
             : base (nativeObj)
         {
 

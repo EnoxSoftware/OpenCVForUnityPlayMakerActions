@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.RegModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public MapShift (OpenCVForUnity.MapShift nativeObj)
+        public MapShift (OpenCVForUnity.RegModule.MapShift nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -122,7 +123,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("cameraMatrix is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (cameraMatrix);
+            OpenCVForUnity.CoreModule.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (cameraMatrix);
 
             float[] float_fovx = fovx.floatValues;
             double[] casted_fovx = new double[float_fovx.Length];
@@ -140,7 +141,7 @@ namespace OpenCVForUnityPlayMakerActions
             double[] casted_aspectRatio = new double[float_aspectRatio.Length];
             float_aspectRatio.CopyTo (casted_aspectRatio, 0);
 
-            OpenCVForUnity.Calib3d.calibrationMatrixValues (wrapped_cameraMatrix, new OpenCVForUnity.Size ((double)imageSize_width.Value, (double)imageSize_height.Value), (float)apertureWidth.Value, (float)apertureHeight.Value, casted_fovx, casted_fovy, casted_focalLength, new OpenCVForUnity.Point ((double)principalPoint_x.Value, (double)principalPoint_y.Value), casted_aspectRatio);
+            OpenCVForUnity.Calib3dModule.Calib3d.calibrationMatrixValues (wrapped_cameraMatrix, new OpenCVForUnity.CoreModule.Size ((double)imageSize_width.Value, (double)imageSize_height.Value), (float)apertureWidth.Value, (float)apertureHeight.Value, casted_fovx, casted_fovy, casted_focalLength, new OpenCVForUnity.CoreModule.Point ((double)principalPoint_x.Value, (double)principalPoint_y.Value), casted_aspectRatio);
 
             for (int i = 0; i < casted_fovx.Length; i++)
             {

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Structured_lightModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.GrayCodePattern)) storeResult.Value = new OpenCVForUnityPlayMakerActions.GrayCodePattern ();
-            ((OpenCVForUnityPlayMakerActions.GrayCodePattern)storeResult.Value).wrappedObject = OpenCVForUnity.GrayCodePattern.create (width.Value, height.Value);
+            ((OpenCVForUnityPlayMakerActions.GrayCodePattern)storeResult.Value).wrappedObject = OpenCVForUnity.Structured_lightModule.GrayCodePattern.create (width.Value, height.Value);
 
 
         }

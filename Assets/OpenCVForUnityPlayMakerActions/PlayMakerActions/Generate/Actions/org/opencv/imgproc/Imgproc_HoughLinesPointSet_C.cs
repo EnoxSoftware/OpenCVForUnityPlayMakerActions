@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -116,16 +117,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("_point is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__point = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_point);
+            OpenCVForUnity.CoreModule.Mat wrapped__point = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_point);
 
             if (!(_lines.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_lines is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__lines = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_lines);
+            OpenCVForUnity.CoreModule.Mat wrapped__lines = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_lines);
 
-            OpenCVForUnity.Imgproc.HoughLinesPointSet (wrapped__point, wrapped__lines, lines_max.Value, threshold.Value, (float)min_rho.Value, (float)max_rho.Value, (float)rho_step.Value, (float)min_theta.Value, (float)max_theta.Value, (float)theta_step.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.HoughLinesPointSet (wrapped__point, wrapped__lines, lines_max.Value, threshold.Value, (float)min_rho.Value, (float)max_rho.Value, (float)rho_step.Value, (float)min_theta.Value, (float)max_theta.Value, (float)theta_step.Value);
 
 
         }

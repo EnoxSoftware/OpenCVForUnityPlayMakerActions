@@ -2,7 +2,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -14,7 +16,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public TextDetectorCNN (OpenCVForUnity.TextDetectorCNN nativeObj)
+        public TextDetectorCNN (OpenCVForUnity.TextModule.TextDetectorCNN nativeObj)
             : base (nativeObj)
         {
 

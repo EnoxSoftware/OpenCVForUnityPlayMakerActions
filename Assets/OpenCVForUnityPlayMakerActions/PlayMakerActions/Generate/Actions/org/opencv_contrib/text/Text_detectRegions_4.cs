@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -77,28 +78,28 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(er_filter1.Value is OpenCVForUnityPlayMakerActions.ERFilter))
             {
                 LogError ("er_filter1 is not initialized. Add Action \"newERFilter\".");
                 return;
             }
-            OpenCVForUnity.ERFilter wrapped_er_filter1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ERFilter, OpenCVForUnity.ERFilter> (er_filter1);
+            OpenCVForUnity.TextModule.ERFilter wrapped_er_filter1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ERFilter, OpenCVForUnity.TextModule.ERFilter> (er_filter1);
 
             if (!(er_filter2.Value is OpenCVForUnityPlayMakerActions.ERFilter))
             {
                 LogError ("er_filter2 is not initialized. Add Action \"newERFilter\".");
                 return;
             }
-            OpenCVForUnity.ERFilter wrapped_er_filter2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ERFilter, OpenCVForUnity.ERFilter> (er_filter2);
+            OpenCVForUnity.TextModule.ERFilter wrapped_er_filter2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ERFilter, OpenCVForUnity.TextModule.ERFilter> (er_filter2);
 
-            List<OpenCVForUnity.MatOfPoint> wrapped_regions = new List<OpenCVForUnity.MatOfPoint> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.MatOfPoint> (regions, wrapped_regions);
+            List<OpenCVForUnity.CoreModule.MatOfPoint> wrapped_regions = new List<OpenCVForUnity.CoreModule.MatOfPoint> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.CoreModule.MatOfPoint> (regions, wrapped_regions);
 
-            OpenCVForUnity.Text.detectRegions (wrapped_image, wrapped_er_filter1, wrapped_er_filter2, wrapped_regions);
+            OpenCVForUnity.TextModule.Text.detectRegions (wrapped_image, wrapped_er_filter1, wrapped_er_filter2, wrapped_regions);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.MatOfPoint, OpenCVForUnityPlayMakerActions.MatOfPoint> (wrapped_regions, regions);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.MatOfPoint, OpenCVForUnityPlayMakerActions.MatOfPoint> (wrapped_regions, regions);
 
 
         }

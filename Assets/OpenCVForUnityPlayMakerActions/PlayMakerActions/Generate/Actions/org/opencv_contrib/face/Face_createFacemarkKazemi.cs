@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Facemark)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Facemark ();
-            ((OpenCVForUnityPlayMakerActions.Facemark)storeResult.Value).wrappedObject = OpenCVForUnity.Face.createFacemarkKazemi ();
+            ((OpenCVForUnityPlayMakerActions.Facemark)storeResult.Value).wrappedObject = OpenCVForUnity.FaceModule.Face.createFacemarkKazemi ();
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -89,7 +90,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("guide is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_guide = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (guide);
+            OpenCVForUnity.CoreModule.Mat wrapped_guide = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (guide);
 
             if (!(sigmaSpatial.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -106,7 +107,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_sigmaColor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (sigmaColor);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.DTFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.DTFilter ();
-            ((OpenCVForUnityPlayMakerActions.DTFilter)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createDTFilter (wrapped_guide, wrapped_sigmaSpatial, wrapped_sigmaColor, mode.Value, numIters.Value);
+            ((OpenCVForUnityPlayMakerActions.DTFilter)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createDTFilter (wrapped_guide, wrapped_sigmaSpatial, wrapped_sigmaColor, mode.Value, numIters.Value);
 
 
         }

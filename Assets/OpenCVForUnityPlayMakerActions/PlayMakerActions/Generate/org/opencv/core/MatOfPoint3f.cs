@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +14,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public MatOfPoint3f (OpenCVForUnity.MatOfPoint3f nativeObj)
+        public MatOfPoint3f (OpenCVForUnity.CoreModule.MatOfPoint3f nativeObj)
             : base (nativeObj)
         {
 

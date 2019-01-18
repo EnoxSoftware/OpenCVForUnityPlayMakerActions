@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -58,7 +58,7 @@ namespace OpenCVForUnityPlayMakerActions
             float_a.CopyTo (casted_a, 0);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfDouble)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfDouble ();
-            ((OpenCVForUnityPlayMakerActions.MatOfDouble)storeResult.Value).wrappedObject = new OpenCVForUnity.MatOfDouble (casted_a);
+            ((OpenCVForUnityPlayMakerActions.MatOfDouble)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfDouble (casted_a);
 
             for (int i = 0; i < casted_a.Length; i++)
             {

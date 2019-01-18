@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -81,17 +82,17 @@ namespace OpenCVForUnityPlayMakerActions
             string[] string_filename = filename.stringValues;
             List<string> wrapped_filename = new List<string> (string_filename);
 
-            List<OpenCVForUnity.MatOfPoint2f> wrapped_trainlandmarks = new List<OpenCVForUnity.MatOfPoint2f> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (trainlandmarks, wrapped_trainlandmarks);
+            List<OpenCVForUnity.CoreModule.MatOfPoint2f> wrapped_trainlandmarks = new List<OpenCVForUnity.CoreModule.MatOfPoint2f> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (trainlandmarks, wrapped_trainlandmarks);
 
             string[] string_trainimages = trainimages.stringValues;
             List<string> wrapped_trainimages = new List<string> (string_trainimages);
 
-            storeResult.Value = OpenCVForUnity.Face.loadTrainingData (wrapped_filename, wrapped_trainlandmarks, wrapped_trainimages);
+            storeResult.Value = OpenCVForUnity.FaceModule.Face.loadTrainingData (wrapped_filename, wrapped_trainlandmarks, wrapped_trainimages);
 
             wrapped_filename.CopyTo (string_filename);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.MatOfPoint2f, OpenCVForUnityPlayMakerActions.MatOfPoint2f> (wrapped_trainlandmarks, trainlandmarks);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.MatOfPoint2f, OpenCVForUnityPlayMakerActions.MatOfPoint2f> (wrapped_trainlandmarks, trainlandmarks);
 
             wrapped_trainimages.CopyTo (string_trainimages);
 

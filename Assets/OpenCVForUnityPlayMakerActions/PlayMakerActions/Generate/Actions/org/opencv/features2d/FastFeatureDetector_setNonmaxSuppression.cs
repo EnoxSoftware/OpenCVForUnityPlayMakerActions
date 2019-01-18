@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newFastFeatureDetector\".");
                 return;
             }
-            OpenCVForUnity.FastFeatureDetector wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.FastFeatureDetector, OpenCVForUnity.FastFeatureDetector> (owner);
+            OpenCVForUnity.Features2dModule.FastFeatureDetector wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.FastFeatureDetector, OpenCVForUnity.Features2dModule.FastFeatureDetector> (owner);
 
             wrapped_owner.setNonmaxSuppression (f.Value);
 

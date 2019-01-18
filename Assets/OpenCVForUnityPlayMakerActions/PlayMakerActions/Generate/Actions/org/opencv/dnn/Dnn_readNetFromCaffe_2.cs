@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,17 +69,17 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("bufferProto is not initialized. Add Action \"newMatOfByte\".");
                 return;
             }
-            OpenCVForUnity.MatOfByte wrapped_bufferProto = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfByte, OpenCVForUnity.MatOfByte> (bufferProto);
+            OpenCVForUnity.CoreModule.MatOfByte wrapped_bufferProto = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfByte, OpenCVForUnity.CoreModule.MatOfByte> (bufferProto);
 
             if (!(bufferModel.Value is OpenCVForUnityPlayMakerActions.MatOfByte))
             {
                 LogError ("bufferModel is not initialized. Add Action \"newMatOfByte\".");
                 return;
             }
-            OpenCVForUnity.MatOfByte wrapped_bufferModel = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfByte, OpenCVForUnity.MatOfByte> (bufferModel);
+            OpenCVForUnity.CoreModule.MatOfByte wrapped_bufferModel = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfByte, OpenCVForUnity.CoreModule.MatOfByte> (bufferModel);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Net)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Net ();
-            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = OpenCVForUnity.Dnn.readNetFromCaffe (wrapped_bufferProto, wrapped_bufferModel);
+            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = OpenCVForUnity.DnnModule.Dnn.readNetFromCaffe (wrapped_bufferProto, wrapped_bufferModel);
 
 
         }

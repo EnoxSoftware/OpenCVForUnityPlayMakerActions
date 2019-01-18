@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public KalmanFilter (OpenCVForUnity.KalmanFilter nativeObj)
+        public KalmanFilter (OpenCVForUnity.VideoModule.KalmanFilter nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -75,24 +76,24 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("probImage is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_probImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (probImage);
+            OpenCVForUnity.CoreModule.Mat wrapped_probImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (probImage);
 
             if (!(window.Value is OpenCVForUnityPlayMakerActions.Rect))
             {
                 LogError ("window is not initialized. Add Action \"newRect\".");
                 return;
             }
-            OpenCVForUnity.Rect wrapped_window = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.Rect> (window);
+            OpenCVForUnity.CoreModule.Rect wrapped_window = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect> (window);
 
             if (!(criteria.Value is OpenCVForUnityPlayMakerActions.TermCriteria))
             {
                 LogError ("criteria is not initialized. Add Action \"newTermCriteria\".");
                 return;
             }
-            OpenCVForUnity.TermCriteria wrapped_criteria = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TermCriteria, OpenCVForUnity.TermCriteria> (criteria);
+            OpenCVForUnity.CoreModule.TermCriteria wrapped_criteria = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TermCriteria, OpenCVForUnity.CoreModule.TermCriteria> (criteria);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.RotatedRect)) storeResult.Value = new OpenCVForUnityPlayMakerActions.RotatedRect ();
-            ((OpenCVForUnityPlayMakerActions.RotatedRect)storeResult.Value).wrappedObject = OpenCVForUnity.Video.CamShift (wrapped_probImage, wrapped_window, wrapped_criteria);
+            ((OpenCVForUnityPlayMakerActions.RotatedRect)storeResult.Value).wrappedObject = OpenCVForUnity.VideoModule.Video.CamShift (wrapped_probImage, wrapped_window, wrapped_criteria);
 
 
         }

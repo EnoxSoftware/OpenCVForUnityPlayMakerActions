@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -66,10 +67,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("array is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_array = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (array);
+            OpenCVForUnity.CoreModule.Mat wrapped_array = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (array);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Moments)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Moments ();
-            ((OpenCVForUnityPlayMakerActions.Moments)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.moments (wrapped_array, binaryImage.Value);
+            ((OpenCVForUnityPlayMakerActions.Moments)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.moments (wrapped_array, binaryImage.Value);
 
 
         }

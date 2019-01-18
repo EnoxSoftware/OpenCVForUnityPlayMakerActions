@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -91,14 +92,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("points is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (points);
+            OpenCVForUnity.CoreModule.Mat wrapped_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (points);
 
             if (!(line.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("line is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_line = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (line);
+            OpenCVForUnity.CoreModule.Mat wrapped_line = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (line);
 
             if (!(param.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -121,7 +122,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_aeps = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (aeps);
 
-            OpenCVForUnity.Imgproc.fitLine (wrapped_points, wrapped_line, distType.Value, wrapped_param, wrapped_reps, wrapped_aeps);
+            OpenCVForUnity.ImgprocModule.Imgproc.fitLine (wrapped_points, wrapped_line, distType.Value, wrapped_param, wrapped_reps, wrapped_aeps);
 
 
         }

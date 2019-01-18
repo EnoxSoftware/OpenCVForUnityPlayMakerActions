@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +47,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.DMatch)) storeResult.Value = new OpenCVForUnityPlayMakerActions.DMatch ();
-            ((OpenCVForUnityPlayMakerActions.DMatch)storeResult.Value).wrappedObject = new OpenCVForUnity.DMatch ();
+            ((OpenCVForUnityPlayMakerActions.DMatch)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.DMatch ();
 
 
         }

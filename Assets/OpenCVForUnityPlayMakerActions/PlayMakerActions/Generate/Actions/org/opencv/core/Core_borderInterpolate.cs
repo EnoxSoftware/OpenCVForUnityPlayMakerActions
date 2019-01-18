@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -67,7 +67,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            storeResult.Value = OpenCVForUnity.Core.borderInterpolate (p.Value, len.Value, borderType.Value);
+            storeResult.Value = OpenCVForUnity.CoreModule.Core.borderInterpolate (p.Value, len.Value, borderType.Value);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -92,42 +93,42 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newDisparityFilter\".");
                 return;
             }
-            OpenCVForUnity.DisparityFilter wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DisparityFilter, OpenCVForUnity.DisparityFilter> (owner);
+            OpenCVForUnity.XimgprocModule.DisparityFilter wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DisparityFilter, OpenCVForUnity.XimgprocModule.DisparityFilter> (owner);
 
             if (!(disparity_map_left.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("disparity_map_left is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_disparity_map_left = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (disparity_map_left);
+            OpenCVForUnity.CoreModule.Mat wrapped_disparity_map_left = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (disparity_map_left);
 
             if (!(left_view.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("left_view is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_left_view = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (left_view);
+            OpenCVForUnity.CoreModule.Mat wrapped_left_view = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (left_view);
 
             if (!(filtered_disparity_map.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("filtered_disparity_map is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_filtered_disparity_map = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (filtered_disparity_map);
+            OpenCVForUnity.CoreModule.Mat wrapped_filtered_disparity_map = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (filtered_disparity_map);
 
             if (!(disparity_map_right.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("disparity_map_right is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_disparity_map_right = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (disparity_map_right);
+            OpenCVForUnity.CoreModule.Mat wrapped_disparity_map_right = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (disparity_map_right);
 
             if (!(ROI.Value is OpenCVForUnityPlayMakerActions.Rect))
             {
                 LogError ("ROI is not initialized. Add Action \"newRect\".");
                 return;
             }
-            OpenCVForUnity.Rect wrapped_ROI = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.Rect> (ROI);
+            OpenCVForUnity.CoreModule.Rect wrapped_ROI = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect> (ROI);
 
             wrapped_owner.filter (wrapped_disparity_map_left, wrapped_left_view, wrapped_filtered_disparity_map, wrapped_disparity_map_right, wrapped_ROI);
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.StarDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.StarDetector ();
-            ((OpenCVForUnityPlayMakerActions.StarDetector)storeResult.Value).wrappedObject = OpenCVForUnity.StarDetector.create ();
+            ((OpenCVForUnityPlayMakerActions.StarDetector)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.StarDetector.create ();
 
 
         }

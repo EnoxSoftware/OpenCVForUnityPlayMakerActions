@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XphotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.GrayworldWB)) storeResult.Value = new OpenCVForUnityPlayMakerActions.GrayworldWB ();
-            ((OpenCVForUnityPlayMakerActions.GrayworldWB)storeResult.Value).wrappedObject = OpenCVForUnity.Xphoto.createGrayworldWB ();
+            ((OpenCVForUnityPlayMakerActions.GrayworldWB)storeResult.Value).wrappedObject = OpenCVForUnity.XphotoModule.Xphoto.createGrayworldWB ();
 
 
         }

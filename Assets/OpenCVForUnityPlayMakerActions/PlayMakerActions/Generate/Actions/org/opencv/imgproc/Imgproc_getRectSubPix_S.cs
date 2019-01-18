@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -95,16 +96,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(patch.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("patch is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_patch = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (patch);
+            OpenCVForUnity.CoreModule.Mat wrapped_patch = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (patch);
 
-            OpenCVForUnity.Imgproc.getRectSubPix (wrapped_image, new OpenCVForUnity.Size ((double)patchSize_width.Value, (double)patchSize_height.Value), new OpenCVForUnity.Point ((double)center_x.Value, (double)center_y.Value), wrapped_patch, patchType.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.getRectSubPix (wrapped_image, new OpenCVForUnity.CoreModule.Size ((double)patchSize_width.Value, (double)patchSize_height.Value), new OpenCVForUnity.CoreModule.Point ((double)center_x.Value, (double)center_y.Value), wrapped_patch, patchType.Value);
 
 
         }

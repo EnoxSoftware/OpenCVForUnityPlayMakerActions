@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -66,10 +67,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("howToGetFeatures is not initialized. Add Action \"newRFFeatureGetter\".");
                 return;
             }
-            OpenCVForUnity.RFFeatureGetter wrapped_howToGetFeatures = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RFFeatureGetter, OpenCVForUnity.RFFeatureGetter> (howToGetFeatures);
+            OpenCVForUnity.XimgprocModule.RFFeatureGetter wrapped_howToGetFeatures = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RFFeatureGetter, OpenCVForUnity.XimgprocModule.RFFeatureGetter> (howToGetFeatures);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.StructuredEdgeDetection)) storeResult.Value = new OpenCVForUnityPlayMakerActions.StructuredEdgeDetection ();
-            ((OpenCVForUnityPlayMakerActions.StructuredEdgeDetection)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createStructuredEdgeDetection (model.Value, wrapped_howToGetFeatures);
+            ((OpenCVForUnityPlayMakerActions.StructuredEdgeDetection)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createStructuredEdgeDetection (model.Value, wrapped_howToGetFeatures);
 
 
         }

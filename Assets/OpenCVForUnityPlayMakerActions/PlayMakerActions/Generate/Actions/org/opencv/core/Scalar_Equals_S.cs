@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -95,9 +95,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newScalar\".");
                 return;
             }
-            OpenCVForUnity.Scalar wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (owner);
+            OpenCVForUnity.CoreModule.Scalar wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.CoreModule.Scalar> (owner);
 
-            storeResult.Value = wrapped_owner.Equals (new OpenCVForUnity.Scalar ((double)a_v0.Value, (double)a_v1.Value, (double)a_v2.Value, (double)a_v3.Value));
+            storeResult.Value = wrapped_owner.Equals (new OpenCVForUnity.CoreModule.Scalar ((double)a_v0.Value, (double)a_v1.Value, (double)a_v2.Value, (double)a_v3.Value));
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

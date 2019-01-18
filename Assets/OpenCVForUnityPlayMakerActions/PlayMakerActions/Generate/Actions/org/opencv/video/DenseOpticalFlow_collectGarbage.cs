@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -52,7 +53,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newDenseOpticalFlow\".");
                 return;
             }
-            OpenCVForUnity.DenseOpticalFlow wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DenseOpticalFlow, OpenCVForUnity.DenseOpticalFlow> (owner);
+            OpenCVForUnity.VideoModule.DenseOpticalFlow wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DenseOpticalFlow, OpenCVForUnity.VideoModule.DenseOpticalFlow> (owner);
 
             wrapped_owner.collectGarbage ();
 

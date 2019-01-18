@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BgsegmModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -69,7 +70,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_decisionThreshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (decisionThreshold);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG ();
-            ((OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG)storeResult.Value).wrappedObject = OpenCVForUnity.Bgsegm.createBackgroundSubtractorGMG (initializationFrames.Value, wrapped_decisionThreshold);
+            ((OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG)storeResult.Value).wrappedObject = OpenCVForUnity.BgsegmModule.Bgsegm.createBackgroundSubtractorGMG (initializationFrames.Value, wrapped_decisionThreshold);
 
 
         }

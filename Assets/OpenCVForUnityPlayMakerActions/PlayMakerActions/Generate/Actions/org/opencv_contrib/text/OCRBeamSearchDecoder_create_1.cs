@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -89,17 +90,17 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("transition_probabilities_table is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_transition_probabilities_table = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (transition_probabilities_table);
+            OpenCVForUnity.CoreModule.Mat wrapped_transition_probabilities_table = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (transition_probabilities_table);
 
             if (!(emission_probabilities_table.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("emission_probabilities_table is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_emission_probabilities_table = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (emission_probabilities_table);
+            OpenCVForUnity.CoreModule.Mat wrapped_emission_probabilities_table = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (emission_probabilities_table);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder)) storeResult.Value = new OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder ();
-            ((OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder)storeResult.Value).wrappedObject = OpenCVForUnity.OCRBeamSearchDecoder.create (filename.Value, vocabulary.Value, wrapped_transition_probabilities_table, wrapped_emission_probabilities_table, mode.Value);
+            ((OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder)storeResult.Value).wrappedObject = OpenCVForUnity.TextModule.OCRBeamSearchDecoder.create (filename.Value, vocabulary.Value, wrapped_transition_probabilities_table, wrapped_emission_probabilities_table, mode.Value);
 
 
         }

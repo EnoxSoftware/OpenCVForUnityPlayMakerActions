@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -66,9 +66,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newRect2d\".");
                 return;
             }
-            OpenCVForUnity.Rect2d wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect2d, OpenCVForUnity.Rect2d> (owner);
+            OpenCVForUnity.CoreModule.Rect2d wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect2d, OpenCVForUnity.CoreModule.Rect2d> (owner);
 
-            wrapped_owner.inflate (new OpenCVForUnity.Size ((double)size_width.Value, (double)size_height.Value));
+            wrapped_owner.inflate (new OpenCVForUnity.CoreModule.Size ((double)size_width.Value, (double)size_height.Value));
 
 
         }

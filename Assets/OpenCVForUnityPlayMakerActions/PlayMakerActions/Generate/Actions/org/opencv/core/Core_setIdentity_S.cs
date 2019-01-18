@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -78,9 +78,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("mtx is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mtx = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mtx);
+            OpenCVForUnity.CoreModule.Mat wrapped_mtx = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mtx);
 
-            OpenCVForUnity.Core.setIdentity (wrapped_mtx, new OpenCVForUnity.Scalar ((double)s_v0.Value, (double)s_v1.Value, (double)s_v2.Value, (double)s_v3.Value));
+            OpenCVForUnity.CoreModule.Core.setIdentity (wrapped_mtx, new OpenCVForUnity.CoreModule.Scalar ((double)s_v0.Value, (double)s_v1.Value, (double)s_v2.Value, (double)s_v3.Value));
 
 
         }

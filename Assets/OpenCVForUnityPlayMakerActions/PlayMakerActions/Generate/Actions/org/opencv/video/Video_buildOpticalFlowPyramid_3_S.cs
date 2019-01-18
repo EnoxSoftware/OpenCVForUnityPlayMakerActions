@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -95,14 +96,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
+            OpenCVForUnity.CoreModule.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img);
 
-            List<OpenCVForUnity.Mat> wrapped_pyramid = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (pyramid, wrapped_pyramid);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_pyramid = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (pyramid, wrapped_pyramid);
 
-            storeResult.Value = OpenCVForUnity.Video.buildOpticalFlowPyramid (wrapped_img, wrapped_pyramid, new OpenCVForUnity.Size ((double)winSize_width.Value, (double)winSize_height.Value), maxLevel.Value, withDerivatives.Value);
+            storeResult.Value = OpenCVForUnity.VideoModule.Video.buildOpticalFlowPyramid (wrapped_img, wrapped_pyramid, new OpenCVForUnity.CoreModule.Size ((double)winSize_width.Value, (double)winSize_height.Value), maxLevel.Value, withDerivatives.Value);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_pyramid, pyramid);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_pyramid, pyramid);
 
 
         }

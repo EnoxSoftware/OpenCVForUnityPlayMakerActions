@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -75,14 +76,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("curve is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_curve = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (curve);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_curve = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (curve);
 
             if (!(approxCurve.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
             {
                 LogError ("approxCurve is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_approxCurve = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (approxCurve);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_approxCurve = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (approxCurve);
 
             if (!(epsilon.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -91,7 +92,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_epsilon = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (epsilon);
 
-            OpenCVForUnity.Imgproc.approxPolyDP (wrapped_curve, wrapped_approxCurve, wrapped_epsilon, closed.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.approxPolyDP (wrapped_curve, wrapped_approxCurve, wrapped_epsilon, closed.Value);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.StereoSGBM)) storeResult.Value = new OpenCVForUnityPlayMakerActions.StereoSGBM ();
-            ((OpenCVForUnityPlayMakerActions.StereoSGBM)storeResult.Value).wrappedObject = OpenCVForUnity.StereoSGBM.create (minDisparity.Value, numDisparities.Value, blockSize.Value, P1.Value, P2.Value);
+            ((OpenCVForUnityPlayMakerActions.StereoSGBM)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.StereoSGBM.create (minDisparity.Value, numDisparities.Value, blockSize.Value, P1.Value, P2.Value);
 
 
         }

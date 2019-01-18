@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.RegModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public MapperPyramid (OpenCVForUnity.MapperPyramid nativeObj)
+        public MapperPyramid (OpenCVForUnity.RegModule.MapperPyramid nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public PCTSignatures (OpenCVForUnity.PCTSignatures nativeObj)
+        public PCTSignatures (OpenCVForUnity.Xfeatures2dModule.PCTSignatures nativeObj)
             : base (nativeObj)
         {
 

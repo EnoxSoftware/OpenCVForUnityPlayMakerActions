@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -66,9 +67,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("initPoints is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_initPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (initPoints);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_initPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (initPoints);
 
-            OpenCVForUnity.PCTSignatures.generateInitPoints (wrapped_initPoints, count.Value, pointDistribution.Value);
+            OpenCVForUnity.Xfeatures2dModule.PCTSignatures.generateInitPoints (wrapped_initPoints, count.Value, pointDistribution.Value);
 
 
         }

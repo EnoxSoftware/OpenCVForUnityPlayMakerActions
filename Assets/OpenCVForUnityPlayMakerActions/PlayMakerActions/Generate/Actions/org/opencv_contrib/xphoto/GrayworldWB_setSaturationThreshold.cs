@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XphotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newGrayworldWB\".");
                 return;
             }
-            OpenCVForUnity.GrayworldWB wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.GrayworldWB, OpenCVForUnity.GrayworldWB> (owner);
+            OpenCVForUnity.XphotoModule.GrayworldWB wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.GrayworldWB, OpenCVForUnity.XphotoModule.GrayworldWB> (owner);
 
             wrapped_owner.setSaturationThreshold (val.Value);
 

@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public ANN_MLP (OpenCVForUnity.ANN_MLP nativeObj)
+        public ANN_MLP (OpenCVForUnity.MlModule.ANN_MLP nativeObj)
             : base (nativeObj)
         {
 

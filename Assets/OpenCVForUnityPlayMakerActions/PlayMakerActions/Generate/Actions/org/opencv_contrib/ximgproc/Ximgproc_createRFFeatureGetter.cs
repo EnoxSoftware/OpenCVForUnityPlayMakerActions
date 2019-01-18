@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.RFFeatureGetter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.RFFeatureGetter ();
-            ((OpenCVForUnityPlayMakerActions.RFFeatureGetter)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createRFFeatureGetter ();
+            ((OpenCVForUnityPlayMakerActions.RFFeatureGetter)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createRFFeatureGetter ();
 
 
         }

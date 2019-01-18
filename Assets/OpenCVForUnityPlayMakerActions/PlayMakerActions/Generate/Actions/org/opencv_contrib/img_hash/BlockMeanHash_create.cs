@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BlockMeanHash)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BlockMeanHash ();
-            ((OpenCVForUnityPlayMakerActions.BlockMeanHash)storeResult.Value).wrappedObject = OpenCVForUnity.BlockMeanHash.create (mode.Value);
+            ((OpenCVForUnityPlayMakerActions.BlockMeanHash)storeResult.Value).wrappedObject = OpenCVForUnity.Img_hashModule.BlockMeanHash.create (mode.Value);
 
 
         }

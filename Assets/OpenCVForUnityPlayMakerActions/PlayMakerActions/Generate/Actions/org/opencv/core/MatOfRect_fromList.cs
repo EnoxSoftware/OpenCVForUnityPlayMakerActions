@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,14 +60,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMatOfRect\".");
                 return;
             }
-            OpenCVForUnity.MatOfRect wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.MatOfRect> (owner);
+            OpenCVForUnity.CoreModule.MatOfRect wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect> (owner);
 
-            List<OpenCVForUnity.Rect> wrapped_lr = new List<OpenCVForUnity.Rect> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.Rect> (lr, wrapped_lr);
+            List<OpenCVForUnity.CoreModule.Rect> wrapped_lr = new List<OpenCVForUnity.CoreModule.Rect> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect> (lr, wrapped_lr);
 
             wrapped_owner.fromList (wrapped_lr);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Rect, OpenCVForUnityPlayMakerActions.Rect> (wrapped_lr, lr);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Rect, OpenCVForUnityPlayMakerActions.Rect> (wrapped_lr, lr);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -127,9 +128,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
+            OpenCVForUnity.CoreModule.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img);
 
-            OpenCVForUnity.Imgproc.ellipse (wrapped_img, new OpenCVForUnity.Point ((double)center_x.Value, (double)center_y.Value), new OpenCVForUnity.Size ((double)axes_width.Value, (double)axes_height.Value), (float)angle.Value, (float)startAngle.Value, (float)endAngle.Value, new OpenCVForUnity.Scalar ((double)color_v0.Value, (double)color_v1.Value, (double)color_v2.Value, (double)color_v3.Value));
+            OpenCVForUnity.ImgprocModule.Imgproc.ellipse (wrapped_img, new OpenCVForUnity.CoreModule.Point ((double)center_x.Value, (double)center_y.Value), new OpenCVForUnity.CoreModule.Size ((double)axes_width.Value, (double)axes_height.Value), (float)angle.Value, (float)startAngle.Value, (float)endAngle.Value, new OpenCVForUnity.CoreModule.Scalar ((double)color_v0.Value, (double)color_v1.Value, (double)color_v2.Value, (double)color_v3.Value));
 
 
         }

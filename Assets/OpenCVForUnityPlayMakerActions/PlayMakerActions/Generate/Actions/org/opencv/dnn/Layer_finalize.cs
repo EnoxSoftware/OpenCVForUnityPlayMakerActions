@@ -2,17 +2,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip ("public List<Mat> finalize (List<Mat> inputs)")]
+    [HutongGames.PlayMaker.Tooltip ("public void finalize (List<Mat> inputs, List<Mat> outputs)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Layer), "owner")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "inputs")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "storeResult")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "outputs")]
     public class Layer_finalize : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -28,10 +29,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ArrayEditor (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmArray inputs;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] List<Mat>(Array(Mat))")]
+        [HutongGames.PlayMaker.ActionSection ("[arg2] List<Mat>(Array(Mat))")]
+        [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ArrayEditor (typeof (OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmArray storeResult;
+        public HutongGames.PlayMaker.FsmArray outputs;
 
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
@@ -41,7 +43,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             owner = null;
             inputs = null;
-            storeResult = null;
+            outputs = null;
             everyFrame = false;
         }
 
@@ -68,19 +70,19 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newLayer\".");
                 return;
             }
-            OpenCVForUnity.Layer wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Layer, OpenCVForUnity.Layer> (owner);
+            OpenCVForUnity.DnnModule.Layer wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Layer, OpenCVForUnity.DnnModule.Layer> (owner);
 
-            List<OpenCVForUnity.Mat> wrapped_inputs = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (inputs, wrapped_inputs);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_inputs = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (inputs, wrapped_inputs);
 
-            List<OpenCVForUnity.Mat> wrapped_storeResult = wrapped_owner.finalize (wrapped_inputs);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_outputs = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (outputs, wrapped_outputs);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_inputs, inputs);
+            wrapped_owner.finalize (wrapped_inputs, wrapped_outputs);
 
-            if (!storeResult.IsNone)
-            {
-                OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_storeResult, storeResult);
-            }
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_inputs, inputs);
+
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_outputs, outputs);
 
 
         }

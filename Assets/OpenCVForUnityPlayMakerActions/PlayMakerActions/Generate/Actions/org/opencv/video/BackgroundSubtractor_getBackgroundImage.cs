@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,14 +61,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newBackgroundSubtractor\".");
                 return;
             }
-            OpenCVForUnity.BackgroundSubtractor wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractor, OpenCVForUnity.BackgroundSubtractor> (owner);
+            OpenCVForUnity.VideoModule.BackgroundSubtractor wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractor, OpenCVForUnity.VideoModule.BackgroundSubtractor> (owner);
 
             if (!(backgroundImage.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("backgroundImage is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_backgroundImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (backgroundImage);
+            OpenCVForUnity.CoreModule.Mat wrapped_backgroundImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (backgroundImage);
 
             wrapped_owner.getBackgroundImage (wrapped_backgroundImage);
 

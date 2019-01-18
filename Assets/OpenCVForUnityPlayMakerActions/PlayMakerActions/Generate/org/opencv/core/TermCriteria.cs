@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +14,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public TermCriteria (OpenCVForUnity.TermCriteria nativeObj)
+        public TermCriteria (OpenCVForUnity.CoreModule.TermCriteria nativeObj)
             : base (nativeObj)
         {
 

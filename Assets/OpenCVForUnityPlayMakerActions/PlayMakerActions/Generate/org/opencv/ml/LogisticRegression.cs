@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public LogisticRegression (OpenCVForUnity.LogisticRegression nativeObj)
+        public LogisticRegression (OpenCVForUnity.MlModule.LogisticRegression nativeObj)
             : base (nativeObj)
         {
 

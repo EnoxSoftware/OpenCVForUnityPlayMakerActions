@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public StarDetector (OpenCVForUnity.StarDetector nativeObj)
+        public StarDetector (OpenCVForUnity.Xfeatures2dModule.StarDetector nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +14,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Algorithm (OpenCVForUnity.Algorithm nativeObj)
+        public Algorithm (OpenCVForUnity.CoreModule.Algorithm nativeObj)
             : base (nativeObj)
         {
 

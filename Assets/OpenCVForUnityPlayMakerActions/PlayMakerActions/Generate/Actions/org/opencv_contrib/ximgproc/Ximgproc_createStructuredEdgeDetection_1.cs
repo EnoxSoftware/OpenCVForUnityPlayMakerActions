@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.StructuredEdgeDetection)) storeResult.Value = new OpenCVForUnityPlayMakerActions.StructuredEdgeDetection ();
-            ((OpenCVForUnityPlayMakerActions.StructuredEdgeDetection)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createStructuredEdgeDetection (model.Value);
+            ((OpenCVForUnityPlayMakerActions.StructuredEdgeDetection)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createStructuredEdgeDetection (model.Value);
 
 
         }

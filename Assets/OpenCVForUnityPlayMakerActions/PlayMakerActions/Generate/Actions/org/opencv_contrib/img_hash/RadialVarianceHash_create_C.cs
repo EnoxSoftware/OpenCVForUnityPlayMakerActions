@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.RadialVarianceHash)) storeResult.Value = new OpenCVForUnityPlayMakerActions.RadialVarianceHash ();
-            ((OpenCVForUnityPlayMakerActions.RadialVarianceHash)storeResult.Value).wrappedObject = OpenCVForUnity.RadialVarianceHash.create ((float)sigma.Value, numOfAngleLine.Value);
+            ((OpenCVForUnityPlayMakerActions.RadialVarianceHash)storeResult.Value).wrappedObject = OpenCVForUnity.Img_hashModule.RadialVarianceHash.create ((float)sigma.Value, numOfAngleLine.Value);
 
 
         }

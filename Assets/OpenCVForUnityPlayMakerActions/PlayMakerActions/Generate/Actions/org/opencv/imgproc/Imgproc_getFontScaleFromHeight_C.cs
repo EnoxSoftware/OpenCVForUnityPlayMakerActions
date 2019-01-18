@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -67,7 +68,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            storeResult.Value = (float)OpenCVForUnity.Imgproc.getFontScaleFromHeight (fontFace.Value, pixelHeight.Value, thickness.Value);
+            storeResult.Value = (float)OpenCVForUnity.ImgprocModule.Imgproc.getFontScaleFromHeight (fontFace.Value, pixelHeight.Value, thickness.Value);
 
 
         }

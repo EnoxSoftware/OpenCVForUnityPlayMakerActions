@@ -1,6 +1,6 @@
 using UnityEngine;
 
-using OpenCVForUnityExample;
+using OpenCVForUnity.UnityUtils.Helper;
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -64,7 +64,7 @@ namespace OpenCVForUnityPlayMakerActions
                 return;
             }
 
-            OpenCVForUnity.Mat wrapped_originalMat = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (originalMat);
+			OpenCVForUnity.CoreModule.Mat wrapped_originalMat = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (originalMat);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat))
                 storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat ();

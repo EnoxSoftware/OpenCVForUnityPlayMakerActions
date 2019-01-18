@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,7 +69,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TonemapReinhard)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TonemapReinhard ();
-            ((OpenCVForUnityPlayMakerActions.TonemapReinhard)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createTonemapReinhard (gamma.Value, intensity.Value, light_adapt.Value);
+            ((OpenCVForUnityPlayMakerActions.TonemapReinhard)storeResult.Value).wrappedObject = OpenCVForUnity.PhotoModule.Photo.createTonemapReinhard (gamma.Value, intensity.Value, light_adapt.Value);
 
 
         }

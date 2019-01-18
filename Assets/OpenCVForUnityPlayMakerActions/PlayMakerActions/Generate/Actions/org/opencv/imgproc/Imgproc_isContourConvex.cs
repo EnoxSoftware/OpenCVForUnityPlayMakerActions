@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -69,9 +70,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("contour is not initialized. Add Action \"newMatOfPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint wrapped_contour = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.MatOfPoint> (contour);
+            OpenCVForUnity.CoreModule.MatOfPoint wrapped_contour = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.CoreModule.MatOfPoint> (contour);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.isContourConvex (wrapped_contour);
+            storeResult.Value = OpenCVForUnity.ImgprocModule.Imgproc.isContourConvex (wrapped_contour);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

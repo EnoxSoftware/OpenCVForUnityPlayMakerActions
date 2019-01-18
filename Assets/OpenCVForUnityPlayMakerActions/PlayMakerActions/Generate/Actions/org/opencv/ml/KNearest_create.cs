@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.KNearest)) storeResult.Value = new OpenCVForUnityPlayMakerActions.KNearest ();
-            ((OpenCVForUnityPlayMakerActions.KNearest)storeResult.Value).wrappedObject = OpenCVForUnity.KNearest.create ();
+            ((OpenCVForUnityPlayMakerActions.KNearest)storeResult.Value).wrappedObject = OpenCVForUnity.MlModule.KNearest.create ();
 
 
         }

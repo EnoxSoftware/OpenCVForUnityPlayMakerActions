@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -74,7 +75,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("guide is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_guide = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (guide);
+            OpenCVForUnity.CoreModule.Mat wrapped_guide = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (guide);
 
             if (!(eps.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -84,7 +85,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_eps = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (eps);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.GuidedFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.GuidedFilter ();
-            ((OpenCVForUnityPlayMakerActions.GuidedFilter)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createGuidedFilter (wrapped_guide, radius.Value, wrapped_eps);
+            ((OpenCVForUnityPlayMakerActions.GuidedFilter)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createGuidedFilter (wrapped_guide, radius.Value, wrapped_eps);
 
 
         }

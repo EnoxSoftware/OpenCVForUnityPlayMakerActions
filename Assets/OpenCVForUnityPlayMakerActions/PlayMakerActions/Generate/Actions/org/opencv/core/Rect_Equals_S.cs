@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -95,9 +95,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newRect\".");
                 return;
             }
-            OpenCVForUnity.Rect wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.Rect> (owner);
+            OpenCVForUnity.CoreModule.Rect wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect> (owner);
 
-            storeResult.Value = wrapped_owner.Equals (new OpenCVForUnity.Rect ((int)a_x.Value, (int)a_y.Value, (int)a_width.Value, (int)a_height.Value));
+            storeResult.Value = wrapped_owner.Equals (new OpenCVForUnity.CoreModule.Rect ((int)a_x.Value, (int)a_y.Value, (int)a_width.Value, (int)a_height.Value));
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

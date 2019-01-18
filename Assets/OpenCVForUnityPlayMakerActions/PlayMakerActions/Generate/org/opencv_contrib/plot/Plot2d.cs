@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PlotModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Plot2d (OpenCVForUnity.Plot2d nativeObj)
+        public Plot2d (OpenCVForUnity.PlotModule.Plot2d nativeObj)
             : base (nativeObj)
         {
 

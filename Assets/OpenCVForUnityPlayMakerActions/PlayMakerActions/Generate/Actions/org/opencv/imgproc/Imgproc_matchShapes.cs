@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -82,14 +83,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("contour1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_contour1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (contour1);
+            OpenCVForUnity.CoreModule.Mat wrapped_contour1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (contour1);
 
             if (!(contour2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("contour2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_contour2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (contour2);
+            OpenCVForUnity.CoreModule.Mat wrapped_contour2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (contour2);
 
             if (!(parameter.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -99,7 +100,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_parameter = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (parameter);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Double)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Double ();
-            ((OpenCVForUnityPlayMakerActions.Double)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.matchShapes (wrapped_contour1, wrapped_contour2, method.Value, wrapped_parameter);
+            ((OpenCVForUnityPlayMakerActions.Double)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.matchShapes (wrapped_contour1, wrapped_contour2, method.Value, wrapped_parameter);
 
 
         }

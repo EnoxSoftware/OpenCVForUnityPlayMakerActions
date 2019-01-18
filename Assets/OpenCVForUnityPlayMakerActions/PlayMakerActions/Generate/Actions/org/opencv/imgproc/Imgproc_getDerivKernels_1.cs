@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -88,16 +89,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("kx is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_kx = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (kx);
+            OpenCVForUnity.CoreModule.Mat wrapped_kx = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (kx);
 
             if (!(ky.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("ky is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_ky = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (ky);
+            OpenCVForUnity.CoreModule.Mat wrapped_ky = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (ky);
 
-            OpenCVForUnity.Imgproc.getDerivKernels (wrapped_kx, wrapped_ky, dx.Value, dy.Value, ksize.Value, normalize.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.getDerivKernels (wrapped_kx, wrapped_ky, dx.Value, dy.Value, ksize.Value, normalize.Value);
 
 
         }

@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BioinspiredModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Retina (OpenCVForUnity.Retina nativeObj)
+        public Retina (OpenCVForUnity.BioinspiredModule.Retina nativeObj)
             : base (nativeObj)
         {
 

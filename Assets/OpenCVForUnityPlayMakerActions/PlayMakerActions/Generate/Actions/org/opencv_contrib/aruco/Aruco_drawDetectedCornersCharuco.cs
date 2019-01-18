@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,30 +77,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(charucoCorners.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("charucoCorners is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_charucoCorners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (charucoCorners);
+            OpenCVForUnity.CoreModule.Mat wrapped_charucoCorners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (charucoCorners);
 
             if (!(charucoIds.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("charucoIds is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_charucoIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (charucoIds);
+            OpenCVForUnity.CoreModule.Mat wrapped_charucoIds = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (charucoIds);
 
             if (!(cornerColor.Value is OpenCVForUnityPlayMakerActions.Scalar))
             {
                 LogError ("cornerColor is not initialized. Add Action \"newScalar\".");
                 return;
             }
-            OpenCVForUnity.Scalar wrapped_cornerColor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (cornerColor);
+            OpenCVForUnity.CoreModule.Scalar wrapped_cornerColor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.CoreModule.Scalar> (cornerColor);
 
-            OpenCVForUnity.Aruco.drawDetectedCornersCharuco (wrapped_image, wrapped_charucoCorners, wrapped_charucoIds, wrapped_cornerColor);
+            OpenCVForUnity.ArucoModule.Aruco.drawDetectedCornersCharuco (wrapped_image, wrapped_charucoCorners, wrapped_charucoIds, wrapped_cornerColor);
 
 
         }

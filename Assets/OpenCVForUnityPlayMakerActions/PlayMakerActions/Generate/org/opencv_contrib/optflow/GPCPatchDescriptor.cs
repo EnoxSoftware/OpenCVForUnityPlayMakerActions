@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.OptflowModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public GPCPatchDescriptor (OpenCVForUnity.GPCPatchDescriptor nativeObj)
+        public GPCPatchDescriptor (OpenCVForUnity.OptflowModule.GPCPatchDescriptor nativeObj)
             : base (nativeObj)
         {
 

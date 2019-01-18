@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.RegModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMapperPyramid\".");
                 return;
             }
-            OpenCVForUnity.MapperPyramid wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MapperPyramid, OpenCVForUnity.MapperPyramid> (owner);
+            OpenCVForUnity.RegModule.MapperPyramid wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MapperPyramid, OpenCVForUnity.RegModule.MapperPyramid> (owner);
 
             wrapped_owner.set_numLev_ (numLev_.Value);
 

@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BgsegmModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public BackgroundSubtractorMOG (OpenCVForUnity.BackgroundSubtractorMOG nativeObj)
+        public BackgroundSubtractorMOG (OpenCVForUnity.BgsegmModule.BackgroundSubtractorMOG nativeObj)
             : base (nativeObj)
         {
 

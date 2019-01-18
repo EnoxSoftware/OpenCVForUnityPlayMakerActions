@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -88,17 +89,17 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("roi1 is not initialized. Add Action \"newRect\".");
                 return;
             }
-            OpenCVForUnity.Rect wrapped_roi1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.Rect> (roi1);
+            OpenCVForUnity.CoreModule.Rect wrapped_roi1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect> (roi1);
 
             if (!(roi2.Value is OpenCVForUnityPlayMakerActions.Rect))
             {
                 LogError ("roi2 is not initialized. Add Action \"newRect\".");
                 return;
             }
-            OpenCVForUnity.Rect wrapped_roi2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.Rect> (roi2);
+            OpenCVForUnity.CoreModule.Rect wrapped_roi2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect> (roi2);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Rect)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Rect ();
-            ((OpenCVForUnityPlayMakerActions.Rect)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3d.getValidDisparityROI (wrapped_roi1, wrapped_roi2, minDisparity.Value, numberOfDisparities.Value, SADWindowSize.Value);
+            ((OpenCVForUnityPlayMakerActions.Rect)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.getValidDisparityROI (wrapped_roi1, wrapped_roi2, minDisparity.Value, numberOfDisparities.Value, SADWindowSize.Value);
 
 
         }

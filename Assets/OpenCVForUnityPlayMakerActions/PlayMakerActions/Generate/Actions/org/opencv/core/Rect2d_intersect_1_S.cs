@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -85,10 +85,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newRect2d\".");
                 return;
             }
-            OpenCVForUnity.Rect2d wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect2d, OpenCVForUnity.Rect2d> (owner);
+            OpenCVForUnity.CoreModule.Rect2d wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect2d, OpenCVForUnity.CoreModule.Rect2d> (owner);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Rect2d)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Rect2d ();
-            ((OpenCVForUnityPlayMakerActions.Rect2d)storeResult.Value).wrappedObject = wrapped_owner.intersect (new OpenCVForUnity.Rect2d ((double)rect_x.Value, (double)rect_y.Value, (double)rect_width.Value, (double)rect_height.Value));
+            ((OpenCVForUnityPlayMakerActions.Rect2d)storeResult.Value).wrappedObject = wrapped_owner.intersect (new OpenCVForUnity.CoreModule.Rect2d ((double)rect_x.Value, (double)rect_y.Value, (double)rect_width.Value, (double)rect_height.Value));
 
 
         }

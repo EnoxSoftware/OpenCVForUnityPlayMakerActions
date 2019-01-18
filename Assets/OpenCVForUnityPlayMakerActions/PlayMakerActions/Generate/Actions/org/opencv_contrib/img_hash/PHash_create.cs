@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.PHash)) storeResult.Value = new OpenCVForUnityPlayMakerActions.PHash ();
-            ((OpenCVForUnityPlayMakerActions.PHash)storeResult.Value).wrappedObject = OpenCVForUnity.PHash.create ();
+            ((OpenCVForUnityPlayMakerActions.PHash)storeResult.Value).wrappedObject = OpenCVForUnity.Img_hashModule.PHash.create ();
 
 
         }

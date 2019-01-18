@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BgsegmModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -99,14 +100,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("background is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_background = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (background);
+            OpenCVForUnity.CoreModule.Mat wrapped_background = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (background);
 
             if (!(_object.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_object is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__object = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_object);
+            OpenCVForUnity.CoreModule.Mat wrapped__object = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_object);
 
             if (!(amplitude.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -137,7 +138,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_objspeed = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (objspeed);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator ();
-            ((OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator)storeResult.Value).wrappedObject = OpenCVForUnity.Bgsegm.createSyntheticSequenceGenerator (wrapped_background, wrapped__object, wrapped_amplitude, wrapped_wavelength, wrapped_wavespeed, wrapped_objspeed);
+            ((OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator)storeResult.Value).wrappedObject = OpenCVForUnity.BgsegmModule.Bgsegm.createSyntheticSequenceGenerator (wrapped_background, wrapped__object, wrapped_amplitude, wrapped_wavelength, wrapped_wavespeed, wrapped_objspeed);
 
 
         }

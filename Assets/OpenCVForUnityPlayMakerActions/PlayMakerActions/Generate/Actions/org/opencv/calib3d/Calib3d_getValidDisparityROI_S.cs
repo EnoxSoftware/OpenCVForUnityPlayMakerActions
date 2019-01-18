@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -120,7 +121,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Rect)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Rect ();
-            ((OpenCVForUnityPlayMakerActions.Rect)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3d.getValidDisparityROI (new OpenCVForUnity.Rect ((int)roi1_x.Value, (int)roi1_y.Value, (int)roi1_width.Value, (int)roi1_height.Value), new OpenCVForUnity.Rect ((int)roi2_x.Value, (int)roi2_y.Value, (int)roi2_width.Value, (int)roi2_height.Value), minDisparity.Value, numberOfDisparities.Value, SADWindowSize.Value);
+            ((OpenCVForUnityPlayMakerActions.Rect)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.getValidDisparityROI (new OpenCVForUnity.CoreModule.Rect ((int)roi1_x.Value, (int)roi1_y.Value, (int)roi1_width.Value, (int)roi1_height.Value), new OpenCVForUnity.CoreModule.Rect ((int)roi2_x.Value, (int)roi2_y.Value, (int)roi2_width.Value, (int)roi2_height.Value), minDisparity.Value, numberOfDisparities.Value, SADWindowSize.Value);
 
 
         }

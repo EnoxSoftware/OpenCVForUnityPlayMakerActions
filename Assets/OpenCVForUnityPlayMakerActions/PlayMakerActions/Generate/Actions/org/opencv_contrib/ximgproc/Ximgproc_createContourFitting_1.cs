@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.ContourFitting)) storeResult.Value = new OpenCVForUnityPlayMakerActions.ContourFitting ();
-            ((OpenCVForUnityPlayMakerActions.ContourFitting)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createContourFitting (ctr.Value);
+            ((OpenCVForUnityPlayMakerActions.ContourFitting)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createContourFitting (ctr.Value);
 
 
         }

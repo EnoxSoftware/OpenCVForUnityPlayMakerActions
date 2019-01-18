@@ -1,18 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static void drawKeypoints (Mat image, MatOfKeyPoint keypoints, Mat outImage, Scalar color)")]
+    [HutongGames.PlayMaker.Tooltip ("public static void drawKeypoints (Mat image, MatOfKeyPoint keypoints, Mat outImage)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfKeyPoint), "keypoints")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "outImage")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Scalar), "color")]
     public class Features2d_drawKeypoints_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -34,12 +34,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject outImage;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg4] Scalar")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Scalar))]
-        public HutongGames.PlayMaker.FsmObject color;
-
         [HutongGames.PlayMaker.ActionSection ("")]
         [Tooltip ("Repeat every frame.")]
         public bool everyFrame;
@@ -49,7 +43,6 @@ namespace OpenCVForUnityPlayMakerActions
             image = null;
             keypoints = null;
             outImage = null;
-            color = null;
             everyFrame = false;
         }
 
@@ -76,30 +69,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(keypoints.Value is OpenCVForUnityPlayMakerActions.MatOfKeyPoint))
             {
                 LogError ("keypoints is not initialized. Add Action \"newMatOfKeyPoint\".");
                 return;
             }
-            OpenCVForUnity.MatOfKeyPoint wrapped_keypoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.MatOfKeyPoint> (keypoints);
+            OpenCVForUnity.CoreModule.MatOfKeyPoint wrapped_keypoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfKeyPoint, OpenCVForUnity.CoreModule.MatOfKeyPoint> (keypoints);
 
             if (!(outImage.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("outImage is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_outImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (outImage);
+            OpenCVForUnity.CoreModule.Mat wrapped_outImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (outImage);
 
-            if (!(color.Value is OpenCVForUnityPlayMakerActions.Scalar))
-            {
-                LogError ("color is not initialized. Add Action \"newScalar\".");
-                return;
-            }
-            OpenCVForUnity.Scalar wrapped_color = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (color);
-
-            OpenCVForUnity.Features2d.drawKeypoints (wrapped_image, wrapped_keypoints, wrapped_outImage, wrapped_color);
+            OpenCVForUnity.Features2dModule.Features2d.drawKeypoints (wrapped_image, wrapped_keypoints, wrapped_outImage);
 
 
         }

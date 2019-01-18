@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newEdgeAwareInterpolator\".");
                 return;
             }
-            OpenCVForUnity.EdgeAwareInterpolator wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator, OpenCVForUnity.EdgeAwareInterpolator> (owner);
+            OpenCVForUnity.XimgprocModule.EdgeAwareInterpolator wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator, OpenCVForUnity.XimgprocModule.EdgeAwareInterpolator> (owner);
 
             storeResult.Value = wrapped_owner.getSigma ();
 

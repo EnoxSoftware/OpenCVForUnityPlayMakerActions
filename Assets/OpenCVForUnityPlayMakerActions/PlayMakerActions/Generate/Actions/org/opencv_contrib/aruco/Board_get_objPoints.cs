@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,13 +60,13 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newBoard\".");
                 return;
             }
-            OpenCVForUnity.Board wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Board, OpenCVForUnity.Board> (owner);
+            OpenCVForUnity.ArucoModule.Board wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Board, OpenCVForUnity.ArucoModule.Board> (owner);
 
-            List<OpenCVForUnity.MatOfPoint3f> wrapped_storeResult = wrapped_owner.get_objPoints ();
+            List<OpenCVForUnity.CoreModule.MatOfPoint3f> wrapped_storeResult = wrapped_owner.get_objPoints ();
 
             if (!storeResult.IsNone)
             {
-                OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.MatOfPoint3f, OpenCVForUnityPlayMakerActions.MatOfPoint3f> (wrapped_storeResult, storeResult);
+                OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.MatOfPoint3f, OpenCVForUnityPlayMakerActions.MatOfPoint3f> (wrapped_storeResult, storeResult);
             }
 
 

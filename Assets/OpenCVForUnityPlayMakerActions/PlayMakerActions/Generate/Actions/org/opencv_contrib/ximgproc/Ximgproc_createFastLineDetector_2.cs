@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -91,7 +92,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped__canny_th2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (_canny_th2);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FastLineDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FastLineDetector ();
-            ((OpenCVForUnityPlayMakerActions.FastLineDetector)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createFastLineDetector (_length_threshold.Value, _distance_threshold.Value, wrapped__canny_th1, wrapped__canny_th2);
+            ((OpenCVForUnityPlayMakerActions.FastLineDetector)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createFastLineDetector (_length_threshold.Value, _distance_threshold.Value, wrapped__canny_th1, wrapped__canny_th2);
 
 
         }

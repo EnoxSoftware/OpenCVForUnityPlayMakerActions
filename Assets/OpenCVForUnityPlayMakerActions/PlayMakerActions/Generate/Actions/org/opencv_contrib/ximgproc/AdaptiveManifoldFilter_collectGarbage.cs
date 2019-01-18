@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -52,7 +53,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newAdaptiveManifoldFilter\".");
                 return;
             }
-            OpenCVForUnity.AdaptiveManifoldFilter wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.AdaptiveManifoldFilter, OpenCVForUnity.AdaptiveManifoldFilter> (owner);
+            OpenCVForUnity.XimgprocModule.AdaptiveManifoldFilter wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.AdaptiveManifoldFilter, OpenCVForUnity.XimgprocModule.AdaptiveManifoldFilter> (owner);
 
             wrapped_owner.collectGarbage ();
 

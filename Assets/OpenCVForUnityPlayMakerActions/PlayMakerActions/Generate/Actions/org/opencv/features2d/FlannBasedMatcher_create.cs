@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FlannBasedMatcher)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FlannBasedMatcher ();
-            ((OpenCVForUnityPlayMakerActions.FlannBasedMatcher)storeResult.Value).wrappedObject = OpenCVForUnity.FlannBasedMatcher.create ();
+            ((OpenCVForUnityPlayMakerActions.FlannBasedMatcher)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.FlannBasedMatcher.create ();
 
 
         }

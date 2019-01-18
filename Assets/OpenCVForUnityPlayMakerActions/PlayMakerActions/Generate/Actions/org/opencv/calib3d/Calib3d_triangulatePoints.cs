@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -84,37 +85,37 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("projMatr1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_projMatr1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (projMatr1);
+            OpenCVForUnity.CoreModule.Mat wrapped_projMatr1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (projMatr1);
 
             if (!(projMatr2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("projMatr2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_projMatr2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (projMatr2);
+            OpenCVForUnity.CoreModule.Mat wrapped_projMatr2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (projMatr2);
 
             if (!(projPoints1.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("projPoints1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_projPoints1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (projPoints1);
+            OpenCVForUnity.CoreModule.Mat wrapped_projPoints1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (projPoints1);
 
             if (!(projPoints2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("projPoints2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_projPoints2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (projPoints2);
+            OpenCVForUnity.CoreModule.Mat wrapped_projPoints2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (projPoints2);
 
             if (!(points4D.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("points4D is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_points4D = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (points4D);
+            OpenCVForUnity.CoreModule.Mat wrapped_points4D = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (points4D);
 
-            OpenCVForUnity.Calib3d.triangulatePoints (wrapped_projMatr1, wrapped_projMatr2, wrapped_projPoints1, wrapped_projPoints2, wrapped_points4D);
+            OpenCVForUnity.Calib3dModule.Calib3d.triangulatePoints (wrapped_projMatr1, wrapped_projMatr2, wrapped_projPoints1, wrapped_projPoints2, wrapped_points4D);
 
 
         }

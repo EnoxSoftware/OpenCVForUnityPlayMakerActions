@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -90,14 +91,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("_src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_src);
+            OpenCVForUnity.CoreModule.Mat wrapped__src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_src);
 
             if (!(_dst.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_dst is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_dst);
+            OpenCVForUnity.CoreModule.Mat wrapped__dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_dst);
 
             if (!(maxValue.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -113,7 +114,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_k = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (k);
 
-            OpenCVForUnity.Ximgproc.niBlackThreshold (wrapped__src, wrapped__dst, wrapped_maxValue, type.Value, blockSize.Value, wrapped_k);
+            OpenCVForUnity.XimgprocModule.Ximgproc.niBlackThreshold (wrapped__src, wrapped__dst, wrapped_maxValue, type.Value, blockSize.Value, wrapped_k);
 
 
         }

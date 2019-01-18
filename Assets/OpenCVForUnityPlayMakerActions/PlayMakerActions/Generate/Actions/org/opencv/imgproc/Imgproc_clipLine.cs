@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -85,23 +86,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("imgRect is not initialized. Add Action \"newRect\".");
                 return;
             }
-            OpenCVForUnity.Rect wrapped_imgRect = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.Rect> (imgRect);
+            OpenCVForUnity.CoreModule.Rect wrapped_imgRect = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect> (imgRect);
 
             if (!(pt1.Value is OpenCVForUnityPlayMakerActions.Point))
             {
                 LogError ("pt1 is not initialized. Add Action \"newPoint\".");
                 return;
             }
-            OpenCVForUnity.Point wrapped_pt1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (pt1);
+            OpenCVForUnity.CoreModule.Point wrapped_pt1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (pt1);
 
             if (!(pt2.Value is OpenCVForUnityPlayMakerActions.Point))
             {
                 LogError ("pt2 is not initialized. Add Action \"newPoint\".");
                 return;
             }
-            OpenCVForUnity.Point wrapped_pt2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (pt2);
+            OpenCVForUnity.CoreModule.Point wrapped_pt2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (pt2);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.clipLine (wrapped_imgRect, wrapped_pt1, wrapped_pt2);
+            storeResult.Value = OpenCVForUnity.ImgprocModule.Imgproc.clipLine (wrapped_imgRect, wrapped_pt1, wrapped_pt2);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

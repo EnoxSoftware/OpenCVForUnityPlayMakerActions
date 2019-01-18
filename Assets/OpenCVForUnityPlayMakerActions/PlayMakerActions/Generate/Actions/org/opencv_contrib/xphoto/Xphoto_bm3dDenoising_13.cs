@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XphotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -138,23 +139,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src);
+            OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src);
 
             if (!(dstStep1.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dstStep1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dstStep1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dstStep1);
+            OpenCVForUnity.CoreModule.Mat wrapped_dstStep1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dstStep1);
 
             if (!(dstStep2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dstStep2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dstStep2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dstStep2);
+            OpenCVForUnity.CoreModule.Mat wrapped_dstStep2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dstStep2);
 
-            OpenCVForUnity.Xphoto.bm3dDenoising (wrapped_src, wrapped_dstStep1, wrapped_dstStep2, h.Value, templateWindowSize.Value, searchWindowSize.Value, blockMatchingStep1.Value, blockMatchingStep2.Value, groupSize.Value, slidingStep.Value, beta.Value, normType.Value, step.Value);
+            OpenCVForUnity.XphotoModule.Xphoto.bm3dDenoising (wrapped_src, wrapped_dstStep1, wrapped_dstStep2, h.Value, templateWindowSize.Value, searchWindowSize.Value, blockMatchingStep1.Value, blockMatchingStep2.Value, groupSize.Value, slidingStep.Value, beta.Value, normType.Value, step.Value);
 
 
         }

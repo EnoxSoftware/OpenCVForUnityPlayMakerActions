@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -90,14 +91,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (src);
+            OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src);
 
             if (!(dst.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dst is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dst);
+            OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dst);
 
             if (!(sigmaX.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -113,7 +114,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_sigmaY = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (sigmaY);
 
-            OpenCVForUnity.Imgproc.GaussianBlur (wrapped_src, wrapped_dst, new OpenCVForUnity.Size ((double)ksize_width.Value, (double)ksize_height.Value), wrapped_sigmaX, wrapped_sigmaY);
+            OpenCVForUnity.ImgprocModule.Imgproc.GaussianBlur (wrapped_src, wrapped_dst, new OpenCVForUnity.CoreModule.Size ((double)ksize_width.Value, (double)ksize_height.Value), wrapped_sigmaX, wrapped_sigmaY);
 
 
         }

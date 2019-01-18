@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TrackingModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Tracker (OpenCVForUnity.Tracker nativeObj)
+        public Tracker (OpenCVForUnity.TrackingModule.Tracker nativeObj)
             : base (nativeObj)
         {
 

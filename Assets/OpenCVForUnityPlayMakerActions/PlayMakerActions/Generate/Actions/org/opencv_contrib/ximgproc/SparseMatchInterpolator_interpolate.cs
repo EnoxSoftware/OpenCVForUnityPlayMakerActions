@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -92,42 +93,42 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newSparseMatchInterpolator\".");
                 return;
             }
-            OpenCVForUnity.SparseMatchInterpolator wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SparseMatchInterpolator, OpenCVForUnity.SparseMatchInterpolator> (owner);
+            OpenCVForUnity.XimgprocModule.SparseMatchInterpolator wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SparseMatchInterpolator, OpenCVForUnity.XimgprocModule.SparseMatchInterpolator> (owner);
 
             if (!(from_image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("from_image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_from_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (from_image);
+            OpenCVForUnity.CoreModule.Mat wrapped_from_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (from_image);
 
             if (!(from_points.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("from_points is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_from_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (from_points);
+            OpenCVForUnity.CoreModule.Mat wrapped_from_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (from_points);
 
             if (!(to_image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("to_image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_to_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (to_image);
+            OpenCVForUnity.CoreModule.Mat wrapped_to_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (to_image);
 
             if (!(to_points.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("to_points is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_to_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (to_points);
+            OpenCVForUnity.CoreModule.Mat wrapped_to_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (to_points);
 
             if (!(dense_flow.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dense_flow is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dense_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dense_flow);
+            OpenCVForUnity.CoreModule.Mat wrapped_dense_flow = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dense_flow);
 
             wrapped_owner.interpolate (wrapped_from_image, wrapped_from_points, wrapped_to_image, wrapped_to_points, wrapped_dense_flow);
 

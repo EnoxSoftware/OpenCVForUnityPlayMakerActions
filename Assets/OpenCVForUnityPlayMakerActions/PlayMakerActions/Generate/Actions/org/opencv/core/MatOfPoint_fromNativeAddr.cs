@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -62,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.IntPtr wrapped_addr = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.IntPtr, System.IntPtr> (addr);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfPoint)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfPoint ();
-            ((OpenCVForUnityPlayMakerActions.MatOfPoint)storeResult.Value).wrappedObject = OpenCVForUnity.MatOfPoint.fromNativeAddr (wrapped_addr);
+            ((OpenCVForUnityPlayMakerActions.MatOfPoint)storeResult.Value).wrappedObject = OpenCVForUnity.CoreModule.MatOfPoint.fromNativeAddr (wrapped_addr);
 
 
         }

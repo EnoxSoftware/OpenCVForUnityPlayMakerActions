@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -105,10 +106,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("probImage is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_probImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (probImage);
+            OpenCVForUnity.CoreModule.Mat wrapped_probImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (probImage);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.RotatedRect)) storeResult.Value = new OpenCVForUnityPlayMakerActions.RotatedRect ();
-            ((OpenCVForUnityPlayMakerActions.RotatedRect)storeResult.Value).wrappedObject = OpenCVForUnity.Video.CamShift (wrapped_probImage, new OpenCVForUnity.Rect ((int)window_x.Value, (int)window_y.Value, (int)window_width.Value, (int)window_height.Value), new OpenCVForUnity.TermCriteria ((int)criteria_type.Value, (int)criteria_maxCount.Value, (double)criteria_epsilon.Value));
+            ((OpenCVForUnityPlayMakerActions.RotatedRect)storeResult.Value).wrappedObject = OpenCVForUnity.VideoModule.Video.CamShift (wrapped_probImage, new OpenCVForUnity.CoreModule.Rect ((int)window_x.Value, (int)window_y.Value, (int)window_width.Value, (int)window_height.Value), new OpenCVForUnity.CoreModule.TermCriteria ((int)criteria_type.Value, (int)criteria_maxCount.Value, (double)criteria_epsilon.Value));
 
 
         }

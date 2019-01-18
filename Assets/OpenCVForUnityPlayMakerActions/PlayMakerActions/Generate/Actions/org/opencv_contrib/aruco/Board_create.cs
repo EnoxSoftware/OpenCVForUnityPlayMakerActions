@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -70,27 +71,27 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            List<OpenCVForUnity.Mat> wrapped_objPoints = new List<OpenCVForUnity.Mat> ();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (objPoints, wrapped_objPoints);
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_objPoints = new List<OpenCVForUnity.CoreModule.Mat> ();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (objPoints, wrapped_objPoints);
 
             if (!(dictionary.Value is OpenCVForUnityPlayMakerActions.Dictionary))
             {
                 LogError ("dictionary is not initialized. Add Action \"newDictionary\".");
                 return;
             }
-            OpenCVForUnity.Dictionary wrapped_dictionary = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Dictionary, OpenCVForUnity.Dictionary> (dictionary);
+            OpenCVForUnity.ArucoModule.Dictionary wrapped_dictionary = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Dictionary, OpenCVForUnity.ArucoModule.Dictionary> (dictionary);
 
             if (!(ids.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("ids is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_ids = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (ids);
+            OpenCVForUnity.CoreModule.Mat wrapped_ids = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (ids);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Board)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Board ();
-            ((OpenCVForUnityPlayMakerActions.Board)storeResult.Value).wrappedObject = OpenCVForUnity.Board.create (wrapped_objPoints, wrapped_dictionary, wrapped_ids);
+            ((OpenCVForUnityPlayMakerActions.Board)storeResult.Value).wrappedObject = OpenCVForUnity.ArucoModule.Board.create (wrapped_objPoints, wrapped_dictionary, wrapped_ids);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_objPoints, objPoints);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat> (wrapped_objPoints, objPoints);
 
 
         }

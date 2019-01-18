@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -81,16 +82,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("disparity is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_disparity = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (disparity);
+            OpenCVForUnity.CoreModule.Mat wrapped_disparity = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (disparity);
 
             if (!(cost.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("cost is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_cost = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (cost);
+            OpenCVForUnity.CoreModule.Mat wrapped_cost = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (cost);
 
-            OpenCVForUnity.Calib3d.validateDisparity (wrapped_disparity, wrapped_cost, minDisparity.Value, numberOfDisparities.Value, disp12MaxDisp.Value);
+            OpenCVForUnity.Calib3dModule.Calib3d.validateDisparity (wrapped_disparity, wrapped_cost, minDisparity.Value, numberOfDisparities.Value, disp12MaxDisp.Value);
 
 
         }

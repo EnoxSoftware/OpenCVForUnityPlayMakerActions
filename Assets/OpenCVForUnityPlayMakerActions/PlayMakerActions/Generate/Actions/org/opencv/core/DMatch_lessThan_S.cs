@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -95,9 +95,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newDMatch\".");
                 return;
             }
-            OpenCVForUnity.DMatch wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DMatch, OpenCVForUnity.DMatch> (owner);
+            OpenCVForUnity.CoreModule.DMatch wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DMatch, OpenCVForUnity.CoreModule.DMatch> (owner);
 
-            storeResult.Value = wrapped_owner.lessThan (new OpenCVForUnity.DMatch ((int)it_queryIdx.Value, (int)it_trainIdx.Value, (int)it_imgIdx.Value, (float)it_distance.Value));
+            storeResult.Value = wrapped_owner.lessThan (new OpenCVForUnity.CoreModule.DMatch ((int)it_queryIdx.Value, (int)it_trainIdx.Value, (int)it_imgIdx.Value, (float)it_distance.Value));
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

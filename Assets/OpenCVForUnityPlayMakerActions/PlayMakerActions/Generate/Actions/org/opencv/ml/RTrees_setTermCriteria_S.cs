@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -72,9 +73,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newRTrees\".");
                 return;
             }
-            OpenCVForUnity.RTrees wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RTrees, OpenCVForUnity.RTrees> (owner);
+            OpenCVForUnity.MlModule.RTrees wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.RTrees, OpenCVForUnity.MlModule.RTrees> (owner);
 
-            wrapped_owner.setTermCriteria (new OpenCVForUnity.TermCriteria ((int)val_type.Value, (int)val_maxCount.Value, (double)val_epsilon.Value));
+            wrapped_owner.setTermCriteria (new OpenCVForUnity.CoreModule.TermCriteria ((int)val_type.Value, (int)val_maxCount.Value, (double)val_epsilon.Value));
 
 
         }

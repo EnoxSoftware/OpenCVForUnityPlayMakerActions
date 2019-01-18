@@ -1,16 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void sqrBoxFilter (Mat _src, Mat _dst, int ddepth, Size ksize, Point anchor, bool normalize)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "_src")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "_dst")]
+    [HutongGames.PlayMaker.Tooltip ("public static void sqrBoxFilter (Mat src, Mat dst, int ddepth, Size ksize, Point anchor, bool normalize)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "ddepth")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "ksize_width")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "ksize_height")]
@@ -24,13 +25,13 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject _src;
+        public HutongGames.PlayMaker.FsmObject src;
 
         [HutongGames.PlayMaker.ActionSection ("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject _dst;
+        public HutongGames.PlayMaker.FsmObject dst;
 
         [HutongGames.PlayMaker.ActionSection ("[arg3] int")]
         [HutongGames.PlayMaker.RequiredField]
@@ -68,8 +69,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
-            _src = null;
-            _dst = null;
+            src = null;
+            dst = null;
             ddepth = 0;
             ksize_width = 0.0f;
             ksize_height = 0.0f;
@@ -97,21 +98,21 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            if (!(_src.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(src.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("_src is not initialized. Add Action \"newMat\".");
+                LogError ("src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_src);
+            OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src);
 
-            if (!(_dst.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(dst.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("_dst is not initialized. Add Action \"newMat\".");
+                LogError ("dst is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_dst);
+            OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dst);
 
-            OpenCVForUnity.Imgproc.sqrBoxFilter (wrapped__src, wrapped__dst, ddepth.Value, new OpenCVForUnity.Size ((double)ksize_width.Value, (double)ksize_height.Value), new OpenCVForUnity.Point ((double)anchor_x.Value, (double)anchor_y.Value), normalize.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.sqrBoxFilter (wrapped_src, wrapped_dst, ddepth.Value, new OpenCVForUnity.CoreModule.Size ((double)ksize_width.Value, (double)ksize_height.Value), new OpenCVForUnity.CoreModule.Point ((double)anchor_x.Value, (double)anchor_y.Value), normalize.Value);
 
 
         }

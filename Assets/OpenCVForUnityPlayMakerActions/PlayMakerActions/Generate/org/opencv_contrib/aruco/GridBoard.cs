@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public GridBoard (OpenCVForUnity.GridBoard nativeObj)
+        public GridBoard (OpenCVForUnity.ArucoModule.GridBoard nativeObj)
             : base (nativeObj)
         {
 

@@ -1,19 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static DAISY create (float radius, int q_radius, int q_theta, int q_hist, int norm, Mat H)")]
+    [HutongGames.PlayMaker.Tooltip ("public static DAISY create (float radius, int q_radius, int q_theta, int q_hist, Mat H)")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "radius")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "q_radius")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "q_theta")]
     [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "q_hist")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "norm")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "H")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DAISY), "storeResult")]
     public class DAISY_create_2 : HutongGames.PlayMaker.FsmStateAction
@@ -39,12 +39,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt q_hist;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt norm;
-
-        [HutongGames.PlayMaker.ActionSection ("[arg6] Mat")]
+        [HutongGames.PlayMaker.ActionSection ("[arg5] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
@@ -65,7 +60,6 @@ namespace OpenCVForUnityPlayMakerActions
             q_radius = 0;
             q_theta = 0;
             q_hist = 0;
-            norm = 0;
             H = null;
             storeResult = null;
             everyFrame = false;
@@ -94,10 +88,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("H is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_H = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (H);
+            OpenCVForUnity.CoreModule.Mat wrapped_H = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (H);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.DAISY)) storeResult.Value = new OpenCVForUnityPlayMakerActions.DAISY ();
-            ((OpenCVForUnityPlayMakerActions.DAISY)storeResult.Value).wrappedObject = OpenCVForUnity.DAISY.create (radius.Value, q_radius.Value, q_theta.Value, q_hist.Value, norm.Value, wrapped_H);
+            ((OpenCVForUnityPlayMakerActions.DAISY)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.DAISY.create (radius.Value, q_radius.Value, q_theta.Value, q_hist.Value, wrapped_H);
 
 
         }

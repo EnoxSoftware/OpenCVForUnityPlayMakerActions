@@ -1,24 +1,25 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static Rect boundingRect (MatOfPoint points)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint), "points")]
+    [HutongGames.PlayMaker.Tooltip ("public static Rect boundingRect (Mat array)")]
+    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "array")]
     [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Rect), "storeResult")]
     public class Imgproc_boundingRect : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] MatOfPoint")]
+        [HutongGames.PlayMaker.ActionSection ("[arg1] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint))]
-        public HutongGames.PlayMaker.FsmObject points;
+        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject array;
 
         [HutongGames.PlayMaker.ActionSection ("[return] Rect")]
         [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
@@ -31,7 +32,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset ()
         {
-            points = null;
+            array = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -54,15 +55,15 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            if (!(points.Value is OpenCVForUnityPlayMakerActions.MatOfPoint))
+            if (!(array.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("points is not initialized. Add Action \"newMatOfPoint\".");
+                LogError ("array is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint wrapped_points = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.MatOfPoint> (points);
+            OpenCVForUnity.CoreModule.Mat wrapped_array = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (array);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Rect)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Rect ();
-            ((OpenCVForUnityPlayMakerActions.Rect)storeResult.Value).wrappedObject = OpenCVForUnity.Imgproc.boundingRect (wrapped_points);
+            ((OpenCVForUnityPlayMakerActions.Rect)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.boundingRect (wrapped_array);
 
 
         }

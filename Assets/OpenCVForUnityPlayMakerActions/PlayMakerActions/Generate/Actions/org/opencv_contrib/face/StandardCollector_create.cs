@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -62,7 +63,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped_threshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (threshold);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.StandardCollector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.StandardCollector ();
-            ((OpenCVForUnityPlayMakerActions.StandardCollector)storeResult.Value).wrappedObject = OpenCVForUnity.StandardCollector.create (wrapped_threshold);
+            ((OpenCVForUnityPlayMakerActions.StandardCollector)storeResult.Value).wrappedObject = OpenCVForUnity.FaceModule.StandardCollector.create (wrapped_threshold);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -116,14 +117,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("cameraMatrix is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (cameraMatrix);
+            OpenCVForUnity.CoreModule.Mat wrapped_cameraMatrix = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (cameraMatrix);
 
             if (!(imageSize.Value is OpenCVForUnityPlayMakerActions.Size))
             {
                 LogError ("imageSize is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped_imageSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (imageSize);
+            OpenCVForUnity.CoreModule.Size wrapped_imageSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (imageSize);
 
             if (!(apertureWidth.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -165,7 +166,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("principalPoint is not initialized. Add Action \"newPoint\".");
                 return;
             }
-            OpenCVForUnity.Point wrapped_principalPoint = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (principalPoint);
+            OpenCVForUnity.CoreModule.Point wrapped_principalPoint = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (principalPoint);
 
             if (!(aspectRatio.Value is OpenCVForUnityPlayMakerActions.DoubleArray))
             {
@@ -174,7 +175,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double[] wrapped_aspectRatio = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DoubleArray, System.Double[]> (aspectRatio);
 
-            OpenCVForUnity.Calib3d.calibrationMatrixValues (wrapped_cameraMatrix, wrapped_imageSize, wrapped_apertureWidth, wrapped_apertureHeight, wrapped_fovx, wrapped_fovy, wrapped_focalLength, wrapped_principalPoint, wrapped_aspectRatio);
+            OpenCVForUnity.Calib3dModule.Calib3d.calibrationMatrixValues (wrapped_cameraMatrix, wrapped_imageSize, wrapped_apertureWidth, wrapped_apertureHeight, wrapped_fovx, wrapped_fovy, wrapped_focalLength, wrapped_principalPoint, wrapped_aspectRatio);
 
 
         }

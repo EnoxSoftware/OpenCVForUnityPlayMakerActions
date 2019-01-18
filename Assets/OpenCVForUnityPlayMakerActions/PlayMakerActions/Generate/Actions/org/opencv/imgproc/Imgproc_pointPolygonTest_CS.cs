@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -80,9 +81,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("contour is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.MatOfPoint2f wrapped_contour = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.MatOfPoint2f> (contour);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_contour = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (contour);
 
-            storeResult.Value = (float)OpenCVForUnity.Imgproc.pointPolygonTest (wrapped_contour, new OpenCVForUnity.Point ((double)pt_x.Value, (double)pt_y.Value), measureDist.Value);
+            storeResult.Value = (float)OpenCVForUnity.ImgprocModule.Imgproc.pointPolygonTest (wrapped_contour, new OpenCVForUnity.CoreModule.Point ((double)pt_x.Value, (double)pt_y.Value), measureDist.Value);
 
 
         }

@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public AlignExposures (OpenCVForUnity.AlignExposures nativeObj)
+        public AlignExposures (OpenCVForUnity.PhotoModule.AlignExposures nativeObj)
             : base (nativeObj)
         {
 

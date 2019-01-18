@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoioModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -106,7 +107,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Char wrapped_c4 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Char, System.Char> (c4);
 
-            storeResult.Value = OpenCVForUnity.VideoWriter.fourcc (wrapped_c1, wrapped_c2, wrapped_c3, wrapped_c4);
+            storeResult.Value = OpenCVForUnity.VideoioModule.VideoWriter.fourcc (wrapped_c1, wrapped_c2, wrapped_c3, wrapped_c4);
 
 
         }

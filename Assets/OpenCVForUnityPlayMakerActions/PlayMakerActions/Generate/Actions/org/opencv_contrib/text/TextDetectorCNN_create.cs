@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -62,7 +63,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TextDetectorCNN)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TextDetectorCNN ();
-            ((OpenCVForUnityPlayMakerActions.TextDetectorCNN)storeResult.Value).wrappedObject = OpenCVForUnity.TextDetectorCNN.create (modelArchFilename.Value, modelWeightsFilename.Value);
+            ((OpenCVForUnityPlayMakerActions.TextDetectorCNN)storeResult.Value).wrappedObject = OpenCVForUnity.TextModule.TextDetectorCNN.create (modelArchFilename.Value, modelWeightsFilename.Value);
 
 
         }

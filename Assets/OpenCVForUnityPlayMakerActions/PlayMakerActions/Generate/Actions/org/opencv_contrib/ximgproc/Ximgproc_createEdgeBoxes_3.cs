@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -110,7 +111,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.EdgeBoxes)) storeResult.Value = new OpenCVForUnityPlayMakerActions.EdgeBoxes ();
-            ((OpenCVForUnityPlayMakerActions.EdgeBoxes)storeResult.Value).wrappedObject = OpenCVForUnity.Ximgproc.createEdgeBoxes (alpha.Value, beta.Value, eta.Value, minScore.Value, maxBoxes.Value, edgeMinMag.Value, edgeMergeThr.Value, clusterMinMag.Value, maxAspectRatio.Value);
+            ((OpenCVForUnityPlayMakerActions.EdgeBoxes)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createEdgeBoxes (alpha.Value, beta.Value, eta.Value, minScore.Value, maxBoxes.Value, edgeMinMag.Value, edgeMergeThr.Value, clusterMinMag.Value, maxAspectRatio.Value);
 
 
         }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,13 +54,13 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            OpenCVForUnity.Rect2d[] wrapped_a = new OpenCVForUnity.Rect2d[a.Length];
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.Rect2d, OpenCVForUnity.Rect2d> (a, wrapped_a);
+            OpenCVForUnity.CoreModule.Rect2d[] wrapped_a = new OpenCVForUnity.CoreModule.Rect2d[a.Length];
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.Rect2d, OpenCVForUnity.CoreModule.Rect2d> (a, wrapped_a);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfRect2d)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfRect2d ();
-            ((OpenCVForUnityPlayMakerActions.MatOfRect2d)storeResult.Value).wrappedObject = new OpenCVForUnity.MatOfRect2d (wrapped_a);
+            ((OpenCVForUnityPlayMakerActions.MatOfRect2d)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfRect2d (wrapped_a);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.Rect2d, OpenCVForUnityPlayMakerActions.Rect2d> (wrapped_a, a);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.CoreModule.Rect2d, OpenCVForUnityPlayMakerActions.Rect2d> (wrapped_a, a);
 
 
         }

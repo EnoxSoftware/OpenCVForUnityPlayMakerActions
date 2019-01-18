@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -74,17 +75,17 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("samples is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_samples = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (samples);
+            OpenCVForUnity.CoreModule.Mat wrapped_samples = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (samples);
 
             if (!(responses.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("responses is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_responses = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (responses);
+            OpenCVForUnity.CoreModule.Mat wrapped_responses = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (responses);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TrainData)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TrainData ();
-            ((OpenCVForUnityPlayMakerActions.TrainData)storeResult.Value).wrappedObject = OpenCVForUnity.TrainData.create (wrapped_samples, layout.Value, wrapped_responses);
+            ((OpenCVForUnityPlayMakerActions.TrainData)storeResult.Value).wrappedObject = OpenCVForUnity.MlModule.TrainData.create (wrapped_samples, layout.Value, wrapped_responses);
 
 
         }

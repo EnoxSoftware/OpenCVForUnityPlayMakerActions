@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public AverageHash (OpenCVForUnity.AverageHash nativeObj)
+        public AverageHash (OpenCVForUnity.Img_hashModule.AverageHash nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.StandardCollector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.StandardCollector ();
-            ((OpenCVForUnityPlayMakerActions.StandardCollector)storeResult.Value).wrappedObject = OpenCVForUnity.StandardCollector.create ((float)threshold.Value);
+            ((OpenCVForUnityPlayMakerActions.StandardCollector)storeResult.Value).wrappedObject = OpenCVForUnity.FaceModule.StandardCollector.create ((float)threshold.Value);
 
 
         }

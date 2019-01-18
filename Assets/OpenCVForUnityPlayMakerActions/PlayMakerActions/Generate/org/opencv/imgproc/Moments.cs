@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Moments (OpenCVForUnity.Moments nativeObj)
+        public Moments (OpenCVForUnity.ImgprocModule.Moments nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,13 +54,13 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            OpenCVForUnity.DMatch[] wrapped_ap = new OpenCVForUnity.DMatch[ap.Length];
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.DMatch, OpenCVForUnity.DMatch> (ap, wrapped_ap);
+            OpenCVForUnity.CoreModule.DMatch[] wrapped_ap = new OpenCVForUnity.CoreModule.DMatch[ap.Length];
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.DMatch, OpenCVForUnity.CoreModule.DMatch> (ap, wrapped_ap);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfDMatch)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfDMatch ();
-            ((OpenCVForUnityPlayMakerActions.MatOfDMatch)storeResult.Value).wrappedObject = new OpenCVForUnity.MatOfDMatch (wrapped_ap);
+            ((OpenCVForUnityPlayMakerActions.MatOfDMatch)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfDMatch (wrapped_ap);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.DMatch, OpenCVForUnityPlayMakerActions.DMatch> (wrapped_ap, ap);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.CoreModule.DMatch, OpenCVForUnityPlayMakerActions.DMatch> (wrapped_ap, ap);
 
 
         }

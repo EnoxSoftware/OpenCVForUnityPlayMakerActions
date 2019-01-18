@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.SaliencyModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.StaticSaliencyFineGrained)) storeResult.Value = new OpenCVForUnityPlayMakerActions.StaticSaliencyFineGrained ();
-            ((OpenCVForUnityPlayMakerActions.StaticSaliencyFineGrained)storeResult.Value).wrappedObject = OpenCVForUnity.StaticSaliencyFineGrained.create ();
+            ((OpenCVForUnityPlayMakerActions.StaticSaliencyFineGrained)storeResult.Value).wrappedObject = OpenCVForUnity.SaliencyModule.StaticSaliencyFineGrained.create ();
 
 
         }

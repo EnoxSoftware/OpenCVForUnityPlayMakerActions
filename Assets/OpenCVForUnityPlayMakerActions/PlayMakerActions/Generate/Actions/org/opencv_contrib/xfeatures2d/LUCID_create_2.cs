@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.LUCID)) storeResult.Value = new OpenCVForUnityPlayMakerActions.LUCID ();
-            ((OpenCVForUnityPlayMakerActions.LUCID)storeResult.Value).wrappedObject = OpenCVForUnity.LUCID.create ();
+            ((OpenCVForUnityPlayMakerActions.LUCID)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.LUCID.create ();
 
 
         }

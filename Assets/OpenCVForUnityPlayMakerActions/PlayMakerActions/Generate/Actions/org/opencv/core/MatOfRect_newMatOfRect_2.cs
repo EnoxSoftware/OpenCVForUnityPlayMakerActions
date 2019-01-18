@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,13 +54,13 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            OpenCVForUnity.Rect[] wrapped_a = new OpenCVForUnity.Rect[a.Length];
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.Rect> (a, wrapped_a);
+            OpenCVForUnity.CoreModule.Rect[] wrapped_a = new OpenCVForUnity.CoreModule.Rect[a.Length];
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect> (a, wrapped_a);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfRect)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfRect ();
-            ((OpenCVForUnityPlayMakerActions.MatOfRect)storeResult.Value).wrappedObject = new OpenCVForUnity.MatOfRect (wrapped_a);
+            ((OpenCVForUnityPlayMakerActions.MatOfRect)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfRect (wrapped_a);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.Rect, OpenCVForUnityPlayMakerActions.Rect> (wrapped_a, a);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.CoreModule.Rect, OpenCVForUnityPlayMakerActions.Rect> (wrapped_a, a);
 
 
         }

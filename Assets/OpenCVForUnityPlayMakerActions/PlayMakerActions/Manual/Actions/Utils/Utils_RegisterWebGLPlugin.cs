@@ -1,13 +1,13 @@
 using UnityEngine;
 
-using OpenCVForUnity;
+using OpenCVForUnity.UnityUtils;
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public static void RegisterWebGLPlugin ()")]
-    public class Utils_RegisterWebGLPlugin : HutongGames.PlayMaker.FsmStateAction
+    [HutongGames.PlayMaker.Tooltip ("public static void registerWebGLPlugin ()")]
+    public class Utils_registerWebGLPlugin : HutongGames.PlayMaker.FsmStateAction
     {
 
         [HutongGames.PlayMaker.ActionSection ("")]
@@ -40,7 +40,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            Utils.RegisterWebGLPlugin ();
+            Utils.registerWebGLPlugin ();
 
         }
 

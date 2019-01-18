@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.SaliencyModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newStaticSaliencySpectralResidual\".");
                 return;
             }
-            OpenCVForUnity.StaticSaliencySpectralResidual wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StaticSaliencySpectralResidual, OpenCVForUnity.StaticSaliencySpectralResidual> (owner);
+            OpenCVForUnity.SaliencyModule.StaticSaliencySpectralResidual wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StaticSaliencySpectralResidual, OpenCVForUnity.SaliencyModule.StaticSaliencySpectralResidual> (owner);
 
             wrapped_owner.setImageHeight (val.Value);
 

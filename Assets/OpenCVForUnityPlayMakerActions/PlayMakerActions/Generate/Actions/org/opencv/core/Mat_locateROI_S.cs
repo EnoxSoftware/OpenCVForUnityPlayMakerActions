@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -80,9 +80,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (owner);
+            OpenCVForUnity.CoreModule.Mat wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (owner);
 
-            wrapped_owner.locateROI (new OpenCVForUnity.Size ((double)wholeSize_width.Value, (double)wholeSize_height.Value), new OpenCVForUnity.Point ((double)ofs_x.Value, (double)ofs_y.Value));
+            wrapped_owner.locateROI (new OpenCVForUnity.CoreModule.Size ((double)wholeSize_width.Value, (double)wholeSize_height.Value), new OpenCVForUnity.CoreModule.Point ((double)ofs_x.Value, (double)ofs_y.Value));
 
 
         }

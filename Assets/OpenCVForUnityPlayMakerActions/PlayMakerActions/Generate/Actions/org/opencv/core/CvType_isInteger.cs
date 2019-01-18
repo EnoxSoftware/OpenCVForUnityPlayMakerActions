@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -63,7 +63,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            storeResult.Value = OpenCVForUnity.CvType.isInteger (type.Value);
+            storeResult.Value = OpenCVForUnity.CoreModule.CvType.isInteger (type.Value);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

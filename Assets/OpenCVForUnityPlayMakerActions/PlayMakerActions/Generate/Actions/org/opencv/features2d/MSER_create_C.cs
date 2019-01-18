@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -110,7 +111,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MSER)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MSER ();
-            ((OpenCVForUnityPlayMakerActions.MSER)storeResult.Value).wrappedObject = OpenCVForUnity.MSER.create (_delta.Value, _min_area.Value, _max_area.Value, (float)_max_variation.Value, (float)_min_diversity.Value, _max_evolution.Value, (float)_area_threshold.Value, (float)_min_margin.Value, _edge_blur_size.Value);
+            ((OpenCVForUnityPlayMakerActions.MSER)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.MSER.create (_delta.Value, _min_area.Value, _max_area.Value, (float)_max_variation.Value, (float)_min_diversity.Value, _max_evolution.Value, (float)_area_threshold.Value, (float)_min_margin.Value, _edge_blur_size.Value);
 
 
         }

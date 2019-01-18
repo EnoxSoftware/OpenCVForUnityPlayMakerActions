@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public PredictCollector (OpenCVForUnity.PredictCollector nativeObj)
+        public PredictCollector (OpenCVForUnity.FaceModule.PredictCollector nativeObj)
             : base (nativeObj)
         {
 

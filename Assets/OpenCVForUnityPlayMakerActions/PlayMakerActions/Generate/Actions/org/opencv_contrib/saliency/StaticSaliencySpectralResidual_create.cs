@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.SaliencyModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.StaticSaliencySpectralResidual)) storeResult.Value = new OpenCVForUnityPlayMakerActions.StaticSaliencySpectralResidual ();
-            ((OpenCVForUnityPlayMakerActions.StaticSaliencySpectralResidual)storeResult.Value).wrappedObject = OpenCVForUnity.StaticSaliencySpectralResidual.create ();
+            ((OpenCVForUnityPlayMakerActions.StaticSaliencySpectralResidual)storeResult.Value).wrappedObject = OpenCVForUnity.SaliencyModule.StaticSaliencySpectralResidual.create ();
 
 
         }

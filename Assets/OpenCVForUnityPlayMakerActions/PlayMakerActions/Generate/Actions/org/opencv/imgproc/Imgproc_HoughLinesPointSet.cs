@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -122,14 +123,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("_point is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__point = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_point);
+            OpenCVForUnity.CoreModule.Mat wrapped__point = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_point);
 
             if (!(_lines.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_lines is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__lines = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_lines);
+            OpenCVForUnity.CoreModule.Mat wrapped__lines = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_lines);
 
             if (!(min_rho.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -173,7 +174,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_theta_step = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (theta_step);
 
-            OpenCVForUnity.Imgproc.HoughLinesPointSet (wrapped__point, wrapped__lines, lines_max.Value, threshold.Value, wrapped_min_rho, wrapped_max_rho, wrapped_rho_step, wrapped_min_theta, wrapped_max_theta, wrapped_theta_step);
+            OpenCVForUnity.ImgprocModule.Imgproc.HoughLinesPointSet (wrapped__point, wrapped__lines, lines_max.Value, threshold.Value, wrapped_min_rho, wrapped_max_rho, wrapped_rho_step, wrapped_min_theta, wrapped_max_theta, wrapped_theta_step);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.MlModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -61,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.NormalBayesClassifier)) storeResult.Value = new OpenCVForUnityPlayMakerActions.NormalBayesClassifier ();
-            ((OpenCVForUnityPlayMakerActions.NormalBayesClassifier)storeResult.Value).wrappedObject = OpenCVForUnity.NormalBayesClassifier.load (filepath.Value, nodeName.Value);
+            ((OpenCVForUnityPlayMakerActions.NormalBayesClassifier)storeResult.Value).wrappedObject = OpenCVForUnity.MlModule.NormalBayesClassifier.load (filepath.Value, nodeName.Value);
 
 
         }

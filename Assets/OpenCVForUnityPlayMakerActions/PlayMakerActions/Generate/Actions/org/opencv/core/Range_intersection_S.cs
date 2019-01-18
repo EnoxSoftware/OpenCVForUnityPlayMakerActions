@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -73,10 +73,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newRange\".");
                 return;
             }
-            OpenCVForUnity.Range wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Range, OpenCVForUnity.Range> (owner);
+            OpenCVForUnity.CoreModule.Range wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Range, OpenCVForUnity.CoreModule.Range> (owner);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Range)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Range ();
-            ((OpenCVForUnityPlayMakerActions.Range)storeResult.Value).wrappedObject = wrapped_owner.intersection (new OpenCVForUnity.Range ((int)r1_start.Value, (int)r1_end.Value));
+            ((OpenCVForUnityPlayMakerActions.Range)storeResult.Value).wrappedObject = wrapped_owner.intersection (new OpenCVForUnity.CoreModule.Range ((int)r1_start.Value, (int)r1_end.Value));
 
 
         }

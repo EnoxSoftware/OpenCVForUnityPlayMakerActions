@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.BgsegmModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -68,21 +69,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newSyntheticSequenceGenerator\".");
                 return;
             }
-            OpenCVForUnity.SyntheticSequenceGenerator wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator, OpenCVForUnity.SyntheticSequenceGenerator> (owner);
+            OpenCVForUnity.BgsegmModule.SyntheticSequenceGenerator wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SyntheticSequenceGenerator, OpenCVForUnity.BgsegmModule.SyntheticSequenceGenerator> (owner);
 
             if (!(frame.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("frame is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_frame = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (frame);
+            OpenCVForUnity.CoreModule.Mat wrapped_frame = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (frame);
 
             if (!(gtMask.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("gtMask is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_gtMask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (gtMask);
+            OpenCVForUnity.CoreModule.Mat wrapped_gtMask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (gtMask);
 
             wrapped_owner.getNextFrame (wrapped_frame, wrapped_gtMask);
 

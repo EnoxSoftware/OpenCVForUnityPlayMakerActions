@@ -2,7 +2,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TextModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -14,7 +16,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public ERFilter (OpenCVForUnity.ERFilter nativeObj)
+        public ERFilter (OpenCVForUnity.TextModule.ERFilter nativeObj)
             : base (nativeObj)
         {
 

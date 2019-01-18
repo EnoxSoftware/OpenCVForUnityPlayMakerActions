@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -85,23 +86,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(patternSize.Value is OpenCVForUnityPlayMakerActions.Size))
             {
                 LogError ("patternSize is not initialized. Add Action \"newSize\".");
                 return;
             }
-            OpenCVForUnity.Size wrapped_patternSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.Size> (patternSize);
+            OpenCVForUnity.CoreModule.Size wrapped_patternSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size> (patternSize);
 
             if (!(centers.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("centers is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_centers = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (centers);
+            OpenCVForUnity.CoreModule.Mat wrapped_centers = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (centers);
 
-            storeResult.Value = OpenCVForUnity.Calib3d.findCirclesGrid (wrapped_image, wrapped_patternSize, wrapped_centers);
+            storeResult.Value = OpenCVForUnity.Calib3dModule.Calib3d.findCirclesGrid (wrapped_image, wrapped_patternSize, wrapped_centers);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

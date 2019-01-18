@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +47,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.KeyPoint)) storeResult.Value = new OpenCVForUnityPlayMakerActions.KeyPoint ();
-            ((OpenCVForUnityPlayMakerActions.KeyPoint)storeResult.Value).wrappedObject = new OpenCVForUnity.KeyPoint ();
+            ((OpenCVForUnityPlayMakerActions.KeyPoint)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.KeyPoint ();
 
 
         }

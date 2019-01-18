@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ArucoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -87,10 +88,10 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("dictionary is not initialized. Add Action \"newDictionary\".");
                 return;
             }
-            OpenCVForUnity.Dictionary wrapped_dictionary = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Dictionary, OpenCVForUnity.Dictionary> (dictionary);
+            OpenCVForUnity.ArucoModule.Dictionary wrapped_dictionary = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Dictionary, OpenCVForUnity.ArucoModule.Dictionary> (dictionary);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.GridBoard)) storeResult.Value = new OpenCVForUnityPlayMakerActions.GridBoard ();
-            ((OpenCVForUnityPlayMakerActions.GridBoard)storeResult.Value).wrappedObject = OpenCVForUnity.GridBoard.create (markersX.Value, markersY.Value, markerLength.Value, markerSeparation.Value, wrapped_dictionary);
+            ((OpenCVForUnityPlayMakerActions.GridBoard)storeResult.Value).wrappedObject = OpenCVForUnity.ArucoModule.GridBoard.create (markersX.Value, markersY.Value, markerLength.Value, markerSeparation.Value, wrapped_dictionary);
 
 
         }

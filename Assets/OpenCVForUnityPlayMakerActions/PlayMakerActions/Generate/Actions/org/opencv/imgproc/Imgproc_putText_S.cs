@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -135,7 +136,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
+            OpenCVForUnity.CoreModule.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img);
 
             if (!(fontScale.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -144,7 +145,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_fontScale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (fontScale);
 
-            OpenCVForUnity.Imgproc.putText (wrapped_img, text.Value, new OpenCVForUnity.Point ((double)org_x.Value, (double)org_y.Value), fontFace.Value, wrapped_fontScale, new OpenCVForUnity.Scalar ((double)color_v0.Value, (double)color_v1.Value, (double)color_v2.Value, (double)color_v3.Value), thickness.Value, lineType.Value, bottomLeftOrigin.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.putText (wrapped_img, text.Value, new OpenCVForUnity.CoreModule.Point ((double)org_x.Value, (double)org_y.Value), fontFace.Value, wrapped_fontScale, new OpenCVForUnity.CoreModule.Scalar ((double)color_v0.Value, (double)color_v1.Value, (double)color_v2.Value, (double)color_v3.Value), thickness.Value, lineType.Value, bottomLeftOrigin.Value);
 
 
         }

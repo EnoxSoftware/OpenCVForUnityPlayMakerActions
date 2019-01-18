@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -105,28 +106,28 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
+            OpenCVForUnity.CoreModule.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img);
 
             if (!(pt1.Value is OpenCVForUnityPlayMakerActions.Point))
             {
                 LogError ("pt1 is not initialized. Add Action \"newPoint\".");
                 return;
             }
-            OpenCVForUnity.Point wrapped_pt1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (pt1);
+            OpenCVForUnity.CoreModule.Point wrapped_pt1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (pt1);
 
             if (!(pt2.Value is OpenCVForUnityPlayMakerActions.Point))
             {
                 LogError ("pt2 is not initialized. Add Action \"newPoint\".");
                 return;
             }
-            OpenCVForUnity.Point wrapped_pt2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.Point> (pt2);
+            OpenCVForUnity.CoreModule.Point wrapped_pt2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point> (pt2);
 
             if (!(color.Value is OpenCVForUnityPlayMakerActions.Scalar))
             {
                 LogError ("color is not initialized. Add Action \"newScalar\".");
                 return;
             }
-            OpenCVForUnity.Scalar wrapped_color = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.Scalar> (color);
+            OpenCVForUnity.CoreModule.Scalar wrapped_color = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.CoreModule.Scalar> (color);
 
             if (!(tipLength.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -135,7 +136,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_tipLength = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (tipLength);
 
-            OpenCVForUnity.Imgproc.arrowedLine (wrapped_img, wrapped_pt1, wrapped_pt2, wrapped_color, thickness.Value, line_type.Value, shift.Value, wrapped_tipLength);
+            OpenCVForUnity.ImgprocModule.Imgproc.arrowedLine (wrapped_img, wrapped_pt1, wrapped_pt2, wrapped_color, thickness.Value, line_type.Value, shift.Value, wrapped_tipLength);
 
 
         }

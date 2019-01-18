@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ObjdetectModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public CascadeClassifier (OpenCVForUnity.CascadeClassifier nativeObj)
+        public CascadeClassifier (OpenCVForUnity.ObjdetectModule.CascadeClassifier nativeObj)
             : base (nativeObj)
         {
 

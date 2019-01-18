@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -122,37 +123,37 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("points1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_points1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (points1);
+            OpenCVForUnity.CoreModule.Mat wrapped_points1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (points1);
 
             if (!(points2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("points2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_points2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (points2);
+            OpenCVForUnity.CoreModule.Mat wrapped_points2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (points2);
 
             if (!(F.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("F is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_F = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (F);
+            OpenCVForUnity.CoreModule.Mat wrapped_F = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (F);
 
             if (!(H1.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("H1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_H1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (H1);
+            OpenCVForUnity.CoreModule.Mat wrapped_H1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (H1);
 
             if (!(H2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("H2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_H2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (H2);
+            OpenCVForUnity.CoreModule.Mat wrapped_H2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (H2);
 
-            storeResult.Value = OpenCVForUnity.Calib3d.stereoRectifyUncalibrated (wrapped_points1, wrapped_points2, wrapped_F, new OpenCVForUnity.Size ((double)imgSize_width.Value, (double)imgSize_height.Value), wrapped_H1, wrapped_H2, (float)threshold.Value);
+            storeResult.Value = OpenCVForUnity.Calib3dModule.Calib3d.stereoRectifyUncalibrated (wrapped_points1, wrapped_points2, wrapped_F, new OpenCVForUnity.CoreModule.Size ((double)imgSize_width.Value, (double)imgSize_height.Value), wrapped_H1, wrapped_H2, (float)threshold.Value);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

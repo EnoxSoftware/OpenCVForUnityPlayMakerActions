@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Phase_unwrappingModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -60,14 +61,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newHistogramPhaseUnwrapping\".");
                 return;
             }
-            OpenCVForUnity.HistogramPhaseUnwrapping wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.HistogramPhaseUnwrapping, OpenCVForUnity.HistogramPhaseUnwrapping> (owner);
+            OpenCVForUnity.Phase_unwrappingModule.HistogramPhaseUnwrapping wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.HistogramPhaseUnwrapping, OpenCVForUnity.Phase_unwrappingModule.HistogramPhaseUnwrapping> (owner);
 
             if (!(reliabilityMap.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("reliabilityMap is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_reliabilityMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (reliabilityMap);
+            OpenCVForUnity.CoreModule.Mat wrapped_reliabilityMap = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (reliabilityMap);
 
             wrapped_owner.getInverseReliabilityMap (wrapped_reliabilityMap);
 

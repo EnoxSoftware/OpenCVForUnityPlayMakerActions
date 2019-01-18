@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XphotoModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public GrayworldWB (OpenCVForUnity.GrayworldWB nativeObj)
+        public GrayworldWB (OpenCVForUnity.XphotoModule.GrayworldWB nativeObj)
             : base (nativeObj)
         {
 

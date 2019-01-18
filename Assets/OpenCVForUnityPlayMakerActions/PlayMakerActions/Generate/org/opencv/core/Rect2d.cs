@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +14,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public Rect2d (OpenCVForUnity.Rect2d nativeObj)
+        public Rect2d (OpenCVForUnity.CoreModule.Rect2d nativeObj)
             : base (nativeObj)
         {
 

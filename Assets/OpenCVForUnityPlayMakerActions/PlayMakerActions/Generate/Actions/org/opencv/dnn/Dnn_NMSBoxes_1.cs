@@ -2,7 +2,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.DnnModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -90,23 +91,23 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("bboxes is not initialized. Add Action \"newMatOfRect\".");
                 return;
             }
-            OpenCVForUnity.MatOfRect wrapped_bboxes = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.MatOfRect> (bboxes);
+            OpenCVForUnity.CoreModule.MatOfRect wrapped_bboxes = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect> (bboxes);
 
             if (!(scores.Value is OpenCVForUnityPlayMakerActions.MatOfFloat))
             {
                 LogError ("scores is not initialized. Add Action \"newMatOfFloat\".");
                 return;
             }
-            OpenCVForUnity.MatOfFloat wrapped_scores = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.MatOfFloat> (scores);
+            OpenCVForUnity.CoreModule.MatOfFloat wrapped_scores = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.CoreModule.MatOfFloat> (scores);
 
             if (!(indices.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
             {
                 LogError ("indices is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.MatOfInt wrapped_indices = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (indices);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_indices = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (indices);
 
-            OpenCVForUnity.Dnn.NMSBoxes (wrapped_bboxes, wrapped_scores, score_threshold.Value, nms_threshold.Value, wrapped_indices, eta.Value);
+            OpenCVForUnity.DnnModule.Dnn.NMSBoxes (wrapped_bboxes, wrapped_scores, score_threshold.Value, nms_threshold.Value, wrapped_indices, eta.Value);
 
 
         }

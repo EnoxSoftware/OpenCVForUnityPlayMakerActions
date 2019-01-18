@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -77,14 +77,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newDMatch\".");
                 return;
             }
-            OpenCVForUnity.DMatch wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DMatch, OpenCVForUnity.DMatch> (owner);
+            OpenCVForUnity.CoreModule.DMatch wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DMatch, OpenCVForUnity.CoreModule.DMatch> (owner);
 
             if (!(it.Value is OpenCVForUnityPlayMakerActions.DMatch))
             {
                 LogError ("it is not initialized. Add Action \"newDMatch\".");
                 return;
             }
-            OpenCVForUnity.DMatch wrapped_it = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DMatch, OpenCVForUnity.DMatch> (it);
+            OpenCVForUnity.CoreModule.DMatch wrapped_it = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DMatch, OpenCVForUnity.CoreModule.DMatch> (it);
 
             storeResult.Value = wrapped_owner.lessThan (wrapped_it);
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -74,16 +75,16 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("H1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_H1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (H1);
+            OpenCVForUnity.CoreModule.Mat wrapped_H1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (H1);
 
             if (!(H2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("H2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_H2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (H2);
+            OpenCVForUnity.CoreModule.Mat wrapped_H2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (H2);
 
-            storeResult.Value = (float)OpenCVForUnity.Imgproc.compareHist (wrapped_H1, wrapped_H2, method.Value);
+            storeResult.Value = (float)OpenCVForUnity.ImgprocModule.Imgproc.compareHist (wrapped_H1, wrapped_H2, method.Value);
 
 
         }

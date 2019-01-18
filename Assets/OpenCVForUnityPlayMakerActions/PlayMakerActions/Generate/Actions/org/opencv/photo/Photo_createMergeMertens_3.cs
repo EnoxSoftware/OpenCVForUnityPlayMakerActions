@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MergeMertens)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MergeMertens ();
-            ((OpenCVForUnityPlayMakerActions.MergeMertens)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createMergeMertens ();
+            ((OpenCVForUnityPlayMakerActions.MergeMertens)storeResult.Value).wrappedObject = OpenCVForUnity.PhotoModule.Photo.createMergeMertens ();
 
 
         }

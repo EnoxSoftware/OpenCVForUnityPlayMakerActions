@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -123,9 +124,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("intersectingRegion is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_intersectingRegion = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (intersectingRegion);
+            OpenCVForUnity.CoreModule.Mat wrapped_intersectingRegion = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (intersectingRegion);
 
-            storeResult.Value = OpenCVForUnity.Imgproc.rotatedRectangleIntersection (new OpenCVForUnity.RotatedRect (new OpenCVForUnity.Point ((double)rect1_center_x.Value, (double)rect1_center_y.Value), new OpenCVForUnity.Size ((double)rect1_size_width.Value, (double)rect1_size_height.Value), (double)rect1_angle.Value), new OpenCVForUnity.RotatedRect (new OpenCVForUnity.Point ((double)rect2_center_x.Value, (double)rect2_center_y.Value), new OpenCVForUnity.Size ((double)rect2_size_width.Value, (double)rect2_size_height.Value), (double)rect2_angle.Value), wrapped_intersectingRegion);
+            storeResult.Value = OpenCVForUnity.ImgprocModule.Imgproc.rotatedRectangleIntersection (new OpenCVForUnity.CoreModule.RotatedRect (new OpenCVForUnity.CoreModule.Point ((double)rect1_center_x.Value, (double)rect1_center_y.Value), new OpenCVForUnity.CoreModule.Size ((double)rect1_size_width.Value, (double)rect1_size_height.Value), (double)rect1_angle.Value), new OpenCVForUnity.CoreModule.RotatedRect (new OpenCVForUnity.CoreModule.Point ((double)rect2_center_x.Value, (double)rect2_center_y.Value), new OpenCVForUnity.CoreModule.Size ((double)rect2_size_width.Value, (double)rect2_size_height.Value), (double)rect2_angle.Value), wrapped_intersectingRegion);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Structured_lightModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SinusoidalPattern)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SinusoidalPattern ();
-            ((OpenCVForUnityPlayMakerActions.SinusoidalPattern)storeResult.Value).wrappedObject = OpenCVForUnity.SinusoidalPattern.create ();
+            ((OpenCVForUnityPlayMakerActions.SinusoidalPattern)storeResult.Value).wrappedObject = OpenCVForUnity.Structured_lightModule.SinusoidalPattern.create ();
 
 
         }

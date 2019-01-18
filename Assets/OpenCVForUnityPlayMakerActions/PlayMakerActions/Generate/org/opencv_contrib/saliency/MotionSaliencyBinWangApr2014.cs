@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.SaliencyModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public MotionSaliencyBinWangApr2014 (OpenCVForUnity.MotionSaliencyBinWangApr2014 nativeObj)
+        public MotionSaliencyBinWangApr2014 (OpenCVForUnity.SaliencyModule.MotionSaliencyBinWangApr2014 nativeObj)
             : base (nativeObj)
         {
 

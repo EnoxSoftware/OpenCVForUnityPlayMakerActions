@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -56,7 +56,7 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess ()
         {
 
-            storeResult.Value = OpenCVForUnity.Core.useIPP ();
+            storeResult.Value = OpenCVForUnity.CoreModule.Core.useIPP ();
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

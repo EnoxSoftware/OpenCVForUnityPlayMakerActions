@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +59,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newAlgorithm\".");
                 return;
             }
-            OpenCVForUnity.Algorithm wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Algorithm, OpenCVForUnity.Algorithm> (owner);
+            OpenCVForUnity.CoreModule.Algorithm wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Algorithm, OpenCVForUnity.CoreModule.Algorithm> (owner);
 
             storeResult.Value = wrapped_owner.getDefaultName ();
 

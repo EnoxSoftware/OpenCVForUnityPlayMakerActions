@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.XimgprocModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public EdgeAwareInterpolator (OpenCVForUnity.EdgeAwareInterpolator nativeObj)
+        public EdgeAwareInterpolator (OpenCVForUnity.XimgprocModule.EdgeAwareInterpolator nativeObj)
             : base (nativeObj)
         {
 

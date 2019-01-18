@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ObjdetectModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -111,30 +112,30 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newHOGDescriptor\".");
                 return;
             }
-            OpenCVForUnity.HOGDescriptor wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.HOGDescriptor, OpenCVForUnity.HOGDescriptor> (owner);
+            OpenCVForUnity.ObjdetectModule.HOGDescriptor wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.HOGDescriptor, OpenCVForUnity.ObjdetectModule.HOGDescriptor> (owner);
 
             if (!(img.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("img is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (img);
+            OpenCVForUnity.CoreModule.Mat wrapped_img = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (img);
 
             if (!(foundLocations.Value is OpenCVForUnityPlayMakerActions.MatOfRect))
             {
                 LogError ("foundLocations is not initialized. Add Action \"newMatOfRect\".");
                 return;
             }
-            OpenCVForUnity.MatOfRect wrapped_foundLocations = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.MatOfRect> (foundLocations);
+            OpenCVForUnity.CoreModule.MatOfRect wrapped_foundLocations = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect> (foundLocations);
 
             if (!(foundWeights.Value is OpenCVForUnityPlayMakerActions.MatOfDouble))
             {
                 LogError ("foundWeights is not initialized. Add Action \"newMatOfDouble\".");
                 return;
             }
-            OpenCVForUnity.MatOfDouble wrapped_foundWeights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDouble, OpenCVForUnity.MatOfDouble> (foundWeights);
+            OpenCVForUnity.CoreModule.MatOfDouble wrapped_foundWeights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDouble, OpenCVForUnity.CoreModule.MatOfDouble> (foundWeights);
 
-            wrapped_owner.detectMultiScale (wrapped_img, wrapped_foundLocations, wrapped_foundWeights, (float)hitThreshold.Value, new OpenCVForUnity.Size ((double)winStride_width.Value, (double)winStride_height.Value), new OpenCVForUnity.Size ((double)padding_width.Value, (double)padding_height.Value));
+            wrapped_owner.detectMultiScale (wrapped_img, wrapped_foundLocations, wrapped_foundWeights, (float)hitThreshold.Value, new OpenCVForUnity.CoreModule.Size ((double)winStride_width.Value, (double)winStride_height.Value), new OpenCVForUnity.CoreModule.Size ((double)padding_width.Value, (double)padding_height.Value));
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newTonemap\".");
                 return;
             }
-            OpenCVForUnity.Tonemap wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Tonemap, OpenCVForUnity.Tonemap> (owner);
+            OpenCVForUnity.PhotoModule.Tonemap wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Tonemap, OpenCVForUnity.PhotoModule.Tonemap> (owner);
 
             wrapped_owner.setGamma (gamma.Value);
 

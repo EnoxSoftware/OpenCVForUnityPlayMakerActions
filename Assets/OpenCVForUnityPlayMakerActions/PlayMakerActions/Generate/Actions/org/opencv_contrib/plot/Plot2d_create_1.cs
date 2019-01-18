@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PlotModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -67,17 +68,17 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("dataX is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dataX = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dataX);
+            OpenCVForUnity.CoreModule.Mat wrapped_dataX = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dataX);
 
             if (!(dataY.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("dataY is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_dataY = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (dataY);
+            OpenCVForUnity.CoreModule.Mat wrapped_dataY = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dataY);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Plot2d)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Plot2d ();
-            ((OpenCVForUnityPlayMakerActions.Plot2d)storeResult.Value).wrappedObject = OpenCVForUnity.Plot2d.create (wrapped_dataX, wrapped_dataY);
+            ((OpenCVForUnityPlayMakerActions.Plot2d)storeResult.Value).wrappedObject = OpenCVForUnity.PlotModule.Plot2d.create (wrapped_dataX, wrapped_dataY);
 
 
         }

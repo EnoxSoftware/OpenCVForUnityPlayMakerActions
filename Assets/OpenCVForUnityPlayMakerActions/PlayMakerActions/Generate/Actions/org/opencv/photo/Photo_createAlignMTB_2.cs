@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -54,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.AlignMTB)) storeResult.Value = new OpenCVForUnityPlayMakerActions.AlignMTB ();
-            ((OpenCVForUnityPlayMakerActions.AlignMTB)storeResult.Value).wrappedObject = OpenCVForUnity.Photo.createAlignMTB (max_bits.Value);
+            ((OpenCVForUnityPlayMakerActions.AlignMTB)storeResult.Value).wrappedObject = OpenCVForUnity.PhotoModule.Photo.createAlignMTB (max_bits.Value);
 
 
         }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +47,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Range)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Range ();
-            ((OpenCVForUnityPlayMakerActions.Range)storeResult.Value).wrappedObject = new OpenCVForUnity.Range ();
+            ((OpenCVForUnityPlayMakerActions.Range)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.Range ();
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ObjdetectModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfFloat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfFloat ();
-            ((OpenCVForUnityPlayMakerActions.MatOfFloat)storeResult.Value).wrappedObject = OpenCVForUnity.HOGDescriptor.getDefaultPeopleDetector ();
+            ((OpenCVForUnityPlayMakerActions.MatOfFloat)storeResult.Value).wrappedObject = OpenCVForUnity.ObjdetectModule.HOGDescriptor.getDefaultPeopleDetector ();
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.FaceModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newStandardCollector\".");
                 return;
             }
-            OpenCVForUnity.StandardCollector wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StandardCollector, OpenCVForUnity.StandardCollector> (owner);
+            OpenCVForUnity.FaceModule.StandardCollector wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StandardCollector, OpenCVForUnity.FaceModule.StandardCollector> (owner);
 
             storeResult.Value = (float)wrapped_owner.getMinDist ();
 

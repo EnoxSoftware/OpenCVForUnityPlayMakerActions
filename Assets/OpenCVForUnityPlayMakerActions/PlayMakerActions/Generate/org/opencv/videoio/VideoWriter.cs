@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoioModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public VideoWriter (OpenCVForUnity.VideoWriter nativeObj)
+        public VideoWriter (OpenCVForUnity.VideoioModule.VideoWriter nativeObj)
             : base (nativeObj)
         {
 

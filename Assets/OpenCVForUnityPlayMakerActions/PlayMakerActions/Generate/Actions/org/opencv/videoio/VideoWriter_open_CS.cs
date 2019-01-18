@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.VideoioModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -118,9 +119,9 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newVideoWriter\".");
                 return;
             }
-            OpenCVForUnity.VideoWriter wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.VideoWriter, OpenCVForUnity.VideoWriter> (owner);
+            OpenCVForUnity.VideoioModule.VideoWriter wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.VideoWriter, OpenCVForUnity.VideoioModule.VideoWriter> (owner);
 
-            storeResult.Value = wrapped_owner.open (filename.Value, apiPreference.Value, fourcc.Value, (float)fps.Value, new OpenCVForUnity.Size ((double)frameSize_width.Value, (double)frameSize_height.Value), isColor.Value);
+            storeResult.Value = wrapped_owner.open (filename.Value, apiPreference.Value, fourcc.Value, (float)fps.Value, new OpenCVForUnity.CoreModule.Size ((double)frameSize_width.Value, (double)frameSize_height.Value), isColor.Value);
 
             Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
 

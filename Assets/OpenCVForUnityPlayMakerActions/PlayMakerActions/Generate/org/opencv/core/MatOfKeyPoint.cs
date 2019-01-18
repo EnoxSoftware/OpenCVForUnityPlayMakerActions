@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +14,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public MatOfKeyPoint (OpenCVForUnity.MatOfKeyPoint nativeObj)
+        public MatOfKeyPoint (OpenCVForUnity.CoreModule.MatOfKeyPoint nativeObj)
             : base (nativeObj)
         {
 

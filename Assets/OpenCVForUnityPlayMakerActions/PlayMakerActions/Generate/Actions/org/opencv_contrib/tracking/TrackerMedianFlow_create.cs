@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.TrackingModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TrackerMedianFlow)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TrackerMedianFlow ();
-            ((OpenCVForUnityPlayMakerActions.TrackerMedianFlow)storeResult.Value).wrappedObject = OpenCVForUnity.TrackerMedianFlow.create ();
+            ((OpenCVForUnityPlayMakerActions.TrackerMedianFlow)storeResult.Value).wrappedObject = OpenCVForUnity.TrackingModule.TrackerMedianFlow.create ();
 
 
         }

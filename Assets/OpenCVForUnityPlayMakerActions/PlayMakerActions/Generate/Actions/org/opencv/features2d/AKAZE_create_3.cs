@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -75,7 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.AKAZE)) storeResult.Value = new OpenCVForUnityPlayMakerActions.AKAZE ();
-            ((OpenCVForUnityPlayMakerActions.AKAZE)storeResult.Value).wrappedObject = OpenCVForUnity.AKAZE.create (descriptor_type.Value, descriptor_size.Value, descriptor_channels.Value, threshold.Value);
+            ((OpenCVForUnityPlayMakerActions.AKAZE)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.AKAZE.create (descriptor_type.Value, descriptor_size.Value, descriptor_channels.Value, threshold.Value);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Img_hashModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -66,7 +67,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newMarrHildrethHash\".");
                 return;
             }
-            OpenCVForUnity.MarrHildrethHash wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MarrHildrethHash, OpenCVForUnity.MarrHildrethHash> (owner);
+            OpenCVForUnity.Img_hashModule.MarrHildrethHash wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MarrHildrethHash, OpenCVForUnity.Img_hashModule.MarrHildrethHash> (owner);
 
             wrapped_owner.setKernelParam (alpha.Value, scale.Value);
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.OptflowModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -76,14 +77,14 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("silhouette is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_silhouette = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (silhouette);
+            OpenCVForUnity.CoreModule.Mat wrapped_silhouette = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (silhouette);
 
             if (!(mhi.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("mhi is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_mhi = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (mhi);
+            OpenCVForUnity.CoreModule.Mat wrapped_mhi = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (mhi);
 
             if (!(timestamp.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -99,7 +100,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_duration = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (duration);
 
-            OpenCVForUnity.Optflow.updateMotionHistory (wrapped_silhouette, wrapped_mhi, wrapped_timestamp, wrapped_duration);
+            OpenCVForUnity.OptflowModule.Optflow.updateMotionHistory (wrapped_silhouette, wrapped_mhi, wrapped_timestamp, wrapped_duration);
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.SaliencyModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -47,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.ObjectnessBING)) storeResult.Value = new OpenCVForUnityPlayMakerActions.ObjectnessBING ();
-            ((OpenCVForUnityPlayMakerActions.ObjectnessBING)storeResult.Value).wrappedObject = OpenCVForUnity.ObjectnessBING.create ();
+            ((OpenCVForUnityPlayMakerActions.ObjectnessBING)storeResult.Value).wrappedObject = OpenCVForUnity.SaliencyModule.ObjectnessBING.create ();
 
 
         }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.PhotoModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -59,7 +60,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newTonemapMantiuk\".");
                 return;
             }
-            OpenCVForUnity.TonemapMantiuk wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TonemapMantiuk, OpenCVForUnity.TonemapMantiuk> (owner);
+            OpenCVForUnity.PhotoModule.TonemapMantiuk wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TonemapMantiuk, OpenCVForUnity.PhotoModule.TonemapMantiuk> (owner);
 
             storeResult.Value = wrapped_owner.getScale ();
 

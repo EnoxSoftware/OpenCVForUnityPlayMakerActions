@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Xfeatures2dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -75,21 +76,21 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newPCTSignaturesSQFD\".");
                 return;
             }
-            OpenCVForUnity.PCTSignaturesSQFD wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD, OpenCVForUnity.PCTSignaturesSQFD> (owner);
+            OpenCVForUnity.Xfeatures2dModule.PCTSignaturesSQFD wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD, OpenCVForUnity.Xfeatures2dModule.PCTSignaturesSQFD> (owner);
 
             if (!(_signature0.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_signature0 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__signature0 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_signature0);
+            OpenCVForUnity.CoreModule.Mat wrapped__signature0 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_signature0);
 
             if (!(_signature1.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("_signature1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped__signature1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (_signature1);
+            OpenCVForUnity.CoreModule.Mat wrapped__signature1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (_signature1);
 
             storeResult.Value = wrapped_owner.computeQuadraticFormDistance (wrapped__signature0, wrapped__signature1);
 

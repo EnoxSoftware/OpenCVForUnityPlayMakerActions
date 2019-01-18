@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Phase_unwrappingModule;
+
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -13,7 +15,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public HistogramPhaseUnwrapping (OpenCVForUnity.HistogramPhaseUnwrapping nativeObj)
+        public HistogramPhaseUnwrapping (OpenCVForUnity.Phase_unwrappingModule.HistogramPhaseUnwrapping nativeObj)
             : base (nativeObj)
         {
 

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-using OpenCVForUnity;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ObjdetectModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
@@ -134,35 +135,35 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError ("owner is not initialized. Add Action \"newCascadeClassifier\".");
                 return;
             }
-            OpenCVForUnity.CascadeClassifier wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.CascadeClassifier, OpenCVForUnity.CascadeClassifier> (owner);
+            OpenCVForUnity.ObjdetectModule.CascadeClassifier wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.CascadeClassifier, OpenCVForUnity.ObjdetectModule.CascadeClassifier> (owner);
 
             if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError ("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
 
             if (!(objects.Value is OpenCVForUnityPlayMakerActions.MatOfRect))
             {
                 LogError ("objects is not initialized. Add Action \"newMatOfRect\".");
                 return;
             }
-            OpenCVForUnity.MatOfRect wrapped_objects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.MatOfRect> (objects);
+            OpenCVForUnity.CoreModule.MatOfRect wrapped_objects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect> (objects);
 
             if (!(rejectLevels.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
             {
                 LogError ("rejectLevels is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.MatOfInt wrapped_rejectLevels = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.MatOfInt> (rejectLevels);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_rejectLevels = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (rejectLevels);
 
             if (!(levelWeights.Value is OpenCVForUnityPlayMakerActions.MatOfDouble))
             {
                 LogError ("levelWeights is not initialized. Add Action \"newMatOfDouble\".");
                 return;
             }
-            OpenCVForUnity.MatOfDouble wrapped_levelWeights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDouble, OpenCVForUnity.MatOfDouble> (levelWeights);
+            OpenCVForUnity.CoreModule.MatOfDouble wrapped_levelWeights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfDouble, OpenCVForUnity.CoreModule.MatOfDouble> (levelWeights);
 
             if (!(scaleFactor.Value is OpenCVForUnityPlayMakerActions.Double))
             {
@@ -171,7 +172,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_scaleFactor = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (scaleFactor);
 
-            wrapped_owner.detectMultiScale3 (wrapped_image, wrapped_objects, wrapped_rejectLevels, wrapped_levelWeights, wrapped_scaleFactor, minNeighbors.Value, flags.Value, new OpenCVForUnity.Size ((double)minSize_width.Value, (double)minSize_height.Value), new OpenCVForUnity.Size ((double)maxSize_width.Value, (double)maxSize_height.Value));
+            wrapped_owner.detectMultiScale3 (wrapped_image, wrapped_objects, wrapped_rejectLevels, wrapped_levelWeights, wrapped_scaleFactor, minNeighbors.Value, flags.Value, new OpenCVForUnity.CoreModule.Size ((double)minSize_width.Value, (double)minSize_height.Value), new OpenCVForUnity.CoreModule.Size ((double)maxSize_width.Value, (double)maxSize_height.Value));
 
 
         }
