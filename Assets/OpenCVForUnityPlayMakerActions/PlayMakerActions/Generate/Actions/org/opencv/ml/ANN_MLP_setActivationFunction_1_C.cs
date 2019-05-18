@@ -8,35 +8,35 @@ using OpenCVForUnity.MlModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public void setActivationFunction (int type, double param1)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ANN_MLP), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "type")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "param1")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ml")]
+    [HutongGames.PlayMaker.Tooltip("public void setActivationFunction(int type, double param1)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.ANN_MLP), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "type")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "param1")]
     public class ANN_MLP_setActivationFunction_1_C : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] ANN_MLP")]
+        [HutongGames.PlayMaker.ActionSection("[class] ANN_MLP")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.ANN_MLP))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.ANN_MLP))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt type;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] double(float)")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat param1;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             type = 0;
@@ -44,32 +44,32 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.ANN_MLP))
             {
-                LogError ("owner is not initialized. Add Action \"newANN_MLP\".");
+                LogError("owner is not initialized. Add Action \"newANN_MLP\".");
                 return;
             }
-            OpenCVForUnity.MlModule.ANN_MLP wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ANN_MLP, OpenCVForUnity.MlModule.ANN_MLP> (owner);
+            OpenCVForUnity.MlModule.ANN_MLP wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ANN_MLP, OpenCVForUnity.MlModule.ANN_MLP>(owner);
 
-            wrapped_owner.setActivationFunction (type.Value, (float)param1.Value);
+            wrapped_owner.setActivationFunction(type.Value, (float)param1.Value);
 
 
         }

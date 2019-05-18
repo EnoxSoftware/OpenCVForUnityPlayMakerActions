@@ -7,46 +7,46 @@ using OpenCVForUnity.CoreModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public static void addSamplesDataSearchPath (string path)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "path")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_core")]
+    [HutongGames.PlayMaker.Tooltip("public static void addSamplesDataSearchPath(string path)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "path")]
     public class Core_addSamplesDataSearchPath : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] string")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] string")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
         public HutongGames.PlayMaker.FsmString path;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             path = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            OpenCVForUnity.CoreModule.Core.addSamplesDataSearchPath (path.Value);
+            OpenCVForUnity.CoreModule.Core.addSamplesDataSearchPath(path.Value);
 
 
         }

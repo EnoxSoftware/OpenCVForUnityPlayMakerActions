@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BackgroundSubtractorLSBPDesc : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public BackgroundSubtractorLSBPDesc ()
+        public BackgroundSubtractorLSBPDesc()
         {
 
         }
 
-        public BackgroundSubtractorLSBPDesc (OpenCVForUnity.BgsegmModule.BackgroundSubtractorLSBPDesc nativeObj)
-            : base (nativeObj)
+        public BackgroundSubtractorLSBPDesc(OpenCVForUnity.BgsegmModule.BackgroundSubtractorLSBPDesc nativeObj) : base(nativeObj)
         {
 
         }

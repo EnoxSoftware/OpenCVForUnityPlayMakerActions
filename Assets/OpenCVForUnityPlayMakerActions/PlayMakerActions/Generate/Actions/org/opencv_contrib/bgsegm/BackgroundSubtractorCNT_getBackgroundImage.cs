@@ -8,69 +8,69 @@ using OpenCVForUnity.BgsegmModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_bgsegm")]
-    [HutongGames.PlayMaker.Tooltip ("public override void getBackgroundImage (Mat backgroundImage)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "backgroundImage")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_bgsegm")]
+    [HutongGames.PlayMaker.Tooltip("public override void getBackgroundImage(Mat backgroundImage)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "backgroundImage")]
     public class BackgroundSubtractorCNT_getBackgroundImage : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] BackgroundSubtractorCNT")]
+        [HutongGames.PlayMaker.ActionSection("[class] BackgroundSubtractorCNT")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] Mat")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject backgroundImage;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             backgroundImage = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT))
             {
-                LogError ("owner is not initialized. Add Action \"newBackgroundSubtractorCNT\".");
+                LogError("owner is not initialized. Add Action \"newBackgroundSubtractorCNT\".");
                 return;
             }
-            OpenCVForUnity.BgsegmModule.BackgroundSubtractorCNT wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT, OpenCVForUnity.BgsegmModule.BackgroundSubtractorCNT> (owner);
+            OpenCVForUnity.BgsegmModule.BackgroundSubtractorCNT wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT, OpenCVForUnity.BgsegmModule.BackgroundSubtractorCNT>(owner);
 
             if (!(backgroundImage.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("backgroundImage is not initialized. Add Action \"newMat\".");
+                LogError("backgroundImage is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_backgroundImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (backgroundImage);
+            OpenCVForUnity.CoreModule.Mat wrapped_backgroundImage = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(backgroundImage);
 
-            wrapped_owner.getBackgroundImage (wrapped_backgroundImage);
+            wrapped_owner.getBackgroundImage(wrapped_backgroundImage);
 
 
         }

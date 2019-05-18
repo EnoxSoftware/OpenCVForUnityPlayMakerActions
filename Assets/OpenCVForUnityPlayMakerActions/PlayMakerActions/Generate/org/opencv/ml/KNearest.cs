@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class KNearest : OpenCVForUnityPlayMakerActions.StatModel
     {
 
-        public KNearest ()
+        public KNearest()
         {
 
         }
 
-        public KNearest (OpenCVForUnity.MlModule.KNearest nativeObj)
-            : base (nativeObj)
+        public KNearest(OpenCVForUnity.MlModule.KNearest nativeObj) : base(nativeObj)
         {
 
         }

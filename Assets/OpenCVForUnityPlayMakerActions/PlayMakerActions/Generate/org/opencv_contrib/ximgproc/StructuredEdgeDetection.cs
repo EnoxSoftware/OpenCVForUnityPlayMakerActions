@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class StructuredEdgeDetection : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public StructuredEdgeDetection ()
+        public StructuredEdgeDetection()
         {
 
         }
 
-        public StructuredEdgeDetection (OpenCVForUnity.XimgprocModule.StructuredEdgeDetection nativeObj)
-            : base (nativeObj)
+        public StructuredEdgeDetection(OpenCVForUnity.XimgprocModule.StructuredEdgeDetection nativeObj) : base(nativeObj)
         {
 
         }

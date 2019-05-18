@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MergeDebevec : OpenCVForUnityPlayMakerActions.MergeExposures
     {
 
-        public MergeDebevec ()
+        public MergeDebevec()
         {
 
         }
 
-        public MergeDebevec (OpenCVForUnity.PhotoModule.MergeDebevec nativeObj)
-            : base (nativeObj)
+        public MergeDebevec(OpenCVForUnity.PhotoModule.MergeDebevec nativeObj) : base(nativeObj)
         {
 
         }

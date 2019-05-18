@@ -8,45 +8,45 @@ using OpenCVForUnity.ImgprocModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public void initDelaunay (Rect rect)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Subdiv2D), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "rect_x")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "rect_y")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "rect_width")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "rect_height")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
+    [HutongGames.PlayMaker.Tooltip("public void initDelaunay(Rect rect)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Subdiv2D), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "rect_x")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "rect_y")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "rect_width")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "rect_height")]
     public class Subdiv2D_initDelaunay_S : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] Subdiv2D")]
+        [HutongGames.PlayMaker.ActionSection("[class] Subdiv2D")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Subdiv2D))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Subdiv2D))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] Rect")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] Rect")]
 
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt rect_x;
 
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt rect_y;
 
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt rect_width;
 
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt rect_height;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             rect_x = 0;
@@ -56,32 +56,32 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.Subdiv2D))
             {
-                LogError ("owner is not initialized. Add Action \"newSubdiv2D\".");
+                LogError("owner is not initialized. Add Action \"newSubdiv2D\".");
                 return;
             }
-            OpenCVForUnity.ImgprocModule.Subdiv2D wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Subdiv2D, OpenCVForUnity.ImgprocModule.Subdiv2D> (owner);
+            OpenCVForUnity.ImgprocModule.Subdiv2D wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Subdiv2D, OpenCVForUnity.ImgprocModule.Subdiv2D>(owner);
 
-            wrapped_owner.initDelaunay (new OpenCVForUnity.CoreModule.Rect ((int)rect_x.Value, (int)rect_y.Value, (int)rect_width.Value, (int)rect_height.Value));
+            wrapped_owner.initDelaunay(new OpenCVForUnity.CoreModule.Rect((int)rect_x.Value, (int)rect_y.Value, (int)rect_width.Value, (int)rect_height.Value));
 
 
         }

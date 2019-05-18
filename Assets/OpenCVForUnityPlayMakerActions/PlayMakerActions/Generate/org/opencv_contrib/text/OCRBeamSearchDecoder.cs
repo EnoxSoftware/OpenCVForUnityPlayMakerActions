@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class OCRBeamSearchDecoder : OpenCVForUnityPlayMakerActions.BaseOCR
     {
 
-        public OCRBeamSearchDecoder ()
+        public OCRBeamSearchDecoder()
         {
 
         }
 
-        public OCRBeamSearchDecoder (OpenCVForUnity.TextModule.OCRBeamSearchDecoder nativeObj)
-            : base (nativeObj)
+        public OCRBeamSearchDecoder(OpenCVForUnity.TextModule.OCRBeamSearchDecoder nativeObj) : base(nativeObj)
         {
 
         }

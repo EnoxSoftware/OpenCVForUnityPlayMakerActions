@@ -7,37 +7,37 @@ using OpenCVForUnity.CoreModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public static void LUT (Mat src, Mat lut, Mat dst)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "src")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "lut")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "dst")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_core")]
+    [HutongGames.PlayMaker.Tooltip("public static void LUT(Mat src, Mat lut, Mat dst)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "src")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "lut")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dst")]
     public class Core_LUT : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] Mat")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject src;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject lut;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg3] Mat")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             src = null;
             lut = null;
@@ -45,46 +45,46 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(src.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("src is not initialized. Add Action \"newMat\".");
+                LogError("src is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (src);
+            OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(src);
 
             if (!(lut.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("lut is not initialized. Add Action \"newMat\".");
+                LogError("lut is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_lut = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (lut);
+            OpenCVForUnity.CoreModule.Mat wrapped_lut = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(lut);
 
             if (!(dst.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("dst is not initialized. Add Action \"newMat\".");
+                LogError("dst is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (dst);
+            OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dst);
 
-            OpenCVForUnity.CoreModule.Core.LUT (wrapped_src, wrapped_lut, wrapped_dst);
+            OpenCVForUnity.CoreModule.Core.LUT(wrapped_src, wrapped_lut, wrapped_dst);
 
 
         }

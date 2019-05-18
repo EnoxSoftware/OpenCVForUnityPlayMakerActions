@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class GraphSegmentation : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public GraphSegmentation ()
+        public GraphSegmentation()
         {
 
         }
 
-        public GraphSegmentation (OpenCVForUnity.XimgprocModule.GraphSegmentation nativeObj)
-            : base (nativeObj)
+        public GraphSegmentation(OpenCVForUnity.XimgprocModule.GraphSegmentation nativeObj) : base(nativeObj)
         {
 
         }

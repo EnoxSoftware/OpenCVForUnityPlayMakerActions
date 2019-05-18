@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class ClassifierCallback : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public ClassifierCallback ()
+        public ClassifierCallback()
         {
 
         }
 
-        public ClassifierCallback (OpenCVForUnity.TextModule.ClassifierCallback nativeObj)
-            : base (nativeObj)
+        public ClassifierCallback(OpenCVForUnity.TextModule.ClassifierCallback nativeObj) : base(nativeObj)
         {
 
         }

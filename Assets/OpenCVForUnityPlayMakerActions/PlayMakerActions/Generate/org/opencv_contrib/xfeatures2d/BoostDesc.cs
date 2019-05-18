@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BoostDesc : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public BoostDesc ()
+        public BoostDesc()
         {
 
         }
 
-        public BoostDesc (OpenCVForUnity.Xfeatures2dModule.BoostDesc nativeObj)
-            : base (nativeObj)
+        public BoostDesc(OpenCVForUnity.Xfeatures2dModule.BoostDesc nativeObj) : base(nativeObj)
         {
 
         }

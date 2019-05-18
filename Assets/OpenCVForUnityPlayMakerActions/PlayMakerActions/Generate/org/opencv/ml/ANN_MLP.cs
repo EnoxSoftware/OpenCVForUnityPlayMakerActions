@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class ANN_MLP : OpenCVForUnityPlayMakerActions.StatModel
     {
 
-        public ANN_MLP ()
+        public ANN_MLP()
         {
 
         }
 
-        public ANN_MLP (OpenCVForUnity.MlModule.ANN_MLP nativeObj)
-            : base (nativeObj)
+        public ANN_MLP(OpenCVForUnity.MlModule.ANN_MLP nativeObj) : base(nativeObj)
         {
 
         }

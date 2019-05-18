@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 
     // Test with action that uses an FsmObject variable of AudioClip type. E.g., Set Audio Clip
 
-    [ObjectPropertyDrawer (typeof (OpenCVForUnityPlayMakerActions.RetinaFastToneMapping))]
+    [ObjectPropertyDrawer(typeof(OpenCVForUnityPlayMakerActions.RetinaFastToneMapping))]
     public class RetinaFastToneMappingObjectPropertyDrawer : OpenCVObjectPropertyDrawer
     {
 

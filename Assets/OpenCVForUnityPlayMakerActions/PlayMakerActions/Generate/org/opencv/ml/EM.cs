@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class EM : OpenCVForUnityPlayMakerActions.StatModel
     {
 
-        public EM ()
+        public EM()
         {
 
         }
 
-        public EM (OpenCVForUnity.MlModule.EM nativeObj)
-            : base (nativeObj)
+        public EM(OpenCVForUnity.MlModule.EM nativeObj) : base(nativeObj)
         {
 
         }

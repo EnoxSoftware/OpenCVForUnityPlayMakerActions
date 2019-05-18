@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class RFFeatureGetter : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public RFFeatureGetter ()
+        public RFFeatureGetter()
         {
 
         }
 
-        public RFFeatureGetter (OpenCVForUnity.XimgprocModule.RFFeatureGetter nativeObj)
-            : base (nativeObj)
+        public RFFeatureGetter(OpenCVForUnity.XimgprocModule.RFFeatureGetter nativeObj) : base(nativeObj)
         {
 
         }

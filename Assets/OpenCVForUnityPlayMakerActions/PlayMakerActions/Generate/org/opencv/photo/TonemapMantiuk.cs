@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TonemapMantiuk : OpenCVForUnityPlayMakerActions.Tonemap
     {
 
-        public TonemapMantiuk ()
+        public TonemapMantiuk()
         {
 
         }
 
-        public TonemapMantiuk (OpenCVForUnity.PhotoModule.TonemapMantiuk nativeObj)
-            : base (nativeObj)
+        public TonemapMantiuk(OpenCVForUnity.PhotoModule.TonemapMantiuk nativeObj) : base(nativeObj)
         {
 
         }

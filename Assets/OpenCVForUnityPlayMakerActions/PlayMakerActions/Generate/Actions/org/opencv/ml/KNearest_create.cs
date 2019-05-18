@@ -8,47 +8,47 @@ using OpenCVForUnity.MlModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public static KNearest create ()")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.KNearest), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ml")]
+    [HutongGames.PlayMaker.Tooltip("public static KNearest create()")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.KNearest), "storeResult")]
     public class KNearest_create : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[return] KNearest")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.KNearest))]
+        [HutongGames.PlayMaker.ActionSection("[return] KNearest")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.KNearest))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             storeResult = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.KNearest)) storeResult.Value = new OpenCVForUnityPlayMakerActions.KNearest ();
-            ((OpenCVForUnityPlayMakerActions.KNearest)storeResult.Value).wrappedObject = OpenCVForUnity.MlModule.KNearest.create ();
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.KNearest)) storeResult.Value = new OpenCVForUnityPlayMakerActions.KNearest();
+            ((OpenCVForUnityPlayMakerActions.KNearest)storeResult.Value).wrappedObject = OpenCVForUnity.MlModule.KNearest.create();
 
 
         }

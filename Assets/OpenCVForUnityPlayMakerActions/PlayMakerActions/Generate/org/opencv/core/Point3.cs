@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Point3 : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public Point3 ()
+        public Point3()
         {
 
         }
 
-        public Point3 (OpenCVForUnity.CoreModule.Point3 nativeObj)
-            : base (nativeObj)
+        public Point3(OpenCVForUnity.CoreModule.Point3 nativeObj) : base(nativeObj)
         {
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Board : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public Board ()
+        public Board()
         {
 
         }
 
-        public Board (OpenCVForUnity.ArucoModule.Board nativeObj)
-            : base (nativeObj)
+        public Board(OpenCVForUnity.ArucoModule.Board nativeObj) : base(nativeObj)
         {
 
         }

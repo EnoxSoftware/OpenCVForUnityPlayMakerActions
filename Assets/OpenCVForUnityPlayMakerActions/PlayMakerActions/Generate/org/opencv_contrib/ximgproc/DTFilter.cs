@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class DTFilter : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public DTFilter ()
+        public DTFilter()
         {
 
         }
 
-        public DTFilter (OpenCVForUnity.XimgprocModule.DTFilter nativeObj)
-            : base (nativeObj)
+        public DTFilter(OpenCVForUnity.XimgprocModule.DTFilter nativeObj) : base(nativeObj)
         {
 
         }

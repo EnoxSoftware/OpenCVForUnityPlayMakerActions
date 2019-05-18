@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class VideoWriter : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public VideoWriter ()
+        public VideoWriter()
         {
 
         }
 
-        public VideoWriter (OpenCVForUnity.VideoioModule.VideoWriter nativeObj)
-            : base (nativeObj)
+        public VideoWriter(OpenCVForUnity.VideoioModule.VideoWriter nativeObj) : base(nativeObj)
         {
 
         }

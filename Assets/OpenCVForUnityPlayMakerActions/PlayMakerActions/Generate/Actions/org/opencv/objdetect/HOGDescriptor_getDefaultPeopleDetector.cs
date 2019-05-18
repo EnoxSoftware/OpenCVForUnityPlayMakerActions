@@ -8,47 +8,47 @@ using OpenCVForUnity.ObjdetectModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip ("public static MatOfFloat getDefaultPeopleDetector ()")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_objdetect")]
+    [HutongGames.PlayMaker.Tooltip("public static MatOfFloat getDefaultPeopleDetector()")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfFloat), "storeResult")]
     public class HOGDescriptor_getDefaultPeopleDetector : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[return] MatOfFloat")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat))]
+        [HutongGames.PlayMaker.ActionSection("[return] MatOfFloat")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfFloat))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             storeResult = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfFloat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfFloat ();
-            ((OpenCVForUnityPlayMakerActions.MatOfFloat)storeResult.Value).wrappedObject = OpenCVForUnity.ObjdetectModule.HOGDescriptor.getDefaultPeopleDetector ();
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfFloat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfFloat();
+            ((OpenCVForUnityPlayMakerActions.MatOfFloat)storeResult.Value).wrappedObject = OpenCVForUnity.ObjdetectModule.HOGDescriptor.getDefaultPeopleDetector();
 
 
         }

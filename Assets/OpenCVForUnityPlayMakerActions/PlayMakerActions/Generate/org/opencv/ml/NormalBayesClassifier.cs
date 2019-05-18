@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class NormalBayesClassifier : OpenCVForUnityPlayMakerActions.StatModel
     {
 
-        public NormalBayesClassifier ()
+        public NormalBayesClassifier()
         {
 
         }
 
-        public NormalBayesClassifier (OpenCVForUnity.MlModule.NormalBayesClassifier nativeObj)
-            : base (nativeObj)
+        public NormalBayesClassifier(OpenCVForUnity.MlModule.NormalBayesClassifier nativeObj) : base(nativeObj)
         {
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MSDDetector : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public MSDDetector ()
+        public MSDDetector()
         {
 
         }
 
-        public MSDDetector (OpenCVForUnity.Xfeatures2dModule.MSDDetector nativeObj)
-            : base (nativeObj)
+        public MSDDetector(OpenCVForUnity.Xfeatures2dModule.MSDDetector nativeObj) : base(nativeObj)
         {
 
         }

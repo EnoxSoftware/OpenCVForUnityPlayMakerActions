@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SparseMatchInterpolator : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public SparseMatchInterpolator ()
+        public SparseMatchInterpolator()
         {
 
         }
 
-        public SparseMatchInterpolator (OpenCVForUnity.XimgprocModule.SparseMatchInterpolator nativeObj)
-            : base (nativeObj)
+        public SparseMatchInterpolator(OpenCVForUnity.XimgprocModule.SparseMatchInterpolator nativeObj) : base(nativeObj)
         {
 
         }

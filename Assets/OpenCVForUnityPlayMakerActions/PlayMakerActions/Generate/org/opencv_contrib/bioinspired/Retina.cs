@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Retina : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public Retina ()
+        public Retina()
         {
 
         }
 
-        public Retina (OpenCVForUnity.BioinspiredModule.Retina nativeObj)
-            : base (nativeObj)
+        public Retina(OpenCVForUnity.BioinspiredModule.Retina nativeObj) : base(nativeObj)
         {
 
         }

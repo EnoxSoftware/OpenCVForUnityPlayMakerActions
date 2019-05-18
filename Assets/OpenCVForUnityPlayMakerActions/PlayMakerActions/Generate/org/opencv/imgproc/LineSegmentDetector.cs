@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class LineSegmentDetector : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public LineSegmentDetector ()
+        public LineSegmentDetector()
         {
 
         }
 
-        public LineSegmentDetector (OpenCVForUnity.ImgprocModule.LineSegmentDetector nativeObj)
-            : base (nativeObj)
+        public LineSegmentDetector(OpenCVForUnity.ImgprocModule.LineSegmentDetector nativeObj) : base(nativeObj)
         {
 
         }

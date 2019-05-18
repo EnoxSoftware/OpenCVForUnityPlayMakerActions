@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class OCRHMMDecoder : OpenCVForUnityPlayMakerActions.BaseOCR
     {
 
-        public OCRHMMDecoder ()
+        public OCRHMMDecoder()
         {
 
         }
 
-        public OCRHMMDecoder (OpenCVForUnity.TextModule.OCRHMMDecoder nativeObj)
-            : base (nativeObj)
+        public OCRHMMDecoder(OpenCVForUnity.TextModule.OCRHMMDecoder nativeObj) : base(nativeObj)
         {
 
         }

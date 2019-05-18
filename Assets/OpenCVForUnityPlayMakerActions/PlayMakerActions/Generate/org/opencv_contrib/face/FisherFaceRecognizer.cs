@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class FisherFaceRecognizer : OpenCVForUnityPlayMakerActions.BasicFaceRecognizer
     {
 
-        public FisherFaceRecognizer ()
+        public FisherFaceRecognizer()
         {
 
         }
 
-        public FisherFaceRecognizer (OpenCVForUnity.FaceModule.FisherFaceRecognizer nativeObj)
-            : base (nativeObj)
+        public FisherFaceRecognizer(OpenCVForUnity.FaceModule.FisherFaceRecognizer nativeObj) : base(nativeObj)
         {
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class FastFeatureDetector : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public FastFeatureDetector ()
+        public FastFeatureDetector()
         {
 
         }
 
-        public FastFeatureDetector (OpenCVForUnity.Features2dModule.FastFeatureDetector nativeObj)
-            : base (nativeObj)
+        public FastFeatureDetector(OpenCVForUnity.Features2dModule.FastFeatureDetector nativeObj) : base(nativeObj)
         {
 
         }

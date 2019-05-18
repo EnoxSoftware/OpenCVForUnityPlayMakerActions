@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class ImgHashBase : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public ImgHashBase ()
+        public ImgHashBase()
         {
 
         }
 
-        public ImgHashBase (OpenCVForUnity.Img_hashModule.ImgHashBase nativeObj)
-            : base (nativeObj)
+        public ImgHashBase(OpenCVForUnity.Img_hashModule.ImgHashBase nativeObj) : base(nativeObj)
         {
 
         }

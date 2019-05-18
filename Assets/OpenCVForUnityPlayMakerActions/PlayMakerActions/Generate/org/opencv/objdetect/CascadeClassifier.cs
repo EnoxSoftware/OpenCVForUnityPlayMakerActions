@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class CascadeClassifier : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public CascadeClassifier ()
+        public CascadeClassifier()
         {
 
         }
 
-        public CascadeClassifier (OpenCVForUnity.ObjdetectModule.CascadeClassifier nativeObj)
-            : base (nativeObj)
+        public CascadeClassifier(OpenCVForUnity.ObjdetectModule.CascadeClassifier nativeObj) : base(nativeObj)
         {
 
         }

@@ -8,54 +8,54 @@ using OpenCVForUnity.ObjdetectModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip ("public CascadeClassifier (string filename)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.CascadeClassifier), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_objdetect")]
+    [HutongGames.PlayMaker.Tooltip("public CascadeClassifier(string filename)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "filename")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.CascadeClassifier), "storeResult")]
     public class CascadeClassifier_newCascadeClassifier : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] string")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] string")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
         public HutongGames.PlayMaker.FsmString filename;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] CascadeClassifier")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.CascadeClassifier))]
+        [HutongGames.PlayMaker.ActionSection("[return] CascadeClassifier")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.CascadeClassifier))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             filename = null;
             storeResult = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.CascadeClassifier)) storeResult.Value = new OpenCVForUnityPlayMakerActions.CascadeClassifier ();
-            ((OpenCVForUnityPlayMakerActions.CascadeClassifier)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.CascadeClassifier (filename.Value);
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.CascadeClassifier)) storeResult.Value = new OpenCVForUnityPlayMakerActions.CascadeClassifier();
+            ((OpenCVForUnityPlayMakerActions.CascadeClassifier)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.CascadeClassifier(filename.Value);
 
 
         }

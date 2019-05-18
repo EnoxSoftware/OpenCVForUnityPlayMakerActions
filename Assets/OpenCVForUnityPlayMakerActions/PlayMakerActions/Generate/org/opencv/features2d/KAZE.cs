@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class KAZE : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public KAZE ()
+        public KAZE()
         {
 
         }
 
-        public KAZE (OpenCVForUnity.Features2dModule.KAZE nativeObj)
-            : base (nativeObj)
+        public KAZE(OpenCVForUnity.Features2dModule.KAZE nativeObj) : base(nativeObj)
         {
 
         }

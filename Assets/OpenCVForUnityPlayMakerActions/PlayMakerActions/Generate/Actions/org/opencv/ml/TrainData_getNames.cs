@@ -8,66 +8,66 @@ using OpenCVForUnity.MlModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip ("public void getNames (List<string> names)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.TrainData), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "names")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ml")]
+    [HutongGames.PlayMaker.Tooltip("public void getNames(List<string> names)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.TrainData), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "names")]
     public class TrainData_getNames : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] TrainData")]
+        [HutongGames.PlayMaker.ActionSection("[class] TrainData")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.TrainData))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.TrainData))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] List<string>(Array(string))")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] List<string>(Array(string))")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ArrayEditor (HutongGames.PlayMaker.VariableType.String)]
+        [HutongGames.PlayMaker.ArrayEditor(HutongGames.PlayMaker.VariableType.String)]
         public HutongGames.PlayMaker.FsmArray names;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             names = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.TrainData))
             {
-                LogError ("owner is not initialized. Add Action \"newTrainData\".");
+                LogError("owner is not initialized. Add Action \"newTrainData\".");
                 return;
             }
-            OpenCVForUnity.MlModule.TrainData wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TrainData, OpenCVForUnity.MlModule.TrainData> (owner);
+            OpenCVForUnity.MlModule.TrainData wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TrainData, OpenCVForUnity.MlModule.TrainData>(owner);
 
             string[] string_names = names.stringValues;
-            List<string> wrapped_names = new List<string> (string_names);
+            List<string> wrapped_names = new List<string>(string_names);
 
-            wrapped_owner.getNames (wrapped_names);
+            wrapped_owner.getNames(wrapped_names);
 
-            wrapped_names.CopyTo (string_names);
+            wrapped_names.CopyTo(string_names);
 
 
         }

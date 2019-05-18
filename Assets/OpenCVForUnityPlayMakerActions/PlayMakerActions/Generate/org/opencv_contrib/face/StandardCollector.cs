@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class StandardCollector : OpenCVForUnityPlayMakerActions.PredictCollector
     {
 
-        public StandardCollector ()
+        public StandardCollector()
         {
 
         }
 
-        public StandardCollector (OpenCVForUnity.FaceModule.StandardCollector nativeObj)
-            : base (nativeObj)
+        public StandardCollector(OpenCVForUnity.FaceModule.StandardCollector nativeObj) : base(nativeObj)
         {
 
         }

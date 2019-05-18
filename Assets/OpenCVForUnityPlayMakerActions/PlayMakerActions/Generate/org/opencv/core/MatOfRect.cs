@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MatOfRect : OpenCVForUnityPlayMakerActions.Mat
     {
 
-        public MatOfRect ()
+        public MatOfRect()
         {
 
         }
 
-        public MatOfRect (OpenCVForUnity.CoreModule.MatOfRect nativeObj)
-            : base (nativeObj)
+        public MatOfRect(OpenCVForUnity.CoreModule.MatOfRect nativeObj) : base(nativeObj)
         {
 
         }

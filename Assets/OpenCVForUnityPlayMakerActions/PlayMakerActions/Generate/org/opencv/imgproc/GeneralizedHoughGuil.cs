@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class GeneralizedHoughGuil : OpenCVForUnityPlayMakerActions.GeneralizedHough
     {
 
-        public GeneralizedHoughGuil ()
+        public GeneralizedHoughGuil()
         {
 
         }
 
-        public GeneralizedHoughGuil (OpenCVForUnity.ImgprocModule.GeneralizedHoughGuil nativeObj)
-            : base (nativeObj)
+        public GeneralizedHoughGuil(OpenCVForUnity.ImgprocModule.GeneralizedHoughGuil nativeObj) : base(nativeObj)
         {
 
         }

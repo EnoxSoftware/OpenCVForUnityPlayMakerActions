@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class CalibrateRobertson : OpenCVForUnityPlayMakerActions.CalibrateCRF
     {
 
-        public CalibrateRobertson ()
+        public CalibrateRobertson()
         {
 
         }
 
-        public CalibrateRobertson (OpenCVForUnity.PhotoModule.CalibrateRobertson nativeObj)
-            : base (nativeObj)
+        public CalibrateRobertson(OpenCVForUnity.PhotoModule.CalibrateRobertson nativeObj) : base(nativeObj)
         {
 
         }

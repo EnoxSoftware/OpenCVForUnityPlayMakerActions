@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TrackerKCF : OpenCVForUnityPlayMakerActions.Tracker
     {
 
-        public TrackerKCF ()
+        public TrackerKCF()
         {
 
         }
 
-        public TrackerKCF (OpenCVForUnity.TrackingModule.TrackerKCF nativeObj)
-            : base (nativeObj)
+        public TrackerKCF(OpenCVForUnity.TrackingModule.TrackerKCF nativeObj) : base(nativeObj)
         {
 
         }

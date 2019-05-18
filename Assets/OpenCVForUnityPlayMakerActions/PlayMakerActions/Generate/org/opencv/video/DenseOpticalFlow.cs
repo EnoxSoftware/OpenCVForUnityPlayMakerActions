@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class DenseOpticalFlow : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public DenseOpticalFlow ()
+        public DenseOpticalFlow()
         {
 
         }
 
-        public DenseOpticalFlow (OpenCVForUnity.VideoModule.DenseOpticalFlow nativeObj)
-            : base (nativeObj)
+        public DenseOpticalFlow(OpenCVForUnity.VideoModule.DenseOpticalFlow nativeObj) : base(nativeObj)
         {
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Params : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public Params ()
+        public Params()
         {
 
         }
 
-        public Params (OpenCVForUnity.Features2dModule.Params nativeObj)
-            : base (nativeObj)
+        public Params(OpenCVForUnity.Features2dModule.Params nativeObj) : base(nativeObj)
         {
 
         }

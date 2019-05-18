@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BOWTrainer : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public BOWTrainer ()
+        public BOWTrainer()
         {
 
         }
 
-        public BOWTrainer (OpenCVForUnity.Features2dModule.BOWTrainer nativeObj)
-            : base (nativeObj)
+        public BOWTrainer(OpenCVForUnity.Features2dModule.BOWTrainer nativeObj) : base(nativeObj)
         {
 
         }

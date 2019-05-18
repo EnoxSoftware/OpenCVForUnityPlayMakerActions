@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class StructuredLightPattern : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public StructuredLightPattern ()
+        public StructuredLightPattern()
         {
 
         }
 
-        public StructuredLightPattern (OpenCVForUnity.Structured_lightModule.StructuredLightPattern nativeObj)
-            : base (nativeObj)
+        public StructuredLightPattern(OpenCVForUnity.Structured_lightModule.StructuredLightPattern nativeObj) : base(nativeObj)
         {
 
         }

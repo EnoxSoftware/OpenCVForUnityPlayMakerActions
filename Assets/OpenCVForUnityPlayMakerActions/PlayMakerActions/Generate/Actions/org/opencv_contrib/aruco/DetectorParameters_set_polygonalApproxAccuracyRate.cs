@@ -8,69 +8,69 @@ using OpenCVForUnity.ArucoModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_aruco")]
-    [HutongGames.PlayMaker.Tooltip ("public void set_polygonalApproxAccuracyRate (double polygonalApproxAccuracyRate)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "polygonalApproxAccuracyRate")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_aruco")]
+    [HutongGames.PlayMaker.Tooltip("public void set_polygonalApproxAccuracyRate(double polygonalApproxAccuracyRate)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.DetectorParameters), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "polygonalApproxAccuracyRate")]
     public class DetectorParameters_set_polygonalApproxAccuracyRate : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] DetectorParameters")]
+        [HutongGames.PlayMaker.ActionSection("[class] DetectorParameters")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.DetectorParameters))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.DetectorParameters))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] double(Double)")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] double(Double)")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject polygonalApproxAccuracyRate;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             polygonalApproxAccuracyRate = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.DetectorParameters))
             {
-                LogError ("owner is not initialized. Add Action \"newDetectorParameters\".");
+                LogError("owner is not initialized. Add Action \"newDetectorParameters\".");
                 return;
             }
-            OpenCVForUnity.ArucoModule.DetectorParameters wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DetectorParameters, OpenCVForUnity.ArucoModule.DetectorParameters> (owner);
+            OpenCVForUnity.ArucoModule.DetectorParameters wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DetectorParameters, OpenCVForUnity.ArucoModule.DetectorParameters>(owner);
 
             if (!(polygonalApproxAccuracyRate.Value is OpenCVForUnityPlayMakerActions.Double))
             {
-                LogError ("polygonalApproxAccuracyRate is not initialized. Add Action \"newDouble\".");
+                LogError("polygonalApproxAccuracyRate is not initialized. Add Action \"newDouble\".");
                 return;
             }
-            System.Double wrapped_polygonalApproxAccuracyRate = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (polygonalApproxAccuracyRate);
+            System.Double wrapped_polygonalApproxAccuracyRate = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(polygonalApproxAccuracyRate);
 
-            wrapped_owner.set_polygonalApproxAccuracyRate (wrapped_polygonalApproxAccuracyRate);
+            wrapped_owner.set_polygonalApproxAccuracyRate(wrapped_polygonalApproxAccuracyRate);
 
 
         }

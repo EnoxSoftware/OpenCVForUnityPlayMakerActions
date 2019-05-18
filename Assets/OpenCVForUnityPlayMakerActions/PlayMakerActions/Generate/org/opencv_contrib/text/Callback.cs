@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Callback : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public Callback ()
+        public Callback()
         {
 
         }
 
-        public Callback (OpenCVForUnity.TextModule.Callback nativeObj)
-            : base (nativeObj)
+        public Callback(OpenCVForUnity.TextModule.Callback nativeObj) : base(nativeObj)
         {
 
         }

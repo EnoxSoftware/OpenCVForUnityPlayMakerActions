@@ -7,47 +7,47 @@ using OpenCVForUnity.CoreModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public MatOfRect ()")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfRect), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_core")]
+    [HutongGames.PlayMaker.Tooltip("public MatOfRect()")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfRect), "storeResult")]
     public class MatOfRect_newMatOfRect : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[return] MatOfRect")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfRect))]
+        [HutongGames.PlayMaker.ActionSection("[return] MatOfRect")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfRect))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             storeResult = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfRect)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfRect ();
-            ((OpenCVForUnityPlayMakerActions.MatOfRect)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfRect ();
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfRect)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfRect();
+            ((OpenCVForUnityPlayMakerActions.MatOfRect)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfRect();
 
 
         }

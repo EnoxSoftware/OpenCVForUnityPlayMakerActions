@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TrackerMIL : OpenCVForUnityPlayMakerActions.Tracker
     {
 
-        public TrackerMIL ()
+        public TrackerMIL()
         {
 
         }
 
-        public TrackerMIL (OpenCVForUnity.TrackingModule.TrackerMIL nativeObj)
-            : base (nativeObj)
+        public TrackerMIL(OpenCVForUnity.TrackingModule.TrackerMIL nativeObj) : base(nativeObj)
         {
 
         }

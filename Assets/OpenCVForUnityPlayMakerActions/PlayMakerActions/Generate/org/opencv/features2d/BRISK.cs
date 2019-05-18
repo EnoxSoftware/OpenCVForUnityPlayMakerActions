@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BRISK : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public BRISK ()
+        public BRISK()
         {
 
         }
 
-        public BRISK (OpenCVForUnity.Features2dModule.BRISK nativeObj)
-            : base (nativeObj)
+        public BRISK(OpenCVForUnity.Features2dModule.BRISK nativeObj) : base(nativeObj)
         {
 
         }

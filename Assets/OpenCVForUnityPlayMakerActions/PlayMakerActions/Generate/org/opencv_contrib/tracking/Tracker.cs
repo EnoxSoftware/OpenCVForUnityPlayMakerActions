@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Tracker : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public Tracker ()
+        public Tracker()
         {
 
         }
 
-        public Tracker (OpenCVForUnity.TrackingModule.Tracker nativeObj)
-            : base (nativeObj)
+        public Tracker(OpenCVForUnity.TrackingModule.Tracker nativeObj) : base(nativeObj)
         {
 
         }

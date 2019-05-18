@@ -8,37 +8,37 @@ using OpenCVForUnity.Features2dModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip ("public bool get_filterByCircularity ()")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Params), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "trueEvent")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "falseEvent")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_features2d")]
+    [HutongGames.PlayMaker.Tooltip("public bool get_filterByCircularity()")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Params), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "trueEvent")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "falseEvent")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "storeResult")]
     public class Params_get_filterByCircularity : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] Params")]
+        [HutongGames.PlayMaker.ActionSection("[class] Params")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Params))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Params))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] bool")]
-        [HutongGames.PlayMaker.Tooltip ("Event to send if result is true.")]
+        [HutongGames.PlayMaker.ActionSection("[return] bool")]
+        [HutongGames.PlayMaker.Tooltip("Event to send if result is true.")]
         public HutongGames.PlayMaker.FsmEvent trueEvent;
 
-        [HutongGames.PlayMaker.Tooltip ("Event to send if result is false.")]
+        [HutongGames.PlayMaker.Tooltip("Event to send if result is false.")]
         public HutongGames.PlayMaker.FsmEvent falseEvent;
 
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
         public HutongGames.PlayMaker.FsmBool storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             trueEvent = null;
@@ -47,34 +47,34 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.Params))
             {
-                LogError ("owner is not initialized. Add Action \"newParams\".");
+                LogError("owner is not initialized. Add Action \"newParams\".");
                 return;
             }
-            OpenCVForUnity.Features2dModule.Params wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Params, OpenCVForUnity.Features2dModule.Params> (owner);
+            OpenCVForUnity.Features2dModule.Params wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Params, OpenCVForUnity.Features2dModule.Params>(owner);
 
-            storeResult.Value = wrapped_owner.get_filterByCircularity ();
+            storeResult.Value = wrapped_owner.get_filterByCircularity();
 
-            Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
+            Fsm.Event(storeResult.Value ? trueEvent : falseEvent);
 
         }
 

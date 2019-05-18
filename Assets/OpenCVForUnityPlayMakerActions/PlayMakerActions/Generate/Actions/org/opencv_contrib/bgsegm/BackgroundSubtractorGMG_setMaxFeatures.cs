@@ -8,61 +8,61 @@ using OpenCVForUnity.BgsegmModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_bgsegm")]
-    [HutongGames.PlayMaker.Tooltip ("public void setMaxFeatures (int maxFeatures)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "maxFeatures")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_bgsegm")]
+    [HutongGames.PlayMaker.Tooltip("public void setMaxFeatures(int maxFeatures)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "maxFeatures")]
     public class BackgroundSubtractorGMG_setMaxFeatures : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] BackgroundSubtractorGMG")]
+        [HutongGames.PlayMaker.ActionSection("[class] BackgroundSubtractorGMG")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt maxFeatures;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             maxFeatures = 0;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG))
             {
-                LogError ("owner is not initialized. Add Action \"newBackgroundSubtractorGMG\".");
+                LogError("owner is not initialized. Add Action \"newBackgroundSubtractorGMG\".");
                 return;
             }
-            OpenCVForUnity.BgsegmModule.BackgroundSubtractorGMG wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG, OpenCVForUnity.BgsegmModule.BackgroundSubtractorGMG> (owner);
+            OpenCVForUnity.BgsegmModule.BackgroundSubtractorGMG wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG, OpenCVForUnity.BgsegmModule.BackgroundSubtractorGMG>(owner);
 
-            wrapped_owner.setMaxFeatures (maxFeatures.Value);
+            wrapped_owner.setMaxFeatures(maxFeatures.Value);
 
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class VariationalRefinement : OpenCVForUnityPlayMakerActions.DenseOpticalFlow
     {
 
-        public VariationalRefinement ()
+        public VariationalRefinement()
         {
 
         }
 
-        public VariationalRefinement (OpenCVForUnity.VideoModule.VariationalRefinement nativeObj)
-            : base (nativeObj)
+        public VariationalRefinement(OpenCVForUnity.VideoModule.VariationalRefinement nativeObj) : base(nativeObj)
         {
 
         }

@@ -8,40 +8,40 @@ using OpenCVForUnity.Xfeatures2dModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static PCTSignaturesSQFD create (int distanceFunction, int similarityFunction, float similarityParameter)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "distanceFunction")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "similarityFunction")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "similarityParameter")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_xfeatures2d")]
+    [HutongGames.PlayMaker.Tooltip("public static PCTSignaturesSQFD create(int distanceFunction, int similarityFunction, float similarityParameter)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "distanceFunction")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "similarityFunction")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "similarityParameter")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD), "storeResult")]
     public class PCTSignaturesSQFD_create : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt distanceFunction;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt similarityFunction;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] float")]
+        [HutongGames.PlayMaker.ActionSection("[arg3] float")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat similarityParameter;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] PCTSignaturesSQFD")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD))]
+        [HutongGames.PlayMaker.ActionSection("[return] PCTSignaturesSQFD")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             distanceFunction = 0;
             similarityFunction = 0;
@@ -50,26 +50,26 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD)) storeResult.Value = new OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD ();
-            ((OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.PCTSignaturesSQFD.create (distanceFunction.Value, similarityFunction.Value, similarityParameter.Value);
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD)) storeResult.Value = new OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD();
+            ((OpenCVForUnityPlayMakerActions.PCTSignaturesSQFD)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.PCTSignaturesSQFD.create(distanceFunction.Value, similarityFunction.Value, similarityParameter.Value);
 
 
         }

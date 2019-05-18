@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class GrayCodePattern : OpenCVForUnityPlayMakerActions.StructuredLightPattern
     {
 
-        public GrayCodePattern ()
+        public GrayCodePattern()
         {
 
         }
 
-        public GrayCodePattern (OpenCVForUnity.Structured_lightModule.GrayCodePattern nativeObj)
-            : base (nativeObj)
+        public GrayCodePattern(OpenCVForUnity.Structured_lightModule.GrayCodePattern nativeObj) : base(nativeObj)
         {
 
         }

@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 
     // Test with action that uses an FsmObject variable of AudioClip type. E.g., Set Audio Clip
 
-    [ObjectPropertyDrawer (typeof (OpenCVForUnityPlayMakerActions.CalibrateDebevec))]
+    [ObjectPropertyDrawer(typeof(OpenCVForUnityPlayMakerActions.CalibrateDebevec))]
     public class CalibrateDebevecObjectPropertyDrawer : OpenCVObjectPropertyDrawer
     {
 

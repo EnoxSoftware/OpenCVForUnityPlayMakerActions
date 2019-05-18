@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 
     // Test with action that uses an FsmObject variable of AudioClip type. E.g., Set Audio Clip
 
-    [ObjectPropertyDrawer (typeof (OpenCVForUnityPlayMakerActions.MarrHildrethHash))]
+    [ObjectPropertyDrawer(typeof(OpenCVForUnityPlayMakerActions.MarrHildrethHash))]
     public class MarrHildrethHashObjectPropertyDrawer : OpenCVObjectPropertyDrawer
     {
 

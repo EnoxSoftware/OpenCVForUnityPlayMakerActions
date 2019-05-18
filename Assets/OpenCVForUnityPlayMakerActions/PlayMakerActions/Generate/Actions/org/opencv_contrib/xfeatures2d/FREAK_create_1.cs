@@ -8,46 +8,46 @@ using OpenCVForUnity.Xfeatures2dModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
-    [HutongGames.PlayMaker.Tooltip ("public static FREAK create (bool orientationNormalized, bool scaleNormalized, float patternScale, int nOctaves)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "orientationNormalized")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "scaleNormalized")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "patternScale")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "nOctaves")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.FREAK), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_xfeatures2d")]
+    [HutongGames.PlayMaker.Tooltip("public static FREAK create(bool orientationNormalized, bool scaleNormalized, float patternScale, int nOctaves)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "orientationNormalized")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "scaleNormalized")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "patternScale")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "nOctaves")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.FREAK), "storeResult")]
     public class FREAK_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] bool")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] bool")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
         public HutongGames.PlayMaker.FsmBool orientationNormalized;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] bool")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] bool")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
         public HutongGames.PlayMaker.FsmBool scaleNormalized;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] float")]
+        [HutongGames.PlayMaker.ActionSection("[arg3] float")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat patternScale;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg4] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg4] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt nOctaves;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] FREAK")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.FREAK))]
+        [HutongGames.PlayMaker.ActionSection("[return] FREAK")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.FREAK))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             orientationNormalized = false;
             scaleNormalized = false;
@@ -57,26 +57,26 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FREAK)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FREAK ();
-            ((OpenCVForUnityPlayMakerActions.FREAK)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.FREAK.create (orientationNormalized.Value, scaleNormalized.Value, patternScale.Value, nOctaves.Value);
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FREAK)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FREAK();
+            ((OpenCVForUnityPlayMakerActions.FREAK)storeResult.Value).wrappedObject = OpenCVForUnity.Xfeatures2dModule.FREAK.create(orientationNormalized.Value, scaleNormalized.Value, patternScale.Value, nOctaves.Value);
 
 
         }

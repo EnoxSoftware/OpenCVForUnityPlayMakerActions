@@ -8,37 +8,37 @@ using OpenCVForUnity.ImgprocModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static void convexityDefects (MatOfPoint contour, MatOfInt convexhull, MatOfInt4 convexityDefects)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint), "contour")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "convexhull")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt4), "convexityDefects")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
+    [HutongGames.PlayMaker.Tooltip("public static void convexityDefects(MatOfPoint contour, MatOfInt convexhull, MatOfInt4 convexityDefects)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint), "contour")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfInt), "convexhull")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfInt4), "convexityDefects")]
     public class Imgproc_convexityDefects : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] MatOfPoint")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] MatOfPoint")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint))]
         public HutongGames.PlayMaker.FsmObject contour;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] MatOfInt")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] MatOfInt")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfInt))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfInt))]
         public HutongGames.PlayMaker.FsmObject convexhull;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] MatOfInt4")]
+        [HutongGames.PlayMaker.ActionSection("[arg3] MatOfInt4")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfInt4))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfInt4))]
         public HutongGames.PlayMaker.FsmObject convexityDefects;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             contour = null;
             convexhull = null;
@@ -46,46 +46,46 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(contour.Value is OpenCVForUnityPlayMakerActions.MatOfPoint))
             {
-                LogError ("contour is not initialized. Add Action \"newMatOfPoint\".");
+                LogError("contour is not initialized. Add Action \"newMatOfPoint\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.MatOfPoint wrapped_contour = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.CoreModule.MatOfPoint> (contour);
+            OpenCVForUnity.CoreModule.MatOfPoint wrapped_contour = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.CoreModule.MatOfPoint>(contour);
 
             if (!(convexhull.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
             {
-                LogError ("convexhull is not initialized. Add Action \"newMatOfInt\".");
+                LogError("convexhull is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.MatOfInt wrapped_convexhull = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (convexhull);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_convexhull = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt>(convexhull);
 
             if (!(convexityDefects.Value is OpenCVForUnityPlayMakerActions.MatOfInt4))
             {
-                LogError ("convexityDefects is not initialized. Add Action \"newMatOfInt4\".");
+                LogError("convexityDefects is not initialized. Add Action \"newMatOfInt4\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.MatOfInt4 wrapped_convexityDefects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt4, OpenCVForUnity.CoreModule.MatOfInt4> (convexityDefects);
+            OpenCVForUnity.CoreModule.MatOfInt4 wrapped_convexityDefects = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt4, OpenCVForUnity.CoreModule.MatOfInt4>(convexityDefects);
 
-            OpenCVForUnity.ImgprocModule.Imgproc.convexityDefects (wrapped_contour, wrapped_convexhull, wrapped_convexityDefects);
+            OpenCVForUnity.ImgprocModule.Imgproc.convexityDefects(wrapped_contour, wrapped_convexhull, wrapped_convexityDefects);
 
 
         }

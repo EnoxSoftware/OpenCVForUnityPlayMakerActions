@@ -8,69 +8,69 @@ using OpenCVForUnity.BgsegmModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_bgsegm")]
-    [HutongGames.PlayMaker.Tooltip ("public void setBackgroundPrior (double bgprior)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "bgprior")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_bgsegm")]
+    [HutongGames.PlayMaker.Tooltip("public void setBackgroundPrior(double bgprior)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "bgprior")]
     public class BackgroundSubtractorGMG_setBackgroundPrior : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] BackgroundSubtractorGMG")]
+        [HutongGames.PlayMaker.ActionSection("[class] BackgroundSubtractorGMG")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] double(Double)")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] double(Double)")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject bgprior;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             bgprior = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG))
             {
-                LogError ("owner is not initialized. Add Action \"newBackgroundSubtractorGMG\".");
+                LogError("owner is not initialized. Add Action \"newBackgroundSubtractorGMG\".");
                 return;
             }
-            OpenCVForUnity.BgsegmModule.BackgroundSubtractorGMG wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG, OpenCVForUnity.BgsegmModule.BackgroundSubtractorGMG> (owner);
+            OpenCVForUnity.BgsegmModule.BackgroundSubtractorGMG wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractorGMG, OpenCVForUnity.BgsegmModule.BackgroundSubtractorGMG>(owner);
 
             if (!(bgprior.Value is OpenCVForUnityPlayMakerActions.Double))
             {
-                LogError ("bgprior is not initialized. Add Action \"newDouble\".");
+                LogError("bgprior is not initialized. Add Action \"newDouble\".");
                 return;
             }
-            System.Double wrapped_bgprior = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (bgprior);
+            System.Double wrapped_bgprior = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(bgprior);
 
-            wrapped_owner.setBackgroundPrior (wrapped_bgprior);
+            wrapped_owner.setBackgroundPrior(wrapped_bgprior);
 
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class VGG : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public VGG ()
+        public VGG()
         {
 
         }
 
-        public VGG (OpenCVForUnity.Xfeatures2dModule.VGG nativeObj)
-            : base (nativeObj)
+        public VGG(OpenCVForUnity.Xfeatures2dModule.VGG nativeObj) : base(nativeObj)
         {
 
         }

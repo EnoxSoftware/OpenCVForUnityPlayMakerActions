@@ -8,35 +8,35 @@ using OpenCVForUnity.XimgprocModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static SuperpixelLSC createSuperpixelLSC (Mat image, int region_size)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "image")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "region_size")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SuperpixelLSC), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ximgproc")]
+    [HutongGames.PlayMaker.Tooltip("public static SuperpixelLSC createSuperpixelLSC(Mat image, int region_size)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "image")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "region_size")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.SuperpixelLSC), "storeResult")]
     public class Ximgproc_createSuperpixelLSC_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] Mat")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject image;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt region_size;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] SuperpixelLSC")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.SuperpixelLSC))]
+        [HutongGames.PlayMaker.ActionSection("[return] SuperpixelLSC")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.SuperpixelLSC))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             image = null;
             region_size = 0;
@@ -44,33 +44,33 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("image is not initialized. Add Action \"newMat\".");
+                LogError("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(image);
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SuperpixelLSC)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SuperpixelLSC ();
-            ((OpenCVForUnityPlayMakerActions.SuperpixelLSC)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createSuperpixelLSC (wrapped_image, region_size.Value);
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SuperpixelLSC)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SuperpixelLSC();
+            ((OpenCVForUnityPlayMakerActions.SuperpixelLSC)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createSuperpixelLSC(wrapped_image, region_size.Value);
 
 
         }

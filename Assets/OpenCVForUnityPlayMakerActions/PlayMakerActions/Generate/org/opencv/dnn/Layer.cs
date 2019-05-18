@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Layer : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public Layer ()
+        public Layer()
         {
 
         }
 
-        public Layer (OpenCVForUnity.DnnModule.Layer nativeObj)
-            : base (nativeObj)
+        public Layer(OpenCVForUnity.DnnModule.Layer nativeObj) : base(nativeObj)
         {
 
         }

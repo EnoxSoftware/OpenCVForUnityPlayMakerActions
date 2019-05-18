@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class DMatch : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public DMatch ()
+        public DMatch()
         {
 
         }
 
-        public DMatch (OpenCVForUnity.CoreModule.DMatch nativeObj)
-            : base (nativeObj)
+        public DMatch(OpenCVForUnity.CoreModule.DMatch nativeObj) : base(nativeObj)
         {
 
         }

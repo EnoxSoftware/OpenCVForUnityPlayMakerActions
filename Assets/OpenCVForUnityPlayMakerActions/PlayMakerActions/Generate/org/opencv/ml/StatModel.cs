@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class StatModel : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public StatModel ()
+        public StatModel()
         {
 
         }
 
-        public StatModel (OpenCVForUnity.MlModule.StatModel nativeObj)
-            : base (nativeObj)
+        public StatModel(OpenCVForUnity.MlModule.StatModel nativeObj) : base(nativeObj)
         {
 
         }

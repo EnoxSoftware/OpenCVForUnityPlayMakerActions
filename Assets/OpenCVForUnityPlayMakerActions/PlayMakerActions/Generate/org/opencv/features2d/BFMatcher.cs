@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BFMatcher : OpenCVForUnityPlayMakerActions.DescriptorMatcher
     {
 
-        public BFMatcher ()
+        public BFMatcher()
         {
 
         }
 
-        public BFMatcher (OpenCVForUnity.Features2dModule.BFMatcher nativeObj)
-            : base (nativeObj)
+        public BFMatcher(OpenCVForUnity.Features2dModule.BFMatcher nativeObj) : base(nativeObj)
         {
 
         }

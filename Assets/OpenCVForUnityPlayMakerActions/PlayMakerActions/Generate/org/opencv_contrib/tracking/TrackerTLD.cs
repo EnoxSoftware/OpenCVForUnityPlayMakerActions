@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TrackerTLD : OpenCVForUnityPlayMakerActions.Tracker
     {
 
-        public TrackerTLD ()
+        public TrackerTLD()
         {
 
         }
 
-        public TrackerTLD (OpenCVForUnity.TrackingModule.TrackerTLD nativeObj)
-            : base (nativeObj)
+        public TrackerTLD(OpenCVForUnity.TrackingModule.TrackerTLD nativeObj) : base(nativeObj)
         {
 
         }

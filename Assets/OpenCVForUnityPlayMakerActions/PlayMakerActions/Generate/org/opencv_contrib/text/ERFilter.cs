@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class ERFilter : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public ERFilter ()
+        public ERFilter()
         {
 
         }
 
-        public ERFilter (OpenCVForUnity.TextModule.ERFilter nativeObj)
-            : base (nativeObj)
+        public ERFilter(OpenCVForUnity.TextModule.ERFilter nativeObj) : base(nativeObj)
         {
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class CharucoBoard : OpenCVForUnityPlayMakerActions.Board
     {
 
-        public CharucoBoard ()
+        public CharucoBoard()
         {
 
         }
 
-        public CharucoBoard (OpenCVForUnity.ArucoModule.CharucoBoard nativeObj)
-            : base (nativeObj)
+        public CharucoBoard(OpenCVForUnity.ArucoModule.CharucoBoard nativeObj) : base(nativeObj)
         {
 
         }

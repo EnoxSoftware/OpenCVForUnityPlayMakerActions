@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class KalmanFilter : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public KalmanFilter ()
+        public KalmanFilter()
         {
 
         }
 
-        public KalmanFilter (OpenCVForUnity.VideoModule.KalmanFilter nativeObj)
-            : base (nativeObj)
+        public KalmanFilter(OpenCVForUnity.VideoModule.KalmanFilter nativeObj) : base(nativeObj)
         {
 
         }

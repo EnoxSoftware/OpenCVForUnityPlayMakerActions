@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SVMSGD : OpenCVForUnityPlayMakerActions.StatModel
     {
 
-        public SVMSGD ()
+        public SVMSGD()
         {
 
         }
 
-        public SVMSGD (OpenCVForUnity.MlModule.SVMSGD nativeObj)
-            : base (nativeObj)
+        public SVMSGD(OpenCVForUnity.MlModule.SVMSGD nativeObj) : base(nativeObj)
         {
 
         }

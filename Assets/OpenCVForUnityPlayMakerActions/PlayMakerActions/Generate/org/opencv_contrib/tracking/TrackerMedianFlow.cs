@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TrackerMedianFlow : OpenCVForUnityPlayMakerActions.Tracker
     {
 
-        public TrackerMedianFlow ()
+        public TrackerMedianFlow()
         {
 
         }
 
-        public TrackerMedianFlow (OpenCVForUnity.TrackingModule.TrackerMedianFlow nativeObj)
-            : base (nativeObj)
+        public TrackerMedianFlow(OpenCVForUnity.TrackingModule.TrackerMedianFlow nativeObj) : base(nativeObj)
         {
 
         }

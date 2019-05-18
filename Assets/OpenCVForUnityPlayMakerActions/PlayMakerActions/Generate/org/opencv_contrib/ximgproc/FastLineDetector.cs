@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class FastLineDetector : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public FastLineDetector ()
+        public FastLineDetector()
         {
 
         }
 
-        public FastLineDetector (OpenCVForUnity.XimgprocModule.FastLineDetector nativeObj)
-            : base (nativeObj)
+        public FastLineDetector(OpenCVForUnity.XimgprocModule.FastLineDetector nativeObj) : base(nativeObj)
         {
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class StarDetector : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public StarDetector ()
+        public StarDetector()
         {
 
         }
 
-        public StarDetector (OpenCVForUnity.Xfeatures2dModule.StarDetector nativeObj)
-            : base (nativeObj)
+        public StarDetector(OpenCVForUnity.Xfeatures2dModule.StarDetector nativeObj) : base(nativeObj)
         {
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BOWKMeansTrainer : OpenCVForUnityPlayMakerActions.BOWTrainer
     {
 
-        public BOWKMeansTrainer ()
+        public BOWKMeansTrainer()
         {
 
         }
 
-        public BOWKMeansTrainer (OpenCVForUnity.Features2dModule.BOWKMeansTrainer nativeObj)
-            : base (nativeObj)
+        public BOWKMeansTrainer(OpenCVForUnity.Features2dModule.BOWKMeansTrainer nativeObj) : base(nativeObj)
         {
 
         }

@@ -8,47 +8,47 @@ using OpenCVForUnity.XimgprocModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static EdgeAwareInterpolator createEdgeAwareInterpolator ()")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ximgproc")]
+    [HutongGames.PlayMaker.Tooltip("public static EdgeAwareInterpolator createEdgeAwareInterpolator()")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator), "storeResult")]
     public class Ximgproc_createEdgeAwareInterpolator : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[return] EdgeAwareInterpolator")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator))]
+        [HutongGames.PlayMaker.ActionSection("[return] EdgeAwareInterpolator")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             storeResult = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator)) storeResult.Value = new OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator ();
-            ((OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createEdgeAwareInterpolator ();
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator)) storeResult.Value = new OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator();
+            ((OpenCVForUnityPlayMakerActions.EdgeAwareInterpolator)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createEdgeAwareInterpolator();
 
 
         }

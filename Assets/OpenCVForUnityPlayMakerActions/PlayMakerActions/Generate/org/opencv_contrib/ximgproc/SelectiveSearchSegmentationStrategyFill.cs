@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SelectiveSearchSegmentationStrategyFill : OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy
     {
 
-        public SelectiveSearchSegmentationStrategyFill ()
+        public SelectiveSearchSegmentationStrategyFill()
         {
 
         }
 
-        public SelectiveSearchSegmentationStrategyFill (OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategyFill nativeObj)
-            : base (nativeObj)
+        public SelectiveSearchSegmentationStrategyFill(OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategyFill nativeObj) : base(nativeObj)
         {
 
         }

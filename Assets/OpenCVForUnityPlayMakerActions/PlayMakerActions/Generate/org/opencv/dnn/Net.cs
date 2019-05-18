@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Net : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public Net ()
+        public Net()
         {
 
         }
 
-        public Net (OpenCVForUnity.DnnModule.Net nativeObj)
-            : base (nativeObj)
+        public Net(OpenCVForUnity.DnnModule.Net nativeObj) : base(nativeObj)
         {
 
         }

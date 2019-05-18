@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class WhiteBalancer : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public WhiteBalancer ()
+        public WhiteBalancer()
         {
 
         }
 
-        public WhiteBalancer (OpenCVForUnity.XphotoModule.WhiteBalancer nativeObj)
-            : base (nativeObj)
+        public WhiteBalancer(OpenCVForUnity.XphotoModule.WhiteBalancer nativeObj) : base(nativeObj)
         {
 
         }

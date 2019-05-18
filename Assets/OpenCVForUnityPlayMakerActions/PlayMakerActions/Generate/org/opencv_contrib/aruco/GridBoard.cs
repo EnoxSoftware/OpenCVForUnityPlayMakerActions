@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class GridBoard : OpenCVForUnityPlayMakerActions.Board
     {
 
-        public GridBoard ()
+        public GridBoard()
         {
 
         }
 
-        public GridBoard (OpenCVForUnity.ArucoModule.GridBoard nativeObj)
-            : base (nativeObj)
+        public GridBoard(OpenCVForUnity.ArucoModule.GridBoard nativeObj) : base(nativeObj)
         {
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class LBPHFaceRecognizer : OpenCVForUnityPlayMakerActions.FaceRecognizer
     {
 
-        public LBPHFaceRecognizer ()
+        public LBPHFaceRecognizer()
         {
 
         }
 
-        public LBPHFaceRecognizer (OpenCVForUnity.FaceModule.LBPHFaceRecognizer nativeObj)
-            : base (nativeObj)
+        public LBPHFaceRecognizer(OpenCVForUnity.FaceModule.LBPHFaceRecognizer nativeObj) : base(nativeObj)
         {
 
         }

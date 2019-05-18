@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class DTrees : OpenCVForUnityPlayMakerActions.StatModel
     {
 
-        public DTrees ()
+        public DTrees()
         {
 
         }
 
-        public DTrees (OpenCVForUnity.MlModule.DTrees nativeObj)
-            : base (nativeObj)
+        public DTrees(OpenCVForUnity.MlModule.DTrees nativeObj) : base(nativeObj)
         {
 
         }

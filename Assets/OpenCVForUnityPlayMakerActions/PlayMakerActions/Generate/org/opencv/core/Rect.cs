@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Rect : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public Rect ()
+        public Rect()
         {
 
         }
 
-        public Rect (OpenCVForUnity.CoreModule.Rect nativeObj)
-            : base (nativeObj)
+        public Rect(OpenCVForUnity.CoreModule.Rect nativeObj) : base(nativeObj)
         {
 
         }

@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Scalar : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public Scalar ()
+        public Scalar()
         {
 
         }
 
-        public Scalar (OpenCVForUnity.CoreModule.Scalar nativeObj)
-            : base (nativeObj)
+        public Scalar(OpenCVForUnity.CoreModule.Scalar nativeObj) : base(nativeObj)
         {
 
         }

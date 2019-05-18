@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MatOfByte : OpenCVForUnityPlayMakerActions.Mat
     {
 
-        public MatOfByte ()
+        public MatOfByte()
         {
 
         }
 
-        public MatOfByte (OpenCVForUnity.CoreModule.MatOfByte nativeObj)
-            : base (nativeObj)
+        public MatOfByte(OpenCVForUnity.CoreModule.MatOfByte nativeObj) : base(nativeObj)
         {
 
         }

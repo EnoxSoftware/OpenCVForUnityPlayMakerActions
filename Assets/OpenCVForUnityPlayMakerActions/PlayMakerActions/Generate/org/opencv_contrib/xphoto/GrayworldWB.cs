@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class GrayworldWB : OpenCVForUnityPlayMakerActions.WhiteBalancer
     {
 
-        public GrayworldWB ()
+        public GrayworldWB()
         {
 
         }
 
-        public GrayworldWB (OpenCVForUnity.XphotoModule.GrayworldWB nativeObj)
-            : base (nativeObj)
+        public GrayworldWB(OpenCVForUnity.XphotoModule.GrayworldWB nativeObj) : base(nativeObj)
         {
 
         }

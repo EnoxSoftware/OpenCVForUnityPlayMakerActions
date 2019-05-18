@@ -9,48 +9,48 @@ using OpenCVForUnity.TextModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_text")]
-    [HutongGames.PlayMaker.Tooltip ("public static OCRBeamSearchDecoder create (string filename, string vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filename")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "vocabulary")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "transition_probabilities_table")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Mat), "emission_probabilities_table")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_text")]
+    [HutongGames.PlayMaker.Tooltip("public static OCRBeamSearchDecoder create(string filename, string vocabulary, Mat transition_probabilities_table, Mat emission_probabilities_table)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "filename")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "vocabulary")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "transition_probabilities_table")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "emission_probabilities_table")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder), "storeResult")]
     public class OCRBeamSearchDecoder_create_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] string")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] string")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
         public HutongGames.PlayMaker.FsmString filename;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] string")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] string")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmString))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
         public HutongGames.PlayMaker.FsmString vocabulary;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg3] Mat")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject transition_probabilities_table;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg4] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg4] Mat")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Mat))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject emission_probabilities_table;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] OCRBeamSearchDecoder")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder))]
+        [HutongGames.PlayMaker.ActionSection("[return] OCRBeamSearchDecoder")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             filename = null;
             vocabulary = null;
@@ -60,40 +60,40 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(transition_probabilities_table.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("transition_probabilities_table is not initialized. Add Action \"newMat\".");
+                LogError("transition_probabilities_table is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_transition_probabilities_table = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (transition_probabilities_table);
+            OpenCVForUnity.CoreModule.Mat wrapped_transition_probabilities_table = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(transition_probabilities_table);
 
             if (!(emission_probabilities_table.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError ("emission_probabilities_table is not initialized. Add Action \"newMat\".");
+                LogError("emission_probabilities_table is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_emission_probabilities_table = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat> (emission_probabilities_table);
+            OpenCVForUnity.CoreModule.Mat wrapped_emission_probabilities_table = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(emission_probabilities_table);
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder)) storeResult.Value = new OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder ();
-            ((OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder)storeResult.Value).wrappedObject = OpenCVForUnity.TextModule.OCRBeamSearchDecoder.create (filename.Value, vocabulary.Value, wrapped_transition_probabilities_table, wrapped_emission_probabilities_table);
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder)) storeResult.Value = new OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder();
+            ((OpenCVForUnityPlayMakerActions.OCRBeamSearchDecoder)storeResult.Value).wrappedObject = OpenCVForUnity.TextModule.OCRBeamSearchDecoder.create(filename.Value, vocabulary.Value, wrapped_transition_probabilities_table, wrapped_emission_probabilities_table);
 
 
         }

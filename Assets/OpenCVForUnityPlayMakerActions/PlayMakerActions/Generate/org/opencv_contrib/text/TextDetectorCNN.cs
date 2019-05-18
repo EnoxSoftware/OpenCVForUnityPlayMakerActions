@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TextDetectorCNN : OpenCVForUnityPlayMakerActions.TextDetector
     {
 
-        public TextDetectorCNN ()
+        public TextDetectorCNN()
         {
 
         }
 
-        public TextDetectorCNN (OpenCVForUnity.TextModule.TextDetectorCNN nativeObj)
-            : base (nativeObj)
+        public TextDetectorCNN(OpenCVForUnity.TextModule.TextDetectorCNN nativeObj) : base(nativeObj)
         {
 
         }

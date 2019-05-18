@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class FacemarkAAM : OpenCVForUnityPlayMakerActions.FacemarkTrain
     {
 
-        public FacemarkAAM ()
+        public FacemarkAAM()
         {
 
         }
 
-        public FacemarkAAM (OpenCVForUnity.FaceModule.FacemarkAAM nativeObj)
-            : base (nativeObj)
+        public FacemarkAAM(OpenCVForUnity.FaceModule.FacemarkAAM nativeObj) : base(nativeObj)
         {
 
         }

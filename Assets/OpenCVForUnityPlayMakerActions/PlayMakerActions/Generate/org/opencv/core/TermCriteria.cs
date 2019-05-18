@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TermCriteria : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public TermCriteria ()
+        public TermCriteria()
         {
 
         }
 
-        public TermCriteria (OpenCVForUnity.CoreModule.TermCriteria nativeObj)
-            : base (nativeObj)
+        public TermCriteria(OpenCVForUnity.CoreModule.TermCriteria nativeObj) : base(nativeObj)
         {
 
         }

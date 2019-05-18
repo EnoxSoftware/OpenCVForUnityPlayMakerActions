@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TransientAreasSegmentationModule : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public TransientAreasSegmentationModule ()
+        public TransientAreasSegmentationModule()
         {
 
         }
 
-        public TransientAreasSegmentationModule (OpenCVForUnity.BioinspiredModule.TransientAreasSegmentationModule nativeObj)
-            : base (nativeObj)
+        public TransientAreasSegmentationModule(OpenCVForUnity.BioinspiredModule.TransientAreasSegmentationModule nativeObj) : base(nativeObj)
         {
 
         }

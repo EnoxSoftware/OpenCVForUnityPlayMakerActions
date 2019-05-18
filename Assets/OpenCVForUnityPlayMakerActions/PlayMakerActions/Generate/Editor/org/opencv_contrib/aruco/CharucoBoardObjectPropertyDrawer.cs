@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 
     // Test with action that uses an FsmObject variable of AudioClip type. E.g., Set Audio Clip
 
-    [ObjectPropertyDrawer (typeof (OpenCVForUnityPlayMakerActions.CharucoBoard))]
+    [ObjectPropertyDrawer(typeof(OpenCVForUnityPlayMakerActions.CharucoBoard))]
     public class CharucoBoardObjectPropertyDrawer : OpenCVObjectPropertyDrawer
     {
 

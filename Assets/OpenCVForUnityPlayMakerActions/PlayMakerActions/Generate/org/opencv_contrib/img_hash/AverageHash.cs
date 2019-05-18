@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class AverageHash : OpenCVForUnityPlayMakerActions.ImgHashBase
     {
 
-        public AverageHash ()
+        public AverageHash()
         {
 
         }
 
-        public AverageHash (OpenCVForUnity.Img_hashModule.AverageHash nativeObj)
-            : base (nativeObj)
+        public AverageHash(OpenCVForUnity.Img_hashModule.AverageHash nativeObj) : base(nativeObj)
         {
 
         }

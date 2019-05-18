@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SimpleWB : OpenCVForUnityPlayMakerActions.WhiteBalancer
     {
 
-        public SimpleWB ()
+        public SimpleWB()
         {
 
         }
 
-        public SimpleWB (OpenCVForUnity.XphotoModule.SimpleWB nativeObj)
-            : base (nativeObj)
+        public SimpleWB(OpenCVForUnity.XphotoModule.SimpleWB nativeObj) : base(nativeObj)
         {
 
         }

@@ -8,47 +8,47 @@ using OpenCVForUnity.XimgprocModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public static GraphSegmentation createGraphSegmentation ()")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.GraphSegmentation), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ximgproc")]
+    [HutongGames.PlayMaker.Tooltip("public static GraphSegmentation createGraphSegmentation()")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.GraphSegmentation), "storeResult")]
     public class Ximgproc_createGraphSegmentation_3 : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[return] GraphSegmentation")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.GraphSegmentation))]
+        [HutongGames.PlayMaker.ActionSection("[return] GraphSegmentation")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.GraphSegmentation))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             storeResult = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.GraphSegmentation)) storeResult.Value = new OpenCVForUnityPlayMakerActions.GraphSegmentation ();
-            ((OpenCVForUnityPlayMakerActions.GraphSegmentation)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createGraphSegmentation ();
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.GraphSegmentation)) storeResult.Value = new OpenCVForUnityPlayMakerActions.GraphSegmentation();
+            ((OpenCVForUnityPlayMakerActions.GraphSegmentation)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createGraphSegmentation();
 
 
         }

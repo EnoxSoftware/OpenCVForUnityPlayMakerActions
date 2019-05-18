@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class DisparityWLSFilter : OpenCVForUnityPlayMakerActions.DisparityFilter
     {
 
-        public DisparityWLSFilter ()
+        public DisparityWLSFilter()
         {
 
         }
 
-        public DisparityWLSFilter (OpenCVForUnity.XimgprocModule.DisparityWLSFilter nativeObj)
-            : base (nativeObj)
+        public DisparityWLSFilter(OpenCVForUnity.XimgprocModule.DisparityWLSFilter nativeObj) : base(nativeObj)
         {
 
         }

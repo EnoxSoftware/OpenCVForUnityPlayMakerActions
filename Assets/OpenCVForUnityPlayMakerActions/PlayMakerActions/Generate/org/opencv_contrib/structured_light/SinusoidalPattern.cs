@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SinusoidalPattern : OpenCVForUnityPlayMakerActions.StructuredLightPattern
     {
 
-        public SinusoidalPattern ()
+        public SinusoidalPattern()
         {
 
         }
 
-        public SinusoidalPattern (OpenCVForUnity.Structured_lightModule.SinusoidalPattern nativeObj)
-            : base (nativeObj)
+        public SinusoidalPattern(OpenCVForUnity.Structured_lightModule.SinusoidalPattern nativeObj) : base(nativeObj)
         {
 
         }

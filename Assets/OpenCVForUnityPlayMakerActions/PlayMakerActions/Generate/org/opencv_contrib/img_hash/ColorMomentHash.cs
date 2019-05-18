@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class ColorMomentHash : OpenCVForUnityPlayMakerActions.ImgHashBase
     {
 
-        public ColorMomentHash ()
+        public ColorMomentHash()
         {
 
         }
 
-        public ColorMomentHash (OpenCVForUnity.Img_hashModule.ColorMomentHash nativeObj)
-            : base (nativeObj)
+        public ColorMomentHash(OpenCVForUnity.Img_hashModule.ColorMomentHash nativeObj) : base(nativeObj)
         {
 
         }

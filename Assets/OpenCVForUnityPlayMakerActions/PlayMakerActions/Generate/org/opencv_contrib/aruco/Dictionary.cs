@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Dictionary : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public Dictionary ()
+        public Dictionary()
         {
 
         }
 
-        public Dictionary (OpenCVForUnity.ArucoModule.Dictionary nativeObj)
-            : base (nativeObj)
+        public Dictionary(OpenCVForUnity.ArucoModule.Dictionary nativeObj) : base(nativeObj)
         {
 
         }

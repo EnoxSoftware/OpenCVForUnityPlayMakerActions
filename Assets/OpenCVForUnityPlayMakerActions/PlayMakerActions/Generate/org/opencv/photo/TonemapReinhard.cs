@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TonemapReinhard : OpenCVForUnityPlayMakerActions.Tonemap
     {
 
-        public TonemapReinhard ()
+        public TonemapReinhard()
         {
 
         }
 
-        public TonemapReinhard (OpenCVForUnity.PhotoModule.TonemapReinhard nativeObj)
-            : base (nativeObj)
+        public TonemapReinhard(OpenCVForUnity.PhotoModule.TonemapReinhard nativeObj) : base(nativeObj)
         {
 
         }

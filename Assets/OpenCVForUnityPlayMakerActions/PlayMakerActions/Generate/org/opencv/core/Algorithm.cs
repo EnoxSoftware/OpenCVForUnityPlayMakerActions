@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Algorithm : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public Algorithm ()
+        public Algorithm()
         {
 
         }
 
-        public Algorithm (OpenCVForUnity.CoreModule.Algorithm nativeObj)
-            : base (nativeObj)
+        public Algorithm(OpenCVForUnity.CoreModule.Algorithm nativeObj) : base(nativeObj)
         {
 
         }

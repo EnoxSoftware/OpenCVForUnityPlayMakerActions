@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class PHash : OpenCVForUnityPlayMakerActions.ImgHashBase
     {
 
-        public PHash ()
+        public PHash()
         {
 
         }
 
-        public PHash (OpenCVForUnity.Img_hashModule.PHash nativeObj)
-            : base (nativeObj)
+        public PHash(OpenCVForUnity.Img_hashModule.PHash nativeObj) : base(nativeObj)
         {
 
         }

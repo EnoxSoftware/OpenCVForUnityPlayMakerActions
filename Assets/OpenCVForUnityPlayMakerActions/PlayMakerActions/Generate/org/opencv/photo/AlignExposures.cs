@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class AlignExposures : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public AlignExposures ()
+        public AlignExposures()
         {
 
         }
 
-        public AlignExposures (OpenCVForUnity.PhotoModule.AlignExposures nativeObj)
-            : base (nativeObj)
+        public AlignExposures(OpenCVForUnity.PhotoModule.AlignExposures nativeObj) : base(nativeObj)
         {
 
         }

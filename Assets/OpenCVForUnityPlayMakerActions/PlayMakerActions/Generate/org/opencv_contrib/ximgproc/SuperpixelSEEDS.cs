@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SuperpixelSEEDS : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public SuperpixelSEEDS ()
+        public SuperpixelSEEDS()
         {
 
         }
 
-        public SuperpixelSEEDS (OpenCVForUnity.XimgprocModule.SuperpixelSEEDS nativeObj)
-            : base (nativeObj)
+        public SuperpixelSEEDS(OpenCVForUnity.XimgprocModule.SuperpixelSEEDS nativeObj) : base(nativeObj)
         {
 
         }

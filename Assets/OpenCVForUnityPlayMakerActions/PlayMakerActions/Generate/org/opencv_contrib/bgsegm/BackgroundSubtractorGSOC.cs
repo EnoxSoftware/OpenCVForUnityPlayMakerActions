@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BackgroundSubtractorGSOC : OpenCVForUnityPlayMakerActions.BackgroundSubtractor
     {
 
-        public BackgroundSubtractorGSOC ()
+        public BackgroundSubtractorGSOC()
         {
 
         }
 
-        public BackgroundSubtractorGSOC (OpenCVForUnity.BgsegmModule.BackgroundSubtractorGSOC nativeObj)
-            : base (nativeObj)
+        public BackgroundSubtractorGSOC(OpenCVForUnity.BgsegmModule.BackgroundSubtractorGSOC nativeObj) : base(nativeObj)
         {
 
         }

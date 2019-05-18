@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MatOfDouble : OpenCVForUnityPlayMakerActions.Mat
     {
 
-        public MatOfDouble ()
+        public MatOfDouble()
         {
 
         }
 
-        public MatOfDouble (OpenCVForUnity.CoreModule.MatOfDouble nativeObj)
-            : base (nativeObj)
+        public MatOfDouble(OpenCVForUnity.CoreModule.MatOfDouble nativeObj) : base(nativeObj)
         {
 
         }

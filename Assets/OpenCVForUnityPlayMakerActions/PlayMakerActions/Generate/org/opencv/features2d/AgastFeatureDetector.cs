@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class AgastFeatureDetector : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public AgastFeatureDetector ()
+        public AgastFeatureDetector()
         {
 
         }
 
-        public AgastFeatureDetector (OpenCVForUnity.Features2dModule.AgastFeatureDetector nativeObj)
-            : base (nativeObj)
+        public AgastFeatureDetector(OpenCVForUnity.Features2dModule.AgastFeatureDetector nativeObj) : base(nativeObj)
         {
 
         }

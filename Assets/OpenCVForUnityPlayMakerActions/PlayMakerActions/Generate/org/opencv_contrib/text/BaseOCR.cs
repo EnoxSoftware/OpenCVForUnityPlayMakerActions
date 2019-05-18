@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BaseOCR : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public BaseOCR ()
+        public BaseOCR()
         {
 
         }
 
-        public BaseOCR (OpenCVForUnity.TextModule.BaseOCR nativeObj)
-            : base (nativeObj)
+        public BaseOCR(OpenCVForUnity.TextModule.BaseOCR nativeObj) : base(nativeObj)
         {
 
         }

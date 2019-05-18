@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class PredictCollector : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public PredictCollector ()
+        public PredictCollector()
         {
 
         }
 
-        public PredictCollector (OpenCVForUnity.FaceModule.PredictCollector nativeObj)
-            : base (nativeObj)
+        public PredictCollector(OpenCVForUnity.FaceModule.PredictCollector nativeObj) : base(nativeObj)
         {
 
         }

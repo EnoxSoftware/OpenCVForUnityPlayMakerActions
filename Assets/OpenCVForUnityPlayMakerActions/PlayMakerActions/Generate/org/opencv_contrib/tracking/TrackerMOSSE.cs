@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TrackerMOSSE : OpenCVForUnityPlayMakerActions.Tracker
     {
 
-        public TrackerMOSSE ()
+        public TrackerMOSSE()
         {
 
         }
 
-        public TrackerMOSSE (OpenCVForUnity.TrackingModule.TrackerMOSSE nativeObj)
-            : base (nativeObj)
+        public TrackerMOSSE(OpenCVForUnity.TrackingModule.TrackerMOSSE nativeObj) : base(nativeObj)
         {
 
         }

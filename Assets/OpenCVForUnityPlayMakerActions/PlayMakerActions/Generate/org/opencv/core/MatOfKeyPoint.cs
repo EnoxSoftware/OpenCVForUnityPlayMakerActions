@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MatOfKeyPoint : OpenCVForUnityPlayMakerActions.Mat
     {
 
-        public MatOfKeyPoint ()
+        public MatOfKeyPoint()
         {
 
         }
 
-        public MatOfKeyPoint (OpenCVForUnity.CoreModule.MatOfKeyPoint nativeObj)
-            : base (nativeObj)
+        public MatOfKeyPoint(OpenCVForUnity.CoreModule.MatOfKeyPoint nativeObj) : base(nativeObj)
         {
 
         }

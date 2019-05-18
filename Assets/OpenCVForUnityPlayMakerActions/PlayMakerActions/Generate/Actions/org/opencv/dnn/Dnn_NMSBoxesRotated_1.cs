@@ -9,55 +9,55 @@ using OpenCVForUnity.DnnModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip ("public static void NMSBoxesRotated (MatOfRotatedRect bboxes, MatOfFloat scores, float score_threshold, float nms_threshold, MatOfInt indices, float eta)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfRotatedRect), "bboxes")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat), "scores")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "score_threshold")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "nms_threshold")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "indices")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "eta")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_dnn")]
+    [HutongGames.PlayMaker.Tooltip("public static void NMSBoxesRotated(MatOfRotatedRect bboxes, MatOfFloat scores, float score_threshold, float nms_threshold, MatOfInt indices, float eta)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfRotatedRect), "bboxes")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfFloat), "scores")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "score_threshold")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "nms_threshold")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfInt), "indices")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "eta")]
     public class Dnn_NMSBoxesRotated_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] MatOfRotatedRect")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] MatOfRotatedRect")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfRotatedRect))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfRotatedRect))]
         public HutongGames.PlayMaker.FsmObject bboxes;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] MatOfFloat")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] MatOfFloat")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfFloat))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfFloat))]
         public HutongGames.PlayMaker.FsmObject scores;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] float")]
+        [HutongGames.PlayMaker.ActionSection("[arg3] float")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat score_threshold;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg4] float")]
+        [HutongGames.PlayMaker.ActionSection("[arg4] float")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat nms_threshold;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg5] MatOfInt")]
+        [HutongGames.PlayMaker.ActionSection("[arg5] MatOfInt")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfInt))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfInt))]
         public HutongGames.PlayMaker.FsmObject indices;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg6] float")]
+        [HutongGames.PlayMaker.ActionSection("[arg6] float")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat eta;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             bboxes = null;
             scores = null;
@@ -68,46 +68,46 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(bboxes.Value is OpenCVForUnityPlayMakerActions.MatOfRotatedRect))
             {
-                LogError ("bboxes is not initialized. Add Action \"newMatOfRotatedRect\".");
+                LogError("bboxes is not initialized. Add Action \"newMatOfRotatedRect\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.MatOfRotatedRect wrapped_bboxes = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRotatedRect, OpenCVForUnity.CoreModule.MatOfRotatedRect> (bboxes);
+            OpenCVForUnity.CoreModule.MatOfRotatedRect wrapped_bboxes = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRotatedRect, OpenCVForUnity.CoreModule.MatOfRotatedRect>(bboxes);
 
             if (!(scores.Value is OpenCVForUnityPlayMakerActions.MatOfFloat))
             {
-                LogError ("scores is not initialized. Add Action \"newMatOfFloat\".");
+                LogError("scores is not initialized. Add Action \"newMatOfFloat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.MatOfFloat wrapped_scores = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.CoreModule.MatOfFloat> (scores);
+            OpenCVForUnity.CoreModule.MatOfFloat wrapped_scores = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat, OpenCVForUnity.CoreModule.MatOfFloat>(scores);
 
             if (!(indices.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
             {
-                LogError ("indices is not initialized. Add Action \"newMatOfInt\".");
+                LogError("indices is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.MatOfInt wrapped_indices = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (indices);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_indices = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt>(indices);
 
-            OpenCVForUnity.DnnModule.Dnn.NMSBoxesRotated (wrapped_bboxes, wrapped_scores, score_threshold.Value, nms_threshold.Value, wrapped_indices, eta.Value);
+            OpenCVForUnity.DnnModule.Dnn.NMSBoxesRotated(wrapped_bboxes, wrapped_scores, score_threshold.Value, nms_threshold.Value, wrapped_indices, eta.Value);
 
 
         }

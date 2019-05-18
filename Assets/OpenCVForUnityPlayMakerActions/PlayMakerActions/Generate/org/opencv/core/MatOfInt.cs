@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MatOfInt : OpenCVForUnityPlayMakerActions.Mat
     {
 
-        public MatOfInt ()
+        public MatOfInt()
         {
 
         }
 
-        public MatOfInt (OpenCVForUnity.CoreModule.MatOfInt nativeObj)
-            : base (nativeObj)
+        public MatOfInt(OpenCVForUnity.CoreModule.MatOfInt nativeObj) : base(nativeObj)
         {
 
         }

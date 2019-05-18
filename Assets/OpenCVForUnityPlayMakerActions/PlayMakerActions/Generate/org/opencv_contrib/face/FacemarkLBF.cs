@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class FacemarkLBF : OpenCVForUnityPlayMakerActions.FacemarkTrain
     {
 
-        public FacemarkLBF ()
+        public FacemarkLBF()
         {
 
         }
 
-        public FacemarkLBF (OpenCVForUnity.FaceModule.FacemarkLBF nativeObj)
-            : base (nativeObj)
+        public FacemarkLBF(OpenCVForUnity.FaceModule.FacemarkLBF nativeObj) : base(nativeObj)
         {
 
         }

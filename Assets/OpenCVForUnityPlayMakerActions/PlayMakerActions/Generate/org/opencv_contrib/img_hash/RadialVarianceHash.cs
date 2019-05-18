@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class RadialVarianceHash : OpenCVForUnityPlayMakerActions.ImgHashBase
     {
 
-        public RadialVarianceHash ()
+        public RadialVarianceHash()
         {
 
         }
 
-        public RadialVarianceHash (OpenCVForUnity.Img_hashModule.RadialVarianceHash nativeObj)
-            : base (nativeObj)
+        public RadialVarianceHash(OpenCVForUnity.Img_hashModule.RadialVarianceHash nativeObj) : base(nativeObj)
         {
 
         }

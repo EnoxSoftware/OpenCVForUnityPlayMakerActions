@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TrackerBoosting : OpenCVForUnityPlayMakerActions.Tracker
     {
 
-        public TrackerBoosting ()
+        public TrackerBoosting()
         {
 
         }
 
-        public TrackerBoosting (OpenCVForUnity.TrackingModule.TrackerBoosting nativeObj)
-            : base (nativeObj)
+        public TrackerBoosting(OpenCVForUnity.TrackingModule.TrackerBoosting nativeObj) : base(nativeObj)
         {
 
         }

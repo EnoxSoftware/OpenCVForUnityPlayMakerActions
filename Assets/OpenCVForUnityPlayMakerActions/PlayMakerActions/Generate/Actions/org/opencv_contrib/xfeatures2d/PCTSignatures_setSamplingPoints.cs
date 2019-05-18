@@ -8,69 +8,69 @@ using OpenCVForUnity.Xfeatures2dModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_xfeatures2d")]
-    [HutongGames.PlayMaker.Tooltip ("public void setSamplingPoints (MatOfPoint2f samplingPoints)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f), "samplingPoints")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_xfeatures2d")]
+    [HutongGames.PlayMaker.Tooltip("public void setSamplingPoints(MatOfPoint2f samplingPoints)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.PCTSignatures), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint2f), "samplingPoints")]
     public class PCTSignatures_setSamplingPoints : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] PCTSignatures")]
+        [HutongGames.PlayMaker.ActionSection("[class] PCTSignatures")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.PCTSignatures))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.PCTSignatures))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] MatOfPoint2f")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] MatOfPoint2f")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint2f))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint2f))]
         public HutongGames.PlayMaker.FsmObject samplingPoints;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             samplingPoints = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.PCTSignatures))
             {
-                LogError ("owner is not initialized. Add Action \"newPCTSignatures\".");
+                LogError("owner is not initialized. Add Action \"newPCTSignatures\".");
                 return;
             }
-            OpenCVForUnity.Xfeatures2dModule.PCTSignatures wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.PCTSignatures, OpenCVForUnity.Xfeatures2dModule.PCTSignatures> (owner);
+            OpenCVForUnity.Xfeatures2dModule.PCTSignatures wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.PCTSignatures, OpenCVForUnity.Xfeatures2dModule.PCTSignatures>(owner);
 
             if (!(samplingPoints.Value is OpenCVForUnityPlayMakerActions.MatOfPoint2f))
             {
-                LogError ("samplingPoints is not initialized. Add Action \"newMatOfPoint2f\".");
+                LogError("samplingPoints is not initialized. Add Action \"newMatOfPoint2f\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_samplingPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f> (samplingPoints);
+            OpenCVForUnity.CoreModule.MatOfPoint2f wrapped_samplingPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint2f, OpenCVForUnity.CoreModule.MatOfPoint2f>(samplingPoints);
 
-            wrapped_owner.setSamplingPoints (wrapped_samplingPoints);
+            wrapped_owner.setSamplingPoints(wrapped_samplingPoints);
 
 
         }

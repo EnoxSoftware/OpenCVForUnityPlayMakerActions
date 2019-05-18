@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BOWImgDescriptorExtractor : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public BOWImgDescriptorExtractor ()
+        public BOWImgDescriptorExtractor()
         {
 
         }
 
-        public BOWImgDescriptorExtractor (OpenCVForUnity.Features2dModule.BOWImgDescriptorExtractor nativeObj)
-            : base (nativeObj)
+        public BOWImgDescriptorExtractor(OpenCVForUnity.Features2dModule.BOWImgDescriptorExtractor nativeObj) : base(nativeObj)
         {
 
         }

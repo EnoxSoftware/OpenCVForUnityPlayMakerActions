@@ -7,60 +7,60 @@ using OpenCVForUnity.CoreModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip ("public MatOfPoint3f (params Point3[] a)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "a")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint3f), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_core")]
+    [HutongGames.PlayMaker.Tooltip("public MatOfPoint3f(params Point3[] a)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "a")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint3f), "storeResult")]
     public class MatOfPoint3f_newMatOfPoint3f_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] Point3[](Array(Point3))")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] Point3[](Array(Point3))")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ArrayEditor (typeof (OpenCVForUnityPlayMakerActions.Point3))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ArrayEditor(typeof(OpenCVForUnityPlayMakerActions.Point3))]
         public HutongGames.PlayMaker.FsmArray a;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] MatOfPoint3f")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfPoint3f))]
+        [HutongGames.PlayMaker.ActionSection("[return] MatOfPoint3f")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint3f))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             a = null;
             storeResult = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             OpenCVForUnity.CoreModule.Point3[] wrapped_a = new OpenCVForUnity.CoreModule.Point3[a.Length];
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.Point3, OpenCVForUnity.CoreModule.Point3> (a, wrapped_a);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToArray<OpenCVForUnityPlayMakerActions.Point3, OpenCVForUnity.CoreModule.Point3>(a, wrapped_a);
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfPoint3f)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfPoint3f ();
-            ((OpenCVForUnityPlayMakerActions.MatOfPoint3f)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfPoint3f (wrapped_a);
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfPoint3f)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfPoint3f();
+            ((OpenCVForUnityPlayMakerActions.MatOfPoint3f)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfPoint3f(wrapped_a);
 
-            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.CoreModule.Point3, OpenCVForUnityPlayMakerActions.Point3> (wrapped_a, a);
+            OpenCVForUnityPlayMakerActionsUtils.ConvertArrayToFsmArray<OpenCVForUnity.CoreModule.Point3, OpenCVForUnityPlayMakerActions.Point3>(wrapped_a, a);
 
 
         }

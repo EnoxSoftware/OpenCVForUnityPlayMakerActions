@@ -8,58 +8,58 @@ using OpenCVForUnity.ImgprocModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public Moments (double[] vals)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "vals")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Moments), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
+    [HutongGames.PlayMaker.Tooltip("public Moments(double[] vals)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "vals")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Moments), "storeResult")]
     public class Moments_newMoments_1_C : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] double[](Array(float))")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] double[](Array(float))")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ArrayEditor (HutongGames.PlayMaker.VariableType.Float)]
+        [HutongGames.PlayMaker.ArrayEditor(HutongGames.PlayMaker.VariableType.Float)]
         public HutongGames.PlayMaker.FsmArray vals;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] Moments")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Moments))]
+        [HutongGames.PlayMaker.ActionSection("[return] Moments")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Moments))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             vals = null;
             storeResult = null;
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             float[] float_vals = vals.floatValues;
             double[] casted_vals = new double[float_vals.Length];
-            float_vals.CopyTo (casted_vals, 0);
+            float_vals.CopyTo(casted_vals, 0);
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Moments)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Moments ();
-            ((OpenCVForUnityPlayMakerActions.Moments)storeResult.Value).wrappedObject = new OpenCVForUnity.ImgprocModule.Moments (casted_vals);
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Moments)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Moments();
+            ((OpenCVForUnityPlayMakerActions.Moments)storeResult.Value).wrappedObject = new OpenCVForUnity.ImgprocModule.Moments(casted_vals);
 
             for (int i = 0; i < casted_vals.Length; i++)
             {

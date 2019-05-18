@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class FastBilateralSolverFilter : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public FastBilateralSolverFilter ()
+        public FastBilateralSolverFilter()
         {
 
         }
 
-        public FastBilateralSolverFilter (OpenCVForUnity.XimgprocModule.FastBilateralSolverFilter nativeObj)
-            : base (nativeObj)
+        public FastBilateralSolverFilter(OpenCVForUnity.XimgprocModule.FastBilateralSolverFilter nativeObj) : base(nativeObj)
         {
 
         }

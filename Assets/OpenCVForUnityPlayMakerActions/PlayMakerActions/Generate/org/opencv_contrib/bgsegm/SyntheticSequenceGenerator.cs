@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SyntheticSequenceGenerator : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public SyntheticSequenceGenerator ()
+        public SyntheticSequenceGenerator()
         {
 
         }
 
-        public SyntheticSequenceGenerator (OpenCVForUnity.BgsegmModule.SyntheticSequenceGenerator nativeObj)
-            : base (nativeObj)
+        public SyntheticSequenceGenerator(OpenCVForUnity.BgsegmModule.SyntheticSequenceGenerator nativeObj) : base(nativeObj)
         {
 
         }

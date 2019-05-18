@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class DAISY : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public DAISY ()
+        public DAISY()
         {
 
         }
 
-        public DAISY (OpenCVForUnity.Xfeatures2dModule.DAISY nativeObj)
-            : base (nativeObj)
+        public DAISY(OpenCVForUnity.Xfeatures2dModule.DAISY nativeObj) : base(nativeObj)
         {
 
         }

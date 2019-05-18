@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BlockMeanHash : OpenCVForUnityPlayMakerActions.ImgHashBase
     {
 
-        public BlockMeanHash ()
+        public BlockMeanHash()
         {
 
         }
 
-        public BlockMeanHash (OpenCVForUnity.Img_hashModule.BlockMeanHash nativeObj)
-            : base (nativeObj)
+        public BlockMeanHash(OpenCVForUnity.Img_hashModule.BlockMeanHash nativeObj) : base(nativeObj)
         {
 
         }

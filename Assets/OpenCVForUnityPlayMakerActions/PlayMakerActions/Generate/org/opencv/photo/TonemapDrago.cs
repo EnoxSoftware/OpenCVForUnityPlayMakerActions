@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TonemapDrago : OpenCVForUnityPlayMakerActions.Tonemap
     {
 
-        public TonemapDrago ()
+        public TonemapDrago()
         {
 
         }
 
-        public TonemapDrago (OpenCVForUnity.PhotoModule.TonemapDrago nativeObj)
-            : base (nativeObj)
+        public TonemapDrago(OpenCVForUnity.PhotoModule.TonemapDrago nativeObj) : base(nativeObj)
         {
 
         }

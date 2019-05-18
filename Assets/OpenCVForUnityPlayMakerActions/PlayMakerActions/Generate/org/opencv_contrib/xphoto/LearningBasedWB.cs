@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class LearningBasedWB : OpenCVForUnityPlayMakerActions.WhiteBalancer
     {
 
-        public LearningBasedWB ()
+        public LearningBasedWB()
         {
 
         }
 
-        public LearningBasedWB (OpenCVForUnity.XphotoModule.LearningBasedWB nativeObj)
-            : base (nativeObj)
+        public LearningBasedWB(OpenCVForUnity.XphotoModule.LearningBasedWB nativeObj) : base(nativeObj)
         {
 
         }

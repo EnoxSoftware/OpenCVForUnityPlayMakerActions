@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class HOGDescriptor : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public HOGDescriptor ()
+        public HOGDescriptor()
         {
 
         }
 
-        public HOGDescriptor (OpenCVForUnity.ObjdetectModule.HOGDescriptor nativeObj)
-            : base (nativeObj)
+        public HOGDescriptor(OpenCVForUnity.ObjdetectModule.HOGDescriptor nativeObj) : base(nativeObj)
         {
 
         }

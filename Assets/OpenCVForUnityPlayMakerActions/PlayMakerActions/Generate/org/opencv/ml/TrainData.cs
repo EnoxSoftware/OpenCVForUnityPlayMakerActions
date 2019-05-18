@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TrainData : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public TrainData ()
+        public TrainData()
         {
 
         }
 
-        public TrainData (OpenCVForUnity.MlModule.TrainData nativeObj)
-            : base (nativeObj)
+        public TrainData(OpenCVForUnity.MlModule.TrainData nativeObj) : base(nativeObj)
         {
 
         }

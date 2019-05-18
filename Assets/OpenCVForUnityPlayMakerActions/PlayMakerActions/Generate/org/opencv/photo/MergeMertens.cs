@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MergeMertens : OpenCVForUnityPlayMakerActions.MergeExposures
     {
 
-        public MergeMertens ()
+        public MergeMertens()
         {
 
         }
 
-        public MergeMertens (OpenCVForUnity.PhotoModule.MergeMertens nativeObj)
-            : base (nativeObj)
+        public MergeMertens(OpenCVForUnity.PhotoModule.MergeMertens nativeObj) : base(nativeObj)
         {
 
         }

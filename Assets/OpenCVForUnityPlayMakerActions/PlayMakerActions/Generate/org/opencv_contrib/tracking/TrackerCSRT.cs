@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TrackerCSRT : OpenCVForUnityPlayMakerActions.Tracker
     {
 
-        public TrackerCSRT ()
+        public TrackerCSRT()
         {
 
         }
 
-        public TrackerCSRT (OpenCVForUnity.TrackingModule.TrackerCSRT nativeObj)
-            : base (nativeObj)
+        public TrackerCSRT(OpenCVForUnity.TrackingModule.TrackerCSRT nativeObj) : base(nativeObj)
         {
 
         }

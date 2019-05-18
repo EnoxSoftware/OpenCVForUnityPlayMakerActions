@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class DescriptorMatcher : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public DescriptorMatcher ()
+        public DescriptorMatcher()
         {
 
         }
 
-        public DescriptorMatcher (OpenCVForUnity.Features2dModule.DescriptorMatcher nativeObj)
-            : base (nativeObj)
+        public DescriptorMatcher(OpenCVForUnity.Features2dModule.DescriptorMatcher nativeObj) : base(nativeObj)
         {
 
         }

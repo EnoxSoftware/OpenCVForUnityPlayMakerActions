@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class StereoBM : OpenCVForUnityPlayMakerActions.StereoMatcher
     {
 
-        public StereoBM ()
+        public StereoBM()
         {
 
         }
 
-        public StereoBM (OpenCVForUnity.Calib3dModule.StereoBM nativeObj)
-            : base (nativeObj)
+        public StereoBM(OpenCVForUnity.Calib3dModule.StereoBM nativeObj) : base(nativeObj)
         {
 
         }

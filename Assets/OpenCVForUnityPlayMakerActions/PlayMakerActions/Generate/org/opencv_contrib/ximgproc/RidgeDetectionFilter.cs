@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class RidgeDetectionFilter : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public RidgeDetectionFilter ()
+        public RidgeDetectionFilter()
         {
 
         }
 
-        public RidgeDetectionFilter (OpenCVForUnity.XimgprocModule.RidgeDetectionFilter nativeObj)
-            : base (nativeObj)
+        public RidgeDetectionFilter(OpenCVForUnity.XimgprocModule.RidgeDetectionFilter nativeObj) : base(nativeObj)
         {
 
         }

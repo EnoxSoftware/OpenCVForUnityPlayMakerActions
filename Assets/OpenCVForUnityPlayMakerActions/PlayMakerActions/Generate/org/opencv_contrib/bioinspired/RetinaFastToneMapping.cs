@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class RetinaFastToneMapping : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public RetinaFastToneMapping ()
+        public RetinaFastToneMapping()
         {
 
         }
 
-        public RetinaFastToneMapping (OpenCVForUnity.BioinspiredModule.RetinaFastToneMapping nativeObj)
-            : base (nativeObj)
+        public RetinaFastToneMapping(OpenCVForUnity.BioinspiredModule.RetinaFastToneMapping nativeObj) : base(nativeObj)
         {
 
         }

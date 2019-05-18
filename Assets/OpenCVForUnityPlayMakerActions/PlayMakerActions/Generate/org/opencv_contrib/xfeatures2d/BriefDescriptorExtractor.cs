@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BriefDescriptorExtractor : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public BriefDescriptorExtractor ()
+        public BriefDescriptorExtractor()
         {
 
         }
 
-        public BriefDescriptorExtractor (OpenCVForUnity.Xfeatures2dModule.BriefDescriptorExtractor nativeObj)
-            : base (nativeObj)
+        public BriefDescriptorExtractor(OpenCVForUnity.Xfeatures2dModule.BriefDescriptorExtractor nativeObj) : base(nativeObj)
         {
 
         }

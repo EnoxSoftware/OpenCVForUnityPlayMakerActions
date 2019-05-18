@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 
     // Test with action that uses an FsmObject variable of AudioClip type. E.g., Set Audio Clip
 
-    [ObjectPropertyDrawer (typeof (OpenCVForUnityPlayMakerActions.MatOfDouble))]
+    [ObjectPropertyDrawer(typeof(OpenCVForUnityPlayMakerActions.MatOfDouble))]
     public class MatOfDoubleObjectPropertyDrawer : OpenCVObjectPropertyDrawer
     {
 

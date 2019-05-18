@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BasicFaceRecognizer : OpenCVForUnityPlayMakerActions.FaceRecognizer
     {
 
-        public BasicFaceRecognizer ()
+        public BasicFaceRecognizer()
         {
 
         }
 
-        public BasicFaceRecognizer (OpenCVForUnity.FaceModule.BasicFaceRecognizer nativeObj)
-            : base (nativeObj)
+        public BasicFaceRecognizer(OpenCVForUnity.FaceModule.BasicFaceRecognizer nativeObj) : base(nativeObj)
         {
 
         }

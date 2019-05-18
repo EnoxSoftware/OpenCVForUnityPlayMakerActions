@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class DictValue : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public DictValue ()
+        public DictValue()
         {
 
         }
 
-        public DictValue (OpenCVForUnity.DnnModule.DictValue nativeObj)
-            : base (nativeObj)
+        public DictValue(OpenCVForUnity.DnnModule.DictValue nativeObj) : base(nativeObj)
         {
 
         }

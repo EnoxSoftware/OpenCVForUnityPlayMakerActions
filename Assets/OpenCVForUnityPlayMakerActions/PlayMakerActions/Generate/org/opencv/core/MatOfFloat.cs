@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MatOfFloat : OpenCVForUnityPlayMakerActions.Mat
     {
 
-        public MatOfFloat ()
+        public MatOfFloat()
         {
 
         }
 
-        public MatOfFloat (OpenCVForUnity.CoreModule.MatOfFloat nativeObj)
-            : base (nativeObj)
+        public MatOfFloat(OpenCVForUnity.CoreModule.MatOfFloat nativeObj) : base(nativeObj)
         {
 
         }

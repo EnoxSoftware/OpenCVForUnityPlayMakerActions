@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MergeRobertson : OpenCVForUnityPlayMakerActions.MergeExposures
     {
 
-        public MergeRobertson ()
+        public MergeRobertson()
         {
 
         }
 
-        public MergeRobertson (OpenCVForUnity.PhotoModule.MergeRobertson nativeObj)
-            : base (nativeObj)
+        public MergeRobertson(OpenCVForUnity.PhotoModule.MergeRobertson nativeObj) : base(nativeObj)
         {
 
         }

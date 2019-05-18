@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MACE : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public MACE ()
+        public MACE()
         {
 
         }
 
-        public MACE (OpenCVForUnity.FaceModule.MACE nativeObj)
-            : base (nativeObj)
+        public MACE(OpenCVForUnity.FaceModule.MACE nativeObj) : base(nativeObj)
         {
 
         }

@@ -8,37 +8,37 @@ using OpenCVForUnity.BgsegmModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_bgsegm")]
-    [HutongGames.PlayMaker.Tooltip ("public bool getIsParallel ()")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "trueEvent")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmEvent), "falseEvent")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_bgsegm")]
+    [HutongGames.PlayMaker.Tooltip("public bool getIsParallel()")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "trueEvent")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "falseEvent")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "storeResult")]
     public class BackgroundSubtractorCNT_getIsParallel : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] BackgroundSubtractorCNT")]
+        [HutongGames.PlayMaker.ActionSection("[class] BackgroundSubtractorCNT")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] bool")]
-        [HutongGames.PlayMaker.Tooltip ("Event to send if result is true.")]
+        [HutongGames.PlayMaker.ActionSection("[return] bool")]
+        [HutongGames.PlayMaker.Tooltip("Event to send if result is true.")]
         public HutongGames.PlayMaker.FsmEvent trueEvent;
 
-        [HutongGames.PlayMaker.Tooltip ("Event to send if result is false.")]
+        [HutongGames.PlayMaker.Tooltip("Event to send if result is false.")]
         public HutongGames.PlayMaker.FsmEvent falseEvent;
 
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmBool))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
         public HutongGames.PlayMaker.FsmBool storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             trueEvent = null;
@@ -47,34 +47,34 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT))
             {
-                LogError ("owner is not initialized. Add Action \"newBackgroundSubtractorCNT\".");
+                LogError("owner is not initialized. Add Action \"newBackgroundSubtractorCNT\".");
                 return;
             }
-            OpenCVForUnity.BgsegmModule.BackgroundSubtractorCNT wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT, OpenCVForUnity.BgsegmModule.BackgroundSubtractorCNT> (owner);
+            OpenCVForUnity.BgsegmModule.BackgroundSubtractorCNT wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.BackgroundSubtractorCNT, OpenCVForUnity.BgsegmModule.BackgroundSubtractorCNT>(owner);
 
-            storeResult.Value = wrapped_owner.getIsParallel ();
+            storeResult.Value = wrapped_owner.getIsParallel();
 
-            Fsm.Event (storeResult.Value ? trueEvent : falseEvent);
+            Fsm.Event(storeResult.Value ? trueEvent : falseEvent);
 
         }
 

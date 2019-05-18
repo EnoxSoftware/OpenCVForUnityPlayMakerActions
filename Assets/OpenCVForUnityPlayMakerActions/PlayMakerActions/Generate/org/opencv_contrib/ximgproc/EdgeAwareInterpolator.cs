@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class EdgeAwareInterpolator : OpenCVForUnityPlayMakerActions.SparseMatchInterpolator
     {
 
-        public EdgeAwareInterpolator ()
+        public EdgeAwareInterpolator()
         {
 
         }
 
-        public EdgeAwareInterpolator (OpenCVForUnity.XimgprocModule.EdgeAwareInterpolator nativeObj)
-            : base (nativeObj)
+        public EdgeAwareInterpolator(OpenCVForUnity.XimgprocModule.EdgeAwareInterpolator nativeObj) : base(nativeObj)
         {
 
         }

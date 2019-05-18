@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class AlignMTB : OpenCVForUnityPlayMakerActions.AlignExposures
     {
 
-        public AlignMTB ()
+        public AlignMTB()
         {
 
         }
 
-        public AlignMTB (OpenCVForUnity.PhotoModule.AlignMTB nativeObj)
-            : base (nativeObj)
+        public AlignMTB(OpenCVForUnity.PhotoModule.AlignMTB nativeObj) : base(nativeObj)
         {
 
         }

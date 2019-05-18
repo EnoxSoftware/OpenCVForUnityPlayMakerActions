@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Facemark : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public Facemark ()
+        public Facemark()
         {
 
         }
 
-        public Facemark (OpenCVForUnity.FaceModule.Facemark nativeObj)
-            : base (nativeObj)
+        public Facemark(OpenCVForUnity.FaceModule.Facemark nativeObj) : base(nativeObj)
         {
 
         }

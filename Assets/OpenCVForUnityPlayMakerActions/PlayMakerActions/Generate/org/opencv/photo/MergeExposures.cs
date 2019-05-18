@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MergeExposures : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public MergeExposures ()
+        public MergeExposures()
         {
 
         }
 
-        public MergeExposures (OpenCVForUnity.PhotoModule.MergeExposures nativeObj)
-            : base (nativeObj)
+        public MergeExposures(OpenCVForUnity.PhotoModule.MergeExposures nativeObj) : base(nativeObj)
         {
 
         }

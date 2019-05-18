@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class FlannBasedMatcher : OpenCVForUnityPlayMakerActions.DescriptorMatcher
     {
 
-        public FlannBasedMatcher ()
+        public FlannBasedMatcher()
         {
 
         }
 
-        public FlannBasedMatcher (OpenCVForUnity.Features2dModule.FlannBasedMatcher nativeObj)
-            : base (nativeObj)
+        public FlannBasedMatcher(OpenCVForUnity.Features2dModule.FlannBasedMatcher nativeObj) : base(nativeObj)
         {
 
         }

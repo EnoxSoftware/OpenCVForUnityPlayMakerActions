@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BIF : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public BIF ()
+        public BIF()
         {
 
         }
 
-        public BIF (OpenCVForUnity.FaceModule.BIF nativeObj)
-            : base (nativeObj)
+        public BIF(OpenCVForUnity.FaceModule.BIF nativeObj) : base(nativeObj)
         {
 
         }

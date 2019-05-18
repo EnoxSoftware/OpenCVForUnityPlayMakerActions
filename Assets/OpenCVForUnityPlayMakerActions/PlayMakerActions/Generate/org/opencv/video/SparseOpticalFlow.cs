@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SparseOpticalFlow : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public SparseOpticalFlow ()
+        public SparseOpticalFlow()
         {
 
         }
 
-        public SparseOpticalFlow (OpenCVForUnity.VideoModule.SparseOpticalFlow nativeObj)
-            : base (nativeObj)
+        public SparseOpticalFlow(OpenCVForUnity.VideoModule.SparseOpticalFlow nativeObj) : base(nativeObj)
         {
 
         }

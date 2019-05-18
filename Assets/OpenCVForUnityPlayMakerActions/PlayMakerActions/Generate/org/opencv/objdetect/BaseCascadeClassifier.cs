@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BaseCascadeClassifier : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public BaseCascadeClassifier ()
+        public BaseCascadeClassifier()
         {
 
         }
 
-        public BaseCascadeClassifier (OpenCVForUnity.ObjdetectModule.BaseCascadeClassifier nativeObj)
-            : base (nativeObj)
+        public BaseCascadeClassifier(OpenCVForUnity.ObjdetectModule.BaseCascadeClassifier nativeObj) : base(nativeObj)
         {
 
         }

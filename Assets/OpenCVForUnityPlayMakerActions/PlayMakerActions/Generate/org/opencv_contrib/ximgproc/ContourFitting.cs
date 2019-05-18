@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class ContourFitting : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public ContourFitting ()
+        public ContourFitting()
         {
 
         }
 
-        public ContourFitting (OpenCVForUnity.XimgprocModule.ContourFitting nativeObj)
-            : base (nativeObj)
+        public ContourFitting(OpenCVForUnity.XimgprocModule.ContourFitting nativeObj) : base(nativeObj)
         {
 
         }

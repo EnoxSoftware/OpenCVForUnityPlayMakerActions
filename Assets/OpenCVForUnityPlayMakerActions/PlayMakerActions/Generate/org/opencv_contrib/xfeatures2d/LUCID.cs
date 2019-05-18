@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class LUCID : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public LUCID ()
+        public LUCID()
         {
 
         }
 
-        public LUCID (OpenCVForUnity.Xfeatures2dModule.LUCID nativeObj)
-            : base (nativeObj)
+        public LUCID(OpenCVForUnity.Xfeatures2dModule.LUCID nativeObj) : base(nativeObj)
         {
 
         }

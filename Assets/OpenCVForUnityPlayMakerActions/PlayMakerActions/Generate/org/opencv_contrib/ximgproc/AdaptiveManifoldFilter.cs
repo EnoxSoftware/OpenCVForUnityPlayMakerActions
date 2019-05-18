@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class AdaptiveManifoldFilter : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public AdaptiveManifoldFilter ()
+        public AdaptiveManifoldFilter()
         {
 
         }
 
-        public AdaptiveManifoldFilter (OpenCVForUnity.XimgprocModule.AdaptiveManifoldFilter nativeObj)
-            : base (nativeObj)
+        public AdaptiveManifoldFilter(OpenCVForUnity.XimgprocModule.AdaptiveManifoldFilter nativeObj) : base(nativeObj)
         {
 
         }

@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MatOfDMatch : OpenCVForUnityPlayMakerActions.Mat
     {
 
-        public MatOfDMatch ()
+        public MatOfDMatch()
         {
 
         }
 
-        public MatOfDMatch (OpenCVForUnity.CoreModule.MatOfDMatch nativeObj)
-            : base (nativeObj)
+        public MatOfDMatch(OpenCVForUnity.CoreModule.MatOfDMatch nativeObj) : base(nativeObj)
         {
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BackgroundSubtractorKNN : OpenCVForUnityPlayMakerActions.BackgroundSubtractor
     {
 
-        public BackgroundSubtractorKNN ()
+        public BackgroundSubtractorKNN()
         {
 
         }
 
-        public BackgroundSubtractorKNN (OpenCVForUnity.VideoModule.BackgroundSubtractorKNN nativeObj)
-            : base (nativeObj)
+        public BackgroundSubtractorKNN(OpenCVForUnity.VideoModule.BackgroundSubtractorKNN nativeObj) : base(nativeObj)
         {
 
         }

@@ -8,36 +8,36 @@ using OpenCVForUnity.XimgprocModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip ("public void addStrategy (SelectiveSearchSegmentationStrategy g, float weight)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyMultiple), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy), "g")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "weight")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ximgproc")]
+    [HutongGames.PlayMaker.Tooltip("public void addStrategy(SelectiveSearchSegmentationStrategy g, float weight)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyMultiple), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy), "g")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "weight")]
     public class SelectiveSearchSegmentationStrategyMultiple_addStrategy : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] SelectiveSearchSegmentationStrategyMultiple")]
+        [HutongGames.PlayMaker.ActionSection("[class] SelectiveSearchSegmentationStrategyMultiple")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyMultiple))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyMultiple))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] SelectiveSearchSegmentationStrategy")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] SelectiveSearchSegmentationStrategy")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy))]
         public HutongGames.PlayMaker.FsmObject g;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] float")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] float")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat weight;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             g = null;
@@ -45,39 +45,39 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyMultiple))
             {
-                LogError ("owner is not initialized. Add Action \"newSelectiveSearchSegmentationStrategyMultiple\".");
+                LogError("owner is not initialized. Add Action \"newSelectiveSearchSegmentationStrategyMultiple\".");
                 return;
             }
-            OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategyMultiple wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyMultiple, OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategyMultiple> (owner);
+            OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategyMultiple wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategyMultiple, OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategyMultiple>(owner);
 
             if (!(g.Value is OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy))
             {
-                LogError ("g is not initialized. Add Action \"newSelectiveSearchSegmentationStrategy\".");
+                LogError("g is not initialized. Add Action \"newSelectiveSearchSegmentationStrategy\".");
                 return;
             }
-            OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategy wrapped_g = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy, OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategy> (g);
+            OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategy wrapped_g = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy, OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategy>(g);
 
-            wrapped_owner.addStrategy (wrapped_g, weight.Value);
+            wrapped_owner.addStrategy(wrapped_g, weight.Value);
 
 
         }

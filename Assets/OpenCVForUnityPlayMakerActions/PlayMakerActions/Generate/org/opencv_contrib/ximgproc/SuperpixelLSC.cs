@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SuperpixelLSC : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public SuperpixelLSC ()
+        public SuperpixelLSC()
         {
 
         }
 
-        public SuperpixelLSC (OpenCVForUnity.XimgprocModule.SuperpixelLSC nativeObj)
-            : base (nativeObj)
+        public SuperpixelLSC(OpenCVForUnity.XimgprocModule.SuperpixelLSC nativeObj) : base(nativeObj)
         {
 
         }

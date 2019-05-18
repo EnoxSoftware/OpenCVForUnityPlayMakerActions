@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class VideoCapture : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public VideoCapture ()
+        public VideoCapture()
         {
 
         }
 
-        public VideoCapture (OpenCVForUnity.VideoioModule.VideoCapture nativeObj)
-            : base (nativeObj)
+        public VideoCapture(OpenCVForUnity.VideoioModule.VideoCapture nativeObj) : base(nativeObj)
         {
 
         }

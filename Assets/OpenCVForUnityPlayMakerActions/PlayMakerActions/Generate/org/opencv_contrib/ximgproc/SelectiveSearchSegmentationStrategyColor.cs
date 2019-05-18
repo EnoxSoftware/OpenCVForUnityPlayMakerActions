@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SelectiveSearchSegmentationStrategyColor : OpenCVForUnityPlayMakerActions.SelectiveSearchSegmentationStrategy
     {
 
-        public SelectiveSearchSegmentationStrategyColor ()
+        public SelectiveSearchSegmentationStrategyColor()
         {
 
         }
 
-        public SelectiveSearchSegmentationStrategyColor (OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategyColor nativeObj)
-            : base (nativeObj)
+        public SelectiveSearchSegmentationStrategyColor(OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentationStrategyColor nativeObj) : base(nativeObj)
         {
 
         }

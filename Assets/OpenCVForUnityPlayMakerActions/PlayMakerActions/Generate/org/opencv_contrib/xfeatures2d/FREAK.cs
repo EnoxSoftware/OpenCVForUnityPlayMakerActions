@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class FREAK : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public FREAK ()
+        public FREAK()
         {
 
         }
 
-        public FREAK (OpenCVForUnity.Xfeatures2dModule.FREAK nativeObj)
-            : base (nativeObj)
+        public FREAK(OpenCVForUnity.Xfeatures2dModule.FREAK nativeObj) : base(nativeObj)
         {
 
         }

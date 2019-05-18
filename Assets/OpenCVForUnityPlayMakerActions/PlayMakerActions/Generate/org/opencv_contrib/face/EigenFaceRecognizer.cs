@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class EigenFaceRecognizer : OpenCVForUnityPlayMakerActions.BasicFaceRecognizer
     {
 
-        public EigenFaceRecognizer ()
+        public EigenFaceRecognizer()
         {
 
         }
 
-        public EigenFaceRecognizer (OpenCVForUnity.FaceModule.EigenFaceRecognizer nativeObj)
-            : base (nativeObj)
+        public EigenFaceRecognizer(OpenCVForUnity.FaceModule.EigenFaceRecognizer nativeObj) : base(nativeObj)
         {
 
         }

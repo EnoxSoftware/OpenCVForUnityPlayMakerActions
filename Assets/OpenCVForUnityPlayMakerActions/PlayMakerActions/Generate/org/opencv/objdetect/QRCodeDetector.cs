@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class QRCodeDetector : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public QRCodeDetector ()
+        public QRCodeDetector()
         {
 
         }
 
-        public QRCodeDetector (OpenCVForUnity.ObjdetectModule.QRCodeDetector nativeObj)
-            : base (nativeObj)
+        public QRCodeDetector(OpenCVForUnity.ObjdetectModule.QRCodeDetector nativeObj) : base(nativeObj)
         {
 
         }

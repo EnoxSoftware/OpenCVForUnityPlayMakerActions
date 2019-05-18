@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class CalibrateDebevec : OpenCVForUnityPlayMakerActions.CalibrateCRF
     {
 
-        public CalibrateDebevec ()
+        public CalibrateDebevec()
         {
 
         }
 
-        public CalibrateDebevec (OpenCVForUnity.PhotoModule.CalibrateDebevec nativeObj)
-            : base (nativeObj)
+        public CalibrateDebevec(OpenCVForUnity.PhotoModule.CalibrateDebevec nativeObj) : base(nativeObj)
         {
 
         }

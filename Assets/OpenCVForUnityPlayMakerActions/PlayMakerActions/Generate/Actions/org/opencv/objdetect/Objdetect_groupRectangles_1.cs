@@ -8,36 +8,36 @@ using OpenCVForUnity.ObjdetectModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip ("public static void groupRectangles (MatOfRect rectList, MatOfInt weights, int groupThreshold)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfRect), "rectList")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.MatOfInt), "weights")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "groupThreshold")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_objdetect")]
+    [HutongGames.PlayMaker.Tooltip("public static void groupRectangles(MatOfRect rectList, MatOfInt weights, int groupThreshold)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfRect), "rectList")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfInt), "weights")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "groupThreshold")]
     public class Objdetect_groupRectangles_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] MatOfRect")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] MatOfRect")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfRect))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfRect))]
         public HutongGames.PlayMaker.FsmObject rectList;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] MatOfInt")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] MatOfInt")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.MatOfInt))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfInt))]
         public HutongGames.PlayMaker.FsmObject weights;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg3] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt groupThreshold;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             rectList = null;
             weights = null;
@@ -45,39 +45,39 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(rectList.Value is OpenCVForUnityPlayMakerActions.MatOfRect))
             {
-                LogError ("rectList is not initialized. Add Action \"newMatOfRect\".");
+                LogError("rectList is not initialized. Add Action \"newMatOfRect\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.MatOfRect wrapped_rectList = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect> (rectList);
+            OpenCVForUnity.CoreModule.MatOfRect wrapped_rectList = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect>(rectList);
 
             if (!(weights.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
             {
-                LogError ("weights is not initialized. Add Action \"newMatOfInt\".");
+                LogError("weights is not initialized. Add Action \"newMatOfInt\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.MatOfInt wrapped_weights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt> (weights);
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_weights = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt>(weights);
 
-            OpenCVForUnity.ObjdetectModule.Objdetect.groupRectangles (wrapped_rectList, wrapped_weights, groupThreshold.Value);
+            OpenCVForUnity.ObjdetectModule.Objdetect.groupRectangles(wrapped_rectList, wrapped_weights, groupThreshold.Value);
 
 
         }

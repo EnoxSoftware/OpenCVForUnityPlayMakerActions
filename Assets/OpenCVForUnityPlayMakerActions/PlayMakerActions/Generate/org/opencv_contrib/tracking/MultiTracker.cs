@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MultiTracker : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public MultiTracker ()
+        public MultiTracker()
         {
 
         }
 
-        public MultiTracker (OpenCVForUnity.TrackingModule.MultiTracker nativeObj)
-            : base (nativeObj)
+        public MultiTracker(OpenCVForUnity.TrackingModule.MultiTracker nativeObj) : base(nativeObj)
         {
 
         }

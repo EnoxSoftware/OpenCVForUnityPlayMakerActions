@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BackgroundSubtractorLSBP : OpenCVForUnityPlayMakerActions.BackgroundSubtractor
     {
 
-        public BackgroundSubtractorLSBP ()
+        public BackgroundSubtractorLSBP()
         {
 
         }
 
-        public BackgroundSubtractorLSBP (OpenCVForUnity.BgsegmModule.BackgroundSubtractorLSBP nativeObj)
-            : base (nativeObj)
+        public BackgroundSubtractorLSBP(OpenCVForUnity.BgsegmModule.BackgroundSubtractorLSBP nativeObj) : base(nativeObj)
         {
 
         }

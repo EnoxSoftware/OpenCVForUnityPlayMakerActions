@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class MSER : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public MSER ()
+        public MSER()
         {
 
         }
 
-        public MSER (OpenCVForUnity.Features2dModule.MSER nativeObj)
-            : base (nativeObj)
+        public MSER(OpenCVForUnity.Features2dModule.MSER nativeObj) : base(nativeObj)
         {
 
         }

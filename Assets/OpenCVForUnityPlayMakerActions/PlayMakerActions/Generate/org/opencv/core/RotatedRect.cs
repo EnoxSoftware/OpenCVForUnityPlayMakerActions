@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class RotatedRect : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public RotatedRect ()
+        public RotatedRect()
         {
 
         }
 
-        public RotatedRect (OpenCVForUnity.CoreModule.RotatedRect nativeObj)
-            : base (nativeObj)
+        public RotatedRect(OpenCVForUnity.CoreModule.RotatedRect nativeObj) : base(nativeObj)
         {
 
         }

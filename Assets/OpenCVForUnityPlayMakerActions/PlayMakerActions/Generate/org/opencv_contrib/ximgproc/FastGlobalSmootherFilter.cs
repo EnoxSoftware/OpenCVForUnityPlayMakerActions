@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class FastGlobalSmootherFilter : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public FastGlobalSmootherFilter ()
+        public FastGlobalSmootherFilter()
         {
 
         }
 
-        public FastGlobalSmootherFilter (OpenCVForUnity.XimgprocModule.FastGlobalSmootherFilter nativeObj)
-            : base (nativeObj)
+        public FastGlobalSmootherFilter(OpenCVForUnity.XimgprocModule.FastGlobalSmootherFilter nativeObj) : base(nativeObj)
         {
 
         }

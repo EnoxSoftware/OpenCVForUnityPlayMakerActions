@@ -9,13 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class KeyPoint : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public KeyPoint ()
+        public KeyPoint()
         {
 
         }
 
-        public KeyPoint (OpenCVForUnity.CoreModule.KeyPoint nativeObj)
-            : base (nativeObj)
+        public KeyPoint(OpenCVForUnity.CoreModule.KeyPoint nativeObj) : base(nativeObj)
         {
 
         }

@@ -8,34 +8,34 @@ using OpenCVForUnity.Img_hashModule;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity_img_hash")]
-    [HutongGames.PlayMaker.Tooltip ("public static RadialVarianceHash create (double sigma, int numOfAngleLine)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "sigma")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "numOfAngleLine")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.RadialVarianceHash), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_img_hash")]
+    [HutongGames.PlayMaker.Tooltip("public static RadialVarianceHash create(double sigma, int numOfAngleLine)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "sigma")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "numOfAngleLine")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.RadialVarianceHash), "storeResult")]
     public class RadialVarianceHash_create_C : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] double(float)")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat sigma;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmInt))]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt numOfAngleLine;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] RadialVarianceHash")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.RadialVarianceHash))]
+        [HutongGames.PlayMaker.ActionSection("[return] RadialVarianceHash")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.RadialVarianceHash))]
         public HutongGames.PlayMaker.FsmObject storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             sigma = 0.0f;
             numOfAngleLine = 0;
@@ -43,26 +43,26 @@ namespace OpenCVForUnityPlayMakerActions
             everyFrame = false;
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.RadialVarianceHash)) storeResult.Value = new OpenCVForUnityPlayMakerActions.RadialVarianceHash ();
-            ((OpenCVForUnityPlayMakerActions.RadialVarianceHash)storeResult.Value).wrappedObject = OpenCVForUnity.Img_hashModule.RadialVarianceHash.create ((float)sigma.Value, numOfAngleLine.Value);
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.RadialVarianceHash)) storeResult.Value = new OpenCVForUnityPlayMakerActions.RadialVarianceHash();
+            ((OpenCVForUnityPlayMakerActions.RadialVarianceHash)storeResult.Value).wrappedObject = OpenCVForUnity.Img_hashModule.RadialVarianceHash.create((float)sigma.Value, numOfAngleLine.Value);
 
 
         }

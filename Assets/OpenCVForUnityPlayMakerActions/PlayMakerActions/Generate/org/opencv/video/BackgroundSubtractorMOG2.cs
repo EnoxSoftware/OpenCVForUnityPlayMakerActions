@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class BackgroundSubtractorMOG2 : OpenCVForUnityPlayMakerActions.BackgroundSubtractor
     {
 
-        public BackgroundSubtractorMOG2 ()
+        public BackgroundSubtractorMOG2()
         {
 
         }
 
-        public BackgroundSubtractorMOG2 (OpenCVForUnity.VideoModule.BackgroundSubtractorMOG2 nativeObj)
-            : base (nativeObj)
+        public BackgroundSubtractorMOG2(OpenCVForUnity.VideoModule.BackgroundSubtractorMOG2 nativeObj) : base(nativeObj)
         {
 
         }

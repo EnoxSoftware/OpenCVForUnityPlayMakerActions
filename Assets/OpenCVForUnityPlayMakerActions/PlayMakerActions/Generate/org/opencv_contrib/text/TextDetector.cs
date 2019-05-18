@@ -11,13 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class TextDetector : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public TextDetector ()
+        public TextDetector()
         {
 
         }
 
-        public TextDetector (OpenCVForUnity.TextModule.TextDetector nativeObj)
-            : base (nativeObj)
+        public TextDetector(OpenCVForUnity.TextModule.TextDetector nativeObj) : base(nativeObj)
         {
 
         }

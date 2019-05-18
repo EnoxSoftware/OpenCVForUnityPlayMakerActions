@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class RTrees : OpenCVForUnityPlayMakerActions.DTrees
     {
 
-        public RTrees ()
+        public RTrees()
         {
 
         }
 
-        public RTrees (OpenCVForUnity.MlModule.RTrees nativeObj)
-            : base (nativeObj)
+        public RTrees(OpenCVForUnity.MlModule.RTrees nativeObj) : base(nativeObj)
         {
 
         }

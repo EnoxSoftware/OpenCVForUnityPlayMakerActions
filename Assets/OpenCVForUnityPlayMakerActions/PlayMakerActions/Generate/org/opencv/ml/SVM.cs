@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SVM : OpenCVForUnityPlayMakerActions.StatModel
     {
 
-        public SVM ()
+        public SVM()
         {
 
         }
 
-        public SVM (OpenCVForUnity.MlModule.SVM nativeObj)
-            : base (nativeObj)
+        public SVM(OpenCVForUnity.MlModule.SVM nativeObj) : base(nativeObj)
         {
 
         }

@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class Feature2D : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public Feature2D ()
+        public Feature2D()
         {
 
         }
 
-        public Feature2D (OpenCVForUnity.Features2dModule.Feature2D nativeObj)
-            : base (nativeObj)
+        public Feature2D(OpenCVForUnity.Features2dModule.Feature2D nativeObj) : base(nativeObj)
         {
 
         }

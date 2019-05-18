@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class ParamGrid : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
-        public ParamGrid ()
+        public ParamGrid()
         {
 
         }
 
-        public ParamGrid (OpenCVForUnity.MlModule.ParamGrid nativeObj)
-            : base (nativeObj)
+        public ParamGrid(OpenCVForUnity.MlModule.ParamGrid nativeObj) : base(nativeObj)
         {
 
         }

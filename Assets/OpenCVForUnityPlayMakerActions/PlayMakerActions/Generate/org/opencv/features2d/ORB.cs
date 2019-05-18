@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class ORB : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public ORB ()
+        public ORB()
         {
 
         }
 
-        public ORB (OpenCVForUnity.Features2dModule.ORB nativeObj)
-            : base (nativeObj)
+        public ORB(OpenCVForUnity.Features2dModule.ORB nativeObj) : base(nativeObj)
         {
 
         }

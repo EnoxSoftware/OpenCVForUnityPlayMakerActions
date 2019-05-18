@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class SelectiveSearchSegmentation : OpenCVForUnityPlayMakerActions.Algorithm
     {
 
-        public SelectiveSearchSegmentation ()
+        public SelectiveSearchSegmentation()
         {
 
         }
 
-        public SelectiveSearchSegmentation (OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentation nativeObj)
-            : base (nativeObj)
+        public SelectiveSearchSegmentation(OpenCVForUnity.XimgprocModule.SelectiveSearchSegmentation nativeObj) : base(nativeObj)
         {
 
         }

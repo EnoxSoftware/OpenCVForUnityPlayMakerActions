@@ -10,13 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
     public class LATCH : OpenCVForUnityPlayMakerActions.Feature2D
     {
 
-        public LATCH ()
+        public LATCH()
         {
 
         }
 
-        public LATCH (OpenCVForUnity.Xfeatures2dModule.LATCH nativeObj)
-            : base (nativeObj)
+        public LATCH(OpenCVForUnity.Xfeatures2dModule.LATCH nativeObj) : base(nativeObj)
         {
 
         }
