@@ -1,58 +1,59 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
-using OpenCVForUnity.ArucoModule;
+using OpenCVForUnity.Calib3dModule;
 
 
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_aruco")]
-    [HutongGames.PlayMaker.Tooltip("public static void drawAxis(Mat image, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec, float length)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "image")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_calib3d")]
+    [HutongGames.PlayMaker.Tooltip("public static void solvePnPRefineLM(Mat objectPoints, Mat imagePoints, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "objectPoints")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "imagePoints")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "distCoeffs")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "rvec")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "tvec")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "length")]
-    public class Aruco_drawAxis : HutongGames.PlayMaker.FsmStateAction
+    public class Calib3d_solvePnPRefineLM_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
         [HutongGames.PlayMaker.ActionSection("[arg1] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject image;
+        public HutongGames.PlayMaker.FsmObject objectPoints;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject cameraMatrix;
+        public HutongGames.PlayMaker.FsmObject imagePoints;
 
         [HutongGames.PlayMaker.ActionSection("[arg3] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject distCoeffs;
+        public HutongGames.PlayMaker.FsmObject cameraMatrix;
 
         [HutongGames.PlayMaker.ActionSection("[arg4] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject rvec;
+        public HutongGames.PlayMaker.FsmObject distCoeffs;
 
         [HutongGames.PlayMaker.ActionSection("[arg5] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject tvec;
+        public HutongGames.PlayMaker.FsmObject rvec;
 
-        [HutongGames.PlayMaker.ActionSection("[arg6] float")]
+        [HutongGames.PlayMaker.ActionSection("[arg6] Mat")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat length;
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject tvec;
 
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
@@ -60,12 +61,12 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            image = null;
+            objectPoints = null;
+            imagePoints = null;
             cameraMatrix = null;
             distCoeffs = null;
             rvec = null;
             tvec = null;
-            length = 0.0f;
             everyFrame = false;
         }
 
@@ -87,12 +88,19 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
-            if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(objectPoints.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("image is not initialized. Add Action \"newMat\".");
+                LogError("objectPoints is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(image);
+            OpenCVForUnity.CoreModule.Mat wrapped_objectPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(objectPoints);
+
+            if (!(imagePoints.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError("imagePoints is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.CoreModule.Mat wrapped_imagePoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(imagePoints);
 
             if (!(cameraMatrix.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
@@ -122,7 +130,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_tvec = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(tvec);
 
-            OpenCVForUnity.ArucoModule.Aruco.drawAxis(wrapped_image, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_rvec, wrapped_tvec, length.Value);
+            OpenCVForUnity.Calib3dModule.Calib3d.solvePnPRefineLM(wrapped_objectPoints, wrapped_imagePoints, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_rvec, wrapped_tvec);
 
 
         }

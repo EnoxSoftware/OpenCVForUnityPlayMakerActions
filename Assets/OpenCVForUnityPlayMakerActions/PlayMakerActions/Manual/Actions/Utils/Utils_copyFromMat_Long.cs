@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using OpenCVForUnity.UnityUtils;
+using OpenCVForUnity.UtilsModule;
 
 namespace OpenCVForUnityPlayMakerActions
 {
@@ -65,7 +66,7 @@ namespace OpenCVForUnityPlayMakerActions
 
             System.Int64[] wrapped_array = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.LongArray, System.Int64[]> (array);
 
-            Utils.copyFromMat<long> (wrapped_mat, wrapped_array);
+            MatUtils.copyFromMat<long> (wrapped_mat, wrapped_array);
 
         }
 
