@@ -9,12 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip("public static Rect getValidDisparityROI(Rect roi1, Rect roi2, int minDisparity, int numberOfDisparities, int SADWindowSize)")]
+    [HutongGames.PlayMaker.Tooltip("public static Rect getValidDisparityROI(Rect roi1, Rect roi2, int minDisparity, int numberOfDisparities, int blockSize)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Rect), "roi1")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Rect), "roi2")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "minDisparity")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "numberOfDisparities")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "SADWindowSize")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "blockSize")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Rect), "storeResult")]
     public class Calib3d_getValidDisparityROI : HutongGames.PlayMaker.FsmStateAction
     {
@@ -44,7 +44,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection("[arg5] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt SADWindowSize;
+        public HutongGames.PlayMaker.FsmInt blockSize;
 
         [HutongGames.PlayMaker.ActionSection("[return] Rect")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -61,7 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
             roi2 = null;
             minDisparity = 0;
             numberOfDisparities = 0;
-            SADWindowSize = 0;
+            blockSize = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -99,7 +99,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.CoreModule.Rect wrapped_roi2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect>(roi2);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Rect)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Rect();
-            ((OpenCVForUnityPlayMakerActions.Rect)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.getValidDisparityROI(wrapped_roi1, wrapped_roi2, minDisparity.Value, numberOfDisparities.Value, SADWindowSize.Value);
+            ((OpenCVForUnityPlayMakerActions.Rect)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.getValidDisparityROI(wrapped_roi1, wrapped_roi2, minDisparity.Value, numberOfDisparities.Value, blockSize.Value);
 
 
         }

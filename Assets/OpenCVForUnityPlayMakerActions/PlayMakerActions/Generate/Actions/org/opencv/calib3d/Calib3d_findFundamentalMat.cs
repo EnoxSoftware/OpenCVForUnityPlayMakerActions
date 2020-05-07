@@ -9,12 +9,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip("public static Mat findFundamentalMat(MatOfPoint2f points1, MatOfPoint2f points2, int method, double ransacReprojThreshold, double confidence, Mat mask)")]
+    [HutongGames.PlayMaker.Tooltip("public static Mat findFundamentalMat(MatOfPoint2f points1, MatOfPoint2f points2, int method, double ransacReprojThreshold, double confidence, int maxIters, Mat mask)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint2f), "points1")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint2f), "points2")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "method")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "ransacReprojThreshold")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "confidence")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "maxIters")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "mask")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Calib3d_findFundamentalMat : HutongGames.PlayMaker.FsmStateAction
@@ -49,7 +50,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject confidence;
 
-        [HutongGames.PlayMaker.ActionSection("[arg6] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg6] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt maxIters;
+
+        [HutongGames.PlayMaker.ActionSection("[arg7] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
@@ -71,6 +77,7 @@ namespace OpenCVForUnityPlayMakerActions
             method = 0;
             ransacReprojThreshold = null;
             confidence = null;
+            maxIters = 0;
             mask = null;
             storeResult = null;
             everyFrame = false;
@@ -130,7 +137,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.CoreModule.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(mask);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.findFundamentalMat(wrapped_points1, wrapped_points2, method.Value, wrapped_ransacReprojThreshold, wrapped_confidence, wrapped_mask);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.findFundamentalMat(wrapped_points1, wrapped_points2, method.Value, wrapped_ransacReprojThreshold, wrapped_confidence, maxIters.Value, wrapped_mask);
 
 
         }

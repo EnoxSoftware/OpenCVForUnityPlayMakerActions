@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,12 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_xphoto")]
-    [HutongGames.PlayMaker.Tooltip("public static TonemapDurand createTonemapDurand(float gamma, float contrast, float saturation, float sigma_space, float sigma_color)")]
+    [HutongGames.PlayMaker.Tooltip("public static TonemapDurand createTonemapDurand(float gamma, float contrast, float saturation, float sigma_color, float sigma_space)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "gamma")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "contrast")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "saturation")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "sigma_space")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "sigma_color")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "sigma_space")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.TonemapDurand), "storeResult")]
     public class Xphoto_createTonemapDurand : HutongGames.PlayMaker.FsmStateAction
     {
@@ -37,12 +37,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection("[arg4] float")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat sigma_space;
+        public HutongGames.PlayMaker.FsmFloat sigma_color;
 
         [HutongGames.PlayMaker.ActionSection("[arg5] float")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat sigma_color;
+        public HutongGames.PlayMaker.FsmFloat sigma_space;
 
         [HutongGames.PlayMaker.ActionSection("[return] TonemapDurand")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -58,8 +58,8 @@ namespace OpenCVForUnityPlayMakerActions
             gamma = 0.0f;
             contrast = 0.0f;
             saturation = 0.0f;
-            sigma_space = 0.0f;
             sigma_color = 0.0f;
+            sigma_space = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -83,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TonemapDurand)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TonemapDurand();
-            ((OpenCVForUnityPlayMakerActions.TonemapDurand)storeResult.Value).wrappedObject = OpenCVForUnity.XphotoModule.Xphoto.createTonemapDurand(gamma.Value, contrast.Value, saturation.Value, sigma_space.Value, sigma_color.Value);
+            ((OpenCVForUnityPlayMakerActions.TonemapDurand)storeResult.Value).wrappedObject = OpenCVForUnity.XphotoModule.Xphoto.createTonemapDurand(gamma.Value, contrast.Value, saturation.Value, sigma_color.Value, sigma_space.Value);
 
 
         }

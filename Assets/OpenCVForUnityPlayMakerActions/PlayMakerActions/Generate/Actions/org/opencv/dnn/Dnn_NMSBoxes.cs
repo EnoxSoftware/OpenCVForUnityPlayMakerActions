@@ -10,8 +10,8 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip("public static void NMSBoxes(MatOfRect bboxes, MatOfFloat scores, float score_threshold, float nms_threshold, MatOfInt indices, float eta, int top_k)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfRect), "bboxes")]
+    [HutongGames.PlayMaker.Tooltip("public static void NMSBoxes(MatOfRect2d bboxes, MatOfFloat scores, float score_threshold, float nms_threshold, MatOfInt indices, float eta, int top_k)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfRect2d), "bboxes")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfFloat), "scores")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "score_threshold")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "nms_threshold")]
@@ -21,10 +21,10 @@ namespace OpenCVForUnityPlayMakerActions
     public class Dnn_NMSBoxes : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection("[arg1] MatOfRect")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] MatOfRect2d")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfRect))]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfRect2d))]
         public HutongGames.PlayMaker.FsmObject bboxes;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] MatOfFloat")]
@@ -93,12 +93,12 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
-            if (!(bboxes.Value is OpenCVForUnityPlayMakerActions.MatOfRect))
+            if (!(bboxes.Value is OpenCVForUnityPlayMakerActions.MatOfRect2d))
             {
-                LogError("bboxes is not initialized. Add Action \"newMatOfRect\".");
+                LogError("bboxes is not initialized. Add Action \"newMatOfRect2d\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.MatOfRect wrapped_bboxes = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect, OpenCVForUnity.CoreModule.MatOfRect>(bboxes);
+            OpenCVForUnity.CoreModule.MatOfRect2d wrapped_bboxes = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfRect2d, OpenCVForUnity.CoreModule.MatOfRect2d>(bboxes);
 
             if (!(scores.Value is OpenCVForUnityPlayMakerActions.MatOfFloat))
             {
