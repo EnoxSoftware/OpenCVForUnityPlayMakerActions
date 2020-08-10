@@ -9,12 +9,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_videoio")]
-    [HutongGames.PlayMaker.Tooltip("public bool open(string filename, int fourcc, double fps, Size frameSize)")]
+    [HutongGames.PlayMaker.Tooltip("public bool open(string filename, int fourcc, double fps, Size frameSize, bool isColor)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.VideoWriter), "owner")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "filename")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "fourcc")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "fps")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Size), "frameSize")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "isColor")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "trueEvent")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "falseEvent")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "storeResult")]
@@ -48,6 +49,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Size))]
         public HutongGames.PlayMaker.FsmObject frameSize;
 
+        [HutongGames.PlayMaker.ActionSection("[arg5] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool isColor;
+
         [HutongGames.PlayMaker.ActionSection("[return] bool")]
         [HutongGames.PlayMaker.Tooltip("Event to send if result is true.")]
         public HutongGames.PlayMaker.FsmEvent trueEvent;
@@ -70,6 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
             fourcc = 0;
             fps = 0.0f;
             frameSize = null;
+            isColor = false;
             trueEvent = null;
             falseEvent = null;
             storeResult = null;
@@ -108,7 +115,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Size wrapped_frameSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size>(frameSize);
 
-            storeResult.Value = wrapped_owner.open(filename.Value, fourcc.Value, (float)fps.Value, wrapped_frameSize);
+            storeResult.Value = wrapped_owner.open(filename.Value, fourcc.Value, (float)fps.Value, wrapped_frameSize, isColor.Value);
 
             Fsm.Event(storeResult.Value ? trueEvent : falseEvent);
 

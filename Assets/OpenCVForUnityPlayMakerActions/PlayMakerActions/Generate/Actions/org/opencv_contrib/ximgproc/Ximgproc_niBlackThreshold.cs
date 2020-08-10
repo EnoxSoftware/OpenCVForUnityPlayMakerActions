@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip("public static void niBlackThreshold(Mat _src, Mat _dst, double maxValue, int type, int blockSize, double k, int binarizationMethod)")]
+    [HutongGames.PlayMaker.Tooltip("public static void niBlackThreshold(Mat _src, Mat _dst, double maxValue, int type, int blockSize, double k, int binarizationMethod, double r)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_src")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_dst")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "maxValue")]
@@ -17,6 +17,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "blockSize")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "k")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "binarizationMethod")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "r")]
     public class Ximgproc_niBlackThreshold : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -59,6 +60,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt binarizationMethod;
 
+        [HutongGames.PlayMaker.ActionSection("[arg8] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject r;
+
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -72,6 +79,7 @@ namespace OpenCVForUnityPlayMakerActions
             blockSize = 0;
             k = null;
             binarizationMethod = 0;
+            r = null;
             everyFrame = false;
         }
 
@@ -121,7 +129,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_k = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(k);
 
-            OpenCVForUnity.XimgprocModule.Ximgproc.niBlackThreshold(wrapped__src, wrapped__dst, wrapped_maxValue, type.Value, blockSize.Value, wrapped_k, binarizationMethod.Value);
+            if (!(r.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError("r is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_r = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(r);
+
+            OpenCVForUnity.XimgprocModule.Ximgproc.niBlackThreshold(wrapped__src, wrapped__dst, wrapped_maxValue, type.Value, blockSize.Value, wrapped_k, binarizationMethod.Value, wrapped_r);
 
 
         }

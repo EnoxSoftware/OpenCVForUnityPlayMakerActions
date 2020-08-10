@@ -9,11 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_videoio")]
-    [HutongGames.PlayMaker.Tooltip("public VideoWriter(string filename, int fourcc, double fps, Size frameSize)")]
+    [HutongGames.PlayMaker.Tooltip("public VideoWriter(string filename, int fourcc, double fps, Size frameSize, bool isColor)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "filename")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "fourcc")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "fps")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Size), "frameSize")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "isColor")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.VideoWriter), "storeResult")]
     public class VideoWriter_newVideoWriter_3 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -40,6 +41,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Size))]
         public HutongGames.PlayMaker.FsmObject frameSize;
 
+        [HutongGames.PlayMaker.ActionSection("[arg5] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool isColor;
+
         [HutongGames.PlayMaker.ActionSection("[return] VideoWriter")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.VideoWriter))]
@@ -55,6 +61,7 @@ namespace OpenCVForUnityPlayMakerActions
             fourcc = 0;
             fps = null;
             frameSize = null;
+            isColor = false;
             storeResult = null;
             everyFrame = false;
         }
@@ -92,7 +99,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.CoreModule.Size wrapped_frameSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size>(frameSize);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.VideoWriter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.VideoWriter();
-            ((OpenCVForUnityPlayMakerActions.VideoWriter)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoioModule.VideoWriter(filename.Value, fourcc.Value, wrapped_fps, wrapped_frameSize);
+            ((OpenCVForUnityPlayMakerActions.VideoWriter)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoioModule.VideoWriter(filename.Value, fourcc.Value, wrapped_fps, wrapped_frameSize, isColor.Value);
 
 
         }

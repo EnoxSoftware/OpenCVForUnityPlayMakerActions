@@ -1381,7 +1381,7 @@ MonoBehaviour:
             showInInspector: 0
             networkSync: 0
             typeName: UnityEngine.Object
-            value: {fileID: 2800000, guid: 23127a391a0e3425385cd26a9e4cc403, type: 3}
+            value: {fileID: 2800000, guid: ed80b0c1f3599ab4fb7e46d50500f5eb, type: 3}
           TargetTypeName: UnityEngine.Texture2D
           PropertyName: width
           BoolParameter:
@@ -1513,7 +1513,7 @@ MonoBehaviour:
             showInInspector: 0
             networkSync: 0
             typeName: UnityEngine.Object
-            value: {fileID: 2800000, guid: 23127a391a0e3425385cd26a9e4cc403, type: 3}
+            value: {fileID: 2800000, guid: ed80b0c1f3599ab4fb7e46d50500f5eb, type: 3}
           TargetTypeName: UnityEngine.Texture2D
           PropertyName: height
           BoolParameter:
@@ -1654,7 +1654,7 @@ MonoBehaviour:
           showInInspector: 1
           networkSync: 0
           typeName: UnityEngine.Object
-          value: {fileID: 2800000, guid: 23127a391a0e3425385cd26a9e4cc403, type: 3}
+          value: {fileID: 2800000, guid: ed80b0c1f3599ab4fb7e46d50500f5eb, type: 3}
         - useVariable: 1
           name: imgMat
           tooltip: 
@@ -3147,7 +3147,7 @@ MonoBehaviour:
     - fsmEvent:
         name: ON_BACKBUTTON_CLICK
         isSystemEvent: 0
-        isGlobal: 1
+        isGlobal: 0
       toState: OnBackButtonClick
       linkStyle: 0
       linkConstraint: 0
@@ -3272,7 +3272,7 @@ MonoBehaviour:
         showInInspector: 1
         networkSync: 0
         typeName: UnityEngine.Object
-        value: {fileID: 2800000, guid: 23127a391a0e3425385cd26a9e4cc403, type: 3}
+        value: {fileID: 2800000, guid: ed80b0c1f3599ab4fb7e46d50500f5eb, type: 3}
       - useVariable: 1
         name: texture
         tooltip: 
@@ -3295,7 +3295,7 @@ MonoBehaviour:
     locked: 0
     manualUpdate: 0
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 1
+    preprocessed: 0
     ExposedEvents: []
     RestartOnEnable: 1
     EnableDebugFlow: 0
@@ -3313,7 +3313,7 @@ MonoBehaviour:
     handleTriggerEnter: 0
     handleTriggerExit: 0
     handleTriggerStay: 0
-    handleCollisionEnter: 1
+    handleCollisionEnter: 0
     handleCollisionExit: 0
     handleCollisionStay: 0
     handleParticleCollision: 0
@@ -3321,7 +3321,7 @@ MonoBehaviour:
     handleJointBreak: 0
     handleJointBreak2D: 0
     handleOnGUI: 0
-    handleFixedUpdate: 1
+    handleFixedUpdate: 0
     handleLateUpdate: 0
     handleApplicationEvents: 0
     handleUiEvents: 0
