@@ -9,11 +9,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public void setTemplate(Mat edges, Mat dx, Mat dy, Point templCenter)")]
+    [HutongGames.PlayMaker.Tooltip("public void setTemplate(Mat templ, Point templCenter)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.GeneralizedHough), "owner")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "edges")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dx")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dy")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "templ")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "templCenter_x")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "templCenter_y")]
     public class GeneralizedHough_setTemplate_S : HutongGames.PlayMaker.FsmStateAction
@@ -29,21 +27,9 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject edges;
+        public HutongGames.PlayMaker.FsmObject templ;
 
-        [HutongGames.PlayMaker.ActionSection("[arg2] Mat")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject dx;
-
-        [HutongGames.PlayMaker.ActionSection("[arg3] Mat")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject dy;
-
-        [HutongGames.PlayMaker.ActionSection("[arg4] Point")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] Point")]
 
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
@@ -60,9 +46,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             owner = null;
-            edges = null;
-            dx = null;
-            dy = null;
+            templ = null;
             templCenter_x = 0.0f;
             templCenter_y = 0.0f;
             everyFrame = false;
@@ -93,28 +77,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.ImgprocModule.GeneralizedHough wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.GeneralizedHough, OpenCVForUnity.ImgprocModule.GeneralizedHough>(owner);
 
-            if (!(edges.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(templ.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("edges is not initialized. Add Action \"newMat\".");
+                LogError("templ is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_edges = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(edges);
+            OpenCVForUnity.CoreModule.Mat wrapped_templ = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(templ);
 
-            if (!(dx.Value is OpenCVForUnityPlayMakerActions.Mat))
-            {
-                LogError("dx is not initialized. Add Action \"newMat\".");
-                return;
-            }
-            OpenCVForUnity.CoreModule.Mat wrapped_dx = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dx);
-
-            if (!(dy.Value is OpenCVForUnityPlayMakerActions.Mat))
-            {
-                LogError("dy is not initialized. Add Action \"newMat\".");
-                return;
-            }
-            OpenCVForUnity.CoreModule.Mat wrapped_dy = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dy);
-
-            wrapped_owner.setTemplate(wrapped_edges, wrapped_dx, wrapped_dy, new OpenCVForUnity.CoreModule.Point((double)templCenter_x.Value, (double)templCenter_y.Value));
+            wrapped_owner.setTemplate(wrapped_templ, new OpenCVForUnity.CoreModule.Point((double)templCenter_x.Value, (double)templCenter_y.Value));
 
 
         }

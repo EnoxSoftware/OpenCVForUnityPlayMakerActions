@@ -9,10 +9,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip("public bool train(TrainData trainData, int flags)")]
+    [HutongGames.PlayMaker.Tooltip("public bool train(TrainData trainData)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.StatModel), "owner")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.TrainData), "trainData")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "flags")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "trueEvent")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "falseEvent")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "storeResult")]
@@ -30,11 +29,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.TrainData))]
         public HutongGames.PlayMaker.FsmObject trainData;
-
-        [HutongGames.PlayMaker.ActionSection("[arg2] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt flags;
 
         [HutongGames.PlayMaker.ActionSection("[return] bool")]
         [HutongGames.PlayMaker.Tooltip("Event to send if result is true.")]
@@ -55,7 +49,6 @@ namespace OpenCVForUnityPlayMakerActions
         {
             owner = null;
             trainData = null;
-            flags = 0;
             trueEvent = null;
             falseEvent = null;
             storeResult = null;
@@ -94,7 +87,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MlModule.TrainData wrapped_trainData = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TrainData, OpenCVForUnity.MlModule.TrainData>(trainData);
 
-            storeResult.Value = wrapped_owner.train(wrapped_trainData, flags.Value);
+            storeResult.Value = wrapped_owner.train(wrapped_trainData);
 
             Fsm.Event(storeResult.Value ? trueEvent : falseEvent);
 

@@ -10,9 +10,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip("public long getFLOPS(List<MatOfInt> netInputShapes)")]
+    [HutongGames.PlayMaker.Tooltip("public long getFLOPS(int layerId, MatOfInt netInputShape)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Net), "owner")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "netInputShapes")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "layerId")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfInt), "netInputShape")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Long), "storeResult")]
     public class Net_getFLOPS_3 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -23,11 +24,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Net))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection("[arg1] List<MatOfInt>(Array(MatOfInt))")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt layerId;
+
+        [HutongGames.PlayMaker.ActionSection("[arg2] MatOfInt")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ArrayEditor(typeof(OpenCVForUnityPlayMakerActions.MatOfInt))]
-        public HutongGames.PlayMaker.FsmArray netInputShapes;
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfInt))]
+        public HutongGames.PlayMaker.FsmObject netInputShape;
 
         [HutongGames.PlayMaker.ActionSection("[return] long(Long)")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -41,7 +47,8 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             owner = null;
-            netInputShapes = null;
+            layerId = 0;
+            netInputShape = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -71,13 +78,15 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.DnnModule.Net wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Net, OpenCVForUnity.DnnModule.Net>(owner);
 
-            List<OpenCVForUnity.CoreModule.MatOfInt> wrapped_netInputShapes = new List<OpenCVForUnity.CoreModule.MatOfInt>();
-            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt>(netInputShapes, wrapped_netInputShapes);
+            if (!(netInputShape.Value is OpenCVForUnityPlayMakerActions.MatOfInt))
+            {
+                LogError("netInputShape is not initialized. Add Action \"newMatOfInt\".");
+                return;
+            }
+            OpenCVForUnity.CoreModule.MatOfInt wrapped_netInputShape = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt>(netInputShape);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Long)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Long();
-            ((OpenCVForUnityPlayMakerActions.Long)storeResult.Value).wrappedObject = wrapped_owner.getFLOPS(wrapped_netInputShapes);
-
-            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.MatOfInt, OpenCVForUnityPlayMakerActions.MatOfInt>(wrapped_netInputShapes, netInputShapes);
+            ((OpenCVForUnityPlayMakerActions.Long)storeResult.Value).wrappedObject = wrapped_owner.getFLOPS(layerId.Value, wrapped_netInputShape);
 
 
         }

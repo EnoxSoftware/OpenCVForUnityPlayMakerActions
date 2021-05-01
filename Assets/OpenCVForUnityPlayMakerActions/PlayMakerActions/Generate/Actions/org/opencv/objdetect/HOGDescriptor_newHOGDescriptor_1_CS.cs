@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip("public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture, double _winSigma, int _histogramNormType, double _L2HysThreshold, bool _gammaCorrection, int _nlevels)")]
+    [HutongGames.PlayMaker.Tooltip("public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture, double _winSigma, int _histogramNormType, double _L2HysThreshold, bool _gammaCorrection, int _nlevels, bool _signedGradient)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_winSize_width")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_winSize_height")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_blockSize_width")]
@@ -25,6 +25,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_L2HysThreshold")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "_gammaCorrection")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_nlevels")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "_signedGradient")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.HOGDescriptor), "storeResult")]
     public class HOGDescriptor_newHOGDescriptor_1_CS : HutongGames.PlayMaker.FsmStateAction
     {
@@ -104,6 +105,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt _nlevels;
 
+        [HutongGames.PlayMaker.ActionSection("[arg12] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool _signedGradient;
+
         [HutongGames.PlayMaker.ActionSection("[return] HOGDescriptor")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.HOGDescriptor))]
@@ -130,6 +136,7 @@ namespace OpenCVForUnityPlayMakerActions
             _L2HysThreshold = 0.0f;
             _gammaCorrection = false;
             _nlevels = 0;
+            _signedGradient = false;
             storeResult = null;
             everyFrame = false;
         }
@@ -153,7 +160,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.HOGDescriptor)) storeResult.Value = new OpenCVForUnityPlayMakerActions.HOGDescriptor();
-            ((OpenCVForUnityPlayMakerActions.HOGDescriptor)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.HOGDescriptor(new OpenCVForUnity.CoreModule.Size((double)_winSize_width.Value, (double)_winSize_height.Value), new OpenCVForUnity.CoreModule.Size((double)_blockSize_width.Value, (double)_blockSize_height.Value), new OpenCVForUnity.CoreModule.Size((double)_blockStride_width.Value, (double)_blockStride_height.Value), new OpenCVForUnity.CoreModule.Size((double)_cellSize_width.Value, (double)_cellSize_height.Value), _nbins.Value, _derivAperture.Value, (float)_winSigma.Value, _histogramNormType.Value, (float)_L2HysThreshold.Value, _gammaCorrection.Value, _nlevels.Value);
+            ((OpenCVForUnityPlayMakerActions.HOGDescriptor)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.HOGDescriptor(new OpenCVForUnity.CoreModule.Size((double)_winSize_width.Value, (double)_winSize_height.Value), new OpenCVForUnity.CoreModule.Size((double)_blockSize_width.Value, (double)_blockSize_height.Value), new OpenCVForUnity.CoreModule.Size((double)_blockStride_width.Value, (double)_blockStride_height.Value), new OpenCVForUnity.CoreModule.Size((double)_cellSize_width.Value, (double)_cellSize_height.Value), _nbins.Value, _derivAperture.Value, (float)_winSigma.Value, _histogramNormType.Value, (float)_L2HysThreshold.Value, _gammaCorrection.Value, _nlevels.Value, _signedGradient.Value);
 
 
         }

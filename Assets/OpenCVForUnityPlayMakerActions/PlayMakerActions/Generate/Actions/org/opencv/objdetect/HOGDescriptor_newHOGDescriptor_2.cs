@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip("public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture, double _winSigma, int _histogramNormType, double _L2HysThreshold, bool _gammaCorrection)")]
+    [HutongGames.PlayMaker.Tooltip("public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture, double _winSigma, int _histogramNormType, double _L2HysThreshold, bool _gammaCorrection, int _nlevels)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Size), "_winSize")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Size), "_blockSize")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Size), "_blockStride")]
@@ -20,6 +20,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_histogramNormType")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "_L2HysThreshold")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "_gammaCorrection")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_nlevels")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.HOGDescriptor), "storeResult")]
     public class HOGDescriptor_newHOGDescriptor_2 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -80,6 +81,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
         public HutongGames.PlayMaker.FsmBool _gammaCorrection;
 
+        [HutongGames.PlayMaker.ActionSection("[arg11] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt _nlevels;
+
         [HutongGames.PlayMaker.ActionSection("[return] HOGDescriptor")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.HOGDescriptor))]
@@ -101,6 +107,7 @@ namespace OpenCVForUnityPlayMakerActions
             _histogramNormType = 0;
             _L2HysThreshold = null;
             _gammaCorrection = false;
+            _nlevels = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -166,7 +173,7 @@ namespace OpenCVForUnityPlayMakerActions
             System.Double wrapped__L2HysThreshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(_L2HysThreshold);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.HOGDescriptor)) storeResult.Value = new OpenCVForUnityPlayMakerActions.HOGDescriptor();
-            ((OpenCVForUnityPlayMakerActions.HOGDescriptor)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.HOGDescriptor(wrapped__winSize, wrapped__blockSize, wrapped__blockStride, wrapped__cellSize, _nbins.Value, _derivAperture.Value, wrapped__winSigma, _histogramNormType.Value, wrapped__L2HysThreshold, _gammaCorrection.Value);
+            ((OpenCVForUnityPlayMakerActions.HOGDescriptor)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.HOGDescriptor(wrapped__winSize, wrapped__blockSize, wrapped__blockStride, wrapped__cellSize, _nbins.Value, _derivAperture.Value, wrapped__winSigma, _histogramNormType.Value, wrapped__L2HysThreshold, _gammaCorrection.Value, _nlevels.Value);
 
 
         }

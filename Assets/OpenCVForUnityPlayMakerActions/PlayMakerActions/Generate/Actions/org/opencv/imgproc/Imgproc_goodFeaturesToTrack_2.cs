@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public static void goodFeaturesToTrack(Mat image, MatOfPoint corners, int maxCorners, double qualityLevel, double minDistance, Mat mask, int blockSize, int gradientSize)")]
+    [HutongGames.PlayMaker.Tooltip("public static void goodFeaturesToTrack(Mat image, MatOfPoint corners, int maxCorners, double qualityLevel, double minDistance, Mat mask, int blockSize)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint), "corners")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "maxCorners")]
@@ -17,7 +17,6 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "minDistance")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "mask")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "blockSize")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "gradientSize")]
     public class Imgproc_goodFeaturesToTrack_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -61,11 +60,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt blockSize;
 
-        [HutongGames.PlayMaker.ActionSection("[arg8] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt gradientSize;
-
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -79,7 +73,6 @@ namespace OpenCVForUnityPlayMakerActions
             minDistance = null;
             mask = null;
             blockSize = 0;
-            gradientSize = 0;
             everyFrame = false;
         }
 
@@ -136,7 +129,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(mask);
 
-            OpenCVForUnity.ImgprocModule.Imgproc.goodFeaturesToTrack(wrapped_image, wrapped_corners, maxCorners.Value, wrapped_qualityLevel, wrapped_minDistance, wrapped_mask, blockSize.Value, gradientSize.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.goodFeaturesToTrack(wrapped_image, wrapped_corners, maxCorners.Value, wrapped_qualityLevel, wrapped_minDistance, wrapped_mask, blockSize.Value);
 
 
         }

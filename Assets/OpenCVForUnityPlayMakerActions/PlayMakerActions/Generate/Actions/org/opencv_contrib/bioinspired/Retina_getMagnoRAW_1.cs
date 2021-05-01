@@ -9,9 +9,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_bioinspired")]
-    [HutongGames.PlayMaker.Tooltip("public void getMagnoRAW(Mat retinaOutput_magno)")]
+    [HutongGames.PlayMaker.Tooltip("public Mat getMagnoRAW()")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Retina), "owner")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "retinaOutput_magno")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Retina_getMagnoRAW_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -21,11 +21,10 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Retina))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection("[arg1] Mat")]
-        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ActionSection("[return] Mat")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject retinaOutput_magno;
+        public HutongGames.PlayMaker.FsmObject storeResult;
 
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
@@ -34,7 +33,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             owner = null;
-            retinaOutput_magno = null;
+            storeResult = null;
             everyFrame = false;
         }
 
@@ -63,14 +62,8 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.BioinspiredModule.Retina wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Retina, OpenCVForUnity.BioinspiredModule.Retina>(owner);
 
-            if (!(retinaOutput_magno.Value is OpenCVForUnityPlayMakerActions.Mat))
-            {
-                LogError("retinaOutput_magno is not initialized. Add Action \"newMat\".");
-                return;
-            }
-            OpenCVForUnity.CoreModule.Mat wrapped_retinaOutput_magno = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(retinaOutput_magno);
-
-            wrapped_owner.getMagnoRAW(wrapped_retinaOutput_magno);
+            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat();
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = wrapped_owner.getMagnoRAW();
 
 
         }

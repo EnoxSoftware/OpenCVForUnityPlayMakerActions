@@ -8,12 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip("public static void PCACompute2(Mat data, Mat mean, Mat eigenvectors, Mat eigenvalues, int maxComponents)")]
+    [HutongGames.PlayMaker.Tooltip("public static void PCACompute2(Mat data, Mat mean, Mat eigenvectors, Mat eigenvalues)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "data")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "mean")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "eigenvectors")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "eigenvalues")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "maxComponents")]
     public class Core_PCACompute2_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -41,11 +40,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject eigenvalues;
 
-        [HutongGames.PlayMaker.ActionSection("[arg5] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt maxComponents;
-
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -56,7 +50,6 @@ namespace OpenCVForUnityPlayMakerActions
             mean = null;
             eigenvectors = null;
             eigenvalues = null;
-            maxComponents = 0;
             everyFrame = false;
         }
 
@@ -106,7 +99,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_eigenvalues = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(eigenvalues);
 
-            OpenCVForUnity.CoreModule.Core.PCACompute2(wrapped_data, wrapped_mean, wrapped_eigenvectors, wrapped_eigenvalues, maxComponents.Value);
+            OpenCVForUnity.CoreModule.Core.PCACompute2(wrapped_data, wrapped_mean, wrapped_eigenvectors, wrapped_eigenvalues);
 
 
         }

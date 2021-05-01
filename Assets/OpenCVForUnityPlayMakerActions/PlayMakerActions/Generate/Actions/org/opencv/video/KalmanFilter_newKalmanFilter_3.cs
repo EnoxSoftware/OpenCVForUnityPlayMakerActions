@@ -9,10 +9,22 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_video")]
-    [HutongGames.PlayMaker.Tooltip("public KalmanFilter()")]
+    [HutongGames.PlayMaker.Tooltip("public KalmanFilter(int dynamParams, int measureParams)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "dynamParams")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "measureParams")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.KalmanFilter), "storeResult")]
     public class KalmanFilter_newKalmanFilter_3 : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt dynamParams;
+
+        [HutongGames.PlayMaker.ActionSection("[arg2] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt measureParams;
 
         [HutongGames.PlayMaker.ActionSection("[return] KalmanFilter")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -25,6 +37,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
+            dynamParams = 0;
+            measureParams = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -48,7 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.KalmanFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.KalmanFilter();
-            ((OpenCVForUnityPlayMakerActions.KalmanFilter)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoModule.KalmanFilter();
+            ((OpenCVForUnityPlayMakerActions.KalmanFilter)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoModule.KalmanFilter(dynamParams.Value, measureParams.Value);
 
 
         }

@@ -9,8 +9,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_bioinspired")]
-    [HutongGames.PlayMaker.Tooltip("public static Retina create(Size inputSize)")]
+    [HutongGames.PlayMaker.Tooltip("public static Retina create(Size inputSize, bool colorMode)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Size), "inputSize")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "colorMode")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Retina), "storeResult")]
     public class Retina_create_5 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -20,6 +21,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Size))]
         public HutongGames.PlayMaker.FsmObject inputSize;
+
+        [HutongGames.PlayMaker.ActionSection("[arg2] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool colorMode;
 
         [HutongGames.PlayMaker.ActionSection("[return] Retina")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -33,6 +39,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             inputSize = null;
+            colorMode = false;
             storeResult = null;
             everyFrame = false;
         }
@@ -63,7 +70,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.CoreModule.Size wrapped_inputSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size>(inputSize);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Retina)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Retina();
-            ((OpenCVForUnityPlayMakerActions.Retina)storeResult.Value).wrappedObject = OpenCVForUnity.BioinspiredModule.Retina.create(wrapped_inputSize);
+            ((OpenCVForUnityPlayMakerActions.Retina)storeResult.Value).wrappedObject = OpenCVForUnity.BioinspiredModule.Retina.create(wrapped_inputSize, colorMode.Value);
 
 
         }

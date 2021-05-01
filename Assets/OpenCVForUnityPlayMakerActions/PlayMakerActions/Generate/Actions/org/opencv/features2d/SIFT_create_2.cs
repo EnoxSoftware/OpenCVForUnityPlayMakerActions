@@ -9,11 +9,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip("public static SIFT create(int nfeatures, int nOctaveLayers, double contrastThreshold, double edgeThreshold)")]
+    [HutongGames.PlayMaker.Tooltip("public static SIFT create(int nfeatures, int nOctaveLayers, double contrastThreshold)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "nfeatures")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "nOctaveLayers")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "contrastThreshold")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "edgeThreshold")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.SIFT), "storeResult")]
     public class SIFT_create_2 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -34,12 +33,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject contrastThreshold;
 
-        [HutongGames.PlayMaker.ActionSection("[arg4] double(Double)")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
-        public HutongGames.PlayMaker.FsmObject edgeThreshold;
-
         [HutongGames.PlayMaker.ActionSection("[return] SIFT")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.SIFT))]
@@ -54,7 +47,6 @@ namespace OpenCVForUnityPlayMakerActions
             nfeatures = 0;
             nOctaveLayers = 0;
             contrastThreshold = null;
-            edgeThreshold = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -84,15 +76,8 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_contrastThreshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(contrastThreshold);
 
-            if (!(edgeThreshold.Value is OpenCVForUnityPlayMakerActions.Double))
-            {
-                LogError("edgeThreshold is not initialized. Add Action \"newDouble\".");
-                return;
-            }
-            System.Double wrapped_edgeThreshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(edgeThreshold);
-
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SIFT)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SIFT();
-            ((OpenCVForUnityPlayMakerActions.SIFT)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.SIFT.create(nfeatures.Value, nOctaveLayers.Value, wrapped_contrastThreshold, wrapped_edgeThreshold);
+            ((OpenCVForUnityPlayMakerActions.SIFT)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.SIFT.create(nfeatures.Value, nOctaveLayers.Value, wrapped_contrastThreshold);
 
 
         }

@@ -8,10 +8,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip("public static void PCACompute(Mat data, Mat mean, Mat eigenvectors)")]
+    [HutongGames.PlayMaker.Tooltip("public static void PCACompute(Mat data, Mat mean, Mat eigenvectors, double retainedVariance)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "data")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "mean")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "eigenvectors")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "retainedVariance")]
     public class Core_PCACompute_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -33,6 +34,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject eigenvectors;
 
+        [HutongGames.PlayMaker.ActionSection("[arg4] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject retainedVariance;
+
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -42,6 +49,7 @@ namespace OpenCVForUnityPlayMakerActions
             data = null;
             mean = null;
             eigenvectors = null;
+            retainedVariance = null;
             everyFrame = false;
         }
 
@@ -84,7 +92,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_eigenvectors = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(eigenvectors);
 
-            OpenCVForUnity.CoreModule.Core.PCACompute(wrapped_data, wrapped_mean, wrapped_eigenvectors);
+            if (!(retainedVariance.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError("retainedVariance is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_retainedVariance = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(retainedVariance);
+
+            OpenCVForUnity.CoreModule.Core.PCACompute(wrapped_data, wrapped_mean, wrapped_eigenvectors, wrapped_retainedVariance);
 
 
         }

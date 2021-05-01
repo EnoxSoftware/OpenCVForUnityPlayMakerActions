@@ -9,12 +9,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip("public static SIFT create(int nfeatures, int nOctaveLayers, double contrastThreshold, double edgeThreshold, double sigma)")]
+    [HutongGames.PlayMaker.Tooltip("public static SIFT create(int nfeatures, int nOctaveLayers, double contrastThreshold, double edgeThreshold)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "nfeatures")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "nOctaveLayers")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "contrastThreshold")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "edgeThreshold")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "sigma")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.SIFT), "storeResult")]
     public class SIFT_create_1_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -39,11 +38,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat edgeThreshold;
 
-        [HutongGames.PlayMaker.ActionSection("[arg5] double(float)")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat sigma;
-
         [HutongGames.PlayMaker.ActionSection("[return] SIFT")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.SIFT))]
@@ -59,7 +53,6 @@ namespace OpenCVForUnityPlayMakerActions
             nOctaveLayers = 0;
             contrastThreshold = 0.0f;
             edgeThreshold = 0.0f;
-            sigma = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -83,7 +76,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.SIFT)) storeResult.Value = new OpenCVForUnityPlayMakerActions.SIFT();
-            ((OpenCVForUnityPlayMakerActions.SIFT)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.SIFT.create(nfeatures.Value, nOctaveLayers.Value, (float)contrastThreshold.Value, (float)edgeThreshold.Value, (float)sigma.Value);
+            ((OpenCVForUnityPlayMakerActions.SIFT)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.SIFT.create(nfeatures.Value, nOctaveLayers.Value, (float)contrastThreshold.Value, (float)edgeThreshold.Value);
 
 
         }

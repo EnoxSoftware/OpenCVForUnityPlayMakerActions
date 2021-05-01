@@ -10,10 +10,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_text")]
-    [HutongGames.PlayMaker.Tooltip("public string run(Mat image, Mat mask, int min_confidence)")]
+    [HutongGames.PlayMaker.Tooltip("public string run(Mat image, int min_confidence)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.OCRHMMDecoder), "owner")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "image")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "mask")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "min_confidence")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "storeResult")]
     public class OCRHMMDecoder_run_1 : HutongGames.PlayMaker.FsmStateAction
@@ -31,13 +30,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject image;
 
-        [HutongGames.PlayMaker.ActionSection("[arg2] Mat")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject mask;
-
-        [HutongGames.PlayMaker.ActionSection("[arg3] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt min_confidence;
@@ -55,7 +48,6 @@ namespace OpenCVForUnityPlayMakerActions
         {
             owner = null;
             image = null;
-            mask = null;
             min_confidence = 0;
             storeResult = null;
             everyFrame = false;
@@ -93,14 +85,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(image);
 
-            if (!(mask.Value is OpenCVForUnityPlayMakerActions.Mat))
-            {
-                LogError("mask is not initialized. Add Action \"newMat\".");
-                return;
-            }
-            OpenCVForUnity.CoreModule.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(mask);
-
-            storeResult.Value = wrapped_owner.run(wrapped_image, wrapped_mask, min_confidence.Value);
+            storeResult.Value = wrapped_owner.run(wrapped_image, min_confidence.Value);
 
 
         }

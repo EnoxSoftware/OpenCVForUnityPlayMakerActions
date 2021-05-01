@@ -8,13 +8,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip("public static void divide(Mat src1, Scalar src2, Mat dst)")]
+    [HutongGames.PlayMaker.Tooltip("public static void divide(Mat src1, Scalar src2, Mat dst, double scale, int dtype)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "src1")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "src2_v0")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "src2_v1")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "src2_v2")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "src2_v3")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dst")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "scale")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "dtype")]
     public class Core_divide_5_S : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -48,6 +50,17 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
+        [HutongGames.PlayMaker.ActionSection("[arg4] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject scale;
+
+        [HutongGames.PlayMaker.ActionSection("[arg5] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt dtype;
+
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -60,6 +73,8 @@ namespace OpenCVForUnityPlayMakerActions
             src2_v2 = 0.0f;
             src2_v3 = 0.0f;
             dst = null;
+            scale = null;
+            dtype = 0;
             everyFrame = false;
         }
 
@@ -95,7 +110,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dst);
 
-            OpenCVForUnity.CoreModule.Core.divide(wrapped_src1, new OpenCVForUnity.CoreModule.Scalar((double)src2_v0.Value, (double)src2_v1.Value, (double)src2_v2.Value, (double)src2_v3.Value), wrapped_dst);
+            if (!(scale.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError("scale is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(scale);
+
+            OpenCVForUnity.CoreModule.Core.divide(wrapped_src1, new OpenCVForUnity.CoreModule.Scalar((double)src2_v0.Value, (double)src2_v1.Value, (double)src2_v2.Value, (double)src2_v3.Value), wrapped_dst, wrapped_scale, dtype.Value);
 
 
         }

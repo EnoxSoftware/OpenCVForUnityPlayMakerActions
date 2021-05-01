@@ -9,10 +9,17 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_tracking")]
-    [HutongGames.PlayMaker.Tooltip("public static TrackerKCF create()")]
+    [HutongGames.PlayMaker.Tooltip("public static TrackerKCF create(TrackerKCF_Params parameters)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.TrackerKCF_Params), "parameters")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.TrackerKCF), "storeResult")]
     public class TrackerKCF_create : HutongGames.PlayMaker.FsmStateAction
     {
+
+        [HutongGames.PlayMaker.ActionSection("[arg1] TrackerKCF_Params")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.TrackerKCF_Params))]
+        public HutongGames.PlayMaker.FsmObject parameters;
 
         [HutongGames.PlayMaker.ActionSection("[return] TrackerKCF")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -25,6 +32,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
+            parameters = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -47,8 +55,15 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
+            if (!(parameters.Value is OpenCVForUnityPlayMakerActions.TrackerKCF_Params))
+            {
+                LogError("parameters is not initialized. Add Action \"newTrackerKCF_Params\".");
+                return;
+            }
+            OpenCVForUnity.TrackingModule.TrackerKCF_Params wrapped_parameters = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TrackerKCF_Params, OpenCVForUnity.TrackingModule.TrackerKCF_Params>(parameters);
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TrackerKCF)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TrackerKCF();
-            ((OpenCVForUnityPlayMakerActions.TrackerKCF)storeResult.Value).wrappedObject = OpenCVForUnity.TrackingModule.TrackerKCF.create();
+            ((OpenCVForUnityPlayMakerActions.TrackerKCF)storeResult.Value).wrappedObject = OpenCVForUnity.TrackingModule.TrackerKCF.create(wrapped_parameters);
 
 
         }

@@ -9,9 +9,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_bioinspired")]
-    [HutongGames.PlayMaker.Tooltip("public Mat getParvoRAW()")]
+    [HutongGames.PlayMaker.Tooltip("public void getParvoRAW(Mat retinaOutput_parvo)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Retina), "owner")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "retinaOutput_parvo")]
     public class Retina_getParvoRAW : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -21,10 +21,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Retina))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection("[return] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject storeResult;
+        public HutongGames.PlayMaker.FsmObject retinaOutput_parvo;
 
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
@@ -33,7 +34,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             owner = null;
-            storeResult = null;
+            retinaOutput_parvo = null;
             everyFrame = false;
         }
 
@@ -62,8 +63,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.BioinspiredModule.Retina wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Retina, OpenCVForUnity.BioinspiredModule.Retina>(owner);
 
-            if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = wrapped_owner.getParvoRAW();
+            if (!(retinaOutput_parvo.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError("retinaOutput_parvo is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.CoreModule.Mat wrapped_retinaOutput_parvo = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(retinaOutput_parvo);
+
+            wrapped_owner.getParvoRAW(wrapped_retinaOutput_parvo);
 
 
         }

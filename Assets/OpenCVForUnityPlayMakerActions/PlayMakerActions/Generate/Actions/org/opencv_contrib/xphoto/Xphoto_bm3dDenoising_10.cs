@@ -9,9 +9,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_xphoto")]
-    [HutongGames.PlayMaker.Tooltip("public static void bm3dDenoising(Mat src, Mat dst, float h)")]
+    [HutongGames.PlayMaker.Tooltip("public static void bm3dDenoising(Mat src, Mat dstStep1, Mat dstStep2, float h)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "src")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dst")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dstStep1")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dstStep2")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "h")]
     public class Xphoto_bm3dDenoising_10 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -26,9 +27,15 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject dst;
+        public HutongGames.PlayMaker.FsmObject dstStep1;
 
-        [HutongGames.PlayMaker.ActionSection("[arg3] float")]
+        [HutongGames.PlayMaker.ActionSection("[arg3] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject dstStep2;
+
+        [HutongGames.PlayMaker.ActionSection("[arg4] float")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat h;
@@ -40,7 +47,8 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             src = null;
-            dst = null;
+            dstStep1 = null;
+            dstStep2 = null;
             h = 0.0f;
             everyFrame = false;
         }
@@ -70,14 +78,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(src);
 
-            if (!(dst.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(dstStep1.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("dst is not initialized. Add Action \"newMat\".");
+                LogError("dstStep1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dst);
+            OpenCVForUnity.CoreModule.Mat wrapped_dstStep1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dstStep1);
 
-            OpenCVForUnity.XphotoModule.Xphoto.bm3dDenoising(wrapped_src, wrapped_dst, h.Value);
+            if (!(dstStep2.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError("dstStep2 is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.CoreModule.Mat wrapped_dstStep2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dstStep2);
+
+            OpenCVForUnity.XphotoModule.Xphoto.bm3dDenoising(wrapped_src, wrapped_dstStep1, wrapped_dstStep2, h.Value);
 
 
         }

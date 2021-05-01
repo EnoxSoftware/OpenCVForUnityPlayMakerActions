@@ -10,9 +10,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip("public static Net readNet(string framework, MatOfByte bufferModel)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "framework")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfByte), "bufferModel")]
+    [HutongGames.PlayMaker.Tooltip("public static Net readNet(string model, string config)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "model")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "config")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Net), "storeResult")]
     public class Dnn_readNet_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -20,13 +20,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection("[arg1] string")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
-        public HutongGames.PlayMaker.FsmString framework;
+        public HutongGames.PlayMaker.FsmString model;
 
-        [HutongGames.PlayMaker.ActionSection("[arg2] MatOfByte")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] string")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfByte))]
-        public HutongGames.PlayMaker.FsmObject bufferModel;
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
+        public HutongGames.PlayMaker.FsmString config;
 
         [HutongGames.PlayMaker.ActionSection("[return] Net")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -39,8 +38,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            framework = null;
-            bufferModel = null;
+            model = null;
+            config = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -63,15 +62,8 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
-            if (!(bufferModel.Value is OpenCVForUnityPlayMakerActions.MatOfByte))
-            {
-                LogError("bufferModel is not initialized. Add Action \"newMatOfByte\".");
-                return;
-            }
-            OpenCVForUnity.CoreModule.MatOfByte wrapped_bufferModel = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfByte, OpenCVForUnity.CoreModule.MatOfByte>(bufferModel);
-
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Net)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Net();
-            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = OpenCVForUnity.DnnModule.Dnn.readNet(framework.Value, wrapped_bufferModel);
+            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = OpenCVForUnity.DnnModule.Dnn.readNet(model.Value, config.Value);
 
 
         }

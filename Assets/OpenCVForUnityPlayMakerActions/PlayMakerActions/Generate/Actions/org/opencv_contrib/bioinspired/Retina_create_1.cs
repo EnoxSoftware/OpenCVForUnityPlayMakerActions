@@ -9,12 +9,13 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_bioinspired")]
-    [HutongGames.PlayMaker.Tooltip("public static Retina create(Size inputSize, bool colorMode, int colorSamplingMethod, bool useRetinaLogSampling, float reductionFactor)")]
+    [HutongGames.PlayMaker.Tooltip("public static Retina create(Size inputSize, bool colorMode, int colorSamplingMethod, bool useRetinaLogSampling, float reductionFactor, float samplingStrength)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Size), "inputSize")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "colorMode")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "colorSamplingMethod")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "useRetinaLogSampling")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "reductionFactor")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "samplingStrength")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Retina), "storeResult")]
     public class Retina_create_1 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -45,6 +46,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat reductionFactor;
 
+        [HutongGames.PlayMaker.ActionSection("[arg6] float")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat samplingStrength;
+
         [HutongGames.PlayMaker.ActionSection("[return] Retina")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Retina))]
@@ -61,6 +67,7 @@ namespace OpenCVForUnityPlayMakerActions
             colorSamplingMethod = 0;
             useRetinaLogSampling = false;
             reductionFactor = 0.0f;
+            samplingStrength = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -91,7 +98,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.CoreModule.Size wrapped_inputSize = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size>(inputSize);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Retina)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Retina();
-            ((OpenCVForUnityPlayMakerActions.Retina)storeResult.Value).wrappedObject = OpenCVForUnity.BioinspiredModule.Retina.create(wrapped_inputSize, colorMode.Value, colorSamplingMethod.Value, useRetinaLogSampling.Value, reductionFactor.Value);
+            ((OpenCVForUnityPlayMakerActions.Retina)storeResult.Value).wrappedObject = OpenCVForUnity.BioinspiredModule.Retina.create(wrapped_inputSize, colorMode.Value, colorSamplingMethod.Value, useRetinaLogSampling.Value, reductionFactor.Value, samplingStrength.Value);
 
 
         }

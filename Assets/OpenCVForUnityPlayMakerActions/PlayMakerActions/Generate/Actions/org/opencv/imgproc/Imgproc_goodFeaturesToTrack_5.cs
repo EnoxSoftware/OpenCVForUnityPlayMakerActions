@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public static void goodFeaturesToTrack(Mat image, MatOfPoint corners, int maxCorners, double qualityLevel, double minDistance, Mat mask, int blockSize)")]
+    [HutongGames.PlayMaker.Tooltip("public static void goodFeaturesToTrack(Mat image, MatOfPoint corners, int maxCorners, double qualityLevel, double minDistance, Mat mask, int blockSize, int gradientSize, bool useHarrisDetector, double k)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint), "corners")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "maxCorners")]
@@ -17,6 +17,9 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "minDistance")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "mask")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "blockSize")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "gradientSize")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "useHarrisDetector")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "k")]
     public class Imgproc_goodFeaturesToTrack_5 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -60,6 +63,22 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt blockSize;
 
+        [HutongGames.PlayMaker.ActionSection("[arg8] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt gradientSize;
+
+        [HutongGames.PlayMaker.ActionSection("[arg9] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool useHarrisDetector;
+
+        [HutongGames.PlayMaker.ActionSection("[arg10] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject k;
+
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -73,6 +92,9 @@ namespace OpenCVForUnityPlayMakerActions
             minDistance = null;
             mask = null;
             blockSize = 0;
+            gradientSize = 0;
+            useHarrisDetector = false;
+            k = null;
             everyFrame = false;
         }
 
@@ -129,7 +151,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(mask);
 
-            OpenCVForUnity.ImgprocModule.Imgproc.goodFeaturesToTrack(wrapped_image, wrapped_corners, maxCorners.Value, wrapped_qualityLevel, wrapped_minDistance, wrapped_mask, blockSize.Value);
+            if (!(k.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError("k is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_k = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(k);
+
+            OpenCVForUnity.ImgprocModule.Imgproc.goodFeaturesToTrack(wrapped_image, wrapped_corners, maxCorners.Value, wrapped_qualityLevel, wrapped_minDistance, wrapped_mask, blockSize.Value, gradientSize.Value, useHarrisDetector.Value, wrapped_k);
 
 
         }

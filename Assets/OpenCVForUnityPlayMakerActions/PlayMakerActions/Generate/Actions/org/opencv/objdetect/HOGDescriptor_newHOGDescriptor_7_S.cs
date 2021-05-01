@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip("public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins)")]
+    [HutongGames.PlayMaker.Tooltip("public HOGDescriptor(Size _winSize, Size _blockSize, Size _blockStride, Size _cellSize, int _nbins, int _derivAperture)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_winSize_width")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_winSize_height")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_blockSize_width")]
@@ -19,6 +19,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_cellSize_width")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_cellSize_height")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_nbins")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_derivAperture")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.HOGDescriptor), "storeResult")]
     public class HOGDescriptor_newHOGDescriptor_7_S : HutongGames.PlayMaker.FsmStateAction
     {
@@ -68,6 +69,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt _nbins;
 
+        [HutongGames.PlayMaker.ActionSection("[arg6] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt _derivAperture;
+
         [HutongGames.PlayMaker.ActionSection("[return] HOGDescriptor")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.HOGDescriptor))]
@@ -88,6 +94,7 @@ namespace OpenCVForUnityPlayMakerActions
             _cellSize_width = 0.0f;
             _cellSize_height = 0.0f;
             _nbins = 0;
+            _derivAperture = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -111,7 +118,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.HOGDescriptor)) storeResult.Value = new OpenCVForUnityPlayMakerActions.HOGDescriptor();
-            ((OpenCVForUnityPlayMakerActions.HOGDescriptor)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.HOGDescriptor(new OpenCVForUnity.CoreModule.Size((double)_winSize_width.Value, (double)_winSize_height.Value), new OpenCVForUnity.CoreModule.Size((double)_blockSize_width.Value, (double)_blockSize_height.Value), new OpenCVForUnity.CoreModule.Size((double)_blockStride_width.Value, (double)_blockStride_height.Value), new OpenCVForUnity.CoreModule.Size((double)_cellSize_width.Value, (double)_cellSize_height.Value), _nbins.Value);
+            ((OpenCVForUnityPlayMakerActions.HOGDescriptor)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.HOGDescriptor(new OpenCVForUnity.CoreModule.Size((double)_winSize_width.Value, (double)_winSize_height.Value), new OpenCVForUnity.CoreModule.Size((double)_blockSize_width.Value, (double)_blockSize_height.Value), new OpenCVForUnity.CoreModule.Size((double)_blockStride_width.Value, (double)_blockStride_height.Value), new OpenCVForUnity.CoreModule.Size((double)_cellSize_width.Value, (double)_cellSize_height.Value), _nbins.Value, _derivAperture.Value);
 
 
         }

@@ -10,8 +10,8 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_text")]
-    [HutongGames.PlayMaker.Tooltip("public static ERFilter createERFilterNM1(string filename, int thresholdDelta, float minArea, float maxArea, float minProbability)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "filename")]
+    [HutongGames.PlayMaker.Tooltip("public static ERFilter createERFilterNM1(ERFilter_Callback cb, int thresholdDelta, float minArea, float maxArea, float minProbability)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.ERFilter_Callback), "cb")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "thresholdDelta")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "minArea")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "maxArea")]
@@ -20,10 +20,11 @@ namespace OpenCVForUnityPlayMakerActions
     public class Text_createERFilterNM1_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection("[arg1] string")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] ERFilter_Callback")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
-        public HutongGames.PlayMaker.FsmString filename;
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.ERFilter_Callback))]
+        public HutongGames.PlayMaker.FsmObject cb;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] int")]
         [HutongGames.PlayMaker.RequiredField]
@@ -56,7 +57,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            filename = null;
+            cb = null;
             thresholdDelta = 0;
             minArea = 0.0f;
             maxArea = 0.0f;
@@ -83,8 +84,15 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
+            if (!(cb.Value is OpenCVForUnityPlayMakerActions.ERFilter_Callback))
+            {
+                LogError("cb is not initialized. Add Action \"newERFilter_Callback\".");
+                return;
+            }
+            OpenCVForUnity.TextModule.ERFilter_Callback wrapped_cb = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ERFilter_Callback, OpenCVForUnity.TextModule.ERFilter_Callback>(cb);
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.ERFilter)) storeResult.Value = new OpenCVForUnityPlayMakerActions.ERFilter();
-            ((OpenCVForUnityPlayMakerActions.ERFilter)storeResult.Value).wrappedObject = OpenCVForUnity.TextModule.Text.createERFilterNM1(filename.Value, thresholdDelta.Value, minArea.Value, maxArea.Value, minProbability.Value);
+            ((OpenCVForUnityPlayMakerActions.ERFilter)storeResult.Value).wrappedObject = OpenCVForUnity.TextModule.Text.createERFilterNM1(wrapped_cb, thresholdDelta.Value, minArea.Value, maxArea.Value, minProbability.Value);
 
 
         }

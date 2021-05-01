@@ -9,17 +9,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public Subdiv2D(Rect rect)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Rect), "rect")]
+    [HutongGames.PlayMaker.Tooltip("public Subdiv2D()")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Subdiv2D), "storeResult")]
     public class Subdiv2D_newSubdiv2D : HutongGames.PlayMaker.FsmStateAction
     {
-
-        [HutongGames.PlayMaker.ActionSection("[arg1] Rect")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Rect))]
-        public HutongGames.PlayMaker.FsmObject rect;
 
         [HutongGames.PlayMaker.ActionSection("[return] Subdiv2D")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -32,7 +25,6 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            rect = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -55,15 +47,8 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
-            if (!(rect.Value is OpenCVForUnityPlayMakerActions.Rect))
-            {
-                LogError("rect is not initialized. Add Action \"newRect\".");
-                return;
-            }
-            OpenCVForUnity.CoreModule.Rect wrapped_rect = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Rect, OpenCVForUnity.CoreModule.Rect>(rect);
-
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Subdiv2D)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Subdiv2D();
-            ((OpenCVForUnityPlayMakerActions.Subdiv2D)storeResult.Value).wrappedObject = new OpenCVForUnity.ImgprocModule.Subdiv2D(wrapped_rect);
+            ((OpenCVForUnityPlayMakerActions.Subdiv2D)storeResult.Value).wrappedObject = new OpenCVForUnity.ImgprocModule.Subdiv2D();
 
 
         }

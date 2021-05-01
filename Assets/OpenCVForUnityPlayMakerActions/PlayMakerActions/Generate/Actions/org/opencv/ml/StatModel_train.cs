@@ -9,11 +9,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ml")]
-    [HutongGames.PlayMaker.Tooltip("public bool train(Mat samples, int layout, Mat responses)")]
+    [HutongGames.PlayMaker.Tooltip("public bool train(TrainData trainData, int flags)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.StatModel), "owner")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "samples")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "layout")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "responses")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.TrainData), "trainData")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "flags")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "trueEvent")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "falseEvent")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "storeResult")]
@@ -26,22 +25,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.StatModel))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection("[arg1] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] TrainData")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject samples;
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.TrainData))]
+        public HutongGames.PlayMaker.FsmObject trainData;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt layout;
-
-        [HutongGames.PlayMaker.ActionSection("[arg3] Mat")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject responses;
+        public HutongGames.PlayMaker.FsmInt flags;
 
         [HutongGames.PlayMaker.ActionSection("[return] bool")]
         [HutongGames.PlayMaker.Tooltip("Event to send if result is true.")]
@@ -61,9 +54,8 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             owner = null;
-            samples = null;
-            layout = 0;
-            responses = null;
+            trainData = null;
+            flags = 0;
             trueEvent = null;
             falseEvent = null;
             storeResult = null;
@@ -95,21 +87,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.MlModule.StatModel wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StatModel, OpenCVForUnity.MlModule.StatModel>(owner);
 
-            if (!(samples.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(trainData.Value is OpenCVForUnityPlayMakerActions.TrainData))
             {
-                LogError("samples is not initialized. Add Action \"newMat\".");
+                LogError("trainData is not initialized. Add Action \"newTrainData\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_samples = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(samples);
+            OpenCVForUnity.MlModule.TrainData wrapped_trainData = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TrainData, OpenCVForUnity.MlModule.TrainData>(trainData);
 
-            if (!(responses.Value is OpenCVForUnityPlayMakerActions.Mat))
-            {
-                LogError("responses is not initialized. Add Action \"newMat\".");
-                return;
-            }
-            OpenCVForUnity.CoreModule.Mat wrapped_responses = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(responses);
-
-            storeResult.Value = wrapped_owner.train(wrapped_samples, layout.Value, wrapped_responses);
+            storeResult.Value = wrapped_owner.train(wrapped_trainData, flags.Value);
 
             Fsm.Event(storeResult.Value ? trueEvent : falseEvent);
 

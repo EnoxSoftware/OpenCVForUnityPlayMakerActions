@@ -10,9 +10,8 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip("public long getFLOPS(int layerId, MatOfInt netInputShape)")]
+    [HutongGames.PlayMaker.Tooltip("public long getFLOPS(MatOfInt netInputShape)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Net), "owner")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "layerId")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfInt), "netInputShape")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "storeResult")]
     public class Net_getFLOPS_1_C : HutongGames.PlayMaker.FsmStateAction
@@ -24,12 +23,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Net))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection("[arg1] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt layerId;
-
-        [HutongGames.PlayMaker.ActionSection("[arg2] MatOfInt")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] MatOfInt")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfInt))]
@@ -47,7 +41,6 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             owner = null;
-            layerId = 0;
             netInputShape = null;
             storeResult = null;
             everyFrame = false;
@@ -85,7 +78,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.MatOfInt wrapped_netInputShape = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt>(netInputShape);
 
-            storeResult.Value = (int)wrapped_owner.getFLOPS(layerId.Value, wrapped_netInputShape);
+            storeResult.Value = (int)wrapped_owner.getFLOPS(wrapped_netInputShape);
 
 
         }

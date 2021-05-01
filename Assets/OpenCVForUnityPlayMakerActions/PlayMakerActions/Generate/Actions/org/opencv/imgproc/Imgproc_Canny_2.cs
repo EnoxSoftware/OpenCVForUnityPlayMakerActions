@@ -9,13 +9,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public static void Canny(Mat image, Mat edges, double threshold1, double threshold2, int apertureSize, bool L2gradient)")]
+    [HutongGames.PlayMaker.Tooltip("public static void Canny(Mat image, Mat edges, double threshold1, double threshold2)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "edges")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "threshold1")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "threshold2")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "apertureSize")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "L2gradient")]
     public class Imgproc_Canny_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -43,16 +41,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject threshold2;
 
-        [HutongGames.PlayMaker.ActionSection("[arg5] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt apertureSize;
-
-        [HutongGames.PlayMaker.ActionSection("[arg6] bool")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
-        public HutongGames.PlayMaker.FsmBool L2gradient;
-
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -63,8 +51,6 @@ namespace OpenCVForUnityPlayMakerActions
             edges = null;
             threshold1 = null;
             threshold2 = null;
-            apertureSize = 0;
-            L2gradient = false;
             everyFrame = false;
         }
 
@@ -114,7 +100,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_threshold2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(threshold2);
 
-            OpenCVForUnity.ImgprocModule.Imgproc.Canny(wrapped_image, wrapped_edges, wrapped_threshold1, wrapped_threshold2, apertureSize.Value, L2gradient.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.Canny(wrapped_image, wrapped_edges, wrapped_threshold1, wrapped_threshold2);
 
 
         }

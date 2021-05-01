@@ -8,8 +8,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip("public static double norm(Mat src1)")]
+    [HutongGames.PlayMaker.Tooltip("public static double norm(Mat src1, Mat src2)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "src1")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "src2")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "storeResult")]
     public class Core_norm_5_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -19,6 +20,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject src1;
+
+        [HutongGames.PlayMaker.ActionSection("[arg2] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject src2;
 
         [HutongGames.PlayMaker.ActionSection("[return] double(float)")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -32,6 +39,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             src1 = null;
+            src2 = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -61,7 +69,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_src1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(src1);
 
-            storeResult.Value = (float)OpenCVForUnity.CoreModule.Core.norm(wrapped_src1);
+            if (!(src2.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError("src2 is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.CoreModule.Mat wrapped_src2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(src2);
+
+            storeResult.Value = (float)OpenCVForUnity.CoreModule.Core.norm(wrapped_src1, wrapped_src2);
 
 
         }

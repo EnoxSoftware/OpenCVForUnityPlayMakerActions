@@ -9,15 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public static void goodFeaturesToTrack(Mat image, MatOfPoint corners, int maxCorners, double qualityLevel, double minDistance, Mat mask, int blockSize, bool useHarrisDetector)")]
+    [HutongGames.PlayMaker.Tooltip("public static void goodFeaturesToTrack(Mat image, MatOfPoint corners, int maxCorners, double qualityLevel, double minDistance)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfPoint), "corners")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "maxCorners")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "qualityLevel")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "minDistance")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "mask")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "blockSize")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "useHarrisDetector")]
     public class Imgproc_goodFeaturesToTrack_4_C : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -48,22 +45,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat minDistance;
 
-        [HutongGames.PlayMaker.ActionSection("[arg6] Mat")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject mask;
-
-        [HutongGames.PlayMaker.ActionSection("[arg7] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt blockSize;
-
-        [HutongGames.PlayMaker.ActionSection("[arg8] bool")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
-        public HutongGames.PlayMaker.FsmBool useHarrisDetector;
-
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -75,9 +56,6 @@ namespace OpenCVForUnityPlayMakerActions
             maxCorners = 0;
             qualityLevel = 0.0f;
             minDistance = 0.0f;
-            mask = null;
-            blockSize = 0;
-            useHarrisDetector = false;
             everyFrame = false;
         }
 
@@ -113,14 +91,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.MatOfPoint wrapped_corners = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfPoint, OpenCVForUnity.CoreModule.MatOfPoint>(corners);
 
-            if (!(mask.Value is OpenCVForUnityPlayMakerActions.Mat))
-            {
-                LogError("mask is not initialized. Add Action \"newMat\".");
-                return;
-            }
-            OpenCVForUnity.CoreModule.Mat wrapped_mask = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(mask);
-
-            OpenCVForUnity.ImgprocModule.Imgproc.goodFeaturesToTrack(wrapped_image, wrapped_corners, maxCorners.Value, (float)qualityLevel.Value, (float)minDistance.Value, wrapped_mask, blockSize.Value, useHarrisDetector.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.goodFeaturesToTrack(wrapped_image, wrapped_corners, maxCorners.Value, (float)qualityLevel.Value, (float)minDistance.Value);
 
 
         }

@@ -10,10 +10,8 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip("public static Net readNet(string model, string config, string framework)")]
+    [HutongGames.PlayMaker.Tooltip("public static Net readNet(string model)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "model")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "config")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "framework")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Net), "storeResult")]
     public class Dnn_readNet_2 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -22,16 +20,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
         public HutongGames.PlayMaker.FsmString model;
-
-        [HutongGames.PlayMaker.ActionSection("[arg2] string")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
-        public HutongGames.PlayMaker.FsmString config;
-
-        [HutongGames.PlayMaker.ActionSection("[arg3] string")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
-        public HutongGames.PlayMaker.FsmString framework;
 
         [HutongGames.PlayMaker.ActionSection("[return] Net")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -45,8 +33,6 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             model = null;
-            config = null;
-            framework = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -70,7 +56,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Net)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Net();
-            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = OpenCVForUnity.DnnModule.Dnn.readNet(model.Value, config.Value, framework.Value);
+            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = OpenCVForUnity.DnnModule.Dnn.readNet(model.Value);
 
 
         }

@@ -8,7 +8,7 @@ using OpenCVForUnity.DnnModule;
 
 namespace OpenCVForUnityPlayMakerActions
 {
-    public class Model : OpenCVForUnityPlayMakerActions.Net
+    public class Model : OpenCVForUnityPlayMakerActions.DisposableOpenCVObject
     {
 
         public Model()

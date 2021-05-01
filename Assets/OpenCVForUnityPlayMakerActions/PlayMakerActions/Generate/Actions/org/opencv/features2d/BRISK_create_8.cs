@@ -9,7 +9,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip("public static BRISK create(MatOfFloat radiusList, MatOfInt numberList, float dMax, float dMin, MatOfInt indexChange)")]
+    [HutongGames.PlayMaker.Tooltip("public static BRISK create(int thresh, int octaves, MatOfFloat radiusList, MatOfInt numberList, float dMax, float dMin, MatOfInt indexChange)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "thresh")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "octaves")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfFloat), "radiusList")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfInt), "numberList")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "dMax")]
@@ -19,29 +21,39 @@ namespace OpenCVForUnityPlayMakerActions
     public class BRISK_create_8 : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection("[arg1] MatOfFloat")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt thresh;
+
+        [HutongGames.PlayMaker.ActionSection("[arg2] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt octaves;
+
+        [HutongGames.PlayMaker.ActionSection("[arg3] MatOfFloat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfFloat))]
         public HutongGames.PlayMaker.FsmObject radiusList;
 
-        [HutongGames.PlayMaker.ActionSection("[arg2] MatOfInt")]
+        [HutongGames.PlayMaker.ActionSection("[arg4] MatOfInt")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfInt))]
         public HutongGames.PlayMaker.FsmObject numberList;
 
-        [HutongGames.PlayMaker.ActionSection("[arg3] float")]
+        [HutongGames.PlayMaker.ActionSection("[arg5] float")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat dMax;
 
-        [HutongGames.PlayMaker.ActionSection("[arg4] float")]
+        [HutongGames.PlayMaker.ActionSection("[arg6] float")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat dMin;
 
-        [HutongGames.PlayMaker.ActionSection("[arg5] MatOfInt")]
+        [HutongGames.PlayMaker.ActionSection("[arg7] MatOfInt")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.MatOfInt))]
@@ -58,6 +70,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
+            thresh = 0;
+            octaves = 0;
             radiusList = null;
             numberList = null;
             dMax = 0.0f;
@@ -107,7 +121,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.CoreModule.MatOfInt wrapped_indexChange = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfInt, OpenCVForUnity.CoreModule.MatOfInt>(indexChange);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.BRISK)) storeResult.Value = new OpenCVForUnityPlayMakerActions.BRISK();
-            ((OpenCVForUnityPlayMakerActions.BRISK)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.BRISK.create(wrapped_radiusList, wrapped_numberList, dMax.Value, dMin.Value, wrapped_indexChange);
+            ((OpenCVForUnityPlayMakerActions.BRISK)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.BRISK.create(thresh.Value, octaves.Value, wrapped_radiusList, wrapped_numberList, dMax.Value, dMin.Value, wrapped_indexChange);
 
 
         }

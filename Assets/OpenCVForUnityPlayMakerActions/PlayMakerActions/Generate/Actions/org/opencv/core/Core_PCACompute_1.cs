@@ -8,11 +8,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip("public static void PCACompute(Mat data, Mat mean, Mat eigenvectors, int maxComponents)")]
+    [HutongGames.PlayMaker.Tooltip("public static void PCACompute(Mat data, Mat mean, Mat eigenvectors)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "data")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "mean")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "eigenvectors")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "maxComponents")]
     public class Core_PCACompute_1 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -34,11 +33,6 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject eigenvectors;
 
-        [HutongGames.PlayMaker.ActionSection("[arg4] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt maxComponents;
-
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -48,7 +42,6 @@ namespace OpenCVForUnityPlayMakerActions
             data = null;
             mean = null;
             eigenvectors = null;
-            maxComponents = 0;
             everyFrame = false;
         }
 
@@ -91,7 +84,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_eigenvectors = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(eigenvectors);
 
-            OpenCVForUnity.CoreModule.Core.PCACompute(wrapped_data, wrapped_mean, wrapped_eigenvectors, maxComponents.Value);
+            OpenCVForUnity.CoreModule.Core.PCACompute(wrapped_data, wrapped_mean, wrapped_eigenvectors);
 
 
         }

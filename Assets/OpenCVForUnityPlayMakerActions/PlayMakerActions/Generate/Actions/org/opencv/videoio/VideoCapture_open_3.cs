@@ -9,9 +9,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_videoio")]
-    [HutongGames.PlayMaker.Tooltip("public bool open(int index)")]
+    [HutongGames.PlayMaker.Tooltip("public bool open(int index, int apiPreference)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.VideoCapture), "owner")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "index")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "apiPreference")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "trueEvent")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmEvent), "falseEvent")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "storeResult")]
@@ -28,6 +29,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt index;
+
+        [HutongGames.PlayMaker.ActionSection("[arg2] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt apiPreference;
 
         [HutongGames.PlayMaker.ActionSection("[return] bool")]
         [HutongGames.PlayMaker.Tooltip("Event to send if result is true.")]
@@ -48,6 +54,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
             owner = null;
             index = 0;
+            apiPreference = 0;
             trueEvent = null;
             falseEvent = null;
             storeResult = null;
@@ -79,7 +86,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.VideoioModule.VideoCapture wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.VideoCapture, OpenCVForUnity.VideoioModule.VideoCapture>(owner);
 
-            storeResult.Value = wrapped_owner.open(index.Value);
+            storeResult.Value = wrapped_owner.open(index.Value, apiPreference.Value);
 
             Fsm.Event(storeResult.Value ? trueEvent : falseEvent);
 

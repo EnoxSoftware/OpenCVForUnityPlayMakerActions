@@ -8,24 +8,23 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_core")]
-    [HutongGames.PlayMaker.Tooltip("public static void divide(Mat src1, Scalar src2, Mat dst, double scale)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "src1")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Scalar), "src2")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dst")]
+    [HutongGames.PlayMaker.Tooltip("public static void divide(double scale, Mat src2, Mat dst)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "scale")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "src2")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dst")]
     public class Core_divide_4 : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection("[arg1] Mat")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject scale;
+
+        [HutongGames.PlayMaker.ActionSection("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject src1;
-
-        [HutongGames.PlayMaker.ActionSection("[arg2] Scalar")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Scalar))]
         public HutongGames.PlayMaker.FsmObject src2;
 
         [HutongGames.PlayMaker.ActionSection("[arg3] Mat")]
@@ -34,22 +33,15 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
-        [HutongGames.PlayMaker.ActionSection("[arg4] double(Double)")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
-        public HutongGames.PlayMaker.FsmObject scale;
-
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
         public override void Reset()
         {
-            src1 = null;
+            scale = null;
             src2 = null;
             dst = null;
-            scale = null;
             everyFrame = false;
         }
 
@@ -71,19 +63,19 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
-            if (!(src1.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(scale.Value is OpenCVForUnityPlayMakerActions.Double))
             {
-                LogError("src1 is not initialized. Add Action \"newMat\".");
+                LogError("scale is not initialized. Add Action \"newDouble\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped_src1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(src1);
+            System.Double wrapped_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(scale);
 
-            if (!(src2.Value is OpenCVForUnityPlayMakerActions.Scalar))
+            if (!(src2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("src2 is not initialized. Add Action \"newScalar\".");
+                LogError("src2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Scalar wrapped_src2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.CoreModule.Scalar>(src2);
+            OpenCVForUnity.CoreModule.Mat wrapped_src2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(src2);
 
             if (!(dst.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
@@ -92,14 +84,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dst);
 
-            if (!(scale.Value is OpenCVForUnityPlayMakerActions.Double))
-            {
-                LogError("scale is not initialized. Add Action \"newDouble\".");
-                return;
-            }
-            System.Double wrapped_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(scale);
-
-            OpenCVForUnity.CoreModule.Core.divide(wrapped_src1, wrapped_src2, wrapped_dst, wrapped_scale);
+            OpenCVForUnity.CoreModule.Core.divide(wrapped_scale, wrapped_src2, wrapped_dst);
 
 
         }

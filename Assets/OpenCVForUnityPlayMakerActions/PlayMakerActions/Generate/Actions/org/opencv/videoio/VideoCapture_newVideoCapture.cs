@@ -9,22 +9,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_videoio")]
-    [HutongGames.PlayMaker.Tooltip("public VideoCapture(string filename, int apiPreference)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "filename")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "apiPreference")]
+    [HutongGames.PlayMaker.Tooltip("public VideoCapture()")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.VideoCapture), "storeResult")]
     public class VideoCapture_newVideoCapture : HutongGames.PlayMaker.FsmStateAction
     {
-
-        [HutongGames.PlayMaker.ActionSection("[arg1] string")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
-        public HutongGames.PlayMaker.FsmString filename;
-
-        [HutongGames.PlayMaker.ActionSection("[arg2] int")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt apiPreference;
 
         [HutongGames.PlayMaker.ActionSection("[return] VideoCapture")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -37,8 +25,6 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            filename = null;
-            apiPreference = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -62,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.VideoCapture)) storeResult.Value = new OpenCVForUnityPlayMakerActions.VideoCapture();
-            ((OpenCVForUnityPlayMakerActions.VideoCapture)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoioModule.VideoCapture(filename.Value, apiPreference.Value);
+            ((OpenCVForUnityPlayMakerActions.VideoCapture)storeResult.Value).wrappedObject = new OpenCVForUnity.VideoioModule.VideoCapture();
 
 
         }

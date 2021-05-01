@@ -9,16 +9,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip("public CascadeClassifier(string filename)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "filename")]
+    [HutongGames.PlayMaker.Tooltip("public CascadeClassifier()")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.CascadeClassifier), "storeResult")]
     public class CascadeClassifier_newCascadeClassifier : HutongGames.PlayMaker.FsmStateAction
     {
-
-        [HutongGames.PlayMaker.ActionSection("[arg1] string")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmString))]
-        public HutongGames.PlayMaker.FsmString filename;
 
         [HutongGames.PlayMaker.ActionSection("[return] CascadeClassifier")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -31,7 +25,6 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            filename = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -55,7 +48,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.CascadeClassifier)) storeResult.Value = new OpenCVForUnityPlayMakerActions.CascadeClassifier();
-            ((OpenCVForUnityPlayMakerActions.CascadeClassifier)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.CascadeClassifier(filename.Value);
+            ((OpenCVForUnityPlayMakerActions.CascadeClassifier)storeResult.Value).wrappedObject = new OpenCVForUnity.ObjdetectModule.CascadeClassifier();
 
 
         }
