@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,8 +9,8 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip("public static MSER create(int _delta)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_delta")]
+    [HutongGames.PlayMaker.Tooltip("public static MSER create(int delta)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "delta")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MSER), "storeResult")]
     public class MSER_create_8 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -18,7 +18,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt _delta;
+        public HutongGames.PlayMaker.FsmInt delta;
 
         [HutongGames.PlayMaker.ActionSection("[return] MSER")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -31,7 +31,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            _delta = 0;
+            delta = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -55,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MSER)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MSER();
-            ((OpenCVForUnityPlayMakerActions.MSER)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.MSER.create(_delta.Value);
+            ((OpenCVForUnityPlayMakerActions.MSER)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.MSER.create(delta.Value);
 
 
         }

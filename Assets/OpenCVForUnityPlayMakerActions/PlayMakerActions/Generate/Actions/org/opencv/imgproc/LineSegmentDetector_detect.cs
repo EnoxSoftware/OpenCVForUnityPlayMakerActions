@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,10 +9,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public void detect(Mat _image, Mat _lines, Mat width, Mat prec, Mat nfa)")]
+    [HutongGames.PlayMaker.Tooltip("public void detect(Mat image, Mat lines, Mat width, Mat prec, Mat nfa)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.LineSegmentDetector), "owner")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_image")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_lines")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "image")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "lines")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "width")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "prec")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "nfa")]
@@ -29,13 +29,13 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject _image;
+        public HutongGames.PlayMaker.FsmObject image;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject _lines;
+        public HutongGames.PlayMaker.FsmObject lines;
 
         [HutongGames.PlayMaker.ActionSection("[arg3] Mat")]
         [HutongGames.PlayMaker.RequiredField]
@@ -62,8 +62,8 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             owner = null;
-            _image = null;
-            _lines = null;
+            image = null;
+            lines = null;
             width = null;
             prec = null;
             nfa = null;
@@ -95,19 +95,19 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.ImgprocModule.LineSegmentDetector wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.LineSegmentDetector, OpenCVForUnity.ImgprocModule.LineSegmentDetector>(owner);
 
-            if (!(_image.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("_image is not initialized. Add Action \"newMat\".");
+                LogError("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped__image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(_image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(image);
 
-            if (!(_lines.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(lines.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("_lines is not initialized. Add Action \"newMat\".");
+                LogError("lines is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped__lines = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(_lines);
+            OpenCVForUnity.CoreModule.Mat wrapped_lines = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(lines);
 
             if (!(width.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
@@ -130,7 +130,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_nfa = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(nfa);
 
-            wrapped_owner.detect(wrapped__image, wrapped__lines, wrapped_width, wrapped_prec, wrapped_nfa);
+            wrapped_owner.detect(wrapped_image, wrapped_lines, wrapped_width, wrapped_prec, wrapped_nfa);
 
 
         }

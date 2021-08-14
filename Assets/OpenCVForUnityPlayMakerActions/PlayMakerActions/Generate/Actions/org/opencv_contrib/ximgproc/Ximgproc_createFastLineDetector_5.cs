@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,8 +9,8 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip("public static FastLineDetector createFastLineDetector(int _length_threshold)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_length_threshold")]
+    [HutongGames.PlayMaker.Tooltip("public static FastLineDetector createFastLineDetector(int length_threshold)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "length_threshold")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.FastLineDetector), "storeResult")]
     public class Ximgproc_createFastLineDetector_5 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -18,7 +18,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt _length_threshold;
+        public HutongGames.PlayMaker.FsmInt length_threshold;
 
         [HutongGames.PlayMaker.ActionSection("[return] FastLineDetector")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -31,7 +31,7 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            _length_threshold = 0;
+            length_threshold = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -55,7 +55,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FastLineDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FastLineDetector();
-            ((OpenCVForUnityPlayMakerActions.FastLineDetector)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createFastLineDetector(_length_threshold.Value);
+            ((OpenCVForUnityPlayMakerActions.FastLineDetector)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createFastLineDetector(length_threshold.Value);
 
 
         }

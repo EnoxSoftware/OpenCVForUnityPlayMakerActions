@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,13 +9,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip("public static Mat findEssentialMat(Mat points1, Mat points2, double focal, Point pp, int method)")]
+    [HutongGames.PlayMaker.Tooltip("public static Mat findEssentialMat(Mat points1, Mat points2, double focal, Point pp, int method, double prob, double threshold)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "points1")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "points2")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "focal")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "pp_x")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "pp_y")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "method")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "prob")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "threshold")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Calib3d_findEssentialMat_8_CS : HutongGames.PlayMaker.FsmStateAction
     {
@@ -52,6 +54,16 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt method;
 
+        [HutongGames.PlayMaker.ActionSection("[arg6] double(float)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat prob;
+
+        [HutongGames.PlayMaker.ActionSection("[arg7] double(float)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat threshold;
+
         [HutongGames.PlayMaker.ActionSection("[return] Mat")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
@@ -69,6 +81,8 @@ namespace OpenCVForUnityPlayMakerActions
             pp_x = 0.0f;
             pp_y = 0.0f;
             method = 0;
+            prob = 0.0f;
+            threshold = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -106,7 +120,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.CoreModule.Mat wrapped_points2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(points2);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.findEssentialMat(wrapped_points1, wrapped_points2, (float)focal.Value, new OpenCVForUnity.CoreModule.Point((double)pp_x.Value, (double)pp_y.Value), method.Value);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.findEssentialMat(wrapped_points1, wrapped_points2, (float)focal.Value, new OpenCVForUnity.CoreModule.Point((double)pp_x.Value, (double)pp_y.Value), method.Value, (float)prob.Value, (float)threshold.Value);
 
 
         }

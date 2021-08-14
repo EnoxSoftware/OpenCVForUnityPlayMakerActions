@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,9 +9,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public void drawSegments(Mat _image, Mat lines)")]
+    [HutongGames.PlayMaker.Tooltip("public void drawSegments(Mat image, Mat lines)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.LineSegmentDetector), "owner")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_image")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "lines")]
     public class LineSegmentDetector_drawSegments : HutongGames.PlayMaker.FsmStateAction
     {
@@ -26,7 +26,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject _image;
+        public HutongGames.PlayMaker.FsmObject image;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
@@ -41,7 +41,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             owner = null;
-            _image = null;
+            image = null;
             lines = null;
             everyFrame = false;
         }
@@ -71,12 +71,12 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.ImgprocModule.LineSegmentDetector wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.LineSegmentDetector, OpenCVForUnity.ImgprocModule.LineSegmentDetector>(owner);
 
-            if (!(_image.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(image.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("_image is not initialized. Add Action \"newMat\".");
+                LogError("image is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped__image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(_image);
+            OpenCVForUnity.CoreModule.Mat wrapped_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(image);
 
             if (!(lines.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
@@ -85,7 +85,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_lines = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(lines);
 
-            wrapped_owner.drawSegments(wrapped__image, wrapped_lines);
+            wrapped_owner.drawSegments(wrapped_image, wrapped_lines);
 
 
         }

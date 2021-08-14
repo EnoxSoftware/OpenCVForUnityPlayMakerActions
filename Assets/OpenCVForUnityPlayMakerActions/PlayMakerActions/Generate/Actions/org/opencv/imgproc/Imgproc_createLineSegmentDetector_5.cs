@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,10 +9,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public static LineSegmentDetector createLineSegmentDetector(int _refine, double _scale, double _sigma_scale)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_refine")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "_scale")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "_sigma_scale")]
+    [HutongGames.PlayMaker.Tooltip("public static LineSegmentDetector createLineSegmentDetector(int refine, double scale, double sigma_scale)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "refine")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "scale")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "sigma_scale")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.LineSegmentDetector), "storeResult")]
     public class Imgproc_createLineSegmentDetector_5 : HutongGames.PlayMaker.FsmStateAction
     {
@@ -20,19 +20,19 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt _refine;
+        public HutongGames.PlayMaker.FsmInt refine;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] double(Double)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
-        public HutongGames.PlayMaker.FsmObject _scale;
+        public HutongGames.PlayMaker.FsmObject scale;
 
         [HutongGames.PlayMaker.ActionSection("[arg3] double(Double)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
-        public HutongGames.PlayMaker.FsmObject _sigma_scale;
+        public HutongGames.PlayMaker.FsmObject sigma_scale;
 
         [HutongGames.PlayMaker.ActionSection("[return] LineSegmentDetector")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -45,9 +45,9 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            _refine = 0;
-            _scale = null;
-            _sigma_scale = null;
+            refine = 0;
+            scale = null;
+            sigma_scale = null;
             storeResult = null;
             everyFrame = false;
         }
@@ -70,22 +70,22 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
-            if (!(_scale.Value is OpenCVForUnityPlayMakerActions.Double))
+            if (!(scale.Value is OpenCVForUnityPlayMakerActions.Double))
             {
-                LogError("_scale is not initialized. Add Action \"newDouble\".");
+                LogError("scale is not initialized. Add Action \"newDouble\".");
                 return;
             }
-            System.Double wrapped__scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(_scale);
+            System.Double wrapped_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(scale);
 
-            if (!(_sigma_scale.Value is OpenCVForUnityPlayMakerActions.Double))
+            if (!(sigma_scale.Value is OpenCVForUnityPlayMakerActions.Double))
             {
-                LogError("_sigma_scale is not initialized. Add Action \"newDouble\".");
+                LogError("sigma_scale is not initialized. Add Action \"newDouble\".");
                 return;
             }
-            System.Double wrapped__sigma_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(_sigma_scale);
+            System.Double wrapped_sigma_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(sigma_scale);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.LineSegmentDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.LineSegmentDetector();
-            ((OpenCVForUnityPlayMakerActions.LineSegmentDetector)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.createLineSegmentDetector(_refine.Value, wrapped__scale, wrapped__sigma_scale);
+            ((OpenCVForUnityPlayMakerActions.LineSegmentDetector)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.createLineSegmentDetector(refine.Value, wrapped_scale, wrapped_sigma_scale);
 
 
         }

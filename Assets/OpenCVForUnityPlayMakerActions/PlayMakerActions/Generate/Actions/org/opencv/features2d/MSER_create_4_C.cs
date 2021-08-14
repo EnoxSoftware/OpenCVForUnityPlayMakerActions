@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,12 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_features2d")]
-    [HutongGames.PlayMaker.Tooltip("public static MSER create(int _delta, int _min_area, int _max_area, double _max_variation, double _min_diversity)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_delta")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_min_area")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_max_area")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_max_variation")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_min_diversity")]
+    [HutongGames.PlayMaker.Tooltip("public static MSER create(int delta, int min_area, int max_area, double max_variation, double min_diversity)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "delta")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "min_area")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "max_area")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "max_variation")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "min_diversity")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MSER), "storeResult")]
     public class MSER_create_4_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -22,27 +22,27 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt _delta;
+        public HutongGames.PlayMaker.FsmInt delta;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt _min_area;
+        public HutongGames.PlayMaker.FsmInt min_area;
 
         [HutongGames.PlayMaker.ActionSection("[arg3] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt _max_area;
+        public HutongGames.PlayMaker.FsmInt max_area;
 
         [HutongGames.PlayMaker.ActionSection("[arg4] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat _max_variation;
+        public HutongGames.PlayMaker.FsmFloat max_variation;
 
         [HutongGames.PlayMaker.ActionSection("[arg5] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat _min_diversity;
+        public HutongGames.PlayMaker.FsmFloat min_diversity;
 
         [HutongGames.PlayMaker.ActionSection("[return] MSER")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -55,11 +55,11 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            _delta = 0;
-            _min_area = 0;
-            _max_area = 0;
-            _max_variation = 0.0f;
-            _min_diversity = 0.0f;
+            delta = 0;
+            min_area = 0;
+            max_area = 0;
+            max_variation = 0.0f;
+            min_diversity = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -83,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MSER)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MSER();
-            ((OpenCVForUnityPlayMakerActions.MSER)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.MSER.create(_delta.Value, _min_area.Value, _max_area.Value, (float)_max_variation.Value, (float)_min_diversity.Value);
+            ((OpenCVForUnityPlayMakerActions.MSER)storeResult.Value).wrappedObject = OpenCVForUnity.Features2dModule.MSER.create(delta.Value, min_area.Value, max_area.Value, (float)max_variation.Value, (float)min_diversity.Value);
 
 
         }

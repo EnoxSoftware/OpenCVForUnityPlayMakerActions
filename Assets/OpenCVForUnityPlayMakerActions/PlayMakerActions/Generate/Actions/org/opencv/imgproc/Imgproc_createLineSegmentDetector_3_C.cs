@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,12 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public static LineSegmentDetector createLineSegmentDetector(int _refine, double _scale, double _sigma_scale, double _quant, double _ang_th)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_refine")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_scale")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_sigma_scale")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_quant")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_ang_th")]
+    [HutongGames.PlayMaker.Tooltip("public static LineSegmentDetector createLineSegmentDetector(int refine, double scale, double sigma_scale, double quant, double ang_th)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "refine")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "scale")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "sigma_scale")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "quant")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "ang_th")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.LineSegmentDetector), "storeResult")]
     public class Imgproc_createLineSegmentDetector_3_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -22,27 +22,27 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt _refine;
+        public HutongGames.PlayMaker.FsmInt refine;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat _scale;
+        public HutongGames.PlayMaker.FsmFloat scale;
 
         [HutongGames.PlayMaker.ActionSection("[arg3] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat _sigma_scale;
+        public HutongGames.PlayMaker.FsmFloat sigma_scale;
 
         [HutongGames.PlayMaker.ActionSection("[arg4] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat _quant;
+        public HutongGames.PlayMaker.FsmFloat quant;
 
         [HutongGames.PlayMaker.ActionSection("[arg5] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat _ang_th;
+        public HutongGames.PlayMaker.FsmFloat ang_th;
 
         [HutongGames.PlayMaker.ActionSection("[return] LineSegmentDetector")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -55,11 +55,11 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            _refine = 0;
-            _scale = 0.0f;
-            _sigma_scale = 0.0f;
-            _quant = 0.0f;
-            _ang_th = 0.0f;
+            refine = 0;
+            scale = 0.0f;
+            sigma_scale = 0.0f;
+            quant = 0.0f;
+            ang_th = 0.0f;
             storeResult = null;
             everyFrame = false;
         }
@@ -83,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.LineSegmentDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.LineSegmentDetector();
-            ((OpenCVForUnityPlayMakerActions.LineSegmentDetector)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.createLineSegmentDetector(_refine.Value, (float)_scale.Value, (float)_sigma_scale.Value, (float)_quant.Value, (float)_ang_th.Value);
+            ((OpenCVForUnityPlayMakerActions.LineSegmentDetector)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.createLineSegmentDetector(refine.Value, (float)scale.Value, (float)sigma_scale.Value, (float)quant.Value, (float)ang_th.Value);
 
 
         }

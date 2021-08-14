@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip("public static Mat findEssentialMat(Mat points1, Mat points2, double focal, Point pp, int method, double prob)")]
+    [HutongGames.PlayMaker.Tooltip("public static Mat findEssentialMat(Mat points1, Mat points2, double focal, Point pp, int method, double prob, double threshold, int maxIters)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "points1")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "points2")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "focal")]
@@ -17,6 +17,8 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "pp_y")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "method")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "prob")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "threshold")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "maxIters")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "storeResult")]
     public class Calib3d_findEssentialMat_7_S : HutongGames.PlayMaker.FsmStateAction
     {
@@ -60,6 +62,17 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject prob;
 
+        [HutongGames.PlayMaker.ActionSection("[arg7] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject threshold;
+
+        [HutongGames.PlayMaker.ActionSection("[arg8] int")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt maxIters;
+
         [HutongGames.PlayMaker.ActionSection("[return] Mat")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
@@ -78,6 +91,8 @@ namespace OpenCVForUnityPlayMakerActions
             pp_y = 0.0f;
             method = 0;
             prob = null;
+            threshold = null;
+            maxIters = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -128,8 +143,15 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_prob = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(prob);
 
+            if (!(threshold.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError("threshold is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_threshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(threshold);
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.findEssentialMat(wrapped_points1, wrapped_points2, wrapped_focal, new OpenCVForUnity.CoreModule.Point((double)pp_x.Value, (double)pp_y.Value), method.Value, wrapped_prob);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.Calib3dModule.Calib3d.findEssentialMat(wrapped_points1, wrapped_points2, wrapped_focal, new OpenCVForUnity.CoreModule.Point((double)pp_x.Value, (double)pp_y.Value), method.Value, wrapped_prob, wrapped_threshold, maxIters.Value);
 
 
         }

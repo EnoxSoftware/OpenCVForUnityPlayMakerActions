@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,12 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip("public static FastLineDetector createFastLineDetector(int _length_threshold, float _distance_threshold, double _canny_th1, double _canny_th2, int _canny_aperture_size)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_length_threshold")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_distance_threshold")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_canny_th1")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "_canny_th2")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "_canny_aperture_size")]
+    [HutongGames.PlayMaker.Tooltip("public static FastLineDetector createFastLineDetector(int length_threshold, float distance_threshold, double canny_th1, double canny_th2, int canny_aperture_size)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "length_threshold")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "distance_threshold")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "canny_th1")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "canny_th2")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "canny_aperture_size")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.FastLineDetector), "storeResult")]
     public class Ximgproc_createFastLineDetector_1_C : HutongGames.PlayMaker.FsmStateAction
     {
@@ -22,27 +22,27 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt _length_threshold;
+        public HutongGames.PlayMaker.FsmInt length_threshold;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] float")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat _distance_threshold;
+        public HutongGames.PlayMaker.FsmFloat distance_threshold;
 
         [HutongGames.PlayMaker.ActionSection("[arg3] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat _canny_th1;
+        public HutongGames.PlayMaker.FsmFloat canny_th1;
 
         [HutongGames.PlayMaker.ActionSection("[arg4] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat _canny_th2;
+        public HutongGames.PlayMaker.FsmFloat canny_th2;
 
         [HutongGames.PlayMaker.ActionSection("[arg5] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
-        public HutongGames.PlayMaker.FsmInt _canny_aperture_size;
+        public HutongGames.PlayMaker.FsmInt canny_aperture_size;
 
         [HutongGames.PlayMaker.ActionSection("[return] FastLineDetector")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -55,11 +55,11 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            _length_threshold = 0;
-            _distance_threshold = 0.0f;
-            _canny_th1 = 0.0f;
-            _canny_th2 = 0.0f;
-            _canny_aperture_size = 0;
+            length_threshold = 0;
+            distance_threshold = 0.0f;
+            canny_th1 = 0.0f;
+            canny_th2 = 0.0f;
+            canny_aperture_size = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -83,7 +83,7 @@ namespace OpenCVForUnityPlayMakerActions
         {
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.FastLineDetector)) storeResult.Value = new OpenCVForUnityPlayMakerActions.FastLineDetector();
-            ((OpenCVForUnityPlayMakerActions.FastLineDetector)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createFastLineDetector(_length_threshold.Value, _distance_threshold.Value, (float)_canny_th1.Value, (float)_canny_th2.Value, _canny_aperture_size.Value);
+            ((OpenCVForUnityPlayMakerActions.FastLineDetector)storeResult.Value).wrappedObject = OpenCVForUnity.XimgprocModule.Ximgproc.createFastLineDetector(length_threshold.Value, distance_threshold.Value, (float)canny_th1.Value, (float)canny_th2.Value, canny_aperture_size.Value);
 
 
         }

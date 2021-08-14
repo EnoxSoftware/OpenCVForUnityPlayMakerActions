@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,9 +9,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_imgproc")]
-    [HutongGames.PlayMaker.Tooltip("public static void HoughLinesPointSet(Mat _point, Mat _lines, int lines_max, int threshold, double min_rho, double max_rho, double rho_step, double min_theta, double max_theta, double theta_step)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_point")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_lines")]
+    [HutongGames.PlayMaker.Tooltip("public static void HoughLinesPointSet(Mat point, Mat lines, int lines_max, int threshold, double min_rho, double max_rho, double rho_step, double min_theta, double max_theta, double theta_step)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "point")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "lines")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "lines_max")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "threshold")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "min_rho")]
@@ -27,13 +27,13 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject _point;
+        public HutongGames.PlayMaker.FsmObject point;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject _lines;
+        public HutongGames.PlayMaker.FsmObject lines;
 
         [HutongGames.PlayMaker.ActionSection("[arg3] int")]
         [HutongGames.PlayMaker.RequiredField]
@@ -81,8 +81,8 @@ namespace OpenCVForUnityPlayMakerActions
 
         public override void Reset()
         {
-            _point = null;
-            _lines = null;
+            point = null;
+            lines = null;
             lines_max = 0;
             threshold = 0;
             min_rho = 0.0f;
@@ -112,21 +112,21 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
-            if (!(_point.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(point.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("_point is not initialized. Add Action \"newMat\".");
+                LogError("point is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped__point = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(_point);
+            OpenCVForUnity.CoreModule.Mat wrapped_point = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(point);
 
-            if (!(_lines.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(lines.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("_lines is not initialized. Add Action \"newMat\".");
+                LogError("lines is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped__lines = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(_lines);
+            OpenCVForUnity.CoreModule.Mat wrapped_lines = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(lines);
 
-            OpenCVForUnity.ImgprocModule.Imgproc.HoughLinesPointSet(wrapped__point, wrapped__lines, lines_max.Value, threshold.Value, (float)min_rho.Value, (float)max_rho.Value, (float)rho_step.Value, (float)min_theta.Value, (float)max_theta.Value, (float)theta_step.Value);
+            OpenCVForUnity.ImgprocModule.Imgproc.HoughLinesPointSet(wrapped_point, wrapped_lines, lines_max.Value, threshold.Value, (float)min_rho.Value, (float)max_rho.Value, (float)rho_step.Value, (float)min_theta.Value, (float)max_theta.Value, (float)theta_step.Value);
 
 
         }
