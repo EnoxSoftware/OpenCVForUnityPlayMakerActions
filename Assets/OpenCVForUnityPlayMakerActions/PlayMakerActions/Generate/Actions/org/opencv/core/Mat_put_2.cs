@@ -82,7 +82,20 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(owner);
 
-            storeResult.Value = wrapped_owner.put(row.Value, col.Value, data.floatValues);
+            float[] float_data = data.floatValues;
+            float[] casted_data = new float[float_data.Length];
+            for (int i = 0; i < casted_data.Length; i++)
+            {
+                casted_data[i] = (float)float_data[i];
+            }
+
+            storeResult.Value = wrapped_owner.put(row.Value, col.Value, casted_data);
+
+            for (int i = 0; i < casted_data.Length; i++)
+            {
+                data.Set(i, (float)casted_data[i]);
+            }
+            data.SaveChanges();
 
 
         }

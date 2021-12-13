@@ -5,42 +5,42 @@ using OpenCVForUnity.UnityUtils;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public static void registerWebGLPlugin ()")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity")]
+    [HutongGames.PlayMaker.Tooltip("public static void registerWebGLPlugin ()")]
     public class Utils_registerWebGLPlugin : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool
             everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
 
             everyFrame = false;
 
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            Utils.registerWebGLPlugin ();
+            Utils.registerWebGLPlugin();
 
         }
 

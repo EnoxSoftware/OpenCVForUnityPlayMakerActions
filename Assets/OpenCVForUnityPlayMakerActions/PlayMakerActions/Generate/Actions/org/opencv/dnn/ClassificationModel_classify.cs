@@ -85,7 +85,33 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_frame = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(frame);
 
-            wrapped_owner.classify(wrapped_frame, classId.intValues, conf.floatValues);
+            int[] int_classId = classId.intValues;
+            int[] casted_classId = new int[int_classId.Length];
+            for (int i = 0; i < casted_classId.Length; i++)
+            {
+                casted_classId[i] = (int)int_classId[i];
+            }
+
+            float[] float_conf = conf.floatValues;
+            float[] casted_conf = new float[float_conf.Length];
+            for (int i = 0; i < casted_conf.Length; i++)
+            {
+                casted_conf[i] = (float)float_conf[i];
+            }
+
+            wrapped_owner.classify(wrapped_frame, casted_classId, casted_conf);
+
+            for (int i = 0; i < casted_classId.Length; i++)
+            {
+                classId.Set(i, (int)casted_classId[i]);
+            }
+            classId.SaveChanges();
+
+            for (int i = 0; i < casted_conf.Length; i++)
+            {
+                conf.Set(i, (float)casted_conf[i]);
+            }
+            conf.SaveChanges();
 
 
         }

@@ -81,7 +81,11 @@ namespace OpenCVForUnityPlayMakerActions
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_outputBlobs, outputBlobs);
 
-            wrapped_outBlobNames.CopyTo(string_outBlobNames);
+            for (int i = 0; i < wrapped_outBlobNames.Count; i++)
+            {
+                outBlobNames.Set(i, (string)wrapped_outBlobNames[i]);
+            }
+            outBlobNames.SaveChanges();
 
 
         }

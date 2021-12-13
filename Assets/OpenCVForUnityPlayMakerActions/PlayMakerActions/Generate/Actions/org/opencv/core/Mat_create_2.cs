@@ -68,7 +68,20 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(owner);
 
-            wrapped_owner.create(sizes.intValues, type.Value);
+            int[] int_sizes = sizes.intValues;
+            int[] casted_sizes = new int[int_sizes.Length];
+            for (int i = 0; i < casted_sizes.Length; i++)
+            {
+                casted_sizes[i] = (int)int_sizes[i];
+            }
+
+            wrapped_owner.create(casted_sizes, type.Value);
+
+            for (int i = 0; i < casted_sizes.Length; i++)
+            {
+                sizes.Set(i, (int)casted_sizes[i]);
+            }
+            sizes.SaveChanges();
 
 
         }

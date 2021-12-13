@@ -68,7 +68,11 @@ namespace OpenCVForUnityPlayMakerActions
 
             wrapped_owner.setInputsNames(wrapped_inputBlobNames);
 
-            wrapped_inputBlobNames.CopyTo(string_inputBlobNames);
+            for (int i = 0; i < wrapped_inputBlobNames.Count; i++)
+            {
+                inputBlobNames.Set(i, (string)wrapped_inputBlobNames[i]);
+            }
+            inputBlobNames.SaveChanges();
 
 
         }

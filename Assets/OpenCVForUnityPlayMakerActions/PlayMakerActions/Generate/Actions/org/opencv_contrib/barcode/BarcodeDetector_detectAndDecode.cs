@@ -124,9 +124,17 @@ namespace OpenCVForUnityPlayMakerActions
 
             storeResult.Value = wrapped_owner.detectAndDecode(wrapped_img, wrapped_decoded_info, wrapped_decoded_type, wrapped_points);
 
-            wrapped_decoded_info.CopyTo(string_decoded_info);
+            for (int i = 0; i < wrapped_decoded_info.Count; i++)
+            {
+                decoded_info.Set(i, (string)wrapped_decoded_info[i]);
+            }
+            decoded_info.SaveChanges();
 
-            wrapped_decoded_type.CopyTo(int_decoded_type);
+            for (int i = 0; i < wrapped_decoded_type.Count; i++)
+            {
+                decoded_type.Set(i, (int)wrapped_decoded_type[i]);
+            }
+            decoded_type.SaveChanges();
 
             Fsm.Event(storeResult.Value ? trueEvent : falseEvent);
 

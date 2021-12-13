@@ -125,7 +125,11 @@ namespace OpenCVForUnityPlayMakerActions
 
             storeResult.Value = wrapped_owner.decodeMulti(wrapped_img, wrapped_points, wrapped_decoded_info, wrapped_straight_qrcode);
 
-            wrapped_decoded_info.CopyTo(string_decoded_info);
+            for (int i = 0; i < wrapped_decoded_info.Count; i++)
+            {
+                decoded_info.Set(i, (string)wrapped_decoded_info[i]);
+            }
+            decoded_info.SaveChanges();
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_straight_qrcode, straight_qrcode);
 

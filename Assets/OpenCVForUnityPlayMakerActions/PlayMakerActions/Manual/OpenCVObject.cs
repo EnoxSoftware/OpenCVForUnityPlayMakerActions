@@ -11,12 +11,12 @@ namespace OpenCVForUnityPlayMakerActions
 
         public System.Object wrappedObject;
 
-        public OpenCVObject ()
+        public OpenCVObject()
         {
 
         }
 
-        public OpenCVObject (System.Object wrappedObject)
+        public OpenCVObject(System.Object wrappedObject)
         {
             this.wrappedObject = wrappedObject;
         }

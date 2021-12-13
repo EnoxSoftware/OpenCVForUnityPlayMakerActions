@@ -97,13 +97,15 @@ namespace OpenCVForUnityPlayMakerActions
 
             for (int i = 0; i < casted_weights.Length; i++)
             {
-                int_weights[i] = (int)casted_weights[i];
+                weights.Set(i, (int)casted_weights[i]);
             }
+            weights.SaveChanges();
 
             for (int i = 0; i < casted_blobs.Length; i++)
             {
-                int_blobs[i] = (int)casted_blobs[i];
+                blobs.Set(i, (int)casted_blobs[i]);
             }
+            blobs.SaveChanges();
 
 
         }

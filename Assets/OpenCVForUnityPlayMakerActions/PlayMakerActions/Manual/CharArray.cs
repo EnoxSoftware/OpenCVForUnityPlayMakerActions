@@ -8,13 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
     public class CharArray : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public CharArray ()
+        public CharArray()
         {
 
         }
 
-        public CharArray (System.Char[] nativeObj)
-            : base (nativeObj)
+        public CharArray(System.Char[] nativeObj)
+            : base(nativeObj)
         {
 
         }

@@ -5,35 +5,35 @@ using OpenCVForUnity.UnityUtils;
 namespace OpenCVForUnityPlayMakerActions
 {
 
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public static string getFilePath (string filepath, bool refresh = false)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "filepath")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "refresh")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity")]
+    [HutongGames.PlayMaker.Tooltip("public static string getFilePath (string filepath, bool refresh = false)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "filepath")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "refresh")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "storeResult")]
     public class Utils_getFilePath : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] string")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] string")]
         [HutongGames.PlayMaker.RequiredField]
         public HutongGames.PlayMaker.FsmString
             filepath;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] bool")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] bool")]
         public HutongGames.PlayMaker.FsmBool
             refresh;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] string")]
+        [HutongGames.PlayMaker.ActionSection("[return] string")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         public HutongGames.PlayMaker.FsmString
             storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool
             everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             filepath = null;
             refresh = false;
@@ -42,25 +42,25 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
-            storeResult.Value = Utils.getFilePath (filepath.Value, refresh.Value);
+            storeResult.Value = Utils.getFilePath(filepath.Value, refresh.Value);
 
         }
 

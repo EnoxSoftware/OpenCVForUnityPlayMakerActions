@@ -63,7 +63,11 @@ namespace OpenCVForUnityPlayMakerActions
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfByte)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfByte();
             ((OpenCVForUnityPlayMakerActions.MatOfByte)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfByte(casted_a);
 
-            casted_a.CopyTo(int_a, 0);
+            for (int i = 0; i < casted_a.Length; i++)
+            {
+                a.Set(i, (int)casted_a[i]);
+            }
+            a.SaveChanges();
 
 
         }

@@ -67,7 +67,11 @@ namespace OpenCVForUnityPlayMakerActions
 
             wrapped_owner.getNames(wrapped_names);
 
-            wrapped_names.CopyTo(string_names);
+            for (int i = 0; i < wrapped_names.Count; i++)
+            {
+                names.Set(i, (string)wrapped_names[i]);
+            }
+            names.SaveChanges();
 
 
         }

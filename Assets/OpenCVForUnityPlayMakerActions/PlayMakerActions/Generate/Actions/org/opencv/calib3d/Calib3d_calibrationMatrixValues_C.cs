@@ -147,23 +147,27 @@ namespace OpenCVForUnityPlayMakerActions
 
             for (int i = 0; i < casted_fovx.Length; i++)
             {
-                float_fovx[i] = (float)casted_fovx[i];
+                fovx.Set(i, (float)casted_fovx[i]);
             }
+            fovx.SaveChanges();
 
             for (int i = 0; i < casted_fovy.Length; i++)
             {
-                float_fovy[i] = (float)casted_fovy[i];
+                fovy.Set(i, (float)casted_fovy[i]);
             }
+            fovy.SaveChanges();
 
             for (int i = 0; i < casted_focalLength.Length; i++)
             {
-                float_focalLength[i] = (float)casted_focalLength[i];
+                focalLength.Set(i, (float)casted_focalLength[i]);
             }
+            focalLength.SaveChanges();
 
             for (int i = 0; i < casted_aspectRatio.Length; i++)
             {
-                float_aspectRatio[i] = (float)casted_aspectRatio[i];
+                aspectRatio.Set(i, (float)casted_aspectRatio[i]);
             }
+            aspectRatio.SaveChanges();
 
 
         }

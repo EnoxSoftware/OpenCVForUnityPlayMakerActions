@@ -75,8 +75,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(owner);
 
+            int[] int_newshape = newshape.intValues;
+            int[] casted_newshape = new int[int_newshape.Length];
+            for (int i = 0; i < casted_newshape.Length; i++)
+            {
+                casted_newshape[i] = (int)int_newshape[i];
+            }
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = wrapped_owner.reshape(cn.Value, newshape.intValues);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = wrapped_owner.reshape(cn.Value, casted_newshape);
+
+            for (int i = 0; i < casted_newshape.Length; i++)
+            {
+                newshape.Set(i, (int)casted_newshape[i]);
+            }
+            newshape.SaveChanges();
 
 
         }

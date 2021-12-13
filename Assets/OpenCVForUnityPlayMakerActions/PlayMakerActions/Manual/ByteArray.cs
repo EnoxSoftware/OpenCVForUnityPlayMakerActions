@@ -8,13 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
     public class ByteArray : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public ByteArray ()
+        public ByteArray()
         {
 
         }
 
-        public ByteArray (System.Byte[] nativeObj)
-            : base (nativeObj)
+        public ByteArray(System.Byte[] nativeObj)
+            : base(nativeObj)
         {
 
         }

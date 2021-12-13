@@ -105,7 +105,11 @@ namespace OpenCVForUnityPlayMakerActions
 
             storeResult.Value = wrapped_owner.put(row.Value, col.Value, casted_data, offset.Value, length.Value);
 
-            casted_data.CopyTo(int_data, 0);
+            for (int i = 0; i < casted_data.Length; i++)
+            {
+                data.Set(i, (int)casted_data[i]);
+            }
+            data.SaveChanges();
 
 
         }

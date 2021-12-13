@@ -141,7 +141,12 @@ namespace OpenCVForUnityPlayMakerActions
 
             if (!storeResult.IsNone)
             {
-                casted_storeResult.CopyTo(storeResult.floatValues, 0);
+                if (storeResult.Length != casted_storeResult.Length) storeResult.Resize(casted_storeResult.Length);
+                for (int i = 0; i < casted_storeResult.Length; i++)
+                {
+                    storeResult.Set(i, (float)casted_storeResult[i]);
+                }
+                storeResult.SaveChanges();
             }
 
 

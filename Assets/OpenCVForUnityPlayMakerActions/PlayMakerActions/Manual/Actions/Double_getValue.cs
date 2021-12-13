@@ -5,32 +5,32 @@ using OpenCVForUnity;
 
 namespace OpenCVForUnityPlayMakerActions
 {
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public float getValue ()")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.Double), "owner")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmFloat), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity")]
+    [HutongGames.PlayMaker.Tooltip("public float getValue ()")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "storeResult")]
     public class Double_getValue : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[class] Double")]
+        [HutongGames.PlayMaker.ActionSection("[class] Double")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.Double))]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
         public HutongGames.PlayMaker.FsmObject
             owner;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] float")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (HutongGames.PlayMaker.FsmFloat))]
+        [HutongGames.PlayMaker.ActionSection("[return] float")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
         public HutongGames.PlayMaker.FsmFloat
             storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool
             everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             owner = null;
             storeResult = null;
@@ -38,28 +38,28 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
 
             if (!(owner.Value is OpenCVForUnityPlayMakerActions.Double))
-                owner.Value = new OpenCVForUnityPlayMakerActions.Double (0);
+                owner.Value = new OpenCVForUnityPlayMakerActions.Double(0);
 
-            System.Double wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double> (owner);
+            System.Double wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(owner);
             storeResult.Value = (float)wrapped_owner;
 
         }

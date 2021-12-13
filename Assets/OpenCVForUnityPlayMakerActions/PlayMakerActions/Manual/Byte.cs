@@ -8,13 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
     public class Byte : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public Byte ()
+        public Byte()
         {
 
         }
 
-        public Byte (System.Byte nativeObj)
-            : base (nativeObj)
+        public Byte(System.Byte nativeObj)
+            : base(nativeObj)
         {
 
         }

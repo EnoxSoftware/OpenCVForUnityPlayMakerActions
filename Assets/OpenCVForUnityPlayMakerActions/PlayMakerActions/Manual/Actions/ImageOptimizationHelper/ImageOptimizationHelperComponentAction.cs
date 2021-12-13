@@ -18,7 +18,7 @@ namespace OpenCVForUnityPlayMakerActions
             get { return component as ImageOptimizationHelper; }
         }
 
-        protected bool UpdateCache (GameObject go)
+        protected bool UpdateCache(GameObject go)
         {
             if (go == null)
             {
@@ -27,12 +27,12 @@ namespace OpenCVForUnityPlayMakerActions
 
             if (component == null || cachedGameObject != go)
             {
-                component = go.GetComponent<T> ();
+                component = go.GetComponent<T>();
                 cachedGameObject = go;
 
                 if (component == null)
                 {
-                    LogWarning ("Missing component: " + typeof (T).FullName + " on: " + go.name);
+                    LogWarning("Missing component: " + typeof(T).FullName + " on: " + go.name);
                 }
             }
 

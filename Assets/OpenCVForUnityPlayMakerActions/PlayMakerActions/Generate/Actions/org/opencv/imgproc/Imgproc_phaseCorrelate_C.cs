@@ -108,8 +108,9 @@ namespace OpenCVForUnityPlayMakerActions
 
             for (int i = 0; i < casted_response.Length; i++)
             {
-                float_response[i] = (float)casted_response[i];
+                response.Set(i, (float)casted_response[i]);
             }
+            response.SaveChanges();
 
 
         }

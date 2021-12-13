@@ -8,13 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
     public class Double : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public Double ()
+        public Double()
         {
 
         }
 
-        public Double (System.Double nativeObj)
-            : base (nativeObj)
+        public Double(System.Double nativeObj)
+            : base(nativeObj)
         {
 
         }

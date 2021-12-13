@@ -90,8 +90,9 @@ namespace OpenCVForUnityPlayMakerActions
 
             for (int i = 0; i < casted_data.Length; i++)
             {
-                float_data[i] = (float)casted_data[i];
+                data.Set(i, (float)casted_data[i]);
             }
+            data.SaveChanges();
 
 
         }

@@ -93,9 +93,17 @@ namespace OpenCVForUnityPlayMakerActions
 
             storeResult.Value = OpenCVForUnity.FaceModule.Face.loadDatasetList(imageList.Value, annotationList.Value, wrapped_images, wrapped_annotations);
 
-            wrapped_images.CopyTo(string_images);
+            for (int i = 0; i < wrapped_images.Count; i++)
+            {
+                images.Set(i, (string)wrapped_images[i]);
+            }
+            images.SaveChanges();
 
-            wrapped_annotations.CopyTo(string_annotations);
+            for (int i = 0; i < wrapped_annotations.Count; i++)
+            {
+                annotations.Set(i, (string)wrapped_annotations[i]);
+            }
+            annotations.SaveChanges();
 
             Fsm.Event(storeResult.Value ? trueEvent : falseEvent);
 

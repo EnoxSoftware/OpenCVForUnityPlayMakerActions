@@ -63,7 +63,17 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.DnnModule.TextRecognitionModel wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TextRecognitionModel, OpenCVForUnity.DnnModule.TextRecognitionModel>(owner);
 
-            wrapped_owner.getVocabulary().CopyTo(storeResult.stringValues);
+            List<string> wrapped_storeResult = wrapped_owner.getVocabulary();
+
+            if (!storeResult.IsNone)
+            {
+                if (storeResult.Length != wrapped_storeResult.Count) storeResult.Resize(wrapped_storeResult.Count);
+                for (int i = 0; i < wrapped_storeResult.Count; i++)
+                {
+                    storeResult.Set(i, (string)wrapped_storeResult[i]);
+                }
+                storeResult.SaveChanges();
+            }
 
 
         }

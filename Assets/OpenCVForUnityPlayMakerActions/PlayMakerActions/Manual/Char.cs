@@ -8,13 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
     public class Char : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public Char ()
+        public Char()
         {
 
         }
 
-        public Char (System.Char nativeObj)
-            : base (nativeObj)
+        public Char(System.Char nativeObj)
+            : base(nativeObj)
         {
 
         }

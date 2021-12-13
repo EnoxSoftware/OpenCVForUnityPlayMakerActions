@@ -90,11 +90,19 @@ namespace OpenCVForUnityPlayMakerActions
 
             storeResult.Value = OpenCVForUnity.FaceModule.Face.loadTrainingData(wrapped_filename, wrapped_trainlandmarks, wrapped_trainimages);
 
-            wrapped_filename.CopyTo(string_filename);
+            for (int i = 0; i < wrapped_filename.Count; i++)
+            {
+                filename.Set(i, (string)wrapped_filename[i]);
+            }
+            filename.SaveChanges();
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.MatOfPoint2f, OpenCVForUnityPlayMakerActions.MatOfPoint2f>(wrapped_trainlandmarks, trainlandmarks);
 
-            wrapped_trainimages.CopyTo(string_trainimages);
+            for (int i = 0; i < wrapped_trainimages.Count; i++)
+            {
+                trainimages.Set(i, (string)wrapped_trainimages[i]);
+            }
+            trainimages.SaveChanges();
 
             Fsm.Event(storeResult.Value ? trueEvent : falseEvent);
 

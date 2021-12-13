@@ -84,7 +84,11 @@ namespace OpenCVForUnityPlayMakerActions
 
             wrapped_owner.fromArray(offset.Value, length.Value, casted_a);
 
-            casted_a.CopyTo(int_a, 0);
+            for (int i = 0; i < casted_a.Length; i++)
+            {
+                a.Set(i, (int)casted_a[i]);
+            }
+            a.SaveChanges();
 
 
         }

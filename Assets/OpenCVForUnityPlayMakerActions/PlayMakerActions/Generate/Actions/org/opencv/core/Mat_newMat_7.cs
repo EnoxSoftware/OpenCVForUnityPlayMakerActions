@@ -68,6 +68,13 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
+            int[] int_sizes = sizes.intValues;
+            int[] casted_sizes = new int[int_sizes.Length];
+            for (int i = 0; i < casted_sizes.Length; i++)
+            {
+                casted_sizes[i] = (int)int_sizes[i];
+            }
+
             if (!(s.Value is OpenCVForUnityPlayMakerActions.Scalar))
             {
                 LogError("s is not initialized. Add Action \"newScalar\".");
@@ -76,7 +83,13 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnity.CoreModule.Scalar wrapped_s = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Scalar, OpenCVForUnity.CoreModule.Scalar>(s);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.Mat(sizes.intValues, type.Value, wrapped_s);
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.Mat(casted_sizes, type.Value, wrapped_s);
+
+            for (int i = 0; i < casted_sizes.Length; i++)
+            {
+                sizes.Set(i, (int)casted_sizes[i]);
+            }
+            sizes.SaveChanges();
 
 
         }

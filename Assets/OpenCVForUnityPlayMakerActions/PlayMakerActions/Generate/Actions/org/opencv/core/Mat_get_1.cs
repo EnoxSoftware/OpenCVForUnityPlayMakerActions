@@ -76,6 +76,13 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(owner);
 
+            int[] int_idx = idx.intValues;
+            int[] casted_idx = new int[int_idx.Length];
+            for (int i = 0; i < casted_idx.Length; i++)
+            {
+                casted_idx[i] = (int)int_idx[i];
+            }
+
             if (!(data.Value is OpenCVForUnityPlayMakerActions.ByteArray))
             {
                 LogError("data is not initialized. Add Action \"newByteArray\".");
@@ -83,7 +90,13 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Byte[] wrapped_data = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.ByteArray, System.Byte[]>(data);
 
-            storeResult.Value = wrapped_owner.get(idx.intValues, wrapped_data);
+            storeResult.Value = wrapped_owner.get(casted_idx, wrapped_data);
+
+            for (int i = 0; i < casted_idx.Length; i++)
+            {
+                idx.Set(i, (int)casted_idx[i]);
+            }
+            idx.SaveChanges();
 
 
         }

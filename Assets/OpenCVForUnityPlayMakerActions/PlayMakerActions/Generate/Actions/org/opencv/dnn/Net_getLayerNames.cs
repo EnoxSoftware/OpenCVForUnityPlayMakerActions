@@ -63,7 +63,17 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.DnnModule.Net wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Net, OpenCVForUnity.DnnModule.Net>(owner);
 
-            wrapped_owner.getLayerNames().CopyTo(storeResult.stringValues);
+            List<string> wrapped_storeResult = wrapped_owner.getLayerNames();
+
+            if (!storeResult.IsNone)
+            {
+                if (storeResult.Length != wrapped_storeResult.Count) storeResult.Resize(wrapped_storeResult.Count);
+                for (int i = 0; i < wrapped_storeResult.Count; i++)
+                {
+                    storeResult.Set(i, (string)wrapped_storeResult[i]);
+                }
+                storeResult.SaveChanges();
+            }
 
 
         }

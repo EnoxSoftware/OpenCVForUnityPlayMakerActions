@@ -8,13 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
     public class DoubleArray : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public DoubleArray ()
+        public DoubleArray()
         {
 
         }
 
-        public DoubleArray (System.Double[] nativeObj)
-            : base (nativeObj)
+        public DoubleArray(System.Double[] nativeObj)
+            : base(nativeObj)
         {
 
         }

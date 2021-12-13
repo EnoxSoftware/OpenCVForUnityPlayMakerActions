@@ -85,6 +85,13 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(src);
 
+            int[] int_label = label.intValues;
+            int[] casted_label = new int[int_label.Length];
+            for (int i = 0; i < casted_label.Length; i++)
+            {
+                casted_label[i] = (int)int_label[i];
+            }
+
             if (!(confidence.Value is OpenCVForUnityPlayMakerActions.DoubleArray))
             {
                 LogError("confidence is not initialized. Add Action \"newDoubleArray\".");
@@ -92,7 +99,13 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double[] wrapped_confidence = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DoubleArray, System.Double[]>(confidence);
 
-            wrapped_owner.predict(wrapped_src, label.intValues, wrapped_confidence);
+            wrapped_owner.predict(wrapped_src, casted_label, wrapped_confidence);
+
+            for (int i = 0; i < casted_label.Length; i++)
+            {
+                label.Set(i, (int)casted_label[i]);
+            }
+            label.SaveChanges();
 
 
         }

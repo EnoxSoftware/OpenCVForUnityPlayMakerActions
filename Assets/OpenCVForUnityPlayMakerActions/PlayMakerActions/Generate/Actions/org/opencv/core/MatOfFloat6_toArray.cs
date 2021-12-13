@@ -61,7 +61,17 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.MatOfFloat6 wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.MatOfFloat6, OpenCVForUnity.CoreModule.MatOfFloat6>(owner);
 
-            storeResult.floatValues = wrapped_owner.toArray();
+            float[] casted_storeResult = wrapped_owner.toArray();
+
+            if (!storeResult.IsNone)
+            {
+                if (storeResult.Length != casted_storeResult.Length) storeResult.Resize(casted_storeResult.Length);
+                for (int i = 0; i < casted_storeResult.Length; i++)
+                {
+                    storeResult.Set(i, (float)casted_storeResult[i]);
+                }
+                storeResult.SaveChanges();
+            }
 
 
         }

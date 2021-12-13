@@ -86,8 +86,21 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
+            int[] int_sizes = sizes.intValues;
+            int[] casted_sizes = new int[int_sizes.Length];
+            for (int i = 0; i < casted_sizes.Length; i++)
+            {
+                casted_sizes[i] = (int)int_sizes[i];
+            }
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat();
-            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.Mat(sizes.intValues, type.Value, new OpenCVForUnity.CoreModule.Scalar((double)s_v0.Value, (double)s_v1.Value, (double)s_v2.Value, (double)s_v3.Value));
+            ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.Mat(casted_sizes, type.Value, new OpenCVForUnity.CoreModule.Scalar((double)s_v0.Value, (double)s_v1.Value, (double)s_v2.Value, (double)s_v3.Value));
+
+            for (int i = 0; i < casted_sizes.Length; i++)
+            {
+                sizes.Set(i, (int)casted_sizes[i]);
+            }
+            sizes.SaveChanges();
 
 
         }

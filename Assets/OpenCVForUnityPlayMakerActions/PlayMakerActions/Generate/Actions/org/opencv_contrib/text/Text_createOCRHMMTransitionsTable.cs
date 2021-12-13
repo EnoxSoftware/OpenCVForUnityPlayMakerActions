@@ -68,7 +68,11 @@ namespace OpenCVForUnityPlayMakerActions
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Mat)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Mat();
             ((OpenCVForUnityPlayMakerActions.Mat)storeResult.Value).wrappedObject = OpenCVForUnity.TextModule.Text.createOCRHMMTransitionsTable(vocabulary.Value, wrapped_lexicon);
 
-            wrapped_lexicon.CopyTo(string_lexicon);
+            for (int i = 0; i < wrapped_lexicon.Count; i++)
+            {
+                lexicon.Set(i, (string)wrapped_lexicon[i]);
+            }
+            lexicon.SaveChanges();
 
 
         }

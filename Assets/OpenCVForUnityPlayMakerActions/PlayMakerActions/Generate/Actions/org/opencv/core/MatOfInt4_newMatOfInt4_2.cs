@@ -53,8 +53,21 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
+            int[] int_a = a.intValues;
+            int[] casted_a = new int[int_a.Length];
+            for (int i = 0; i < casted_a.Length; i++)
+            {
+                casted_a[i] = (int)int_a[i];
+            }
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.MatOfInt4)) storeResult.Value = new OpenCVForUnityPlayMakerActions.MatOfInt4();
-            ((OpenCVForUnityPlayMakerActions.MatOfInt4)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfInt4(a.intValues);
+            ((OpenCVForUnityPlayMakerActions.MatOfInt4)storeResult.Value).wrappedObject = new OpenCVForUnity.CoreModule.MatOfInt4(casted_a);
+
+            for (int i = 0; i < casted_a.Length; i++)
+            {
+                a.Set(i, (int)casted_a[i]);
+            }
+            a.SaveChanges();
 
 
         }

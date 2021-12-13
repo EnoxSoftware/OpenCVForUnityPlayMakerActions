@@ -96,7 +96,11 @@ namespace OpenCVForUnityPlayMakerActions
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_roiRects, roiRects);
 
-            wrapped_results.CopyTo(string_results);
+            for (int i = 0; i < wrapped_results.Count; i++)
+            {
+                results.Set(i, (string)wrapped_results[i]);
+            }
+            results.SaveChanges();
 
 
         }

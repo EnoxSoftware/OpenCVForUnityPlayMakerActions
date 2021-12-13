@@ -82,8 +82,21 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
+            int[] int_baseLine = baseLine.intValues;
+            int[] casted_baseLine = new int[int_baseLine.Length];
+            for (int i = 0; i < casted_baseLine.Length; i++)
+            {
+                casted_baseLine[i] = (int)int_baseLine[i];
+            }
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Size)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Size();
-            ((OpenCVForUnityPlayMakerActions.Size)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.getTextSize(text.Value, fontFace.Value, (float)fontScale.Value, thickness.Value, baseLine.intValues);
+            ((OpenCVForUnityPlayMakerActions.Size)storeResult.Value).wrappedObject = OpenCVForUnity.ImgprocModule.Imgproc.getTextSize(text.Value, fontFace.Value, (float)fontScale.Value, thickness.Value, casted_baseLine);
+
+            for (int i = 0; i < casted_baseLine.Length; i++)
+            {
+                baseLine.Set(i, (int)casted_baseLine[i]);
+            }
+            baseLine.SaveChanges();
 
 
         }

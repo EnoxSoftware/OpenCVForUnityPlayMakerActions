@@ -115,8 +115,9 @@ namespace OpenCVForUnityPlayMakerActions
 
             for (int i = 0; i < casted_dist.Length; i++)
             {
-                float_dist[i] = (float)casted_dist[i];
+                dist.Set(i, (float)casted_dist[i]);
             }
+            dist.SaveChanges();
 
 
         }

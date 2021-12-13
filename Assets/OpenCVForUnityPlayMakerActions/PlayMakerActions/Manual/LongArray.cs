@@ -8,13 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
     public class LongArray : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public LongArray ()
+        public LongArray()
         {
 
         }
 
-        public LongArray (System.Int64[] nativeObj)
-            : base (nativeObj)
+        public LongArray(System.Int64[] nativeObj)
+            : base(nativeObj)
         {
 
         }

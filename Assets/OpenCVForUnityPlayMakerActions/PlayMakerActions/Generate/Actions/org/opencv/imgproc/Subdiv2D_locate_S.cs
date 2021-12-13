@@ -90,7 +90,33 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.ImgprocModule.Subdiv2D wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Subdiv2D, OpenCVForUnity.ImgprocModule.Subdiv2D>(owner);
 
-            storeResult.Value = wrapped_owner.locate(new OpenCVForUnity.CoreModule.Point((double)pt_x.Value, (double)pt_y.Value), edge.intValues, vertex.intValues);
+            int[] int_edge = edge.intValues;
+            int[] casted_edge = new int[int_edge.Length];
+            for (int i = 0; i < casted_edge.Length; i++)
+            {
+                casted_edge[i] = (int)int_edge[i];
+            }
+
+            int[] int_vertex = vertex.intValues;
+            int[] casted_vertex = new int[int_vertex.Length];
+            for (int i = 0; i < casted_vertex.Length; i++)
+            {
+                casted_vertex[i] = (int)int_vertex[i];
+            }
+
+            storeResult.Value = wrapped_owner.locate(new OpenCVForUnity.CoreModule.Point((double)pt_x.Value, (double)pt_y.Value), casted_edge, casted_vertex);
+
+            for (int i = 0; i < casted_edge.Length; i++)
+            {
+                edge.Set(i, (int)casted_edge[i]);
+            }
+            edge.SaveChanges();
+
+            for (int i = 0; i < casted_vertex.Length; i++)
+            {
+                vertex.Set(i, (int)casted_vertex[i]);
+            }
+            vertex.SaveChanges();
 
 
         }

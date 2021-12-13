@@ -66,7 +66,11 @@ namespace OpenCVForUnityPlayMakerActions
 
             wrapped_owner.fromList(wrapped_lb);
 
-            wrapped_lb.CopyTo(int_lb);
+            for (int i = 0; i < wrapped_lb.Count; i++)
+            {
+                lb.Set(i, (int)wrapped_lb[i]);
+            }
+            lb.SaveChanges();
 
 
         }

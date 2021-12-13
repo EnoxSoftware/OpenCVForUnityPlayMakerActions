@@ -76,7 +76,11 @@ namespace OpenCVForUnityPlayMakerActions
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.TextRecognitionModel)) storeResult.Value = new OpenCVForUnityPlayMakerActions.TextRecognitionModel();
             ((OpenCVForUnityPlayMakerActions.TextRecognitionModel)storeResult.Value).wrappedObject = wrapped_owner.setVocabulary(wrapped_vocabulary);
 
-            wrapped_vocabulary.CopyTo(string_vocabulary);
+            for (int i = 0; i < wrapped_vocabulary.Count; i++)
+            {
+                vocabulary.Set(i, (string)wrapped_vocabulary[i]);
+            }
+            vocabulary.SaveChanges();
 
 
         }

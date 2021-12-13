@@ -84,16 +84,30 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_src = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(src);
 
+            int[] int_label = label.intValues;
+            int[] casted_label = new int[int_label.Length];
+            for (int i = 0; i < casted_label.Length; i++)
+            {
+                casted_label[i] = (int)int_label[i];
+            }
+
             float[] float_confidence = confidence.floatValues;
             double[] casted_confidence = new double[float_confidence.Length];
             float_confidence.CopyTo(casted_confidence, 0);
 
-            wrapped_owner.predict(wrapped_src, label.intValues, casted_confidence);
+            wrapped_owner.predict(wrapped_src, casted_label, casted_confidence);
+
+            for (int i = 0; i < casted_label.Length; i++)
+            {
+                label.Set(i, (int)casted_label[i]);
+            }
+            label.SaveChanges();
 
             for (int i = 0; i < casted_confidence.Length; i++)
             {
-                float_confidence[i] = (float)casted_confidence[i];
+                confidence.Set(i, (float)casted_confidence[i]);
             }
+            confidence.SaveChanges();
 
 
         }

@@ -9,13 +9,13 @@ namespace OpenCVForUnityPlayMakerActions
     public class DisposableOpenCVObject : OpenCVObject
     {
 
-        public DisposableOpenCVObject ()
+        public DisposableOpenCVObject()
         {
 
         }
 
-        public DisposableOpenCVObject (OpenCVForUnity.DisposableOpenCVObject nativeObj)
-            : base (nativeObj)
+        public DisposableOpenCVObject(OpenCVForUnity.DisposableOpenCVObject nativeObj)
+            : base(nativeObj)
         {
 
         }

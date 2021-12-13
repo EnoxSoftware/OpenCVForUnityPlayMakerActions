@@ -91,7 +91,33 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Point wrapped_pt = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point>(pt);
 
-            storeResult.Value = wrapped_owner.locate(wrapped_pt, edge.intValues, vertex.intValues);
+            int[] int_edge = edge.intValues;
+            int[] casted_edge = new int[int_edge.Length];
+            for (int i = 0; i < casted_edge.Length; i++)
+            {
+                casted_edge[i] = (int)int_edge[i];
+            }
+
+            int[] int_vertex = vertex.intValues;
+            int[] casted_vertex = new int[int_vertex.Length];
+            for (int i = 0; i < casted_vertex.Length; i++)
+            {
+                casted_vertex[i] = (int)int_vertex[i];
+            }
+
+            storeResult.Value = wrapped_owner.locate(wrapped_pt, casted_edge, casted_vertex);
+
+            for (int i = 0; i < casted_edge.Length; i++)
+            {
+                edge.Set(i, (int)casted_edge[i]);
+            }
+            edge.SaveChanges();
+
+            for (int i = 0; i < casted_vertex.Length; i++)
+            {
+                vertex.Set(i, (int)casted_vertex[i]);
+            }
+            vertex.SaveChanges();
 
 
         }

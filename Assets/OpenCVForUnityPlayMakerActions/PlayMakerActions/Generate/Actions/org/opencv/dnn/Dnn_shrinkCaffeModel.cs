@@ -67,7 +67,11 @@ namespace OpenCVForUnityPlayMakerActions
 
             OpenCVForUnity.DnnModule.Dnn.shrinkCaffeModel(src.Value, dst.Value, wrapped_layersTypes);
 
-            wrapped_layersTypes.CopyTo(string_layersTypes);
+            for (int i = 0; i < wrapped_layersTypes.Count; i++)
+            {
+                layersTypes.Set(i, (string)wrapped_layersTypes[i]);
+            }
+            layersTypes.SaveChanges();
 
 
         }

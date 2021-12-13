@@ -76,8 +76,21 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.ImgprocModule.Subdiv2D wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Subdiv2D, OpenCVForUnity.ImgprocModule.Subdiv2D>(owner);
 
+            int[] int_firstEdge = firstEdge.intValues;
+            int[] casted_firstEdge = new int[int_firstEdge.Length];
+            for (int i = 0; i < casted_firstEdge.Length; i++)
+            {
+                casted_firstEdge[i] = (int)int_firstEdge[i];
+            }
+
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Point)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Point();
-            ((OpenCVForUnityPlayMakerActions.Point)storeResult.Value).wrappedObject = wrapped_owner.getVertex(vertex.Value, firstEdge.intValues);
+            ((OpenCVForUnityPlayMakerActions.Point)storeResult.Value).wrappedObject = wrapped_owner.getVertex(vertex.Value, casted_firstEdge);
+
+            for (int i = 0; i < casted_firstEdge.Length; i++)
+            {
+                firstEdge.Set(i, (int)casted_firstEdge[i]);
+            }
+            firstEdge.SaveChanges();
 
 
         }

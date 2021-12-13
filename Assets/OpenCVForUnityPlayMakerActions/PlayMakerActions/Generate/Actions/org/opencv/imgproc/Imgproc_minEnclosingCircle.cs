@@ -77,7 +77,20 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Point wrapped_center = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Point, OpenCVForUnity.CoreModule.Point>(center);
 
-            OpenCVForUnity.ImgprocModule.Imgproc.minEnclosingCircle(wrapped_points, wrapped_center, radius.floatValues);
+            float[] float_radius = radius.floatValues;
+            float[] casted_radius = new float[float_radius.Length];
+            for (int i = 0; i < casted_radius.Length; i++)
+            {
+                casted_radius[i] = (float)float_radius[i];
+            }
+
+            OpenCVForUnity.ImgprocModule.Imgproc.minEnclosingCircle(wrapped_points, wrapped_center, casted_radius);
+
+            for (int i = 0; i < casted_radius.Length; i++)
+            {
+                radius.Set(i, (float)casted_radius[i]);
+            }
+            radius.SaveChanges();
 
 
         }

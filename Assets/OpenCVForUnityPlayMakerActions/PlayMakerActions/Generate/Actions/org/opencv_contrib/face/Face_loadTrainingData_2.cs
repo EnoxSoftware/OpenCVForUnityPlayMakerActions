@@ -91,7 +91,11 @@ namespace OpenCVForUnityPlayMakerActions
 
             storeResult.Value = OpenCVForUnity.FaceModule.Face.loadTrainingData(filename.Value, wrapped_images, wrapped_facePoints);
 
-            wrapped_images.CopyTo(string_images);
+            for (int i = 0; i < wrapped_images.Count; i++)
+            {
+                images.Set(i, (string)wrapped_images[i]);
+            }
+            images.SaveChanges();
 
             Fsm.Event(storeResult.Value ? trueEvent : falseEvent);
 

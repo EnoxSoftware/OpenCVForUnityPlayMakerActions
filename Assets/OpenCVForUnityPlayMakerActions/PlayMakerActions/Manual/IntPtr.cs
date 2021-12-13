@@ -8,13 +8,13 @@ namespace OpenCVForUnityPlayMakerActions
     public class IntPtr : OpenCVForUnityPlayMakerActions.OpenCVObject
     {
 
-        public IntPtr ()
+        public IntPtr()
         {
 
         }
 
-        public IntPtr (System.IntPtr nativeObj)
-            : base (nativeObj)
+        public IntPtr(System.IntPtr nativeObj)
+            : base(nativeObj)
         {
 
         }

@@ -4,50 +4,50 @@ using OpenCVForUnity.UnityUtils.Helper;
 
 namespace OpenCVForUnityPlayMakerActions
 {
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public virtual void Initialize (string deviceName, int requestedWidth, int requestedHeight, bool requestedIsFrontFacing = false, int requestedFPS = 30)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (WebCamTextureToMatHelper), "gameObject")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmString), "deviceName")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "requestedWidth")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "requestedHeight")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmBool), "requestedIsFrontFacing")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmInt), "requestedFPS")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity")]
+    [HutongGames.PlayMaker.Tooltip("public virtual void Initialize (string deviceName, int requestedWidth, int requestedHeight, bool requestedIsFrontFacing = false, int requestedFPS = 30)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(WebCamTextureToMatHelper), "gameObject")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmString), "deviceName")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "requestedWidth")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "requestedHeight")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "requestedIsFrontFacing")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "requestedFPS")]
     public class WebCamTextureToMatHelper_Initialize_1 : WebCamTextureToHelperComponentAction<WebCamTextureToMatHelper>
     {
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.CheckForComponent (typeof (WebCamTextureToMatHelper))]
-        [Tooltip ("The GameObject to check.")]
+        [HutongGames.PlayMaker.CheckForComponent(typeof(WebCamTextureToMatHelper))]
+        [Tooltip("The GameObject to check.")]
         public HutongGames.PlayMaker.FsmOwnerDefault
             gameObject;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] string")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] string")]
         public HutongGames.PlayMaker.FsmString
             deviceName;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg2] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg2] int")]
         [HutongGames.PlayMaker.RequiredField]
         public HutongGames.PlayMaker.FsmInt
             requestedWidth;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg3] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg3] int")]
         [HutongGames.PlayMaker.RequiredField]
         public HutongGames.PlayMaker.FsmInt
             requestedHeight;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg4] bool")]
+        [HutongGames.PlayMaker.ActionSection("[arg4] bool")]
         public HutongGames.PlayMaker.FsmBool
             requestedIsFrontFacing;
 
-        [HutongGames.PlayMaker.ActionSection ("[arg5] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg5] int")]
         public HutongGames.PlayMaker.FsmInt
             requestedFPS;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool
             everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
             gameObject = null;
             deviceName = null;
@@ -59,31 +59,31 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
-            var go = Fsm.GetOwnerDefaultTarget (gameObject);
+            var go = Fsm.GetOwnerDefaultTarget(gameObject);
 
-            if (!UpdateCache (go))
+            if (!UpdateCache(go))
             {
                 return;
             }
 
-            webCamTextureToMatHelper.Initialize (deviceName.Value, requestedWidth.Value, requestedHeight.Value, requestedIsFrontFacing.Value, requestedFPS.Value);
+            webCamTextureToMatHelper.Initialize(deviceName.Value, requestedWidth.Value, requestedHeight.Value, requestedIsFrontFacing.Value, requestedFPS.Value);
 
         }
     }

@@ -5,32 +5,32 @@ using OpenCVForUnity;
 
 namespace OpenCVForUnityPlayMakerActions
 {
-    [HutongGames.PlayMaker.ActionCategory ("OpenCVForUnity")]
-    [HutongGames.PlayMaker.Tooltip ("public ByteArray newByteArray (int[] array)")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (HutongGames.PlayMaker.FsmArray), "array")]
-    [HutongGames.PlayMaker.ActionTarget (typeof (OpenCVForUnityPlayMakerActions.ByteArray), "storeResult")]
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity")]
+    [HutongGames.PlayMaker.Tooltip("public ByteArray newByteArray (int[] array)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "array")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.ByteArray), "storeResult")]
     public class ByteArray_newByteArray : HutongGames.PlayMaker.FsmStateAction
     {
 
-        [HutongGames.PlayMaker.ActionSection ("[arg1] int[](Array(int))")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] int[](Array(int))")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ArrayEditor (HutongGames.PlayMaker.VariableType.Int)]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ArrayEditor(HutongGames.PlayMaker.VariableType.Int)]
         public HutongGames.PlayMaker.FsmArray
             array;
 
-        [HutongGames.PlayMaker.ActionSection ("[return] ByteArray")]
-        [HutongGames.PlayMaker.UIHint (HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType (typeof (OpenCVForUnityPlayMakerActions.ByteArray))]
+        [HutongGames.PlayMaker.ActionSection("[return] ByteArray")]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.ByteArray))]
         public HutongGames.PlayMaker.FsmObject
             storeResult;
 
-        [HutongGames.PlayMaker.ActionSection ("")]
-        [Tooltip ("Repeat every frame.")]
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
         public bool
             everyFrame;
 
-        public override void Reset ()
+        public override void Reset()
         {
 
             array = null;
@@ -39,22 +39,22 @@ namespace OpenCVForUnityPlayMakerActions
 
         }
 
-        public override void OnEnter ()
+        public override void OnEnter()
         {
-            DoProcess ();
+            DoProcess();
 
             if (!everyFrame)
             {
-                Finish ();
+                Finish();
             }
         }
 
-        public override void OnUpdate ()
+        public override void OnUpdate()
         {
-            DoProcess ();
+            DoProcess();
         }
 
-        void DoProcess ()
+        void DoProcess()
         {
             int[] int_array = array.intValues;
             byte[] casted_array = new byte[int_array.Length];
@@ -64,7 +64,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.ByteArray))
-                storeResult.Value = new OpenCVForUnityPlayMakerActions.ByteArray (new System.Byte[0]);
+                storeResult.Value = new OpenCVForUnityPlayMakerActions.ByteArray(new System.Byte[0]);
             ((OpenCVForUnityPlayMakerActions.ByteArray)storeResult.Value).wrappedObject = casted_array;
 
         }

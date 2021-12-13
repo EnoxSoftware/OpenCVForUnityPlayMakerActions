@@ -100,8 +100,9 @@ namespace OpenCVForUnityPlayMakerActions
 
             for (int i = 0; i < casted_scale.Length; i++)
             {
-                float_scale[i] = (float)casted_scale[i];
+                scale.Set(i, (float)casted_scale[i]);
             }
+            scale.SaveChanges();
 
 
         }

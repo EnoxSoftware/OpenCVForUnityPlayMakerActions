@@ -70,8 +70,9 @@ namespace OpenCVForUnityPlayMakerActions
 
             for (int i = 0; i < wrapped_lb.Count; i++)
             {
-                float_lb[i] = (float)wrapped_lb[i];
+                lb.Set(i, (float)wrapped_lb[i]);
             }
+            lb.SaveChanges();
 
 
         }

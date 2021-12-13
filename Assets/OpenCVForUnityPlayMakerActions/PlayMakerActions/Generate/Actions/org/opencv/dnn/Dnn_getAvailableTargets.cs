@@ -55,7 +55,17 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
-            OpenCVForUnity.DnnModule.Dnn.getAvailableTargets(be.Value).CopyTo(storeResult.intValues);
+            List<int> wrapped_storeResult = OpenCVForUnity.DnnModule.Dnn.getAvailableTargets(be.Value);
+
+            if (!storeResult.IsNone)
+            {
+                if (storeResult.Length != wrapped_storeResult.Count) storeResult.Resize(wrapped_storeResult.Count);
+                for (int i = 0; i < wrapped_storeResult.Count; i++)
+                {
+                    storeResult.Set(i, (int)wrapped_storeResult[i]);
+                }
+                storeResult.SaveChanges();
+            }
 
 
         }
