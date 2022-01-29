@@ -9,18 +9,15 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip("public void detectEdges(Mat src, Mat dst)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.StructuredEdgeDetection), "owner")]
+    [HutongGames.PlayMaker.Tooltip("public static void RadonTransform(Mat src, Mat dst, double theta, double start_angle, double end_angle, bool crop)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dst")]
-    public class StructuredEdgeDetection_detectEdges : HutongGames.PlayMaker.FsmStateAction
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "theta")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "start_angle")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "end_angle")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "crop")]
+    public class Ximgproc_RadonTransform_1_C : HutongGames.PlayMaker.FsmStateAction
     {
-
-        [HutongGames.PlayMaker.ActionSection("[class] StructuredEdgeDetection")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.StructuredEdgeDetection))]
-        public HutongGames.PlayMaker.FsmObject owner;
 
         [HutongGames.PlayMaker.ActionSection("[arg1] Mat")]
         [HutongGames.PlayMaker.RequiredField]
@@ -34,15 +31,38 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
+        [HutongGames.PlayMaker.ActionSection("[arg3] double(float)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat theta;
+
+        [HutongGames.PlayMaker.ActionSection("[arg4] double(float)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat start_angle;
+
+        [HutongGames.PlayMaker.ActionSection("[arg5] double(float)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
+        public HutongGames.PlayMaker.FsmFloat end_angle;
+
+        [HutongGames.PlayMaker.ActionSection("[arg6] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool crop;
+
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
         public override void Reset()
         {
-            owner = null;
             src = null;
             dst = null;
+            theta = 0.0f;
+            start_angle = 0.0f;
+            end_angle = 0.0f;
+            crop = false;
             everyFrame = false;
         }
 
@@ -64,13 +84,6 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
-            if (!(owner.Value is OpenCVForUnityPlayMakerActions.StructuredEdgeDetection))
-            {
-                LogError("owner is not initialized. Add Action \"newStructuredEdgeDetection\".");
-                return;
-            }
-            OpenCVForUnity.XimgprocModule.StructuredEdgeDetection wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StructuredEdgeDetection, OpenCVForUnity.XimgprocModule.StructuredEdgeDetection>(owner);
-
             if (!(src.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError("src is not initialized. Add Action \"newMat\".");
@@ -85,7 +98,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dst);
 
-            wrapped_owner.detectEdges(wrapped_src, wrapped_dst);
+            OpenCVForUnity.XimgprocModule.Ximgproc.RadonTransform(wrapped_src, wrapped_dst, (float)theta.Value, (float)start_angle.Value, (float)end_angle.Value, crop.Value);
 
 
         }

@@ -9,11 +9,11 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip("public void edgesNms(Mat edge_image, Mat orientation_image, Mat _dst, int r, int s, float m, bool isParallel)")]
+    [HutongGames.PlayMaker.Tooltip("public void edgesNms(Mat edge_image, Mat orientation_image, Mat dst, int r, int s, float m, bool isParallel)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.StructuredEdgeDetection), "owner")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "edge_image")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "orientation_image")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_dst")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dst")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "r")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "s")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "m")]
@@ -43,7 +43,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject _dst;
+        public HutongGames.PlayMaker.FsmObject dst;
 
         [HutongGames.PlayMaker.ActionSection("[arg4] int")]
         [HutongGames.PlayMaker.RequiredField]
@@ -74,7 +74,7 @@ namespace OpenCVForUnityPlayMakerActions
             owner = null;
             edge_image = null;
             orientation_image = null;
-            _dst = null;
+            dst = null;
             r = 0;
             s = 0;
             m = 0.0f;
@@ -121,14 +121,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_orientation_image = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(orientation_image);
 
-            if (!(_dst.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(dst.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("_dst is not initialized. Add Action \"newMat\".");
+                LogError("dst is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped__dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(_dst);
+            OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dst);
 
-            wrapped_owner.edgesNms(wrapped_edge_image, wrapped_orientation_image, wrapped__dst, r.Value, s.Value, m.Value, isParallel.Value);
+            wrapped_owner.edgesNms(wrapped_edge_image, wrapped_orientation_image, wrapped_dst, r.Value, s.Value, m.Value, isParallel.Value);
 
 
         }

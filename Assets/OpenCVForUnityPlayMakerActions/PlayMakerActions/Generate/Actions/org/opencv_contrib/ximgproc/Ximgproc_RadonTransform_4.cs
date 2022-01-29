@@ -9,18 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_ximgproc")]
-    [HutongGames.PlayMaker.Tooltip("public void detectEdges(Mat src, Mat dst)")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.StructuredEdgeDetection), "owner")]
+    [HutongGames.PlayMaker.Tooltip("public static void RadonTransform(Mat src, Mat dst, double theta)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "src")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "dst")]
-    public class StructuredEdgeDetection_detectEdges : HutongGames.PlayMaker.FsmStateAction
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "theta")]
+    public class Ximgproc_RadonTransform_4 : HutongGames.PlayMaker.FsmStateAction
     {
-
-        [HutongGames.PlayMaker.ActionSection("[class] StructuredEdgeDetection")]
-        [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.StructuredEdgeDetection))]
-        public HutongGames.PlayMaker.FsmObject owner;
 
         [HutongGames.PlayMaker.ActionSection("[arg1] Mat")]
         [HutongGames.PlayMaker.RequiredField]
@@ -34,15 +28,21 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject dst;
 
+        [HutongGames.PlayMaker.ActionSection("[arg3] double(Double)")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
+        public HutongGames.PlayMaker.FsmObject theta;
+
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
         public override void Reset()
         {
-            owner = null;
             src = null;
             dst = null;
+            theta = null;
             everyFrame = false;
         }
 
@@ -64,13 +64,6 @@ namespace OpenCVForUnityPlayMakerActions
         void DoProcess()
         {
 
-            if (!(owner.Value is OpenCVForUnityPlayMakerActions.StructuredEdgeDetection))
-            {
-                LogError("owner is not initialized. Add Action \"newStructuredEdgeDetection\".");
-                return;
-            }
-            OpenCVForUnity.XimgprocModule.StructuredEdgeDetection wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.StructuredEdgeDetection, OpenCVForUnity.XimgprocModule.StructuredEdgeDetection>(owner);
-
             if (!(src.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
                 LogError("src is not initialized. Add Action \"newMat\".");
@@ -85,7 +78,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_dst = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(dst);
 
-            wrapped_owner.detectEdges(wrapped_src, wrapped_dst);
+            if (!(theta.Value is OpenCVForUnityPlayMakerActions.Double))
+            {
+                LogError("theta is not initialized. Add Action \"newDouble\".");
+                return;
+            }
+            System.Double wrapped_theta = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(theta);
+
+            OpenCVForUnity.XimgprocModule.Ximgproc.RadonTransform(wrapped_src, wrapped_dst, wrapped_theta);
 
 
         }
