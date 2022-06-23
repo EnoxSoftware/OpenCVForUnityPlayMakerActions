@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,13 +9,14 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip("public static void fisheye_undistortPoints(Mat distorted, Mat undistorted, Mat K, Mat D, Mat R, Mat P)")]
+    [HutongGames.PlayMaker.Tooltip("public static void fisheye_undistortPoints(Mat distorted, Mat undistorted, Mat K, Mat D, Mat R, Mat P, TermCriteria criteria)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "distorted")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "undistorted")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "K")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "D")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "R")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "P")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.TermCriteria), "criteria")]
     public class Calib3d_fisheye_undistortPoints : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -55,6 +56,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject P;
 
+        [HutongGames.PlayMaker.ActionSection("[arg7] TermCriteria")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.TermCriteria))]
+        public HutongGames.PlayMaker.FsmObject criteria;
+
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -67,6 +74,7 @@ namespace OpenCVForUnityPlayMakerActions
             D = null;
             R = null;
             P = null;
+            criteria = null;
             everyFrame = false;
         }
 
@@ -130,7 +138,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_P = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(P);
 
-            OpenCVForUnity.Calib3dModule.Calib3d.fisheye_undistortPoints(wrapped_distorted, wrapped_undistorted, wrapped_K, wrapped_D, wrapped_R, wrapped_P);
+            if (!(criteria.Value is OpenCVForUnityPlayMakerActions.TermCriteria))
+            {
+                LogError("criteria is not initialized. Add Action \"newTermCriteria\".");
+                return;
+            }
+            OpenCVForUnity.CoreModule.TermCriteria wrapped_criteria = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TermCriteria, OpenCVForUnity.CoreModule.TermCriteria>(criteria);
+
+            OpenCVForUnity.Calib3dModule.Calib3d.fisheye_undistortPoints(wrapped_distorted, wrapped_undistorted, wrapped_K, wrapped_D, wrapped_R, wrapped_P, wrapped_criteria);
 
 
         }

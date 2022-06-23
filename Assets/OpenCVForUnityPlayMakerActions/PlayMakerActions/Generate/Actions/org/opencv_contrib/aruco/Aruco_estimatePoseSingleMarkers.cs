@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_aruco")]
-    [HutongGames.PlayMaker.Tooltip("public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs, Mat _objPoints)")]
+    [HutongGames.PlayMaker.Tooltip("public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs, Mat _objPoints, EstimateParameters estimateParameters)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "corners")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "markerLength")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
@@ -17,6 +17,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "rvecs")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "tvecs")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_objPoints")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.EstimateParameters), "estimateParameters")]
     public class Aruco_estimatePoseSingleMarkers : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -61,6 +62,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject _objPoints;
 
+        [HutongGames.PlayMaker.ActionSection("[arg8] EstimateParameters")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.EstimateParameters))]
+        public HutongGames.PlayMaker.FsmObject estimateParameters;
+
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -74,6 +81,7 @@ namespace OpenCVForUnityPlayMakerActions
             rvecs = null;
             tvecs = null;
             _objPoints = null;
+            estimateParameters = null;
             everyFrame = false;
         }
 
@@ -133,7 +141,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped__objPoints = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(_objPoints);
 
-            OpenCVForUnity.ArucoModule.Aruco.estimatePoseSingleMarkers(wrapped_corners, markerLength.Value, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_rvecs, wrapped_tvecs, wrapped__objPoints);
+            if (!(estimateParameters.Value is OpenCVForUnityPlayMakerActions.EstimateParameters))
+            {
+                LogError("estimateParameters is not initialized. Add Action \"newEstimateParameters\".");
+                return;
+            }
+            OpenCVForUnity.ArucoModule.EstimateParameters wrapped_estimateParameters = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.EstimateParameters, OpenCVForUnity.ArucoModule.EstimateParameters>(estimateParameters);
+
+            OpenCVForUnity.ArucoModule.Aruco.estimatePoseSingleMarkers(wrapped_corners, markerLength.Value, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_rvecs, wrapped_tvecs, wrapped__objPoints, wrapped_estimateParameters);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_corners, corners);
 

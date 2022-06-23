@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -10,9 +10,9 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip("public Layer getLayer(DictValue layerId)")]
+    [HutongGames.PlayMaker.Tooltip("public Layer getLayer(int layerId)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Net), "owner")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.DictValue), "layerId")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "layerId")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Layer), "storeResult")]
     public class Net_getLayer : HutongGames.PlayMaker.FsmStateAction
     {
@@ -23,11 +23,10 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Net))]
         public HutongGames.PlayMaker.FsmObject owner;
 
-        [HutongGames.PlayMaker.ActionSection("[arg1] DictValue")]
+        [HutongGames.PlayMaker.ActionSection("[arg1] int")]
         [HutongGames.PlayMaker.RequiredField]
-        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
-        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.DictValue))]
-        public HutongGames.PlayMaker.FsmObject layerId;
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
+        public HutongGames.PlayMaker.FsmInt layerId;
 
         [HutongGames.PlayMaker.ActionSection("[return] Layer")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
@@ -41,7 +40,7 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             owner = null;
-            layerId = null;
+            layerId = 0;
             storeResult = null;
             everyFrame = false;
         }
@@ -71,15 +70,8 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.DnnModule.Net wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Net, OpenCVForUnity.DnnModule.Net>(owner);
 
-            if (!(layerId.Value is OpenCVForUnityPlayMakerActions.DictValue))
-            {
-                LogError("layerId is not initialized. Add Action \"newDictValue\".");
-                return;
-            }
-            OpenCVForUnity.DnnModule.DictValue wrapped_layerId = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.DictValue, OpenCVForUnity.DnnModule.DictValue>(layerId);
-
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Layer)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Layer();
-            ((OpenCVForUnityPlayMakerActions.Layer)storeResult.Value).wrappedObject = wrapped_owner.getLayer(wrapped_layerId);
+            ((OpenCVForUnityPlayMakerActions.Layer)storeResult.Value).wrappedObject = wrapped_owner.getLayer(layerId.Value);
 
 
         }

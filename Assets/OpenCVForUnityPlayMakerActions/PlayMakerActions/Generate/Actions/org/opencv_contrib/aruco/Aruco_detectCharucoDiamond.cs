@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_aruco")]
-    [HutongGames.PlayMaker.Tooltip("public static void detectCharucoDiamond(Mat image, List<Mat> markerCorners, Mat markerIds, float squareMarkerLengthRate, List<Mat> diamondCorners, Mat diamondIds, Mat cameraMatrix, Mat distCoeffs)")]
+    [HutongGames.PlayMaker.Tooltip("public static void detectCharucoDiamond(Mat image, List<Mat> markerCorners, Mat markerIds, float squareMarkerLengthRate, List<Mat> diamondCorners, Mat diamondIds, Mat cameraMatrix, Mat distCoeffs, Dictionary dictionary)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "image")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "markerCorners")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "markerIds")]
@@ -18,6 +18,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "diamondIds")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "cameraMatrix")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "distCoeffs")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Dictionary), "dictionary")]
     public class Aruco_detectCharucoDiamond : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -68,6 +69,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject distCoeffs;
 
+        [HutongGames.PlayMaker.ActionSection("[arg9] Dictionary")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Dictionary))]
+        public HutongGames.PlayMaker.FsmObject dictionary;
+
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -82,6 +89,7 @@ namespace OpenCVForUnityPlayMakerActions
             diamondIds = null;
             cameraMatrix = null;
             distCoeffs = null;
+            dictionary = null;
             everyFrame = false;
         }
 
@@ -144,7 +152,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_distCoeffs = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(distCoeffs);
 
-            OpenCVForUnity.ArucoModule.Aruco.detectCharucoDiamond(wrapped_image, wrapped_markerCorners, wrapped_markerIds, squareMarkerLengthRate.Value, wrapped_diamondCorners, wrapped_diamondIds, wrapped_cameraMatrix, wrapped_distCoeffs);
+            if (!(dictionary.Value is OpenCVForUnityPlayMakerActions.Dictionary))
+            {
+                LogError("dictionary is not initialized. Add Action \"newDictionary\".");
+                return;
+            }
+            OpenCVForUnity.ArucoModule.Dictionary wrapped_dictionary = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Dictionary, OpenCVForUnity.ArucoModule.Dictionary>(dictionary);
+
+            OpenCVForUnity.ArucoModule.Aruco.detectCharucoDiamond(wrapped_image, wrapped_markerCorners, wrapped_markerIds, squareMarkerLengthRate.Value, wrapped_diamondCorners, wrapped_diamondIds, wrapped_cameraMatrix, wrapped_distCoeffs, wrapped_dictionary);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_markerCorners, markerCorners);
 

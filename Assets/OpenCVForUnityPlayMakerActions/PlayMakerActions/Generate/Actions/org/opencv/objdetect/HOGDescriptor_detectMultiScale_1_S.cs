@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip("public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double finalThreshold)")]
+    [HutongGames.PlayMaker.Tooltip("public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double groupThreshold)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.HOGDescriptor), "owner")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "img")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfRect), "foundLocations")]
@@ -20,7 +20,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "padding_width")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "padding_height")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "scale")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "finalThreshold")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "groupThreshold")]
     public class HOGDescriptor_detectMultiScale_1_S : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -84,7 +84,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Double))]
-        public HutongGames.PlayMaker.FsmObject finalThreshold;
+        public HutongGames.PlayMaker.FsmObject groupThreshold;
 
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
@@ -102,7 +102,7 @@ namespace OpenCVForUnityPlayMakerActions
             padding_width = 0.0f;
             padding_height = 0.0f;
             scale = null;
-            finalThreshold = null;
+            groupThreshold = null;
             everyFrame = false;
         }
 
@@ -166,14 +166,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             System.Double wrapped_scale = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(scale);
 
-            if (!(finalThreshold.Value is OpenCVForUnityPlayMakerActions.Double))
+            if (!(groupThreshold.Value is OpenCVForUnityPlayMakerActions.Double))
             {
-                LogError("finalThreshold is not initialized. Add Action \"newDouble\".");
+                LogError("groupThreshold is not initialized. Add Action \"newDouble\".");
                 return;
             }
-            System.Double wrapped_finalThreshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(finalThreshold);
+            System.Double wrapped_groupThreshold = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Double, System.Double>(groupThreshold);
 
-            wrapped_owner.detectMultiScale(wrapped_img, wrapped_foundLocations, wrapped_foundWeights, wrapped_hitThreshold, new OpenCVForUnity.CoreModule.Size((double)winStride_width.Value, (double)winStride_height.Value), new OpenCVForUnity.CoreModule.Size((double)padding_width.Value, (double)padding_height.Value), wrapped_scale, wrapped_finalThreshold);
+            wrapped_owner.detectMultiScale(wrapped_img, wrapped_foundLocations, wrapped_foundWeights, wrapped_hitThreshold, new OpenCVForUnity.CoreModule.Size((double)winStride_width.Value, (double)winStride_height.Value), new OpenCVForUnity.CoreModule.Size((double)padding_width.Value, (double)padding_height.Value), wrapped_scale, wrapped_groupThreshold);
 
 
         }

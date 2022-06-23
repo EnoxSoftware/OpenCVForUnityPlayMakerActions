@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,11 +9,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip("public static void fisheye_undistortPoints(Mat distorted, Mat undistorted, Mat K, Mat D)")]
+    [HutongGames.PlayMaker.Tooltip("public static void fisheye_undistortPoints(Mat distorted, Mat undistorted, Mat K, Mat D, Mat R)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "distorted")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "undistorted")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "K")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "D")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "R")]
     public class Calib3d_fisheye_undistortPoints_2 : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -41,6 +42,12 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject D;
 
+        [HutongGames.PlayMaker.ActionSection("[arg5] Mat")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmObject R;
+
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
@@ -51,6 +58,7 @@ namespace OpenCVForUnityPlayMakerActions
             undistorted = null;
             K = null;
             D = null;
+            R = null;
             everyFrame = false;
         }
 
@@ -100,7 +108,14 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_D = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(D);
 
-            OpenCVForUnity.Calib3dModule.Calib3d.fisheye_undistortPoints(wrapped_distorted, wrapped_undistorted, wrapped_K, wrapped_D);
+            if (!(R.Value is OpenCVForUnityPlayMakerActions.Mat))
+            {
+                LogError("R is not initialized. Add Action \"newMat\".");
+                return;
+            }
+            OpenCVForUnity.CoreModule.Mat wrapped_R = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(R);
+
+            OpenCVForUnity.Calib3dModule.Calib3d.fisheye_undistortPoints(wrapped_distorted, wrapped_undistorted, wrapped_K, wrapped_D, wrapped_R);
 
 
         }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip("public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double finalThreshold)")]
+    [HutongGames.PlayMaker.Tooltip("public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double groupThreshold)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.HOGDescriptor), "owner")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "img")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.MatOfRect), "foundLocations")]
@@ -18,7 +18,7 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Size), "winStride")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Size), "padding")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "scale")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "finalThreshold")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "groupThreshold")]
     public class HOGDescriptor_detectMultiScale_1_C : HutongGames.PlayMaker.FsmStateAction
     {
 
@@ -71,7 +71,7 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ActionSection("[arg8] double(float)")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmFloat))]
-        public HutongGames.PlayMaker.FsmFloat finalThreshold;
+        public HutongGames.PlayMaker.FsmFloat groupThreshold;
 
         [HutongGames.PlayMaker.ActionSection("")]
         [Tooltip("Repeat every frame.")]
@@ -87,7 +87,7 @@ namespace OpenCVForUnityPlayMakerActions
             winStride = null;
             padding = null;
             scale = 0.0f;
-            finalThreshold = 0.0f;
+            groupThreshold = 0.0f;
             everyFrame = false;
         }
 
@@ -151,7 +151,7 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Size wrapped_padding = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Size, OpenCVForUnity.CoreModule.Size>(padding);
 
-            wrapped_owner.detectMultiScale(wrapped_img, wrapped_foundLocations, wrapped_foundWeights, (float)hitThreshold.Value, wrapped_winStride, wrapped_padding, (float)scale.Value, (float)finalThreshold.Value);
+            wrapped_owner.detectMultiScale(wrapped_img, wrapped_foundLocations, wrapped_foundWeights, (float)hitThreshold.Value, wrapped_winStride, wrapped_padding, (float)scale.Value, (float)groupThreshold.Value);
 
 
         }

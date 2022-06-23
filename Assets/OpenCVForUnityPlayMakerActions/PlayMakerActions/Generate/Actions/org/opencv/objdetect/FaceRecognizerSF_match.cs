@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 using OpenCVForUnity.CoreModule;
@@ -9,10 +9,10 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_objdetect")]
-    [HutongGames.PlayMaker.Tooltip("public double match(Mat _face_feature1, Mat _face_feature2, int dis_type)")]
+    [HutongGames.PlayMaker.Tooltip("public double match(Mat face_feature1, Mat face_feature2, int dis_type)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.FaceRecognizerSF), "owner")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_face_feature1")]
-    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "_face_feature2")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "face_feature1")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "face_feature2")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "dis_type")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Double), "storeResult")]
     public class FaceRecognizerSF_match : HutongGames.PlayMaker.FsmStateAction
@@ -28,13 +28,13 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject _face_feature1;
+        public HutongGames.PlayMaker.FsmObject face_feature1;
 
         [HutongGames.PlayMaker.ActionSection("[arg2] Mat")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
-        public HutongGames.PlayMaker.FsmObject _face_feature2;
+        public HutongGames.PlayMaker.FsmObject face_feature2;
 
         [HutongGames.PlayMaker.ActionSection("[arg3] int")]
         [HutongGames.PlayMaker.RequiredField]
@@ -53,8 +53,8 @@ namespace OpenCVForUnityPlayMakerActions
         public override void Reset()
         {
             owner = null;
-            _face_feature1 = null;
-            _face_feature2 = null;
+            face_feature1 = null;
+            face_feature2 = null;
             dis_type = 0;
             storeResult = null;
             everyFrame = false;
@@ -85,22 +85,22 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.ObjdetectModule.FaceRecognizerSF wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.FaceRecognizerSF, OpenCVForUnity.ObjdetectModule.FaceRecognizerSF>(owner);
 
-            if (!(_face_feature1.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(face_feature1.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("_face_feature1 is not initialized. Add Action \"newMat\".");
+                LogError("face_feature1 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped__face_feature1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(_face_feature1);
+            OpenCVForUnity.CoreModule.Mat wrapped_face_feature1 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(face_feature1);
 
-            if (!(_face_feature2.Value is OpenCVForUnityPlayMakerActions.Mat))
+            if (!(face_feature2.Value is OpenCVForUnityPlayMakerActions.Mat))
             {
-                LogError("_face_feature2 is not initialized. Add Action \"newMat\".");
+                LogError("face_feature2 is not initialized. Add Action \"newMat\".");
                 return;
             }
-            OpenCVForUnity.CoreModule.Mat wrapped__face_feature2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(_face_feature2);
+            OpenCVForUnity.CoreModule.Mat wrapped_face_feature2 = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(face_feature2);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Double)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Double();
-            ((OpenCVForUnityPlayMakerActions.Double)storeResult.Value).wrappedObject = wrapped_owner.match(wrapped__face_feature1, wrapped__face_feature2, dis_type.Value);
+            ((OpenCVForUnityPlayMakerActions.Double)storeResult.Value).wrappedObject = wrapped_owner.match(wrapped_face_feature1, wrapped_face_feature2, dis_type.Value);
 
 
         }
