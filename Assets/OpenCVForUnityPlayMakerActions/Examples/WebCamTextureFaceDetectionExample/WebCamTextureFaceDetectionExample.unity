@@ -5009,7 +5009,7 @@ MonoBehaviour:
         tooltip: 
         showInInspector: 1
         networkSync: 0
-        value: lbpcascade_frontalface.xml
+        value: OpenCVForUnity/objdetect/lbpcascade_frontalface.xml
       - useVariable: 1
         name: cascadeFilePath
         tooltip: 
