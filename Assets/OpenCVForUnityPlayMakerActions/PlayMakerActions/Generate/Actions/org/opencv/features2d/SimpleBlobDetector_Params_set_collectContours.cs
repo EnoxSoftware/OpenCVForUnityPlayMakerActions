@@ -1,0 +1,72 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.Features2dModule;
+
+
+namespace OpenCVForUnityPlayMakerActions
+{
+
+    [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_features2d")]
+    [HutongGames.PlayMaker.Tooltip("public void set_collectContours(bool collectContours)")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.SimpleBlobDetector_Params), "owner")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "collectContours")]
+    public class SimpleBlobDetector_Params_set_collectContours : HutongGames.PlayMaker.FsmStateAction
+    {
+
+        [HutongGames.PlayMaker.ActionSection("[class] SimpleBlobDetector_Params")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.SimpleBlobDetector_Params))]
+        public HutongGames.PlayMaker.FsmObject owner;
+
+        [HutongGames.PlayMaker.ActionSection("[arg1] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool collectContours;
+
+        [HutongGames.PlayMaker.ActionSection("")]
+        [Tooltip("Repeat every frame.")]
+        public bool everyFrame;
+
+        public override void Reset()
+        {
+            owner = null;
+            collectContours = false;
+            everyFrame = false;
+        }
+
+        public override void OnEnter()
+        {
+            DoProcess();
+
+            if (!everyFrame)
+            {
+                Finish();
+            }
+        }
+
+        public override void OnUpdate()
+        {
+            DoProcess();
+        }
+
+        void DoProcess()
+        {
+
+            if (!(owner.Value is OpenCVForUnityPlayMakerActions.SimpleBlobDetector_Params))
+            {
+                LogError("owner is not initialized. Add Action \"newSimpleBlobDetector_Params\".");
+                return;
+            }
+            OpenCVForUnity.Features2dModule.SimpleBlobDetector_Params wrapped_owner = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.SimpleBlobDetector_Params, OpenCVForUnity.Features2dModule.SimpleBlobDetector_Params>(owner);
+
+            wrapped_owner.set_collectContours(collectContours.Value);
+
+
+        }
+
+    }
+
+}

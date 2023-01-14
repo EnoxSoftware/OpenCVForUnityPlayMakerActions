@@ -9,7 +9,7 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_calib3d")]
-    [HutongGames.PlayMaker.Tooltip("public static double fisheye_stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat K1, Mat D1, Mat K2, Mat D2, Size imageSize, Mat R, Mat T, int flags, TermCriteria criteria)")]
+    [HutongGames.PlayMaker.Tooltip("public static double fisheye_stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat K1, Mat D1, Mat K2, Mat D2, Size imageSize, Mat R, Mat T, List<Mat> rvecs, List<Mat> tvecs, int flags, TermCriteria criteria)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "objectPoints")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "imagePoints1")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "imagePoints2")]
@@ -20,6 +20,8 @@ namespace OpenCVForUnityPlayMakerActions
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Size), "imageSize")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "R")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Mat), "T")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "rvecs")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "tvecs")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "flags")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.TermCriteria), "criteria")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmFloat), "storeResult")]
@@ -86,12 +88,24 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Mat))]
         public HutongGames.PlayMaker.FsmObject T;
 
-        [HutongGames.PlayMaker.ActionSection("[arg11] int")]
+        [HutongGames.PlayMaker.ActionSection("[arg11] List<Mat>(Array(Mat))")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ArrayEditor(typeof(OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmArray rvecs;
+
+        [HutongGames.PlayMaker.ActionSection("[arg12] List<Mat>(Array(Mat))")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
+        [HutongGames.PlayMaker.ArrayEditor(typeof(OpenCVForUnityPlayMakerActions.Mat))]
+        public HutongGames.PlayMaker.FsmArray tvecs;
+
+        [HutongGames.PlayMaker.ActionSection("[arg13] int")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt flags;
 
-        [HutongGames.PlayMaker.ActionSection("[arg12] TermCriteria")]
+        [HutongGames.PlayMaker.ActionSection("[arg14] TermCriteria")]
         [HutongGames.PlayMaker.RequiredField]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.TermCriteria))]
@@ -118,6 +132,8 @@ namespace OpenCVForUnityPlayMakerActions
             imageSize = null;
             R = null;
             T = null;
+            rvecs = null;
+            tvecs = null;
             flags = 0;
             criteria = null;
             storeResult = null;
@@ -200,6 +216,12 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.Mat wrapped_T = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(T);
 
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_rvecs = new List<OpenCVForUnity.CoreModule.Mat>();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(rvecs, wrapped_rvecs);
+
+            List<OpenCVForUnity.CoreModule.Mat> wrapped_tvecs = new List<OpenCVForUnity.CoreModule.Mat>();
+            OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(tvecs, wrapped_tvecs);
+
             if (!(criteria.Value is OpenCVForUnityPlayMakerActions.TermCriteria))
             {
                 LogError("criteria is not initialized. Add Action \"newTermCriteria\".");
@@ -207,13 +229,17 @@ namespace OpenCVForUnityPlayMakerActions
             }
             OpenCVForUnity.CoreModule.TermCriteria wrapped_criteria = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.TermCriteria, OpenCVForUnity.CoreModule.TermCriteria>(criteria);
 
-            storeResult.Value = (float)OpenCVForUnity.Calib3dModule.Calib3d.fisheye_stereoCalibrate(wrapped_objectPoints, wrapped_imagePoints1, wrapped_imagePoints2, wrapped_K1, wrapped_D1, wrapped_K2, wrapped_D2, wrapped_imageSize, wrapped_R, wrapped_T, flags.Value, wrapped_criteria);
+            storeResult.Value = (float)OpenCVForUnity.Calib3dModule.Calib3d.fisheye_stereoCalibrate(wrapped_objectPoints, wrapped_imagePoints1, wrapped_imagePoints2, wrapped_K1, wrapped_D1, wrapped_K2, wrapped_D2, wrapped_imageSize, wrapped_R, wrapped_T, wrapped_rvecs, wrapped_tvecs, flags.Value, wrapped_criteria);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_objectPoints, objectPoints);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_imagePoints1, imagePoints1);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_imagePoints2, imagePoints2);
+
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_rvecs, rvecs);
+
+            OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_tvecs, tvecs);
 
 
         }

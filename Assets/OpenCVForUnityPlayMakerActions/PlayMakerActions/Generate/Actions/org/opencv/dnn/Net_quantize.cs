@@ -10,11 +10,12 @@ namespace OpenCVForUnityPlayMakerActions
 {
 
     [HutongGames.PlayMaker.ActionCategory("OpenCVForUnity_dnn")]
-    [HutongGames.PlayMaker.Tooltip("public Net quantize(List<Mat> calibData, int inputsDtype, int outputsDtype)")]
+    [HutongGames.PlayMaker.Tooltip("public Net quantize(List<Mat> calibData, int inputsDtype, int outputsDtype, bool perChannel)")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Net), "owner")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmArray), "calibData")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "inputsDtype")]
     [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmInt), "outputsDtype")]
+    [HutongGames.PlayMaker.ActionTarget(typeof(HutongGames.PlayMaker.FsmBool), "perChannel")]
     [HutongGames.PlayMaker.ActionTarget(typeof(OpenCVForUnityPlayMakerActions.Net), "storeResult")]
     public class Net_quantize : HutongGames.PlayMaker.FsmStateAction
     {
@@ -41,6 +42,11 @@ namespace OpenCVForUnityPlayMakerActions
         [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmInt))]
         public HutongGames.PlayMaker.FsmInt outputsDtype;
 
+        [HutongGames.PlayMaker.ActionSection("[arg4] bool")]
+        [HutongGames.PlayMaker.RequiredField]
+        [HutongGames.PlayMaker.ObjectType(typeof(HutongGames.PlayMaker.FsmBool))]
+        public HutongGames.PlayMaker.FsmBool perChannel;
+
         [HutongGames.PlayMaker.ActionSection("[return] Net")]
         [HutongGames.PlayMaker.UIHint(HutongGames.PlayMaker.UIHint.Variable)]
         [HutongGames.PlayMaker.ObjectType(typeof(OpenCVForUnityPlayMakerActions.Net))]
@@ -56,6 +62,7 @@ namespace OpenCVForUnityPlayMakerActions
             calibData = null;
             inputsDtype = 0;
             outputsDtype = 0;
+            perChannel = false;
             storeResult = null;
             everyFrame = false;
         }
@@ -89,7 +96,7 @@ namespace OpenCVForUnityPlayMakerActions
             OpenCVForUnityPlayMakerActionsUtils.ConvertFsmArrayToList<OpenCVForUnityPlayMakerActions.Mat, OpenCVForUnity.CoreModule.Mat>(calibData, wrapped_calibData);
 
             if (!(storeResult.Value is OpenCVForUnityPlayMakerActions.Net)) storeResult.Value = new OpenCVForUnityPlayMakerActions.Net();
-            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = wrapped_owner.quantize(wrapped_calibData, inputsDtype.Value, outputsDtype.Value);
+            ((OpenCVForUnityPlayMakerActions.Net)storeResult.Value).wrappedObject = wrapped_owner.quantize(wrapped_calibData, inputsDtype.Value, outputsDtype.Value, perChannel.Value);
 
             OpenCVForUnityPlayMakerActionsUtils.ConvertListToFsmArray<OpenCVForUnity.CoreModule.Mat, OpenCVForUnityPlayMakerActions.Mat>(wrapped_calibData, calibData);
 

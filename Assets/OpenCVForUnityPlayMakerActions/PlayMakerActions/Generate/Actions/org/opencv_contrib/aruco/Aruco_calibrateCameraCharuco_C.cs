@@ -137,7 +137,7 @@ namespace OpenCVForUnityPlayMakerActions
                 LogError("board is not initialized. Add Action \"newCharucoBoard\".");
                 return;
             }
-            OpenCVForUnity.ArucoModule.CharucoBoard wrapped_board = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.CharucoBoard, OpenCVForUnity.ArucoModule.CharucoBoard>(board);
+            OpenCVForUnity.ObjdetectModule.CharucoBoard wrapped_board = OpenCVForUnityPlayMakerActionsUtils.GetWrappedObject<OpenCVForUnityPlayMakerActions.CharucoBoard, OpenCVForUnity.ObjdetectModule.CharucoBoard>(board);
 
             if (!(imageSize.Value is OpenCVForUnityPlayMakerActions.Size))
             {
